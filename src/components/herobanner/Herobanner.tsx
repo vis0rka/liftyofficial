@@ -39,7 +39,7 @@ export const Herobanner = () => {
           />
         </CarouselItem>
         <CarouselItem>
-        <CarouselImageWrapper
+          <CarouselImageWrapper
             src={hero2.src}
             heading="Lifty"
             desc="The essential for adventures"
@@ -62,23 +62,24 @@ const CarouselImageWrapper: React.FC<CarouselImageWrapperProps> = ({
   desc,
 }) => {
   return (
-    <div className="h-full relative">
+    <div className="h-full w-dvw relative">
       <div className="absolute left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%] bg-zinc-800/40 z-2 w-[100%] h-[100%] flex flex-col justify-center items-center">
-        <h1 className="text-8xl text-white text-left font-bold tracking-wide">{heading}</h1>
+        <h1 className="text-8xl text-white text-left font-bold tracking-wide">
+          {heading}
+        </h1>
         <h2 className="text-3xl text-white line-clamp-none text-left mt-2">
           {desc}
         </h2>
         <Link href={routes.shop}>
-        <Button size='lg' className='mt-4 px-10 py-6' variant='secondary'>
-            <p className='text-2xl'>Shop</p>
-        </Button>
+          <Button size="lg" className="mt-4 px-10 py-6" variant="secondary">
+            <p className="text-2xl">Shop</p>
+          </Button>
         </Link>
       </div>
       <Image
         src={src}
         alt="hero images"
-        width={1920}
-        height={600}
+        fill
         fetchPriority="high"
         style={{ maxWidth: '100%', height: '100%', objectFit: 'cover' }}
       />
