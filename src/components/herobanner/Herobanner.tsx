@@ -11,17 +11,15 @@ import hero1 from './media/hero-1.webp'
 import hero2 from './media/hero-2.webp'
 
 export const Herobanner = () => {
+    const [autoPlayPlugin] = React.useState(() => Autoplay({ delay: 4000, stopOnInteraction: true }))
+    const [fadePlugin] = React.useState(() => Fade())
+
     return (
         <Carousel
             opts={{
                 align: 'start',
             }}
-            plugins={[
-                Fade(),
-                Autoplay({
-                    delay: 4000,
-                }),
-            ]}
+            plugins={[fadePlugin, autoPlayPlugin]}
             className="w-full"
         >
             <CarouselContent className="min-h-[600px]">

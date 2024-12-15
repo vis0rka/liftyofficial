@@ -17,11 +17,11 @@ export default async function HomePage() {
                             <h1 className="text-4xl text-center">When might you need it?</h1>
                             <p className="text-center">
                                 Anytime and anywhere! It provides ideal support for short distances, like when you need
-                                to carry your toddler up the stairs in a building without an elevator, or when you're
-                                accompanying the “big sibling” to kindergarten or school. You'll also love it during
-                                vacations, from the airport all the way to the sandy beach, where strollers can no
-                                longer manage. It's small enough to take anywhere, yet big enough to enhance the bonding
-                                experience between you and your child.
+                                to carry your toddler up the stairs in a building without an elevator, or when
+                                you&apos;re accompanying the “big sibling” to kindergarten or school. You&apos;ll also
+                                love it during vacations, from the airport all the way to the sandy beach, where
+                                strollers can no longer manage. It&apos;s small enough to take anywhere, yet big enough
+                                to enhance the bonding experience between you and your child.
                             </p>
                         </div>
                         <div className="lg:w-1/2 flex justify-center items-center">
