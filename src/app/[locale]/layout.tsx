@@ -2,6 +2,7 @@ import { Footer } from '@/components/footer/Footer'
 import { Header } from '@/components/header/Header'
 import { routing } from '@/i18n/routing'
 import { cn } from '@/lib/utils'
+import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
                         <Footer />
                     </div>
                 </NextIntlClientProvider>
+                <Analytics />
             </body>
         </html>
     )
