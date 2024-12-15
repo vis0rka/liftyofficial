@@ -1,23 +1,23 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page",
-    "toddler_carrier": "Toddler carrier",
-    "featured_products": "Featured products",
-    "bestsellers": "Bestsellers"
-  },
-  "KeyFeatures": {
-    "first": {
-      "title": "Lightweight and Comfortable",
-      "description": "Weighs just a few grams but is strong enough to support up to 20kg. Its ergonomic design, with a wide, soft, adjustable shoulder strap, helps distribute weight evenly, reducing pressure on the shoulder."
+    "HomePage": {
+        "title": "Hello world!",
+        "about": "Go to the about page",
+        "toddler_carrier": "Toddler carrier",
+        "featured_products": "Featured products",
+        "bestsellers": "Bestsellers"
     },
-    "second": {
-      "title": "Easy to Use",
-      "description": "Quick and easy to use, so you can pick up and set down your child quickly anytime, anywhere."
-    },
-    "third": {
-      "title": "Compact and Portable",
-      "description": "Thanks to its small size and compact design, you can easily take it anywhere where a stroller isn't an option, as it fits into a small bag."
+    "KeyFeatures": {
+        "first": {
+            "title": "Lightweight and Comfortable",
+            "description": "Weighs just a few grams but is strong enough to support up to 20kg. Its ergonomic design, with a wide, soft, adjustable shoulder strap, helps distribute weight evenly, reducing pressure on the shoulder."
+        },
+        "second": {
+            "title": "Easy to Use",
+            "description": "Quick and easy to use, so you can pick up and set down your child quickly anytime, anywhere."
+        },
+        "third": {
+            "title": "Compact and Portable",
+            "description": "Thanks to its small size and compact design, you can easily take it anywhere where a stroller isn't an option, as it fits into a small bag."
+        }
     }
-  }
 }
