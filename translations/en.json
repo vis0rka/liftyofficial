@@ -19,5 +19,10 @@
             "title": "Compact and Portable",
             "description": "Thanks to its small size and compact design, you can easily take it anywhere where a stroller isn't an option, as it fits into a small bag."
         }
+    },
+    "NotFoundPage": {
+        "page_not_found": "Page Not Found",
+        "not_found_desc": " We're sorry, but the page you're looking for doesn't exist or has been moved.",
+        "home": "Return to Home"
     }
 }
