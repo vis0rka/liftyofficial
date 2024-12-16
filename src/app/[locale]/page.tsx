@@ -2,9 +2,18 @@
 import { Herobanner } from '@/components/herobanner/Herobanner'
 import { KeyFeatures } from '@/components/moduls/key-features/KeyFeatures'
 import { BestSellersProducts } from '@/components/products/bestsellers/BestSellersProducts'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Image from 'next/image'
 
-export default async function HomePage() {
+type Props = {
+    params: { locale: string }
+}
+
+export default async function HomePage({ params: { locale } }: Props) {
+    setRequestLocale(locale)
+
+    const t = await getTranslations('HomePage')
+
     return (
         <div className="space-y-8">
             <Herobanner />
@@ -14,15 +23,8 @@ export default async function HomePage() {
                 <section className="m-w-[600px] mx-auto px-4">
                     <div className="flex flex-col justify-center items-center lg:space-x-12 space-y-10 lg:flex-row">
                         <div className="w-full space-y-4 flex flex-col items-center justify-center lg:w-1/2">
-                            <h1 className="text-4xl text-center">When might you need it?</h1>
-                            <p className="text-center">
-                                Anytime and anywhere! It provides ideal support for short distances, like when you need
-                                to carry your toddler up the stairs in a building without an elevator, or when
-                                you&apos;re accompanying the “big sibling” to kindergarten or school. You&apos;ll also
-                                love it during vacations, from the airport all the way to the sandy beach, where
-                                strollers can no longer manage. It&apos;s small enough to take anywhere, yet big enough
-                                to enhance the bonding experience between you and your child.
-                            </p>
+                            <h1 className="text-4xl text-center">{t('Card.title')}</h1>
+                            <p className="text-center">{t('Card.desc')}</p>
                         </div>
                         <div className="lg:w-1/2 flex justify-center items-center">
                             <Image

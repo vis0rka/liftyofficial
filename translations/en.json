@@ -4,7 +4,11 @@
         "about": "Go to the about page",
         "toddler_carrier": "Toddler carrier",
         "featured_products": "Featured products",
-        "bestsellers": "Bestsellers"
+        "bestsellers": "Bestsellers",
+        "Card": {
+            "title": "When might you need it?",
+            "desc": "Anytime and anywhere! It provides ideal support for short distances, like when you need to carry your toddler up the stairs in a building without an elevator, or when you're accompanying the “big sibling” to kindergarten or school. You'll also love it during vacations, from the airport all the way to the sandy beach, where strollers can no longer manage. It''s small enough to take anywhere, yet big enough to enhance the bonding experience between you and your child."
+        }
     },
     "KeyFeatures": {
         "first": {

@@ -1,3 +1,3 @@
-export default async function ShopPage() {
+export default function ShopPage() {
     return <div>shop page</div>
 }
