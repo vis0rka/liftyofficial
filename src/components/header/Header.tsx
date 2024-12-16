@@ -1,7 +1,6 @@
 'use client'
 
 import { Menu, ShoppingCart, X } from 'lucide-react'
-import Link from 'next/link'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -14,6 +13,7 @@ import {
 } from '@/components/ui/navigation-menu'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { MobileMenuDialog, MobileMenuDialogContent, MobileMenuDialogTrigger } from './components/mobileMenuDialog'
 
