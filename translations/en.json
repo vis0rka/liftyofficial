@@ -28,5 +28,21 @@
         "page_not_found": "Page Not Found",
         "not_found_desc": " We're sorry, but the page you're looking for doesn't exist or has been moved.",
         "home": "Return to Home"
+    },
+    "Common": {
+        "quick_links": "Quick Links",
+        "informations": "Informations",
+        "shipping": "Shipping",
+        "refund": "Refund",
+        "customer_care": "Customer Care",
+        "privacy_policy": "Privacy Policy",
+        "contact": "Contact",
+        "t_c": "Terms and Conditions",
+        "home": "Home",
+        "shop": "Shop",
+        "about_us": "About us",
+        "carrier_instuctions": "Carrier instructions",
+        "sub_to_email": "Subscribe to our emails",
+        "subscribe": "Subscribe"
     }
 }
