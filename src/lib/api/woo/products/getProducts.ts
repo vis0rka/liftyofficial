@@ -4,7 +4,7 @@ import { unstable_cache } from 'next/cache'
 import { wooApi } from '../woo'
 import { WooTypes } from '../WooTyps'
 
-async function getProducts() {
+export async function getProducts() {
     try {
         const result = await wooApi.get('products', {
             per_page: 20, // 20 products per page
