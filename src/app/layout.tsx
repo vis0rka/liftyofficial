@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={cn(poppins.className, baloo.variable, 'text-slate-700')}>
+            <body className={cn(poppins.className, baloo.variable, 'text-slate-700', 'bg-stone-50')}>
                 <NuqsAdapter>{children}</NuqsAdapter>
                 <Analytics />
             </body>

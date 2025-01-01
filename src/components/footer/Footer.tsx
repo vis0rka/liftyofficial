@@ -9,7 +9,7 @@ export const Footer = async () => {
     const t = await getTranslations()
 
     return (
-        <footer className="bg-secondary p-8">
+        <footer className="bg-stone-100 p-8 border-stone-200 border-t-2">
             <div className="container mx-auto flex flex-row justify-between">
                 <div className="flex flex-col">
                     <h2 className="text-2xl">{t('Common.informations')}</h2>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Menu, ShoppingCart, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -12,9 +12,10 @@ import {
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Separator } from '@/components/ui/separator'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
+import { Cart } from '../moduls/cart/Cart'
 import { MobileMenuDialog, MobileMenuDialogContent, MobileMenuDialogTrigger } from './components/mobileMenuDialog'
 
 const menuItems = [
@@ -114,22 +115,5 @@ function MobileNav({ items, setIsOpen }: MobileNavProps) {
                 </React.Fragment>
             ))}
         </nav>
-    )
-}
-
-const Cart: React.FC = () => {
-    const [isOpen, setIsOpen] = React.useState(false)
-
-    return (
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-                <Button variant="icon" size="icon" aria-label="Shopping Cart">
-                    <ShoppingCart className="h-8 w-8" />
-                </Button>
-            </SheetTrigger>
-            <SheetContent side="top" className="h-full mt-14">
-                <h1>cart</h1>
-            </SheetContent>
-        </Sheet>
     )
 }

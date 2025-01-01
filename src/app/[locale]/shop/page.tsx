@@ -1,18 +1,23 @@
 import { ProductListWithFilters } from '@/components/moduls/products/ProductListWithFilters'
 import { productQueryOption } from '@/lib/api/woo/products/productQueries'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import { getTranslations } from 'next-intl/server'
 import { getQueryClient } from '../get-query-client'
 
 export default async function ShopPage() {
     const queryClient = getQueryClient()
+    const t = await getTranslations()
 
     void queryClient.prefetchQuery(productQueryOption)
 
     return (
-        <main className="container mx-auto flex flex-col my-10">
+        <section className="container mx-auto flex flex-col my-10">
+            <h1 className="text-center text-4xl">
+                Lifty {t('Common.premium')} - {t('Common.toddler_carrier', { count: 2 })}
+            </h1>
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <ProductListWithFilters />
             </HydrationBoundary>
-        </main>
+        </section>
     )
 }

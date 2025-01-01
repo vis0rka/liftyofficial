@@ -54,6 +54,12 @@
         "carrier_instuctions": "Carrier instructions",
         "sub_to_email": "Subscribe to our emails",
         "subscribe": "Subscribe",
-        "toddler_carrier": "Toddler carrier"
+        "toddler_carrier": "Toddler hip {count, plural, =0 {carrier} =1 {carrier} other {carriers}}",
+        "premium": "Premium",
+        "cart": "Cart"
+    },
+    "Error": {
+        "something_went_wrong": "Something went wrong...",
+        "contact": "Please contact support at"
     }
 }

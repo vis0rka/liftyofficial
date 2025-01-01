@@ -1,4 +1,5 @@
 'use client'
+import { ErrorCard } from '@/components/error/ErrorCard'
 import { ProductCard } from '@/components/products/card/ProductCard'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -10,6 +11,8 @@ import React from 'react'
 
 // List accepted values
 const productFilters = ['bestsellers', 'newest', 'price_low_to_high', 'price_high_to_low', 'featured'] as const
+
+type ProductFilters = (typeof productFilters)[number]
 
 export const ProductListWithFilters = () => {
     const { data, isError } = useSuspenseQuery(productQueryOption)
@@ -41,7 +44,9 @@ export const ProductListWithFilters = () => {
         return data
     }, [filter, data])
 
-    console.log(filteredProducts)
+    if (isError) {
+        return <ErrorCard />
+    }
 
     if (!filteredProducts) {
         return (
@@ -57,7 +62,7 @@ export const ProductListWithFilters = () => {
     return (
         <div className="space-y-10">
             <div className="flex flex-row justify-end">
-                <Select defaultValue={filter} onValueChange={val => setFilter(val)}>
+                <Select defaultValue={filter} onValueChange={val => setFilter(val as ProductFilters)}>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder={t(`ShopPage.Filters.${filter}`)} />
                     </SelectTrigger>

@@ -27,7 +27,9 @@ export default async function LocaleLayout({
         <>
             <Header />
             <Providers>
-                <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+                <NextIntlClientProvider messages={messages}>
+                    <main>{children}</main>
+                </NextIntlClientProvider>
             </Providers>
             <Footer />
         </>
