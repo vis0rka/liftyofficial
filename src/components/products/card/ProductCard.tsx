@@ -14,16 +14,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const t = useTranslations()
 
     return (
-        <Link href={`/shop/${product.sku}-${product.slug}`}>
+        <Link href={`/shop/${product?.slug}`}>
             <div className="flex-shrink-0 flex flex-col lg:flex-1 shadow overflow-hidden rounded-md min-w-[250px] max-w-[150px] lg:max-w-full bg-white">
-                <CardImage productImages={product.images} />
+                <CardImage productImages={product?.images} />
 
                 <div className="p-5 flex flex-col items-center">
                     <h1 className="text-lg text-center font-bold">
                         Lifty - {t('Common.toddler_carrier', { count: 1 })}
                     </h1>
                     <div className="flex flex-col justify-center items-center">
-                        <span className="text-center text-2xl font-bold font-sans">€ {product.price}</span>
+                        <span className="text-center text-2xl font-bold font-sans">€ {product?.price}</span>
                     </div>
                     <Button className="mt-4">
                         <p>View</p>

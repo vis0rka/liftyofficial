@@ -20,6 +20,9 @@
             "featured": "Featured"
         }
     },
+    "ProductPage": {
+        "in_stock": "In stock"
+    },
     "KeyFeatures": {
         "first": {
             "title": "Lightweight and Comfortable",
@@ -56,10 +59,21 @@
         "subscribe": "Subscribe",
         "toddler_carrier": "Toddler hip {count, plural, =0 {carrier} =1 {carrier} other {carriers}}",
         "premium": "Premium",
-        "cart": "Cart"
+        "cart": "Cart",
+        "add_to_cart": "Add to Cart"
     },
     "Error": {
         "something_went_wrong": "Something went wrong...",
         "contact": "Please contact support at"
+    },
+    "Product": {
+        "toddler_carrier": {
+            "short": "Our LIFTY - toddler carriers offer a comfortable, ergonomic, practical, and quick solution for every parent with a toddler. They're perfect for children who want to be held one moment and explore their surroundings the next. Easy to use and compact, they can be taken anywhere, making them ideal for short trips, shopping, stair climbing, and more. Our handcrafted products, made in EU, are crafted from OEKO-TEX certified 100% cotton materials and high-quality YKK buckles, ensuring the safety of your child. We recommend them to anyone who wants to provide their child with both closeness and the freedom to explore.",
+            "list_1": "With the hip carrier, you can easily pick up or put down your child with a single motion, anytime, anywhere.",
+            "list_2": "Thanks to its ergonomic design, it's more comfortable and lighter than carrying your child in your arms.",
+            "list_3": "Its small size allows you to carry it easily in a bag, so it's always handy when you need it.",
+            "list_4": "A Europian handcrafted product made with OEKO-TEX certified materials and safe YKK buckles, ensuring your child's safety at all times.",
+            "list_5": "Comfortable for both moms and dads, making it a joy to use in everyday life."
+        }
     }
 }

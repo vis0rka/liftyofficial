@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { CartSheetContent, Sheet, SheetTrigger } from '@/components/ui/sheet'
 import { ShoppingCart } from 'lucide-react'
 import React from 'react'
 
@@ -13,13 +13,7 @@ export const Cart: React.FC = () => {
                     <ShoppingCart className="h-8 w-8" />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="h-full">
-                <SheetHeader>
-                    <SheetTitle>
-                        <p>cart</p>
-                    </SheetTitle>
-                </SheetHeader>
-            </SheetContent>
+            <CartSheetContent side="right" className="h-full"></CartSheetContent>
         </Sheet>
     )
 }
