@@ -7,11 +7,9 @@ import { useState } from 'react'
 interface ImageViewerProps {
     src: string
     alt: string
-    width: number
-    height: number
 }
 
-export default function ImageViewer({ src, alt, width, height }: ImageViewerProps) {
+export default function ImageViewer({ src, alt }: ImageViewerProps) {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -19,10 +17,9 @@ export default function ImageViewer({ src, alt, width, height }: ImageViewerProp
             <Image
                 src={src}
                 alt={alt}
-                width={width}
-                height={height}
+                fill
                 onClick={() => setIsOpen(true)}
-                className="cursor-pointer transition-transform hover:scale-105"
+                className="cursor-pointer transition-transform hover:scale-105 object-contain"
             />
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <VisuallyHidden.Root>

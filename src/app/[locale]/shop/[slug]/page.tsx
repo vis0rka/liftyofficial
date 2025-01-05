@@ -1,6 +1,6 @@
 import { ErrorCard } from '@/components/error/ErrorCard'
-import ImageViewer from '@/components/features/ImageViewer'
 import { AddToCartBtn } from '@/components/moduls/cart/AddToCartBtn'
+import { ProductImageGallery } from '@/components/products/ProductImageGallery'
 import { Badge } from '@/components/ui/badge'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -31,7 +31,7 @@ export default async function ProductDetailsPage({ params }: Props) {
             <Breadcrumb />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Card className="overflow-hidden">
-                    <ImageViewer src={product.images[0].src} width={800} height={800} alt="product-image" />
+                    <ProductImageGallery images={product.images} />
                 </Card>
                 <Card>
                     <CardHeader>
