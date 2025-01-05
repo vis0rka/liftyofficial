@@ -11,8 +11,8 @@ export default async function ShopPage() {
     void queryClient.prefetchQuery(productQueryOption)
 
     return (
-        <section className="container mx-auto flex flex-col my-10">
-            <h1 className="text-center text-4xl">
+        <section className="container mx-auto flex flex-col my-10 space-y-4">
+            <h1 className="text-center ~text-2xl/4xl">
                 Lifty {t('Common.premium')} - {t('Common.toddler_carrier', { count: 2 })}
             </h1>
             <HydrationBoundary state={dehydrate(queryClient)}>

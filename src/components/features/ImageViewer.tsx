@@ -19,6 +19,7 @@ export default function ImageViewer({ src, alt }: ImageViewerProps) {
                 alt={alt}
                 fill
                 onClick={() => setIsOpen(true)}
+                priority
                 className="cursor-pointer transition-transform hover:scale-105 object-contain"
             />
             <Dialog open={isOpen} onOpenChange={setIsOpen}>

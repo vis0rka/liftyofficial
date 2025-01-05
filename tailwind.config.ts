@@ -70,5 +70,28 @@ export default {
             },
         },
     },
-    plugins: [require('tailwindcss-animate'), fluid],
+    plugins: [
+        require('tailwindcss-animate'),
+        fluid,
+        function ({ addComponents }) {
+            addComponents({
+                '.container': {
+                    maxWidth: '100%',
+                    padding: '1rem',
+                    '@screen sm': {
+                        maxWidth: '640px',
+                    },
+                    '@screen md': {
+                        maxWidth: '768px',
+                    },
+                    '@screen lg': {
+                        maxWidth: '1280px',
+                    },
+                    '@screen xl': {
+                        maxWidth: '1400px',
+                    },
+                },
+            })
+        },
+    ],
 } satisfies Config
