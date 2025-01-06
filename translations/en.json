@@ -4,9 +4,14 @@
         "about": "Go to the about page",
         "featured_products": "Featured products",
         "bestsellers": "Bestsellers",
-        "Card": {
+        "Card1": {
             "title": "When might you need it?",
             "desc": "Anytime and anywhere! It provides ideal support for short distances, like when you need to carry your toddler up the stairs in a building without an elevator, or when you're accompanying the “big sibling” to kindergarten or school. You'll also love it during vacations, from the airport all the way to the sandy beach, where strollers can no longer manage. It''s small enough to take anywhere, yet big enough to enhance the bonding experience between you and your child."
+        },
+        "Card2": {
+            "title": "Your travel essential",
+            "desc1": "This compact and portable toddler hip carrier is designed to go where strollers can't. Ready for adventure? Let's go!",
+            "desc2": "Whether you're basking in the sun on the beach or wandering through charming historic streets, the Lifty premium carrier is the ultimate holiday essential. Ditch the bulky stroller and embrace the freedom to explore!"
         }
     },
     "ShopPage": {
@@ -36,6 +41,14 @@
             "title": "Compact and Portable",
             "description": "Thanks to its small size and compact design, you can easily take it anywhere where a stroller isn't an option, as it fits into a small bag."
         }
+    },
+    "ShopFeatures": {
+        "30_return": "30 Day returns",
+        "30_return_desc": "Return your purchase within 30 days for a full refund.",
+        "fast_shipping": "Fast shipping",
+        "fast_shipping_desc": "Delivered within 5 working days!",
+        "eco_friendly": "SAFE & ECO-FRIENDLY",
+        "eco_friendly_desc": "Made from 100% OEKO-TEX® certified cotton."
     },
     "NotFoundPage": {
         "page_not_found": "Page Not Found",
