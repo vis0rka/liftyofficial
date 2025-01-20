@@ -75,7 +75,11 @@
         "cart": "Cart",
         "add_to_cart": "Add to Cart",
         "empty_cart": "You have no items in your cart!",
-        "recently_viewed": "Recently viewed"
+        "recently_viewed": "Recently viewed",
+        "view_cart": "View cart",
+        "checkout": "Checkout",
+        "continue_shopping": "Continue shopping",
+        "view": "View"
     },
     "Error": {
         "something_went_wrong": "Something went wrong...",

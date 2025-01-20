@@ -26,7 +26,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         <span className="text-center text-2xl font-bold font-sans">€ {product?.price}</span>
                     </div>
                     <Button className="mt-4">
-                        <p className="~text-sm/base">View</p>
+                        <p className="~text-sm/base">{t('Common.view')}</p>
                     </Button>
                 </div>
             </div>

@@ -37,19 +37,25 @@ export const Cart: React.FC = () => {
             </SheetTrigger>
             <CartSheetContent side="right" className="h-full sm:max-w-[500px]">
                 <div className="flex flex-col justify-between h-full pb-10 items-center">
-                    {notEmptyCart ? (
-                        <>
-                            {Object.values(cartDetails ?? {}).map(entry => (
-                                <CartItem key={entry.sku} item={entry} />
-                            ))}
-                        </>
-                    ) : (
-                        <p className="m-3 text-lg text-center">{t('Common.empty_cart')}</p>
-                    )}
+                    <div>
+                        {notEmptyCart ? (
+                            <>
+                                {Object.values(cartDetails ?? {}).map(entry => (
+                                    <CartItem key={entry.sku} item={entry} />
+                                ))}
+                            </>
+                        ) : (
+                            <p className="m-3 text-lg text-center">{t('Common.empty_cart')}</p>
+                        )}
+                    </div>
                     <SheetFooter className="flex sm:flex-col sm:space-y-4 justify-center items-center">
-                        <Button size="lg">Checkout</Button>
+                        <Button size="lg" className="uppercase">
+                            {t('Common.checkout')}
+                        </Button>
                         <Button variant="ghost" asChild>
-                            <Link href="/cart">View Cart</Link>
+                            <Link href="/cart" className="uppercase" onClick={() => handleCloseCart()}>
+                                {t('Common.view_cart')}
+                            </Link>
                         </Button>
                     </SheetFooter>
                 </div>

@@ -14,7 +14,20 @@ import { CartEntry } from 'use-shopping-cart/core'
 export const CartTable = () => {
     const { cartCount, cartDetails, removeItem } = useShoppingCart()
     const t = useTranslations()
-    const notEmptyCart = (cartCount ?? 0) > 0
+    const emptyCart = (cartCount ?? 0) === 0
+
+    if (emptyCart) {
+        return (
+            <Card className="space-y-8 p-4">
+                <p className="~text-base/2xl">{t('Common.empty_cart')}</p>
+                <Button asChild>
+                    <Link href="/shop" className="uppercase">
+                        {t('Common.continue_shopping')}
+                    </Link>
+                </Button>
+            </Card>
+        )
+    }
 
     return (
         <div>
@@ -24,57 +37,43 @@ export const CartTable = () => {
                 <h4 className="col-span-3 md:col-span-1">Price</h4>
             </div>
             <div className="flex flex-col justify-between items-center w-full space-y-8">
-                {notEmptyCart ? (
-                    <>
-                        {Object.values(cartDetails ?? {}).map(item => {
-                            return (
-                                <Card key={item.id} className="w-full relative">
-                                    <CardContent className="p-4 grid grid-cols-12 items-center grid-rows justify-between">
-                                        {item.image && (
-                                            <Image
-                                                src={item.image}
-                                                alt={item.name}
-                                                width={100}
-                                                height={100}
-                                                priority
-                                                style={{ objectFit: 'contain' }}
-                                                className="col-span-2 md:col-span-1"
-                                            />
-                                        )}
+                {Object.values(cartDetails ?? {}).map(item => {
+                    return (
+                        <Card key={item.id} className="w-full relative">
+                            <CardContent className="p-4 grid grid-cols-12 items-center grid-rows justify-between">
+                                {item.image && (
+                                    <Image
+                                        src={item.image}
+                                        alt={item.name}
+                                        width={100}
+                                        height={100}
+                                        priority
+                                        style={{ objectFit: 'contain' }}
+                                        className="col-span-2 md:col-span-1"
+                                    />
+                                )}
 
-                                        <Link href={`/shop/${item?.slug}`} className="col-span-10 md:col-span-5 my-4">
-                                            <p className="~text-sm/lg hover:underline">{item.name}</p>
-                                        </Link>
-                                        <QuantityModifer
-                                            item={item}
-                                            className="flex col-start-3 col-span-7  md:col-span-5"
-                                        />
-                                        <div className="col-span-3 md:col-span-1 items-end">
-                                            <span className="text-right">
-                                                {formatCurrencyString({ value: item.price, currency: 'EUR' })}
-                                            </span>
-                                        </div>
-                                    </CardContent>
-                                    <Button
-                                        variant="ghost"
-                                        size="icon"
-                                        onClick={() => removeItem(item.id)}
-                                        className="absolute top-0 right-0 translate-x-1/3 -translate-y-1/3 hover:bg-red-100 bg-white shadow transition-colors rounded-full duration-500"
-                                    >
-                                        <Trash2 />
-                                    </Button>
-                                </Card>
-                            )
-                        })}
-                    </>
-                ) : (
-                    <div className="space-y-8">
-                        <p className="~text-base/2xl">{t('Common.empty_cart')}</p>
-                        <Button asChild>
-                            <Link href="/shop">Continue shopping</Link>
-                        </Button>
-                    </div>
-                )}
+                                <Link href={`/shop/${item?.slug}`} className="col-span-10 md:col-span-5 my-4">
+                                    <p className="~text-sm/lg hover:underline">{item.name}</p>
+                                </Link>
+                                <QuantityModifer item={item} className="flex col-start-3 col-span-7  md:col-span-5" />
+                                <div className="col-span-3 md:col-span-1 items-end">
+                                    <span className="text-right">
+                                        {formatCurrencyString({ value: item.price, currency: 'EUR' })}
+                                    </span>
+                                </div>
+                            </CardContent>
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => removeItem(item.id)}
+                                className="absolute top-0 right-0 translate-x-1/3 -translate-y-1/3 hover:bg-red-100 bg-white shadow transition-colors rounded-full duration-500"
+                            >
+                                <Trash2 />
+                            </Button>
+                        </Card>
+                    )
+                })}
             </div>
         </div>
     )
