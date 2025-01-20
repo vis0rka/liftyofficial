@@ -73,7 +73,9 @@
         "toddler_carrier": "Toddler hip {count, plural, =0 {carrier} =1 {carrier} other {carriers}}",
         "premium": "Premium",
         "cart": "Cart",
-        "add_to_cart": "Add to Cart"
+        "add_to_cart": "Add to Cart",
+        "empty_cart": "You have no items in your cart!",
+        "recently_viewed": "Recently viewed"
     },
     "Error": {
         "something_went_wrong": "Something went wrong...",

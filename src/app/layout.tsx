@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Baloo_Bhai_2, Poppins } from 'next/font/google'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import Providers from './[locale]/providers'
 import './globals.css'
 
 const poppins = Poppins({
@@ -28,7 +29,9 @@ export default async function LocaleLayout({ children }: { children: React.React
     return (
         <html lang="en">
             <body className={cn(poppins.className, baloo.variable, 'text-slate-700', 'bg-stone-50')}>
-                <NuqsAdapter>{children}</NuqsAdapter>
+                <Providers>
+                    <NuqsAdapter>{children}</NuqsAdapter>
+                </Providers>
                 <Analytics />
             </body>
         </html>

@@ -1,6 +1,8 @@
 import { ErrorCard } from '@/components/error/ErrorCard'
-import { AddToCartBtn } from '@/components/moduls/cart/AddToCartBtn'
+import { AddToCartBtn } from '@/components/products/card/AddToCartBtn'
 import { ProductImageGallery } from '@/components/products/ProductImageGallery'
+import { AddToRecentlyViewed } from '@/components/products/recently-viewed/AddToRecentlyViewed'
+import { RecentlyViewed } from '@/components/products/recently-viewed/RecentlyViewed'
 import { Badge } from '@/components/ui/badge'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -25,6 +27,9 @@ export default async function ProductDetailsPage({ params }: Props) {
     }
 
     const inStock = product?.stock_quantity > 0 || product.backorders_allowed
+    console.log(product)
+
+    const isTranslatedText = extractTextInsideBraces(product.short_description)
 
     return (
         <section className="container mx-auto flex flex-col my-6 space-y-6">
@@ -42,13 +47,19 @@ export default async function ProductDetailsPage({ params }: Props) {
                     </CardHeader>
                     <CardContent>
                         <CardDescription className="space-y-4 flex flex-col items-start">
-                            <p>{t(extractTextInsideBraces(product.short_description)[0])}</p>
+                            {isTranslatedText?.length ? (
+                                <p>{t(isTranslatedText[0])}</p>
+                            ) : (
+                                <div dangerouslySetInnerHTML={{ __html: product?.short_description }} />
+                            )}
                             {inStock ? <Badge variant="success">{t('ProductPage.in_stock')}</Badge> : null}
-                            {inStock && <AddToCartBtn />}
+                            {inStock && <AddToCartBtn product={product} />}
                         </CardDescription>
                     </CardContent>
                 </Card>
             </div>
+            <AddToRecentlyViewed product={product} />
+            <RecentlyViewed />
         </section>
     )
 }
