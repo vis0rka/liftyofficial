@@ -11,13 +11,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     return (
         <QueryClientProvider client={queryClient}>
             <USCProvider
-                mode="payment"
-                stripe={process.env.STRIPE_KEY!}
+                stripe={process.env.STRIPE_API_PUBLIC!}
                 currency={'EUR'}
-                billingAddressCollection={true}
-                cartMode="client-only"
-                successUrl="/success"
-                cancelUrl="/"
+                cartMode="checkout-session"
                 shouldPersist={true}
             >
                 {children}

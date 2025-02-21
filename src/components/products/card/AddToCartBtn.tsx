@@ -22,6 +22,11 @@ export const AddToCartBtn: React.FC<Props> = ({ product }) => {
             currency: 'EUR',
             image: product?.images[0].src,
             slug: product.slug,
+            product_data: {
+                metadata: {
+                    type: 'clothes',
+                },
+            },
         }
 
         addItem(productDetails)

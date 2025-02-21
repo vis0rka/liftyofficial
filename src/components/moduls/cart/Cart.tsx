@@ -10,9 +10,34 @@ import { useShoppingCart } from 'use-shopping-cart'
 import { CartItem } from './CartItem'
 
 export const Cart: React.FC = () => {
-    const { shouldDisplayCart, cartCount, cartDetails, handleCloseCart, handleCartClick } = useShoppingCart()
+    const { shouldDisplayCart, cartCount, cartDetails, handleCloseCart, handleCartClick, redirectToCheckout } =
+        useShoppingCart()
     const t = useTranslations()
     const notEmptyCart = (cartCount ?? 0) > 0
+    const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
+
+    const handleCheckout = async () => {
+        setStatus('loading')
+
+        try {
+            const res = await fetch('/session', {
+                method: 'POST',
+                body: JSON.stringify(cartDetails),
+            })
+            const data = await res.json()
+            const result = await redirectToCheckout(data.sessionId)
+            console.log(data)
+            if (result?.error) {
+                console.error(res)
+                setStatus('error')
+            }
+        } catch (error) {
+            console.error(error)
+            setStatus('error')
+        }
+
+        setStatus('idle')
+    }
 
     return (
         <Sheet
@@ -49,8 +74,10 @@ export const Cart: React.FC = () => {
                         )}
                     </div>
                     <SheetFooter className="flex sm:flex-col sm:space-y-4 justify-center items-center">
-                        <Button size="lg" className="uppercase">
-                            {t('Common.checkout')}
+                        <Button disabled={!notEmptyCart} asChild size="lg">
+                            <Link href="/checkout" className="uppercase" onClick={() => handleCloseCart()}>
+                                {t('Common.checkout')}
+                            </Link>
                         </Button>
                         <Button variant="ghost" asChild>
                             <Link href="/cart" className="uppercase" onClick={() => handleCloseCart()}>
