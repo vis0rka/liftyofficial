@@ -35,7 +35,7 @@ type FormValues = z.infer<typeof schema>
 
 export default function CartPage() {
     const params = useParams()
-    const { cartDetails, formattedTotalPrice, cartCount } = useShoppingCart()
+    const { cartDetails, formattedTotalPrice } = useShoppingCart()
     const t = useTranslations()
     const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
 
