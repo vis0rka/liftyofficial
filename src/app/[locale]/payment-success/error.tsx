@@ -2,10 +2,13 @@
 
 import { ErrorCard } from '@/components/error/ErrorCard'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function Error({ error }: { error: Error & { digest?: string }; reset: () => void }) {
+    const t = useTranslations()
+
     useEffect(() => {
         // Optionally log the error to an error reporting service
         console.error(error)
@@ -16,7 +19,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
             <ErrorCard />
             <Button asChild variant="default">
                 <Link href="/" className="mx-auto">
-                    Go Home
+                    {t('Common.Home')}
                 </Link>
             </Button>
         </main>

@@ -23,10 +23,8 @@
             "price_low_to_high": "Price: Low to High",
             "price_high_to_low": "Price: High to Low",
             "featured": "Featured"
-        }
-    },
-    "ProductPage": {
-        "in_stock": "In stock"
+        },
+        "description": "Our LIFTY - toddler carriers offer a comfortable, ergonomic, practical, and quick solution for every parent with a toddling child. For those little ones who one moment want to be held in your arms and the next are eager to explore the world. They are easy to use and, thanks to their compact size, can be taken anywhere, making them ideal for short trips, shopping, climbing stairs, and more. Our handmade products are made in Hungary from OEKO-TEX certified 100% cotton materials and high-quality YKK straps, ensuring the safety of your child. We recommend them to anyone who wants to provide their child with both closeness and the freedom to explore at the same time."
     },
     "KeyFeatures": {
         "first": {
@@ -86,13 +84,54 @@
         "contact": "Please contact support at"
     },
     "Product": {
+        "in_stock": "In stock",
         "toddler_carrier": {
             "short": "Our LIFTY - toddler carriers offer a comfortable, ergonomic, practical, and quick solution for every parent with a toddler. They're perfect for children who want to be held one moment and explore their surroundings the next. Easy to use and compact, they can be taken anywhere, making them ideal for short trips, shopping, stair climbing, and more. Our handcrafted products, made in EU, are crafted from OEKO-TEX certified 100% cotton materials and high-quality YKK buckles, ensuring the safety of your child. We recommend them to anyone who wants to provide their child with both closeness and the freedom to explore.",
             "list_1": "With the hip carrier, you can easily pick up or put down your child with a single motion, anytime, anywhere.",
             "list_2": "Thanks to its ergonomic design, it's more comfortable and lighter than carrying your child in your arms.",
             "list_3": "Its small size allows you to carry it easily in a bag, so it's always handy when you need it.",
             "list_4": "A Europian handcrafted product made with OEKO-TEX certified materials and safe YKK buckles, ensuring your child's safety at all times.",
-            "list_5": "Comfortable for both moms and dads, making it a joy to use in everyday life."
+            "list_5": "Comfortable for both moms and dads, making it a joy to use in everyday life.",
+            "long_desc_1": "The behavior of toddlers is often unpredictable. One moment, they want to be held in your arms, seeking safety and closeness, while the next, they can't wait to run around freely and explore the world. This duality is a natural part of their development, as they simultaneously crave parental closeness and the experience of independence. To meet these ever-changing needs, flexible and practical solutions are essential. Lifty hip carriers allow us to quickly adapt to the varying demands of our children while also making everyday life easier for parents.",
+            "long_title_2": "When might you need it?",
+            "long_desc_2": "Anytime and anywhere! It provides ideal support for short distances, like when you need to carry your toddler up the stairs in a building without an elevator, or when you're accompanying the “big sibling” to kindergarten or school. You'll also love it during vacations, from the airport all the way to the sandy beach, where strollers can no longer manage. It''s small enough to take anywhere, yet big enough to enhance the bonding experience between you and your child.",
+            "long_title_3": "For whom and why?",
+            "long_desc_3": "Our Lifty premium hip carriers relieve the strain on your arms, provide better posture, and offer greater comfort compared to simply carrying your child in your arms. Thanks to their ergonomic design, wide, soft, and adjustable shoulder straps, they help distribute the weight properly, reducing the pressure on your shoulders. This unisex product will be loved by both women and men. This is not a baby carrier! Designed with great care and love for short distances, exclusively for toddlers, from approximately 9 months to 4 years old, but with a maximum weight limit of 20 kg.",
+            "dotted_desc_1": "Shoulder Strap: 2 cm thick, specially firm, high-quality foam that provides ergonomic support and comfort. Thanks to its elasticity and shape-retaining properties, it fits snugly on the shoulder, distributes the weight, and reduces pressure points. The buckle is designed to sit on the foam, so it doesn’t press into the shoulder. Its durable material retains its shape over the long term and resists wear, ensuring the shoulder strap remains flawless even after years of use.",
+            "dotted_desc_2": "Buckle: YKK buckle. These buckles are renowned for their excellent quality and reliability. They are extremely durable, have a long lifespan, and provide strong support, which is essential for safety. YKK also commits to sustainability, striving for environmentally friendly manufacturing processes and material usage, making their products not only reliable but also eco-friendly.",
+            "dotted_desc_3": "Strap: 75 cm long and 5 cm wide polypropylene. The PP strap is strong and secure, yet lightweight, so it doesn’t significantly increase the carrier’s weight. It is water- and UV-resistant, making it durable and resistant to environmental factors, as well as easy to clean, which is practical for everyday use. Its elasticity ensures comfortable wear and guarantees a long lifespan.",
+            "dotted_desc_4": "Seat: Made from 100% cotton with OEKO-TEX® Standard 100 certification. This is a textile material that meets the internationally recognized OEKO-TEX® Standard 100. This certification guarantees that the cotton material is free from harmful chemicals and is safe for skin contact, which is especially important for children."
         }
+    },
+    "Order": {
+        "cant_find_your_order": "Sorry we can't find your order!",
+        "your_payment_status": "Your payment status is: {status}",
+        "thank_you_order": "Thank you for your order, {name}!",
+        "your_order_id": " Your order id: <important> {orderId} </important>",
+        "confirmation_email_sent": "The order confirmation email with details of your order has been sent to your email address."
+    },
+    "Form": {
+        "contact": "Contact",
+        "email": "Email",
+        "dial_code": "Dial Code",
+        "select_dial_code": "Select a dial code",
+        "phone_number": "Phone Number",
+        "enter_phone_number": "Enter your phone number",
+        "email_news": "Email me with news and offers",
+        "delivery": "Delivery",
+        "country": "Country",
+        "select_country": "Select a country",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "postalcode": "Postal Code",
+        "city": "City",
+        "address": "Address",
+        "street_address": "Street address",
+        "apartment": "Apartment",
+        "apartment_details": "Apartment, suit, unit, etc. (optional)",
+        "place_order": "Place Order",
+        "total": "Total",
+        "shipping": "Shipping",
+        "free": "Free"
     }
 }

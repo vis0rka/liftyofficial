@@ -12,11 +12,11 @@ export function RecentlyViewed() {
     }
 
     return (
-        <div className="mt-8">
-            <h2 className="~text-xl/3xl font-bold mb-4">{t('Common.recently_viewed')}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="space-y-4">
+            <h2 className="~text-xl/4xl">{t('Common.recently_viewed')}</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {products.map(product => {
-                    return <ProductCard product={product} key={product.id} />
+                    return <ProductCard product={product} key={product.id} hideViewButton />
                 })}
             </div>
         </div>

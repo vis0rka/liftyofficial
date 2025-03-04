@@ -14,7 +14,7 @@ export const useRecentlyViewedStore = create<RecentlyViewedState>()(
             products: [],
             addProduct: product =>
                 set(state => ({
-                    products: [product, ...state.products.filter(p => p.id !== product.id)].slice(0, 5),
+                    products: [product, ...state.products.filter(p => p.id !== product.id)].slice(0, 6),
                 })),
         }),
         {

@@ -10,34 +10,9 @@ import { useShoppingCart } from 'use-shopping-cart'
 import { CartItem } from './CartItem'
 
 export const Cart: React.FC = () => {
-    const { shouldDisplayCart, cartCount, cartDetails, handleCloseCart, handleCartClick, redirectToCheckout } =
-        useShoppingCart()
+    const { shouldDisplayCart, cartCount, cartDetails, handleCloseCart, handleCartClick } = useShoppingCart()
     const t = useTranslations()
     const notEmptyCart = (cartCount ?? 0) > 0
-    const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
-
-    const handleCheckout = async () => {
-        setStatus('loading')
-
-        try {
-            const res = await fetch('/session', {
-                method: 'POST',
-                body: JSON.stringify(cartDetails),
-            })
-            const data = await res.json()
-            const result = await redirectToCheckout(data.sessionId)
-            console.log(data)
-            if (result?.error) {
-                console.error(res)
-                setStatus('error')
-            }
-        } catch (error) {
-            console.error(error)
-            setStatus('error')
-        }
-
-        setStatus('idle')
-    }
 
     return (
         <Sheet

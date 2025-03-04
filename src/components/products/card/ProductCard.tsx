@@ -8,9 +8,10 @@ import { CardImage } from './CardImage'
 
 interface ProductCardProps {
     product: ArrayElement<WooTypes['getProducts']>
+    hideViewButton?: boolean
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButton }) => {
     const t = useTranslations()
 
     return (
@@ -25,9 +26,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     <div className="flex flex-col justify-center items-center">
                         <span className="text-center text-2xl font-bold font-sans">€ {product?.price}</span>
                     </div>
-                    <Button className="mt-4">
-                        <p className="~text-sm/base">{t('Common.view')}</p>
-                    </Button>
+                    {!hideViewButton ? (
+                        <Button className="mt-4">
+                            <p className="~text-sm/base">{t('Common.view')}</p>
+                        </Button>
+                    ) : null}
                 </div>
             </div>
         </Link>

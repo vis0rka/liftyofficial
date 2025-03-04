@@ -1,3 +1,4 @@
+import { KeyFeatures } from '@/components/moduls/key-features/KeyFeatures'
 import { ProductListWithFilters } from '@/components/moduls/products/ProductListWithFilters'
 import { productQueryOption } from '@/lib/api/woo/products/productQueries'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
@@ -15,6 +16,9 @@ export default async function ShopPage() {
             <h1 className="text-center ~text-2xl/4xl">
                 Lifty {t('Common.premium')} - {t('Common.toddler_carrier', { count: 2 })}
             </h1>
+            <p>{t('ShopPage.description')}</p>
+            <KeyFeatures />
+
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <ProductListWithFilters />
             </HydrationBoundary>

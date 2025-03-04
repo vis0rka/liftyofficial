@@ -3,11 +3,11 @@ import { getCachedProducts } from '@/lib/api/woo/products/getProducts'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
 import { stripe } from '@/lib/stripe/stripe'
 import { headers } from 'next/headers'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { Product } from 'use-shopping-cart/core'
 
-export async function POST(request) {
-    const cartProducts = await request.json()
+export async function POST(request: NextRequest) {
+    const { cartProducts, orderId } = await request.json()
     try {
         const originalProducts = await getCachedProducts()
         if (!originalProducts) {
@@ -18,11 +18,13 @@ export async function POST(request) {
 
         const headersList = await headers()
 
+        const locale = request.cookies.get('NEXT_LOCALE')?.value
+
         const checkoutSession = await stripe.checkout.sessions.create({
             mode: 'payment',
             line_items,
-            success_url: `${headersList.get('origin')}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${headersList.get('origin')}/`,
+            success_url: `${headersList.get('origin')}/${locale}/payment-success?session_id={CHECKOUT_SESSION_ID}&orderId=${orderId}`,
+            cancel_url: `${headersList.get('origin')}/${locale}/`,
         })
         return NextResponse.json({ sessionId: checkoutSession.id })
     } catch (error) {

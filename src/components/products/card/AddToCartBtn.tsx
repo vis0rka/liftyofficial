@@ -18,6 +18,7 @@ export const AddToCartBtn: React.FC<Props> = ({ product }) => {
         const productDetails = {
             name: product.name,
             sku: product.sku,
+            product_id: product.id,
             price: Number(product.price) * 100,
             currency: 'EUR',
             image: product?.images[0].src,

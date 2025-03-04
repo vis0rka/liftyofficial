@@ -16,7 +16,7 @@ export const ProductImageGallery: React.FC<Props> = ({ images }) => {
 
     return (
         <div className="">
-            <div className="relative aspect-square h-full max-h-[800px] w-full overflow-hidden">
+            <div className="relative aspect-square h-full max-h-[600px] w-full overflow-hidden">
                 {images[image] && <ImageViewer src={images[image].src} alt="product-image" />}
             </div>
 
@@ -24,7 +24,7 @@ export const ProductImageGallery: React.FC<Props> = ({ images }) => {
                 <ul className="my-12 flex items-center justify-center gap-2 py-1 lg:mb-0 overflow-hidden">
                     {images.map((image, index) => {
                         return (
-                            <li key={image.src} className="h-20 w-20">
+                            <li key={image.src} className="h-50 w-50">
                                 <Button
                                     variant="ghost"
                                     onClick={() => setImage(index)}
