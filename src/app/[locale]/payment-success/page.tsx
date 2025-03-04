@@ -12,7 +12,7 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
     const t = await getTranslations()
     const { session_id, orderId } = await searchParams
 
-    const session = await stripe.checkout.sessions.retrieve(session_id)
+    const session = await stripe.checkout.sessions.retrieve(session_id as string)
 
     if (!orderId) {
         return (
