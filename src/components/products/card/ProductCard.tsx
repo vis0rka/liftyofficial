@@ -15,23 +15,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButto
     const t = useTranslations()
 
     return (
-        <Link href={`/shop/${product?.slug}`}>
-            <div className="lex flex-col lg:flex-1 shadow overflow-hidden rounded-md  bg-white">
-                <CardImage productImages={product?.images} />
+        <Link
+            href={`/shop/${product?.slug}`}
+            className='flex shrink-0 lg:shrink flex-col basis-1/2 lg:basis-auto lg:flex-1 shadow overflow-hidden rounded-md  bg-white"'
+        >
+            <CardImage productImages={product?.images} />
 
-                <div className="p-2 md:p-3 lg:p-5 flex flex-col items-center">
-                    <h1 className="~text-md/lg text-center font-bold">
-                        Lifty - {t('Common.toddler_carrier', { count: 1 })}
-                    </h1>
-                    <div className="flex flex-col justify-center items-center">
-                        <span className="text-center text-2xl font-bold font-sans">€ {product?.price}</span>
-                    </div>
-                    {!hideViewButton ? (
-                        <Button className="mt-4">
-                            <p className="~text-sm/base">{t('Common.view')}</p>
-                        </Button>
-                    ) : null}
+            <div className="p-2 md:p-3 lg:p-5 flex flex-col items-center">
+                <h1 className="~text-md/lg text-center font-bold">
+                    Lifty - {t('Common.toddler_carrier', { count: 1 })}
+                </h1>
+                <div className="flex flex-col justify-center items-center">
+                    <span className="text-center text-2xl font-bold font-sans">€ {product?.price}</span>
                 </div>
+                {!hideViewButton ? (
+                    <Button className="mt-4">
+                        <p className="~text-sm/base">{t('Common.view')}</p>
+                    </Button>
+                ) : null}
             </div>
         </Link>
     )

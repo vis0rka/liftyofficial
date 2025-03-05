@@ -13,8 +13,8 @@ export const BestSellersProducts = async () => {
 
     return (
         <div className="flex w-full flex-col space-y-4">
-            <h1 className="text-4xl">{t('HomePage.bestsellers')}:</h1>
-            <div className="flex w-full overflow-x-auto py-4 lg:grid-cols-4 lg:overflow-visible gap-4">
+            <h1 className="~text-2xl/4xl">{t('HomePage.bestsellers')}:</h1>
+            <div className="flex w-full overflow-x-auto py-4 lg:grid lg:grid-cols-4 lg:overflow-visible gap-4">
                 {sortedProducts.map(product => (
                     <ProductCard key={product.id} product={product} hideViewButton />
                 ))}

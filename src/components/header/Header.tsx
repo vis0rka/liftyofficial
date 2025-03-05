@@ -14,18 +14,27 @@ import {
 import { Separator } from '@/components/ui/separator'
 
 import { Link } from '@/i18n/routing'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Cart } from '../moduls/cart/Cart'
 import LanguageSwitcher from './components/LanguageSwitcher'
-import { MobileMenuDialog, MobileMenuDialogContent, MobileMenuDialogTrigger } from './components/mobileMenuDialog'
+import {
+    MobileMenuDialog,
+    MobileMenuDialogContent,
+    MobileMenuDialogTitle,
+    MobileMenuDialogTrigger,
+} from './components/mobileMenuDialog'
 
 const menuItems = [
-    { title: 'Home', href: '/' },
-    { title: 'Shop', href: '/shop' },
+    { title: 'Common.home', href: '/' },
+    { title: 'Common.shop', href: '/shop' },
+    { title: 'Common.about_us', href: '/about-us' },
 ]
 
 export function Header() {
     const [isOpen, setIsOpen] = React.useState(false)
+    const t = useTranslations()
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white">
@@ -53,6 +62,9 @@ export function Header() {
                                 <span className="sr-only">Toggle Menu</span>
                             </Button>
                         </MobileMenuDialogTrigger>
+                        <VisuallyHidden>
+                            <MobileMenuDialogTitle>Navigation</MobileMenuDialogTitle>
+                        </VisuallyHidden>
                         <MobileMenuDialogContent className="w-full m-w-full h-full top-[3.5rem] translate-y-0 p-4">
                             <MobileNav items={menuItems} setIsOpen={setIsOpen} />
                         </MobileMenuDialogContent>
@@ -79,7 +91,7 @@ export function Header() {
                                 <NavigationMenuItem key={item.title}>
                                     <Link href={item.href} legacyBehavior passHref>
                                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                            {item.title}
+                                            {t(item.title)}
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
@@ -102,6 +114,7 @@ interface MobileNavProps {
 }
 
 function MobileNav({ items, setIsOpen }: MobileNavProps) {
+    const t = useTranslations()
     return (
         <nav className="flex flex-col space-y-3">
             {items.map((item, index) => (
@@ -111,7 +124,7 @@ function MobileNav({ items, setIsOpen }: MobileNavProps) {
                         className="text-foreground/70 transition-colors hover:text-foreground"
                         onClick={() => setIsOpen(false)}
                     >
-                        {item.title}
+                        {t(item.title)}
                     </Link>
                     {index < items.length - 1 && <Separator />}
                 </React.Fragment>
