@@ -2,6 +2,7 @@
 'use client'
 import { LoadingButton } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { ClientOnly } from '@/components/ui/ClientOnly'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -17,21 +18,22 @@ import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import { z } from 'zod'
 import europeanCountries from './euCountries.json'
 
-const schema = z.object({
-    email: z.string().email('Please enter a valid email address'),
-    newsAndOffers: z.boolean(),
-    country: z.string().min(1, 'Please select a country'),
-    firstName: z.string().min(1, 'Please enter your first name'),
-    lastName: z.string().min(1, 'Please enter your last name'),
-    address: z.string().min(1, 'Please enter your address'),
-    apartment: z.string().optional(),
-    postalCode: z.string().min(1, 'Please enter a postal code'),
-    city: z.string().min(1, 'Please enter your city'),
-    dialCode: z.string().min(1, 'Please select a dial code'),
-    phoneNumber: z.string().min(1, 'Please enter a phone number'),
-})
+const schema = (t: (key: string) => string) =>
+    z.object({
+        email: z.string().email({ message: t('Validation.email') }),
+        newsAndOffers: z.boolean(),
+        country: z.string().min(1, { message: t('Validation.country') }),
+        firstName: z.string().min(1, { message: t('Validation.firstname') }),
+        lastName: z.string().min(1, { message: t('Validation.lastname') }),
+        address: z.string().min(1, { message: t('Validation.address') }),
+        apartment: z.string().optional(),
+        postalCode: z.string().min(1, { message: t('Validation.postalCode') }),
+        city: z.string().min(1, { message: t('Validation.city') }),
+        dialCode: z.string().min(1, { message: t('Validation.dialcode') }),
+        phoneNumber: z.string().min(1, { message: t('Validation.phone') }),
+    })
 
-type FormValues = z.infer<typeof schema>
+type FormValues = z.infer<ReturnType<typeof schema>>
 
 export default function CartPage() {
     const params = useParams()
@@ -40,7 +42,7 @@ export default function CartPage() {
     const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
 
     const form = useForm<FormValues>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(schema(t)),
         defaultValues: {
             email: '',
             newsAndOffers: false,
@@ -385,7 +387,9 @@ export default function CartPage() {
                         </div>
                         <div className="flex flex-row justify-between">
                             <span className="text-base font-bold">{t('Form.total')}</span>
-                            <span className="text-base font-bold">{formattedTotalPrice}</span>
+                            <ClientOnly>
+                                <span className="text-base font-bold">{formattedTotalPrice}</span>
+                            </ClientOnly>
                         </div>
                     </div>
                 </div>

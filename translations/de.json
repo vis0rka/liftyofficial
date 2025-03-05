@@ -1,0 +1,151 @@
+{
+    "HomePage": {
+        "title": "Hallo Welt!",
+        "about": "Gehe zur Über-uns-Seite",
+        "featured_products": "Empfohlene Produkte",
+        "bestsellers": "Bestseller",
+        "Card1": {
+            "title": "Wann könnte es nützlich sein?",
+            "desc": "Jederzeit und überall! Es bietet ideale Unterstützung für kurze Strecken, wie wenn Sie Ihr Kleinkind in einem Gebäude ohne Aufzug die Treppe hinauftragen müssen oder wenn Sie das „größere Geschwisterkind“ in den Kindergarten oder zur Schule begleiten. Sie werden es auch im Urlaub lieben, vom Flughafen bis zum Sandstrand, wo Kinderwagen nicht mehr weiterkommen. Es ist klein genug, um es überall hin mitzunehmen, und doch groß genug, um die Bindung zwischen Ihnen und Ihrem Kind zu stärken."
+        },
+        "Card2": {
+            "title": "Ihr Reisebegleiter",
+            "desc1": "Dieser kompakte und tragbare Hüftgurt für Kleinkinder ist dafür gemacht, dorthin zu gehen, wo Kinderwagen nicht hinkommen. Bereit für ein Abenteuer? Los geht's!",
+            "desc2": "Ob Sie am Strand in der Sonne liegen oder durch charmante historische Straßen schlendern, der Lifty Premium-Gurt ist das ultimative Urlaubsaccessoire. Verabschieden Sie sich vom sperrigen Kinderwagen und genießen Sie die Freiheit, die Welt zu erkunden!"
+        },
+        "the_toddler_hip_carrier": "Das Hüfttragegestell für Kleinkinder",
+        "the_essentials_for_adventures": "Das Wesentliche für Abenteuer"
+    },
+    "ShopPage": {
+        "filter": "Filter",
+        "Filters": {
+            "sort_by:": "Sortieren nach:",
+            "newest": "Neueste Artikel",
+            "bestsellers": "Bestseller",
+            "price_low_to_high": "Preis: Niedrig zu Hoch",
+            "price_high_to_low": "Preis: Hoch zu Niedrig",
+            "featured": "Empfohlen"
+        },
+        "description": "Unsere LIFTY-Kleinkindtragen bieten eine komfortable, ergonomische, praktische und schnelle Lösung für alle Eltern mit einem laufenden Kind. Für die Kleinen, die mal in den Armen gehalten werden wollen und im nächsten Moment die Welt erkunden möchten. Sie sind einfach zu verwenden und dank ihrer kompakten Größe überall hin mitnehmbar, was sie ideal für kurze Ausflüge, Einkäufe, Treppensteigen und mehr macht. Unsere handgefertigten Produkte werden in Ungarn aus OEKO-TEX-zertifizierten 100 % Baumwollmaterialien und hochwertigen YKK-Gurten hergestellt, was die Sicherheit Ihres Kindes gewährleistet. Wir empfehlen sie jedem, der seinem Kind sowohl Nähe als auch die Freiheit zum Erkunden bieten möchte."
+    },
+    "KeyFeatures": {
+        "first": {
+            "title": "Leicht und komfortabel",
+            "description": "Wiegt nur wenige Gramm, ist aber stark genug, um bis zu 20 kg zu tragen. Das ergonomische Design mit einem breiten, weichen, verstellbaren Schultergurt hilft, das Gewicht gleichmäßig zu verteilen und den Druck auf die Schulter zu verringern."
+        },
+        "second": {
+            "title": "Einfach zu verwenden",
+            "description": "Schnell und einfach zu bedienen, sodass Sie Ihr Kind jederzeit und überall schnell aufnehmen und absetzen können."
+        },
+        "third": {
+            "title": "Kompakt und tragbar",
+            "description": "Dank seiner kleinen Größe und kompakten Bauweise können Sie es leicht überall hin mitnehmen, wo ein Kinderwagen keine Option ist, da es in eine kleine Tasche passt."
+        }
+    },
+    "ShopFeatures": {
+        "30_return": "30 Tage Rückgaberecht",
+        "30_return_desc": "Geben Sie Ihren Kauf innerhalb von 30 Tagen zurück und erhalten Sie eine volle Rückerstattung.",
+        "fast_shipping": "Schneller Versand",
+        "fast_shipping_desc": "Lieferung innerhalb von 5 Werktagen!",
+        "eco_friendly": "SICHER & UMWELTFREUNDLICH",
+        "eco_friendly_desc": "Hergestellt aus 100 % OEKO-TEX®-zertifizierter Baumwolle."
+    },
+    "NotFoundPage": {
+        "page_not_found": "Seite nicht gefunden",
+        "not_found_desc": "Entschuldigung, aber die gesuchte Seite existiert nicht oder wurde verschoben.",
+        "home": "Zurück zur Startseite"
+    },
+    "Common": {
+        "quick_links": "Schnellzugriff",
+        "informations": "Informationen",
+        "shipping": "Versand",
+        "refund": "Rückerstattung",
+        "customer_care": "Kundenservice",
+        "privacy_policy": "Datenschutzrichtlinie",
+        "contact": "Kontakt",
+        "t_c": "Allgemeine Geschäftsbedingungen",
+        "home": "Startseite",
+        "shop": "Shop",
+        "about_us": "Über uns",
+        "carrier_instuctions": "Trageanleitung",
+        "sub_to_email": "Abonnieren Sie unsere E-Mails",
+        "subscribe": "Abonnieren",
+        "toddler_carrier": "Kleinkindtrage {count, plural, =0 {} =1 {} other {n}}",
+        "premium": "Premium",
+        "cart": "Warenkorb",
+        "add_to_cart": "In den Warenkorb",
+        "empty_cart": "Sie haben keine Artikel im Warenkorb!",
+        "recently_viewed": "Kürzlich angesehen",
+        "view_cart": "Warenkorb ansehen",
+        "checkout": "Zur Kasse",
+        "continue_shopping": "Einkaufen fortsetzen",
+        "view": "Ansehen"
+    },
+    "Error": {
+        "something_went_wrong": "Etwas ist schiefgelaufen...",
+        "contact": "Bitte kontaktieren Sie den Support unter"
+    },
+    "Product": {
+        "in_stock": "Auf Lager",
+        "toddler_carrier": {
+            "short": "Unsere LIFTY-Kleinkindtragen bieten eine komfortable, ergonomische, praktische und schnelle Lösung für alle Eltern mit einem Kleinkind. Sie sind perfekt für Kinder, die mal getragen werden wollen und im nächsten Moment ihre Umgebung erkunden möchten. Einfach zu verwenden und kompakt, können sie überall hin mitgenommen werden, was sie ideal für kurze Ausflüge, Einkäufe, Treppensteigen und mehr macht. Unsere handgefertigten Produkte, hergestellt in der EU, sind aus OEKO-TEX-zertifizierten 100 % Baumwollmaterialien und hochwertigen YKK-Schnallen gefertigt, was die Sicherheit Ihres Kindes gewährleistet. Wir empfehlen sie jedem, der seinem Kind sowohl Nähe als auch die Freiheit zum Erkunden bieten möchte.",
+            "list_1": "Mit dem Hüftgurt können Sie Ihr Kind jederzeit und überall mit einer einzigen Bewegung aufnehmen oder absetzen.",
+            "list_2": "Dank des ergonomischen Designs ist es bequemer und leichter, als Ihr Kind auf dem Arm zu tragen.",
+            "list_3": "Durch seine kleine Größe können Sie ihn leicht in einer Tasche tragen, sodass er immer griffbereit ist, wenn Sie ihn brauchen.",
+            "list_4": "Ein handgefertigtes europäisches Produkt aus OEKO-TEX-zertifizierten Materialien und sicheren YKK-Schnallen, das die Sicherheit Ihres Kindes jederzeit gewährleistet.",
+            "list_5": "Bequem für Mütter und Väter, was die tägliche Nutzung zu einem Vergnügen macht.",
+            "long_desc_1": "Das Verhalten von Kleinkindern ist oft unvorhersehbar. Mal wollen sie in den Armen gehalten werden und suchen Sicherheit und Nähe, im nächsten Moment können sie es kaum erwarten, frei herumzulaufen und die Welt zu erkunden. Diese Dualität ist ein natürlicher Teil ihrer Entwicklung, da sie gleichzeitig elterliche Nähe und das Erleben von Unabhängigkeit suchen. Um diesen sich ständig ändernden Bedürfnissen gerecht zu werden, sind flexible und praktische Lösungen unerlässlich. Lifty-Hüftgurte ermöglichen es uns, schnell auf die unterschiedlichen Bedürfnisse unserer Kinder zu reagieren und gleichzeitig den Alltag der Eltern zu erleichtern.",
+            "long_title_2": "Wann könnte es nützlich sein?",
+            "long_desc_2": "Jederzeit und überall! Es bietet ideale Unterstützung für kurze Strecken, wie wenn Sie Ihr Kleinkind in einem Gebäude ohne Aufzug die Treppe hinauftragen müssen oder wenn Sie das „größere Geschwisterkind“ in den Kindergarten oder zur Schule begleiten. Sie werden es auch im Urlaub lieben, vom Flughafen bis zum Sandstrand, wo Kinderwagen nicht mehr weiterkommen. Es ist klein genug, um es überall hin mitzunehmen, und doch groß genug, um die Bindung zwischen Ihnen und Ihrem Kind zu stärken.",
+            "long_title_3": "Für wen und warum?",
+            "long_desc_3": "Unsere Lifty Premium-Hüftgurte entlasten Ihre Arme, bieten eine bessere Haltung und mehr Komfort im Vergleich zum einfachen Tragen Ihres Kindes auf dem Arm. Dank des ergonomischen Designs, der breiten, weichen und verstellbaren Schultergurte wird das Gewicht richtig verteilt, was den Druck auf Ihre Schultern verringert. Dieses Unisex-Produkt wird sowohl von Frauen als auch von Männern geliebt werden. Dies ist keine Babytrage! Mit großer Sorgfalt und Liebe für kurze Strecken entwickelt, ausschließlich für Kleinkinder von etwa 9 Monaten bis 4 Jahren, jedoch mit einem maximalen Gewichtslimit von 20 kg.",
+            "dotted_desc_1": "Schultergurt: 2 cm dick, speziell festes, hochwertiges Schaumstoffmaterial, das ergonomische Unterstützung und Komfort bietet. Dank seiner Elastizität und Formbeständigkeit liegt er gut an der Schulter an, verteilt das Gewicht und reduziert Druckstellen. Die Schnalle ist so gestaltet, dass sie auf dem Schaumstoff aufliegt und nicht in die Schulter drückt. Das langlebige Material behält seine Form über lange Zeit und ist resistent gegen Abnutzung, sodass der Schultergurt auch nach Jahren der Nutzung makellos bleibt.",
+            "dotted_desc_2": "Schnalle: YKK-Schnalle. Diese Schnallen sind bekannt für ihre hervorragende Qualität und Zuverlässigkeit. Sie sind äußerst langlebig, haben eine lange Lebensdauer und bieten starke Unterstützung, was für die Sicherheit entscheidend ist. YKK setzt sich auch für Nachhaltigkeit ein und strebt umweltfreundliche Herstellungsprozesse und Materialien an, was ihre Produkte nicht nur zuverlässig, sondern auch umweltfreundlich macht.",
+            "dotted_desc_3": "Gurt: 75 cm lang und 5 cm breit aus Polypropylen. Der PP-Gurt ist stark und sicher, aber dennoch leicht, sodass er das Gewicht der Trage nicht wesentlich erhöht. Er ist wasser- und UV-beständig, was ihn langlebig und widerstandsfähig gegen Umwelteinflüsse macht sowie leicht zu reinigen, was für den täglichen Gebrauch praktisch ist. Seine Elastizität sorgt für einen komfortablen Sitz und garantiert eine lange Lebensdauer.",
+            "dotted_desc_4": "Sitz: Hergestellt aus 100 % Baumwolle mit OEKO-TEX® Standard 100-Zertifizierung. Dies ist ein Textilmaterial, das den international anerkannten OEKO-TEX® Standard 100 erfüllt. Diese Zertifizierung garantiert, dass das Baumwollmaterial frei von schädlichen Chemikalien ist und für den Hautkontakt unbedenklich ist, was besonders für Kinder wichtig ist."
+        },
+        "description": "Beschreibung"
+    },
+    "Order": {
+        "cant_find_your_order": "Entschuldigung, wir können Ihre Bestellung nicht finden!",
+        "your_payment_status": "Ihr Zahlungsstatus lautet: {status}",
+        "thank_you_order": "Vielen Dank für Ihre Bestellung, {name}!",
+        "your_order_id": "Ihre Bestellnummer: <important> {orderId} </important>",
+        "confirmation_email_sent": "Die Bestellbestätigungs-E-Mail mit den Details Ihrer Bestellung wurde an Ihre E-Mail-Adresse gesendet."
+    },
+    "Form": {
+        "contact": "Kontakt",
+        "email": "E-Mail",
+        "dial_code": "Vorwahl",
+        "select_dial_code": "Vorwahl auswählen",
+        "phone_number": "Telefonnummer",
+        "enter_phone_number": "Geben Sie Ihre Telefonnummer ein",
+        "email_news": "Senden Sie mir Neuigkeiten und Angebote per E-Mail",
+        "delivery": "Lieferung",
+        "country": "Land",
+        "select_country": "Land auswählen",
+        "firstname": "Vorname",
+        "lastname": "Nachname",
+        "postalcode": "Postleitzahl",
+        "city": "Stadt",
+        "address": "Adresse",
+        "street_address": "Straße und Hausnummer",
+        "apartment": "Wohnung",
+        "apartment_details": "Wohnung, Suite, Einheit usw. (optional)",
+        "place_order": "Bestellung aufgeben",
+        "total": "Gesamt",
+        "shipping": "Versand",
+        "free": "Kostenlos"
+    },
+    "Validation": {
+        "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        "country": "Bitte wählen Sie ein Land aus",
+        "firstname": "Bitte geben Sie Ihren Vornamen ein",
+        "lastname": "Bitte geben Sie Ihren Nachnamen ein",
+        "address": "Bitte geben Sie Ihre Adresse ein",
+        "postalCode": "Bitte geben Sie eine Postleitzahl ein",
+        "city": "Bitte geben Sie Ihre Stadt ein",
+        "dialcode": "Bitte wählen Sie eine Vorwahl aus",
+        "phone": "Bitte geben Sie eine Telefonnummer ein"
+    }
+}

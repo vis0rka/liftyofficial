@@ -73,7 +73,7 @@ export default async function ProductDetailsPage({ params }: Props) {
             </div>
             <Card>
                 <CardHeader>
-                    <CardTitle className="~text-xl/2xl">Description</CardTitle>
+                    <CardTitle className="~text-xl/2xl">{t('Product.description')}</CardTitle>
                 </CardHeader>
                 <CardContent>{Object.values(tagsToLong)}</CardContent>
             </Card>

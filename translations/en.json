@@ -12,7 +12,9 @@
             "title": "Your travel essential",
             "desc1": "This compact and portable toddler hip carrier is designed to go where strollers can't. Ready for adventure? Let's go!",
             "desc2": "Whether you're basking in the sun on the beach or wandering through charming historic streets, the Lifty premium carrier is the ultimate holiday essential. Ditch the bulky stroller and embrace the freedom to explore!"
-        }
+        },
+        "the_toddler_hip_carrier": "The toddler hip carrier",
+        "the_essentials_for_adventures": "The essential for adventures"
     },
     "ShopPage": {
         "filter": "filter",
@@ -101,7 +103,8 @@
             "dotted_desc_2": "Buckle: YKK buckle. These buckles are renowned for their excellent quality and reliability. They are extremely durable, have a long lifespan, and provide strong support, which is essential for safety. YKK also commits to sustainability, striving for environmentally friendly manufacturing processes and material usage, making their products not only reliable but also eco-friendly.",
             "dotted_desc_3": "Strap: 75 cm long and 5 cm wide polypropylene. The PP strap is strong and secure, yet lightweight, so it doesn’t significantly increase the carrier’s weight. It is water- and UV-resistant, making it durable and resistant to environmental factors, as well as easy to clean, which is practical for everyday use. Its elasticity ensures comfortable wear and guarantees a long lifespan.",
             "dotted_desc_4": "Seat: Made from 100% cotton with OEKO-TEX® Standard 100 certification. This is a textile material that meets the internationally recognized OEKO-TEX® Standard 100. This certification guarantees that the cotton material is free from harmful chemicals and is safe for skin contact, which is especially important for children."
-        }
+        },
+        "description": "Description"
     },
     "Order": {
         "cant_find_your_order": "Sorry we can't find your order!",
@@ -133,5 +136,16 @@
         "total": "Total",
         "shipping": "Shipping",
         "free": "Free"
+    },
+    "Validation": {
+        "email": "Please enter a valid email address",
+        "country": "Please select a country",
+        "firstname": "Please enter your first name",
+        "lastname": "Please enter your last name",
+        "address": "Please enter your address",
+        "postalCode": "Please enter a postal code",
+        "city": "Please enter your city",
+        "dialcode": "Please select a dial code",
+        "phone": "Please enter a phone number"
     }
 }

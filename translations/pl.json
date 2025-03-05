@@ -1,0 +1,151 @@
+{
+    "HomePage": {
+        "title": "Witaj świecie!",
+        "about": "Przejdź do strony o nas",
+        "featured_products": "Polecane produkty",
+        "bestsellers": "Bestsellery",
+        "Card1": {
+            "title": "Kiedy może Ci się przydać?",
+            "desc": "W każdej chwili i w każdym miejscu! Zapewnia idealne wsparcie na krótkich dystansach, np. gdy musisz przenieść swoje dziecko po schodach w budynku bez windy lub gdy towarzyszysz „starszemu rodzeństwu” w drodze do przedszkola czy szkoły. Spodoba Ci się również podczas wakacji, od lotniska aż po piaszczystą plażę, gdzie wózki już nie dają rady. Jest na tyle mały, że można go zabrać wszędzie, ale na tyle duży, że wzmacnia więź między Tobą a Twoim dzieckiem."
+        },
+        "Card2": {
+            "title": "Niezbędnik podróżny",
+            "desc1": "Ten kompaktowy i przenośny nosidełko biodrowe dla maluchów jest zaprojektowane tak, aby dotrzeć tam, gdzie wózki nie mogą. Gotowy na przygodę? Chodźmy!",
+            "desc2": "Niezależnie od tego, czy opalasz się na plaży, czy wędrujesz przez urokliwe historyczne uliczki, nosidełko premium Lifty to absolutny must-have na wakacje. Porzuć nieporęczny wózek i ciesz się swobodą odkrywania!"
+        },
+        "the_toddler_hip_carrier": "Nosidełko biodrowe dla malucha",
+        "the_essentials_for_adventures": "Niezbędnik na przygody"
+    },
+    "ShopPage": {
+        "filter": "filtruj",
+        "Filters": {
+            "sort_by:": "Sortuj według:",
+            "newest": "Najnowsze",
+            "bestsellers": "Bestsellery",
+            "price_low_to_high": "Cena: od najniższej",
+            "price_high_to_low": "Cena: od najwyższej",
+            "featured": "Polecane"
+        },
+        "description": "Nasze nosidełka LIFTY dla maluchów oferują wygodne, ergonomiczne, praktyczne i szybkie rozwiązanie dla każdego rodzica z małym dzieckiem. Dla tych maluchów, które raz chcą być trzymane na rękach, a za chwilę pragną odkrywać świat. Są łatwe w użyciu i dzięki kompaktowym rozmiarom można je zabrać wszędzie, co czyni je idealnymi na krótkie wycieczki, zakupy, wchodzenie po schodach i nie tylko. Nasze ręcznie robione produkty są wykonane na Węgrzech z certyfikowanych materiałów OEKO-TEX, w 100% bawełny oraz wysokiej jakości pasków YKK, co zapewnia bezpieczeństwo Twojego dziecka. Polecamy je każdemu, kto chce zapewnić swojemu dziecku zarówno bliskość, jak i swobodę odkrywania."
+    },
+    "KeyFeatures": {
+        "first": {
+            "title": "Lekki i wygodny",
+            "description": "Waży zaledwie kilka gramów, ale jest na tyle mocny, że utrzyma do 20 kg. Jego ergonomiczny design z szerokim, miękkim, regulowanym paskiem na ramię pomaga równomiernie rozłożyć ciężar, zmniejszając nacisk na ramię."
+        },
+        "second": {
+            "title": "Łatwy w użyciu",
+            "description": "Szybki i łatwy w użyciu, dzięki czemu możesz szybko podnieść i postawić swoje dziecko w dowolnym miejscu i czasie."
+        },
+        "third": {
+            "title": "Kompaktowy i przenośny",
+            "description": "Dzięki małym rozmiarom i kompaktowej konstrukcji można go łatwo zabrać wszędzie tam, gdzie wózek nie jest opcją, ponieważ mieści się w małej torbie."
+        }
+    },
+    "ShopFeatures": {
+        "30_return": "Zwrot w 30 dni",
+        "30_return_desc": "Zwróć zakup w ciągu 30 dni, aby otrzymać pełny zwrot pieniędzy.",
+        "fast_shipping": "Szybka dostawa",
+        "fast_shipping_desc": "Dostawa w ciągu 5 dni roboczych!",
+        "eco_friendly": "BEZPIECZNE I EKOLOGICZNE",
+        "eco_friendly_desc": "Wykonane z certyfikowanej bawełny OEKO-TEX® w 100%."
+    },
+    "NotFoundPage": {
+        "page_not_found": "Strona nie znaleziona",
+        "not_found_desc": "Przepraszamy, ale strona, której szukasz, nie istnieje lub została przeniesiona.",
+        "home": "Wróć do strony głównej"
+    },
+    "Common": {
+        "quick_links": "Szybkie linki",
+        "informations": "Informacje",
+        "shipping": "Dostawa",
+        "refund": "Zwrot",
+        "customer_care": "Obsługa klienta",
+        "privacy_policy": "Polityka prywatności",
+        "contact": "Kontakt",
+        "t_c": "Regulamin",
+        "home": "Strona główna",
+        "shop": "Sklep",
+        "about_us": "O nas",
+        "carrier_instuctions": "Instrukcje nosidełka",
+        "sub_to_email": "Zapisz się do naszych wiadomości e-mail",
+        "subscribe": "Zapisz się",
+        "toddler_carrier": "Chusta do noszenia niemowląt {count, plural, =0 {} =1 {} other {}}",
+        "premium": "Premium",
+        "cart": "Koszyk",
+        "add_to_cart": "Dodaj do koszyka",
+        "empty_cart": "Nie masz żadnych produktów w koszyku!",
+        "recently_viewed": "Ostatnio oglądane",
+        "view_cart": "Zobacz koszyk",
+        "checkout": "Zamówienie",
+        "continue_shopping": "Kontynuuj zakupy",
+        "view": "Zobacz"
+    },
+    "Error": {
+        "something_went_wrong": "Coś poszło nie tak...",
+        "contact": "Skontaktuj się z pomocą techniczną pod adresem"
+    },
+    "Product": {
+        "in_stock": "W magazynie",
+        "toddler_carrier": {
+            "short": "Nasze nosidełka LIFTY dla maluchów oferują wygodne, ergonomiczne, praktyczne i szybkie rozwiązanie dla każdego rodzica z małym dzieckiem. Są idealne dla dzieci, które raz chcą być trzymane na rękach, a za chwilę pragną odkrywać otoczenie. Łatwe w użyciu i kompaktowe, można je zabrać wszędzie, co czyni je idealnymi na krótkie wycieczki, zakupy, wchodzenie po schodach i nie tylko. Nasze ręcznie robione produkty, wykonane w UE, są wykonane z certyfikowanych materiałów OEKO-TEX, w 100% bawełny oraz wysokiej jakości klamr YKK, co zapewnia bezpieczeństwo Twojego dziecka. Polecamy je każdemu, kto chce zapewnić swojemu dziecku zarówno bliskość, jak i swobodę odkrywania.",
+            "list_1": "Dzięki nosidełku biodrowemu możesz łatwo podnieść lub postawić swoje dziecko jednym ruchem, w dowolnym miejscu i czasie.",
+            "list_2": "Dzięki ergonomicznemu designowi jest wygodniejsze i lżejsze niż noszenie dziecka na rękach.",
+            "list_3": "Jego mały rozmiar pozwala na łatwe przenoszenie w torbie, więc zawsze jest pod ręką, gdy go potrzebujesz.",
+            "list_4": "Produkt ręcznie robiony w Europie z certyfikowanych materiałów OEKO-TEX i bezpiecznych klamr YKK, co zapewnia bezpieczeństwo Twojego dziecka przez cały czas.",
+            "list_5": "Wygodne zarówno dla mam, jak i tatusiów, co sprawia, że jest przyjemnością w codziennym użytkowaniu.",
+            "long_desc_1": "Zachowanie maluchów jest często nieprzewidywalne. Raz chcą być trzymane na rękach, szukając bezpieczeństwa i bliskości, a za chwilę nie mogą się doczekać, aby biegać swobodnie i odkrywać świat. Ta dwoistość jest naturalną częścią ich rozwoju, ponieważ jednocześnie pragną bliskości rodziców i doświadczenia niezależności. Aby sprostać tym ciągle zmieniającym się potrzebom, niezbędne są elastyczne i praktyczne rozwiązania. Nosidełka biodrowe Lifty pozwalają nam szybko dostosować się do zmieniających się potrzeb naszych dzieci, jednocześnie ułatwiając codzienne życie rodzicom.",
+            "long_title_2": "Kiedy może Ci się przydać?",
+            "long_desc_2": "W każdej chwili i w każdym miejscu! Zapewnia idealne wsparcie na krótkich dystansach, np. gdy musisz przenieść swoje dziecko po schodach w budynku bez windy lub gdy towarzyszysz „starszemu rodzeństwu” w drodze do przedszkola czy szkoły. Spodoba Ci się również podczas wakacji, od lotniska aż po piaszczystą plażę, gdzie wózki już nie dają rady. Jest na tyle mały, że można go zabrać wszędzie, ale na tyle duży, że wzmacnia więź między Tobą a Twoim dzieckiem.",
+            "long_title_3": "Dla kogo i dlaczego?",
+            "long_desc_3": "Nasze nosidełka biodrowe Lifty premium odciążają ramiona, zapewniają lepszą postawę i większy komfort w porównaniu do zwykłego noszenia dziecka na rękach. Dzięki ergonomicznemu designowi, szerokim, miękkim i regulowanym paskom na ramię, pomagają równomiernie rozłożyć ciężar, zmniejszając nacisk na ramiona. Ten unisexowy produkt pokochają zarówno kobiety, jak i mężczyźni. To nie jest nosidełko dla niemowląt! Zaprojektowane z wielką starannością i miłością na krótkie dystanse, wyłącznie dla maluchów, od około 9 miesięcy do 4 lat, ale z maksymalnym limitem wagi 20 kg.",
+            "dotted_desc_1": "Pasek na ramię: 2 cm grubości, specjalnie twarda, wysokiej jakości pianka, która zapewnia ergonomiczne wsparcie i komfort. Dzięki swojej elastyczności i właściwościom zachowującym kształt, idealnie przylega do ramienia, rozkłada ciężar i redukuje punkty nacisku. Klamra jest zaprojektowana tak, aby znajdować się na piance, więc nie wbija się w ramię. Jego trwały materiał zachowuje kształt przez długi czas i jest odporny na zużycie, co zapewnia, że pasek na ramię pozostaje nienaganny nawet po latach użytkowania.",
+            "dotted_desc_2": "Klamra: Klamra YKK. Te klamry są znane z doskonałej jakości i niezawodności. Są niezwykle trwałe, mają długą żywotność i zapewniają silne wsparcie, co jest kluczowe dla bezpieczeństwa. YKK zobowiązuje się również do zrównoważonego rozwoju, dążąc do przyjaznych dla środowiska procesów produkcyjnych i wykorzystania materiałów, co sprawia, że ich produkty są nie tylko niezawodne, ale także ekologiczne.",
+            "dotted_desc_3": "Pasek: 75 cm długości i 5 cm szerokości polipropylen. Pasek PP jest mocny i bezpieczny, ale lekki, więc nie zwiększa znacząco wagi nosidełka. Jest wodoodporny i odporny na promieniowanie UV, co czyni go trwałym i odpornym na czynniki środowiskowe, a także łatwym do czyszczenia, co jest praktyczne w codziennym użytkowaniu. Jego elastyczność zapewnia wygodne noszenie i gwarantuje długą żywotność.",
+            "dotted_desc_4": "Siedzisko: Wykonane z 100% bawełny z certyfikatem OEKO-TEX® Standard 100. Jest to materiał tekstylny, który spełnia międzynarodowo uznany standard OEKO-TEX® Standard 100. Ten certyfikat gwarantuje, że materiał bawełniany jest wolny od szkodliwych chemikaliów i bezpieczny dla kontaktu ze skórą, co jest szczególnie ważne w przypadku dzieci."
+        },
+        "description": "Opis"
+    },
+    "Order": {
+        "cant_find_your_order": "Przepraszamy, nie możemy znaleźć Twojego zamówienia!",
+        "your_payment_status": "Status Twojej płatności to: {status}",
+        "thank_you_order": "Dziękujemy za Twoje zamówienie, {name}!",
+        "your_order_id": " Numer Twojego zamówienia: <important> {orderId} </important>",
+        "confirmation_email_sent": "E-mail z potwierdzeniem zamówienia wraz ze szczegółami został wysłany na Twój adres e-mail."
+    },
+    "Form": {
+        "contact": "Kontakt",
+        "email": "E-mail",
+        "dial_code": "Kod kierunkowy",
+        "select_dial_code": "Wybierz kod kierunkowy",
+        "phone_number": "Numer telefonu",
+        "enter_phone_number": "Wprowadź numer telefonu",
+        "email_news": "Powiadamiaj mnie o nowościach i ofertach",
+        "delivery": "Dostawa",
+        "country": "Kraj",
+        "select_country": "Wybierz kraj",
+        "firstname": "Imię",
+        "lastname": "Nazwisko",
+        "postalcode": "Kod pocztowy",
+        "city": "Miasto",
+        "address": "Adres",
+        "street_address": "Adres ulicy",
+        "apartment": "Mieszkanie",
+        "apartment_details": "Mieszkanie, apartament, lokale itp. (opcjonalnie)",
+        "place_order": "Złóż zamówienie",
+        "total": "Razem",
+        "shipping": "Dostawa",
+        "free": "Darmowa"
+    },
+    "Validation": {
+        "email": "Proszę podać poprawny adres e-mail",
+        "country": "Proszę wybrać kraj",
+        "firstname": "Proszę podać imię",
+        "lastname": "Proszę podać nazwisko",
+        "address": "Proszę podać adres",
+        "postalCode": "Proszę podać kod pocztowy",
+        "city": "Proszę podać miasto",
+        "dialcode": "Proszę wybrać kod kierunkowy",
+        "phone": "Proszę podać numer telefonu"
+    }
+}

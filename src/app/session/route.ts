@@ -29,12 +29,24 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ sessionId: checkoutSession.id })
     } catch (error) {
         console.error(error)
-        return NextResponse.json({ error: error.message as string }, { status: 500 })
+        return NextResponse.json({ error: JSON.stringify(error) }, { status: 500 })
     }
 }
 
+interface ValidatedItem {
+    price_data: {
+        currency: string
+        unit_amount: number
+        product_data: {
+            name: string
+            images: string[]
+        }
+    }
+    quantity: number
+}
+
 const validateCartItems = (originalProducts: WooTypes['getProducts'], cartProducts: Product[]) => {
-    const validatedItems = []
+    const validatedItems: ValidatedItem[] = []
 
     for (const product of cartProducts) {
         const inventoryItem = originalProducts.find(currentProduct => {

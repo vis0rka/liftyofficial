@@ -16,6 +16,7 @@ import { Separator } from '@/components/ui/separator'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { Cart } from '../moduls/cart/Cart'
+import LanguageSwitcher from './components/LanguageSwitcher'
 import { MobileMenuDialog, MobileMenuDialogContent, MobileMenuDialogTrigger } from './components/mobileMenuDialog'
 
 const menuItems = [
@@ -86,7 +87,8 @@ export function Header() {
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
-                <div className="flex items-center justify-end md:w-1/3">
+                <div className="flex items-center justify-end md:w-1/3 space-x-2">
+                    <LanguageSwitcher />
                     <Cart />
                 </div>
             </div>
