@@ -2,17 +2,18 @@ import { RecentlyViewed } from '@/components/products/recently-viewed/RecentlyVi
 import { getTranslations } from 'next-intl/server'
 
 export default async function RefundPage() {
-    const t = await getTranslations('Shipping')
+    const t = await getTranslations('Refund')
     return (
         <section className="container mx-auto flex flex-col my-8 space-y-8 items-center min-h-[600px]">
             <h1 className="text-4xl font-semibold">{t('policy')}</h1>
             <div className="space-y-4 max-w-4xl">
-                <p>{t('first')}</p>
-                <p>{t('first-b')}</p>
+                <p dangerouslySetInnerHTML={{ __html: t.raw('first') }} />
+
                 <p dangerouslySetInnerHTML={{ __html: t.raw('second') }} />
-                <p>{t('third')}</p>
+                <p dangerouslySetInnerHTML={{ __html: t.raw('third') }} />
+
                 <p dangerouslySetInnerHTML={{ __html: t.raw('fourth') }} />
-                <p>{t('fifth')}</p>
+                <p dangerouslySetInnerHTML={{ __html: t.raw('fifth') }} />
             </div>
             <RecentlyViewed />
         </section>

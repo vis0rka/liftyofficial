@@ -1,5 +1,7 @@
 export const routes = {
     shop: '/shop',
     aboutUs: '/about-us',
-    shipping: '/shipping',
+    shipping: '/shipping-policy',
+    refund: '/refund-policy',
+    privacy: '/privacy-policy',
 }

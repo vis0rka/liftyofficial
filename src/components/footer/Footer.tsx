@@ -14,12 +14,16 @@ export const Footer = async () => {
         <footer className="bg-stone-100 md:p-4 border-stone-200 border-t-2">
             <div className="container mx-auto flex flex-row flex-wrap justify-between gap-4">
                 <div className="flex flex-col">
-                    <h2 className="text-2xl">{t('Common.informations')}</h2>
+                    <h2 className="text-2xl">{t('Common.legal')}</h2>
                     <Link href={routes.shipping}>
                         <p className="text-sm">{t('Common.shipping')}</p>
                     </Link>
-                    <p className="text-sm">{t('Common.refund')}</p>
-                    <p className="text-sm">{t('Common.privacy_policy')}</p>
+                    <Link href={routes.refund}>
+                        <p className="text-sm">{t('Common.refund')}</p>
+                    </Link>
+                    <Link href={routes.privacy}>
+                        <p className="text-sm">{t('Common.privacy_policy')}</p>
+                    </Link>
                     <p className="text-sm">{t('Common.t_c')}</p>
                 </div>
                 <div className="flex flex-col">

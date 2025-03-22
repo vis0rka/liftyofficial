@@ -56,10 +56,11 @@
         "home": "Return to Home"
     },
     "Common": {
+        "legal": "Legal",
         "quick_links": "Quick Links",
         "informations": "Informations",
-        "shipping": "Shipping",
-        "refund": "Refund",
+        "shipping": "Shipping Policy",
+        "refund": "Refund Policy",
         "customer_care": "Customer Care",
         "privacy_policy": "Privacy Policy",
         "contact": "Contact",
@@ -163,5 +164,21 @@
         "third": "4. Orders will be shipped to the delivery address provided by you.",
         "fourth": "5. Once your order has been shipped, <strong>tracking details will be sent via email to the address you provided.</strong>",
         "fifth": "6. If an incorrect address is provided, the costs for lost or undelivered products will be at your own expense."
+    },
+    "Refund": {
+        "policy": "Refund Policy",
+        "first": "1. You have the option to return the product within <strong>30 days</strong> from the date of receipt.",
+        "second": "2. <strong>The cost of return shipping is the responsibility of the customer.</strong>",
+        "third": "3. Send the ordered product back to our company address by courier: <strong>Hungary, 1151, Budapest, Szekely Elek street 11, Rapidlog Kft.</strong>",
+        "fourth": "4. Once we receive and inspect the returned product, we will refund the purchase price to the provided bank account immediately, but no later than 5 days.",
+        "fifth": "5. The product must be <strong>undamaged and unused, and original tags must not be removed.</strong>"
+    },
+    "Privacy": {
+        "policy": "Privacy Policy",
+        "first": "1. You have the option to return the product within <strong>30 days</strong> from the date of receipt.",
+        "second": "2. <strong>The cost of return shipping is the responsibility of the customer.</strong>",
+        "third": "3. Send the ordered product back to our company address by courier: <strong>Hungary, 1151, Budapest, Szekely Elek street 11, Rapidlog Kft.</strong>",
+        "fourth": "4. Once we receive and inspect the returned product, we will refund the purchase price to the provided bank account immediately, but no later than 5 days.",
+        "fifth": "5. The product must be <strong>undamaged and unused, and original tags must not be removed.</strong>"
     }
 }

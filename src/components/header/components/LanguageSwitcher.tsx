@@ -6,7 +6,7 @@ import { useLocale } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import ReactCountryFlag from 'react-country-flag'
 
-const localeToCountryFlag: Record<string, { flag; name }> = {
+const localeToCountryFlag: Record<string, { flag: string; name: string }> = {
     en: { flag: 'GB', name: 'English' },
     de: { flag: 'DE', name: 'Deutsch' },
     pl: { flag: 'PL', name: 'Polish' },
@@ -16,7 +16,7 @@ export default function LanguageSwitcher() {
     const router = useRouter()
     const pathname = usePathname()
     const locale = useLocale()
-    console.log(locale)
+
     const handleLanguageChange = (newLocale: string) => {
         const newPathname = `/${newLocale}${pathname.replace(`/${locale}`, '')}`
         router.push(newPathname)
