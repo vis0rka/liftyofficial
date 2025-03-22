@@ -1,5 +1,7 @@
 'use server'
 
+import { Link } from '@/i18n/routing'
+import { routes } from '@/utils/routes'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { Separator } from '../ui/separator'
@@ -13,7 +15,9 @@ export const Footer = async () => {
             <div className="container mx-auto flex flex-row flex-wrap justify-between gap-4">
                 <div className="flex flex-col">
                     <h2 className="text-2xl">{t('Common.informations')}</h2>
-                    <p className="text-sm">{t('Common.shipping')}</p>
+                    <Link href={routes.shipping}>
+                        <p className="text-sm">{t('Common.shipping')}</p>
+                    </Link>
                     <p className="text-sm">{t('Common.refund')}</p>
                     <p className="text-sm">{t('Common.privacy_policy')}</p>
                     <p className="text-sm">{t('Common.t_c')}</p>
