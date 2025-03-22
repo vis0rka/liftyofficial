@@ -46,7 +46,7 @@
         "30_return": "30 Day returns",
         "30_return_desc": "Return your purchase within 30 days for a full refund.",
         "fast_shipping": "Fast shipping",
-        "fast_shipping_desc": "Delivered within 5 working days!",
+        "fast_shipping_desc": "Delivered within 7 working days!",
         "eco_friendly": "SAFE & ECO-FRIENDLY",
         "eco_friendly_desc": "Made from 100% OEKO-TEX® certified cotton."
     },
@@ -87,6 +87,10 @@
     },
     "Product": {
         "in_stock": "In stock",
+        "out_stock": "Out of stock",
+        "free_shipping": "Free shipping on all orders",
+        "order_before": "Place your order before 2 PM, it will be shipped on the same day",
+        "suitable": "Suitable for children aged 9 months to 4 years, with a maximum weight limit of 20kg",
         "toddler_carrier": {
             "short": "Our LIFTY - toddler carriers offer a comfortable, ergonomic, practical, and quick solution for every parent with a toddler. They're perfect for children who want to be held one moment and explore their surroundings the next. Easy to use and compact, they can be taken anywhere, making them ideal for short trips, shopping, stair climbing, and more. Our handcrafted products, made in EU, are crafted from OEKO-TEX certified 100% cotton materials and high-quality YKK buckles, ensuring the safety of your child. We recommend them to anyone who wants to provide their child with both closeness and the freedom to explore.",
             "list_1": "With the hip carrier, you can easily pick up or put down your child with a single motion, anytime, anywhere.",
@@ -150,5 +154,14 @@
     },
     "AboutUs": {
         "description": "<p>As parents of two little children, we created our online store. We are proud to introduce our own Lifty premium hip carriers. We dreamed up this carrier to make our daily lives easier—and yours too! The Lifty is practical, comfortable, easy to use, and the perfect companion for everything from beach walks to city outings. Every detail has been carefully designed to provide the utmost comfort and support for both parents and their children.</br></br> We strive to ensure that every family finds the ideal product with us, one that makes everyday life easier and more beautiful.</br></br> If you have any questions, feel free to reach out to us with confidence! We’re happy to help with anything you need!</br></br> Best regards,</br> Judit and Viktor</p>"
+    },
+    "Shipping": {
+        "policy": "Shipping Policy",
+        "first": "1. LIFTY strives to process and deliver your order as smoothly and quickly as possible. We ensure that all products are shipped accurately. In the unlikely event that you receive an incomplete or damaged order, please notify us within 48 hours of receipt, and we will take care of the rest.",
+        "first-b": "2. Normally, all items shown are in stock, and we will dispatch your order within 1 day. When you place an order before 1.00 PM, we will do our best to dispatch it the same day.",
+        "second": "3. We offer <strong>free shipping to all EU countries,</strong> with delivery typically taking <strong>7 working days</strong>. All orders are shipped via <strong>UPS.</strong>",
+        "third": "4. Orders will be shipped to the delivery address provided by you.",
+        "fourth": "5. Once your order has been shipped, <strong>tracking details will be sent via email to the address you provided.</strong>",
+        "fifth": "6. If an incorrect address is provided, the costs for lost or undelivered products will be at your own expense."
     }
 }

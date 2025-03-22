@@ -15,8 +15,8 @@ export const ProductImageGallery: React.FC<Props> = ({ images }) => {
     const [image, setImage] = useQueryState('image', parseAsInteger.withDefault(0))
 
     return (
-        <div className="">
-            <div className="relative aspect-square h-full max-h-[600px] w-full overflow-hidden">
+        <div className="basis-1/2">
+            <div className="relative aspect-square h-auto w-auto shadow-md rounded-xl overflow-hidden shrink">
                 {images[image] && <ImageViewer src={images[image].src} alt="product-image" />}
             </div>
 

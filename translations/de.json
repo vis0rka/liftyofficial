@@ -70,7 +70,7 @@
         "carrier_instuctions": "Trageanleitung",
         "sub_to_email": "Abonnieren Sie unsere E-Mails",
         "subscribe": "Abonnieren",
-        "toddler_carrier": "Kleinkindtrage {count, plural, =0 {} =1 {} other {n}}",
+        "toddler_carrier": "Kleinkindtrage {count, plural, =0 {} =1 {} other {}}",
         "premium": "Premium",
         "cart": "Warenkorb",
         "add_to_cart": "In den Warenkorb",

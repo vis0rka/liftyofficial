@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button, ButtonProps } from '@/components/ui/button'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
 import { ArrayElement } from '@/utils/typeUtils'
 import { useTranslations } from 'use-intl'
@@ -8,9 +8,10 @@ import { useShoppingCart } from 'use-shopping-cart'
 
 interface Props {
     product: ArrayElement<WooTypes['getProducts']>
+    buttonProps?: ButtonProps
 }
 
-export const AddToCartBtn: React.FC<Props> = ({ product }) => {
+export const AddToCartBtn: React.FC<Props> = ({ product, buttonProps }) => {
     const t = useTranslations()
     const { addItem, handleCartHover } = useShoppingCart()
 
@@ -35,7 +36,7 @@ export const AddToCartBtn: React.FC<Props> = ({ product }) => {
     }
 
     return (
-        <Button className="uppercase" size="lg" onClick={() => handleAdd()}>
+        <Button className="uppercase" size="lg" onClick={() => handleAdd()} {...buttonProps}>
             {t('Common.add_to_cart')}
         </Button>
     )
