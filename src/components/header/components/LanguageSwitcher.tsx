@@ -1,4 +1,4 @@
-'use client' // Mark this as a Client Component
+'use client'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { routing } from '@/i18n/routing'
@@ -24,7 +24,7 @@ export default function LanguageSwitcher() {
 
     return (
         <Select onValueChange={handleLanguageChange} value={locale}>
-            <SelectTrigger className="w-[50px] sm:w-[150px]">
+            <SelectTrigger className="w-[50px] sm:w-fit">
                 <SelectValue />
             </SelectTrigger>
             <SelectContent>

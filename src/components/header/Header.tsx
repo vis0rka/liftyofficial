@@ -18,6 +18,7 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Cart } from '../moduls/cart/Cart'
+import CurrencySwitcher from './components/CurrencySwitcher'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import {
     MobileMenuDialog,
@@ -38,7 +39,7 @@ export function Header() {
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white">
-            <div className="container flex h-14 items-center justify-between mx-auto">
+            <div className={`container flex h-[--header-height] items-center justify-between mx-auto`}>
                 <div className="flex items-center md:w-1/3">
                     <MobileMenuDialog open={isOpen} onOpenChange={setIsOpen}>
                         <MobileMenuDialogTrigger asChild>
@@ -65,8 +66,11 @@ export function Header() {
                         <VisuallyHidden>
                             <MobileMenuDialogTitle>Navigation</MobileMenuDialogTitle>
                         </VisuallyHidden>
-                        <MobileMenuDialogContent className="w-full m-w-full h-full top-[3.5rem] translate-y-0 p-4">
+                        <MobileMenuDialogContent
+                            className={`w-full m-w-full h-[calc(100dvh_-_var(--header-height))] top-[--header-height] translate-y-0 p-4`}
+                        >
                             <MobileNav items={menuItems} setIsOpen={setIsOpen} />
+                            <CurrencySwitcher />
                         </MobileMenuDialogContent>
                     </MobileMenuDialog>
                     <Link href="/" className="flex items-center space-x-2">
@@ -80,7 +84,7 @@ export function Header() {
                                 maxWidth: '100%',
                                 height: 'auto',
                             }}
-                            className="w-16 md:w-20 lg:w-24"
+                            className="w-20 md:w-20 lg:w-24"
                         />
                     </Link>
                 </div>
@@ -99,8 +103,9 @@ export function Header() {
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
-                <div className="flex items-center justify-end md:w-1/3 space-x-2">
+                <div className="flex items-center justify-end md:w-1/3 space-x-3">
                     <LanguageSwitcher />
+                    <CurrencySwitcher />
                     <Cart />
                 </div>
             </div>

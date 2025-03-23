@@ -80,7 +80,8 @@
         "view_cart": "View cart",
         "checkout": "Checkout",
         "continue_shopping": "Continue shopping",
-        "view": "View"
+        "view": "View",
+        "checkout_including": "Including {sign} {tax} in taxes"
     },
     "Error": {
         "something_went_wrong": "Something went wrong...",

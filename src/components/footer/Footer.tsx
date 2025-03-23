@@ -28,9 +28,13 @@ export const Footer = async () => {
                 </div>
                 <div className="flex flex-col">
                     <h2 className="text-2xl">{t('Common.quick_links')}</h2>
-                    <p className="text-sm">{t('Common.shop')}</p>
+                    <Link href={routes.shop}>
+                        <p className="text-sm">{t('Common.shop')}</p>
+                    </Link>
                     <p className="text-sm">{t('Common.contact')}</p>
-                    <p className="text-sm">{t('Common.about_us')}</p>
+                    <Link href={routes.aboutUs}>
+                        <p className="text-sm">{t('Common.about_us')}</p>
+                    </Link>
                     <p className="text-sm">{t('Common.carrier_instuctions')}</p>
                 </div>
                 <div className="flex flex-col">

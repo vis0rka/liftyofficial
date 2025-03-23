@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 'use client'
 import { LoadingButton } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -6,7 +5,11 @@ import { ClientOnly } from '@/components/ui/ClientOnly'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Separator } from '@/components/ui/separator'
 import { Link } from '@/i18n/routing'
+import { getTaxRate, GetTaxRateResults } from '@/lib/actions/tax'
+import { wooApi } from '@/lib/api/woo/woo'
+import europeanCountries from '@/utils/euCountries.json'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -16,7 +19,6 @@ import ReactCountryFlag from 'react-country-flag'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import { z } from 'zod'
-import europeanCountries from './euCountries.json'
 
 const schema = (t: (key: string) => string) =>
     z.object({
@@ -37,9 +39,10 @@ type FormValues = z.infer<ReturnType<typeof schema>>
 
 export default function CartPage() {
     const params = useParams()
-    const { cartDetails, formattedTotalPrice } = useShoppingCart()
+    const { cartDetails, formattedTotalPrice, totalPrice, redirectToCheckout } = useShoppingCart()
     const t = useTranslations()
     const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
+    const [tax, setTax] = React.useState<GetTaxRateResults>()
 
     const form = useForm<FormValues>({
         resolver: zodResolver(schema(t)),
@@ -100,9 +103,9 @@ export default function CartPage() {
                 },
             ],
         }
-        // Simulate a network request
         console.log(dataToApi)
-        /*  try {
+
+        try {
             const wooResult = await wooApi.post('orders', dataToApi)
 
             if (wooResult.data.id) {
@@ -117,9 +120,23 @@ export default function CartPage() {
             }
         } catch (error) {
             console.error(error)
-        } */
+        }
         setStatus('idle')
     }
+
+    const country = form.watch('country')
+
+    React.useEffect(() => {
+        if (!country || !totalPrice) return
+        const fetchTax = async () => {
+            setStatus('loading')
+            const tax = await getTaxRate(country, totalPrice / 100)
+            console.log(tax)
+            setTax(tax)
+            setStatus('idle')
+        }
+        fetchTax()
+    }, [country, totalPrice])
 
     return (
         <section className="container flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6">
@@ -355,15 +372,20 @@ export default function CartPage() {
                                     <div key={item.id} className="w-full relative">
                                         <div className="flex flex-row justify-between items-center">
                                             {item.image && (
-                                                <Image
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                    width={80}
-                                                    height={80}
-                                                    priority
-                                                    style={{ objectFit: 'contain' }}
-                                                    className="shadow-sm"
-                                                />
+                                                <div className="relative">
+                                                    <Image
+                                                        src={item.image}
+                                                        alt={item.name}
+                                                        width={80}
+                                                        height={80}
+                                                        priority
+                                                        style={{ objectFit: 'contain' }}
+                                                        className="shadow-sm"
+                                                    />
+                                                    <span className="w-6 h-6 rounded-full absolute top-0 right-0 bg-gray-600 text-white flex justify-center items-center text-sm font-semibold translate-x-1/4 -translate-y-1/4">
+                                                        {item.quantity}
+                                                    </span>
+                                                </div>
                                             )}
 
                                             <Link href={`/shop/${item?.slug}`} className="ml-4 mr-auto">
@@ -371,7 +393,10 @@ export default function CartPage() {
                                             </Link>
                                             <div className="col-span-3 md:col-span-1 items-end">
                                                 <span className="text-right">
-                                                    {formatCurrencyString({ value: item.price, currency: 'EUR' })}
+                                                    {formatCurrencyString({
+                                                        value: item.price,
+                                                        currency: tax?.tax?.currency ?? 'EUR',
+                                                    })}
                                                 </span>
                                             </div>
                                         </div>
@@ -386,11 +411,22 @@ export default function CartPage() {
                             <span className="text-sm uppercase">{t('Form.free')}</span>
                         </div>
                         <div className="flex flex-row justify-between">
-                            <span className="text-base font-bold">{t('Form.total')}</span>
+                            <span className="text-xl font-bold">{t('Form.total')}</span>
                             <ClientOnly>
-                                <span className="text-base font-bold">{formattedTotalPrice}</span>
+                                <span className="text-xl font-bold">{formattedTotalPrice}</span>
                             </ClientOnly>
                         </div>
+                        {tax ? (
+                            <div className="flex flex-row justify-start">
+                                <span className="text-sm">
+                                    {t('Common.checkout_including', {
+                                        sign: tax?.tax?.currency,
+                                        tax: tax.taxAmount,
+                                    })}
+                                </span>
+                            </div>
+                        ) : null}
+                        <Separator />
                     </div>
                 </div>
             </div>
