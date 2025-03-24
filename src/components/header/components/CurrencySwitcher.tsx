@@ -3,7 +3,7 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useCountryStore } from '@/lib/store/useCountryStore'
 import euCountries from '@/utils/euCountries.json'
-import { Geo } from '@vercel/functions'
+import axios from 'axios'
 import React from 'react'
 
 const defaultCountry = {
@@ -23,12 +23,12 @@ export default function CurrencySwitcher() {
 
         setCountry(country ?? defaultCountry)
     }
-    console.log(country)
+
     React.useEffect(() => {
         const getData = async () => {
-            const response = (await fetch('/api/geo')) as Geo
-            console.log(response)
-            const country = euCountries.find(country => country.code === response.country)
+            const response = await axios.get('https://api.country.is/')
+
+            const country = euCountries.find(country => country.code === response.data.country)
 
             setCountry(country ?? defaultCountry)
         }
