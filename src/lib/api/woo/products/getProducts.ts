@@ -14,7 +14,7 @@ export async function getProducts() {
 }
 
 export const getCachedProducts = unstable_cache(async () => getProducts(), ['featured'], {
-    revalidate: 3000,
+    revalidate: 3600,
     tags: ['products'],
 })
 
