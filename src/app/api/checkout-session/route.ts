@@ -1,26 +1,25 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import { getCachedProducts } from '@/lib/api/woo/products/getProducts'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
-import { stripe } from '@/lib/stripe/stripe'
+import { ICartItem } from '@/lib/store/cart-store'
+import { serverStripe } from '@/lib/stripe/server-stripe'
 import { headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
-import { Product } from 'use-shopping-cart/core'
 
 export async function POST(request: NextRequest) {
-    const { cartProducts, orderId } = await request.json()
+    const res = await request.json()
+    const { cartProducts, orderId } = JSON.parse(res.body)
     try {
         const originalProducts = await getCachedProducts()
         if (!originalProducts) {
             return NextResponse.json({ error: 'something went wrong' }, { status: 500 })
         }
-
-        const line_items = validateCartItems(originalProducts, Object.values(cartProducts))
+        const line_items = validateCartItems(originalProducts, cartProducts)
 
         const headersList = await headers()
 
         const locale = request.cookies.get('NEXT_LOCALE')?.value
 
-        const checkoutSession = await stripe.checkout.sessions.create({
+        const checkoutSession = await serverStripe.checkout.sessions.create({
             mode: 'payment',
             line_items,
             success_url: `${headersList.get('origin')}/${locale}/payment-success?session_id={CHECKOUT_SESSION_ID}&orderId=${orderId}`,
@@ -45,7 +44,7 @@ interface ValidatedItem {
     quantity: number
 }
 
-const validateCartItems = (originalProducts: WooTypes['getProducts'], cartProducts: Product[]) => {
+const validateCartItems = (originalProducts: WooTypes['getProducts'], cartProducts: ICartItem[]) => {
     const validatedItems: ValidatedItem[] = []
 
     for (const product of cartProducts) {
@@ -66,7 +65,6 @@ const validateCartItems = (originalProducts: WooTypes['getProducts'], cartProduc
                     images: [inventoryItem?.images?.[0].src],
                     ...product.product_data,
                 },
-                ...product.price_data,
             },
             quantity: product.quantity,
         }

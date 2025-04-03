@@ -6,18 +6,22 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
+import { formatPrice } from '@/hooks/useGetProductPrice'
 import { Link } from '@/i18n/routing'
 import { getTaxRate, GetTaxRateResults } from '@/lib/actions/tax'
 import { wooApi } from '@/lib/api/woo/woo'
+import { useCartStore } from '@/lib/store/useCartStore'
+import { useCountryStore } from '@/lib/store/useCountryStore'
+import { getClientStripe } from '@/lib/stripe/client-stripe'
 import europeanCountries from '@/utils/euCountries.json'
 import { zodResolver } from '@hookform/resolvers/zod'
+import axios from 'axios'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import React from 'react'
 import ReactCountryFlag from 'react-country-flag'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import { z } from 'zod'
 
 const schema = (t: (key: string) => string) =>
@@ -39,10 +43,11 @@ type FormValues = z.infer<ReturnType<typeof schema>>
 
 export default function CartPage() {
     const params = useParams()
-    const { cartDetails, formattedTotalPrice, totalPrice, redirectToCheckout } = useShoppingCart()
+    const { items, totalPrice } = useCartStore(state => state)
     const t = useTranslations()
     const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
     const [tax, setTax] = React.useState<GetTaxRateResults>()
+    const countryFromStore = useCountryStore(state => state.country)
 
     const form = useForm<FormValues>({
         resolver: zodResolver(schema(t)),
@@ -62,12 +67,14 @@ export default function CartPage() {
     })
 
     const onSubmit: SubmitHandler<FormValues> = async data => {
-        if (!cartDetails) return
+        if (!items.length || !tax) return
         setStatus('loading')
-        const line_items = Object.values(cartDetails).map(item => {
+        const line_items = items.map(item => {
             return {
-                product_id: item.product_id,
+                product_id: item.id,
                 quantity: item.quantity,
+                subtotal: (item.price / (1 + tax.tax.rate) / 100).toString(),
+                total: (item.price / (1 + tax.tax.rate) / 100).toString(),
             }
         })
 
@@ -75,6 +82,7 @@ export default function CartPage() {
             payment_method: 'stripe',
             payment_method_title: 'Stripe',
             status: 'pending',
+            currency: countryFromStore?.currency,
             billing: {
                 first_name: data.firstName,
                 last_name: data.lastName,
@@ -103,19 +111,25 @@ export default function CartPage() {
                 },
             ],
         }
-        console.log(dataToApi)
 
         try {
             const wooResult = await wooApi.post('orders', dataToApi)
 
             if (wooResult.data.id) {
-                const res = await fetch('/session', {
-                    method: 'POST',
-                    body: JSON.stringify({ cartProducts: cartDetails, orderId: wooResult.data.id }),
+                const checkoutSession = await axios.post('/api/checkout-session', {
+                    body: JSON.stringify({
+                        orderId: wooResult.data.id,
+                        cartProducts: items,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                 })
-                const data = await res.json()
-                const result = await redirectToCheckout(data.sessionId)
-
+                console.log(checkoutSession)
+                const clientStripe = await getClientStripe()
+                const result = await clientStripe?.redirectToCheckout({
+                    sessionId: checkoutSession.data.sessionId,
+                })
                 console.log(result)
             }
         } catch (error) {
@@ -130,7 +144,7 @@ export default function CartPage() {
         if (!country || !totalPrice) return
         const fetchTax = async () => {
             setStatus('loading')
-            const tax = await getTaxRate(country, totalPrice / 100)
+            const tax = await getTaxRate(country, totalPrice)
             console.log(tax)
             setTax(tax)
             setStatus('idle')
@@ -367,7 +381,7 @@ export default function CartPage() {
                 <div className="space-y-8 md:sticky md:top-14">
                     <div>
                         <div className="flex flex-col justify-between items-center w-full space-y-2">
-                            {Object.values(cartDetails ?? {}).map(item => {
+                            {items.map(item => {
                                 return (
                                     <div key={item.id} className="w-full relative">
                                         <div className="flex flex-row justify-between items-center">
@@ -393,10 +407,7 @@ export default function CartPage() {
                                             </Link>
                                             <div className="col-span-3 md:col-span-1 items-end">
                                                 <span className="text-right">
-                                                    {formatCurrencyString({
-                                                        value: item.price,
-                                                        currency: tax?.tax?.currency ?? 'EUR',
-                                                    })}
+                                                    {formatPrice(item.price, countryFromStore.currency)}
                                                 </span>
                                             </div>
                                         </div>
@@ -413,7 +424,9 @@ export default function CartPage() {
                         <div className="flex flex-row justify-between">
                             <span className="text-xl font-bold">{t('Form.total')}</span>
                             <ClientOnly>
-                                <span className="text-xl font-bold">{formattedTotalPrice}</span>
+                                <span className="text-xl font-bold">
+                                    {formatPrice(totalPrice, countryFromStore.currency)}
+                                </span>
                             </ClientOnly>
                         </div>
                         {tax ? (
@@ -421,7 +434,7 @@ export default function CartPage() {
                                 <span className="text-sm">
                                     {t('Common.checkout_including', {
                                         sign: tax?.tax?.currency,
-                                        tax: tax.taxAmount,
+                                        tax: tax.taxAmount.toFixed(2),
                                     })}
                                 </span>
                             </div>

@@ -18,7 +18,7 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Cart } from '../moduls/cart/Cart'
-import CurrencySwitcher from './components/CurrencySwitcher'
+import CountrySwitcher from './components/CurrencySwitcher'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import {
     MobileMenuDialog,
@@ -70,7 +70,7 @@ export function Header() {
                             className={`w-full m-w-full h-[calc(100dvh_-_var(--header-height))] top-[--header-height] translate-y-0 p-4`}
                         >
                             <MobileNav items={menuItems} setIsOpen={setIsOpen} />
-                            <CurrencySwitcher />
+                            <CountrySwitcher />
                         </MobileMenuDialogContent>
                     </MobileMenuDialog>
                     <Link href="/" className="flex items-center space-x-2">
@@ -105,7 +105,7 @@ export function Header() {
                 </div>
                 <div className="flex items-center justify-end md:w-1/3 space-x-3">
                     <LanguageSwitcher />
-                    <CurrencySwitcher />
+                    <CountrySwitcher />
                     <Cart />
                 </div>
             </div>

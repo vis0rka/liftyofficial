@@ -1,5 +1,5 @@
 import { wooApi } from '@/lib/api/woo/woo'
-import { stripe } from '@/lib/stripe/stripe'
+import { serverStripe } from '@/lib/stripe/server-stripe'
 import { Smile } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 
@@ -12,7 +12,7 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
     const t = await getTranslations()
     const { session_id, orderId } = await searchParams
 
-    const session = await stripe.checkout.sessions.retrieve(session_id as string)
+    const session = await serverStripe.checkout.sessions.retrieve(session_id as string)
 
     if (!orderId) {
         return (

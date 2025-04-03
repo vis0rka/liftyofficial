@@ -86,5 +86,6 @@ export interface WooTypes {
             self: { href: string; targetHints: { allow: string[] } }[]
             collection: { href: string }[]
         }
+        custom_prices?: string
     }[]
 }

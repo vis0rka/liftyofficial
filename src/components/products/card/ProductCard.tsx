@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { ProductPrice } from '@/hooks/useGetProductPrice'
 import { Link } from '@/i18n/routing'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
 import { ArrayElement } from '@/utils/typeUtils'
@@ -26,7 +27,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButto
                     Lifty - {t('Common.toddler_carrier', { count: 1 })}
                 </h1>
                 <div className="flex flex-col justify-center items-center">
-                    <span className="text-center text-2xl font-bold font-sans">€ {product?.price}</span>
+                    <span className="text-center text-2xl font-bold font-sans">
+                        <ProductPrice price={product.price} prices={product.custom_prices} />
+                    </span>
                 </div>
                 {!hideViewButton ? (
                     <Button className="mt-4">
