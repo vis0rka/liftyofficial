@@ -2,20 +2,24 @@
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { formatPrice } from '@/hooks/useGetProductPrice'
 import { Link } from '@/i18n/routing'
+import { ICartItem } from '@/lib/store/cart-store'
+import { useCartStore } from '@/lib/store/useCartStore'
+import { useCountryStore } from '@/lib/store/useCountryStore'
 import { cn } from '@/lib/utils'
 import { Minus, Plus, Trash2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
-import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
-import { CartEntry } from 'use-shopping-cart/core'
 
 export const CartTable = () => {
-    const { cartCount, cartDetails, removeItem, formattedTotalPrice } = useShoppingCart()
+    const { items, removeItem, totalPrice } = useCartStore(state => state)
+    const country = useCountryStore(state => state.country)
     const t = useTranslations()
+    const cartCount = items.length
     const emptyCart = (cartCount ?? 0) === 0
-
+    console.log(items)
     if (emptyCart) {
         return (
             <Card className="space-y-8 p-4">
@@ -38,7 +42,7 @@ export const CartTable = () => {
                     <h4 className="col-span-3 md:col-span-1">Price</h4>
                 </div>
                 <div className="flex flex-col justify-between items-center w-full space-y-8">
-                    {Object.values(cartDetails ?? {}).map(item => {
+                    {items.map(item => {
                         return (
                             <Card key={item.id} className="w-full relative">
                                 <CardContent className="p-4 grid grid-cols-12 items-center grid-rows justify-between">
@@ -62,9 +66,7 @@ export const CartTable = () => {
                                         className="flex col-start-3 col-span-7  md:col-span-5"
                                     />
                                     <div className="col-span-3 md:col-span-1 items-end">
-                                        <span className="text-right">
-                                            {formatCurrencyString({ value: item.price, currency: 'EUR' })}
-                                        </span>
+                                        <span className="text-right">{formatPrice(item.price, country.currency)}</span>
                                     </div>
                                 </CardContent>
                                 <Button
@@ -87,7 +89,7 @@ export const CartTable = () => {
                 </Button>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Total: {formattedTotalPrice}</CardTitle>
+                        <CardTitle>Total: {formatPrice(totalPrice, country.currency)}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <Button asChild size="lg">
@@ -103,17 +105,17 @@ export const CartTable = () => {
 const minQuantity = 1
 const maxQuantity = 99
 
-const QuantityModifer: React.FC<{ item: CartEntry; className: string }> = ({ item, className }) => {
-    const { incrementItem, decrementItem } = useShoppingCart()
+const QuantityModifer: React.FC<{ item: ICartItem; className: string }> = ({ item, className }) => {
+    const { incrementItemQuantity, decrementItemQuantity } = useCartStore(state => state)
     const decrease = () => {
         if (item.quantity > minQuantity) {
-            decrementItem(item.id)
+            decrementItemQuantity(item.id)
         }
     }
 
     const increase = () => {
         if (item.quantity < maxQuantity) {
-            incrementItem(item.id)
+            incrementItemQuantity(item.id)
         }
     }
 

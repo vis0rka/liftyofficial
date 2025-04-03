@@ -3,15 +3,16 @@
 import { Button } from '@/components/ui/button'
 import { CartSheetContent, Sheet, SheetFooter, SheetTrigger } from '@/components/ui/sheet'
 import { Link } from '@/i18n/routing'
+import { useCartStore } from '@/lib/store/useCartStore'
 import { ShoppingCart } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-import { useShoppingCart } from 'use-shopping-cart'
 import { CartItem } from './CartItem'
 
 export const Cart: React.FC = () => {
-    const { shouldDisplayCart, cartCount, cartDetails, handleCloseCart, handleCartClick } = useShoppingCart()
+    const { items, shouldDisplayCart, handleOpenCart, handleCloseCart } = useCartStore(state => state)
     const t = useTranslations()
+    const cartCount = items.length
     const notEmptyCart = (cartCount ?? 0) > 0
 
     return (
@@ -21,7 +22,7 @@ export const Cart: React.FC = () => {
                 if (!open) {
                     handleCloseCart()
                 } else {
-                    handleCartClick()
+                    handleOpenCart()
                 }
             }}
         >
@@ -40,7 +41,7 @@ export const Cart: React.FC = () => {
                     <div>
                         {notEmptyCart ? (
                             <>
-                                {Object.values(cartDetails ?? {}).map(entry => (
+                                {items.map(entry => (
                                     <CartItem key={entry.sku} item={entry} />
                                 ))}
                             </>

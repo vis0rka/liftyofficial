@@ -7,6 +7,7 @@ import { WooTypes } from '../WooTyps'
 export async function getProducts() {
     try {
         const result = await wooApi.get('products', {})
+
         return result?.data as WooTypes['getProducts']
     } catch (error) {
         console.error(error)
@@ -23,6 +24,7 @@ export async function getProduct(slug: string) {
         const result = await wooApi.get('products', {
             slug,
         })
+
         return result?.data as WooTypes['getProducts']
     } catch (error) {
         console.error(error)

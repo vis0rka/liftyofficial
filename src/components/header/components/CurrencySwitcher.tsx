@@ -1,13 +1,14 @@
 'use client'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
 import euCountries from '@/utils/euCountries.json'
 import axios from 'axios'
 import React from 'react'
 
-const defaultCountry = {
-    name: 'Unknown',
+export const defaultCountry = {
+    name: 'Default',
     code: 'UU',
     dial_code: '+00',
     flag: 'UU',
@@ -15,13 +16,14 @@ const defaultCountry = {
     currency_sign: '€',
 }
 
-export default function CurrencySwitcher() {
-    const { country, setCountry } = useCountryStore()
+export default function CountrySwitcher() {
+    const { country, setCountry } = useCountryStore(state => state)
+    const changeCurrency = useCartStore(state => state.changeCurrency)
 
     const handleChange = (code: string) => {
-        const country = euCountries.find(country => country.code === code)
-
-        setCountry(country ?? defaultCountry)
+        const country = euCountries.find(country => country.code === code) ?? defaultCountry
+        setCountry(country)
+        changeCurrency(country?.currency)
     }
 
     React.useEffect(() => {

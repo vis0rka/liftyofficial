@@ -10,6 +10,7 @@ import { RecentlyViewed } from '@/components/products/recently-viewed/RecentlyVi
 import { Badge } from '@/components/ui/badge'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { ProductPrice } from '@/hooks/useGetProductPrice'
 import { getCachedProduct } from '@/lib/api/woo/products/getProducts'
 import { getTranslations } from 'next-intl/server'
 
@@ -33,7 +34,7 @@ export default async function ProductDetailsPage({ params }: Props) {
     const { slug } = await params
 
     const data = await getCachedProduct(slug)
-
+    console.log(data)
     const t = await getTranslations()
 
     const product = data?.[0]
@@ -68,7 +69,9 @@ export default async function ProductDetailsPage({ params }: Props) {
                     <CardHeader>
                         <CardTitle>
                             <h1 className="~text-xl/4xl">{product.name}</h1>
-                            <span className="font-sans ~text-lg/2xl">€{product.price}</span>
+                            <span className="font-sans ~text-lg/2xl">
+                                <ProductPrice prices={product.custom_prices} price={product.price} />
+                            </span>
                         </CardTitle>
                     </CardHeader>
                     <CardContent>

@@ -18,7 +18,6 @@
     { "name": "France", "code": "FR", "dial_code": "+33", "flag": "FR", "currency": "EUR", "currency_sign": "€" },
     { "name": "Germany", "code": "DE", "dial_code": "+49", "flag": "DE", "currency": "EUR", "currency_sign": "€" },
     { "name": "Greece", "code": "GR", "dial_code": "+30", "flag": "GR", "currency": "EUR", "currency_sign": "€" },
-    { "name": "Hungary", "code": "HU", "dial_code": "+36", "flag": "HU", "currency": "HUF", "currency_sign": "Ft" },
     { "name": "Ireland", "code": "IE", "dial_code": "+353", "flag": "IE", "currency": "EUR", "currency_sign": "€" },
     { "name": "Italy", "code": "IT", "dial_code": "+39", "flag": "IT", "currency": "EUR", "currency_sign": "€" },
     { "name": "Latvia", "code": "LV", "dial_code": "+371", "flag": "LV", "currency": "EUR", "currency_sign": "€" },
@@ -34,7 +33,7 @@
     { "name": "Spain", "code": "ES", "dial_code": "+34", "flag": "ES", "currency": "EUR", "currency_sign": "€" },
     { "name": "Sweden", "code": "SE", "dial_code": "+46", "flag": "SE", "currency": "SEK", "currency_sign": "kr" },
     {
-        "name": "Unknown",
+        "name": "Default",
         "code": "UU",
         "dial_code": "+00",
         "flag": "UU",
