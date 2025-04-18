@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
         STRIPE_API_SECRET: process.env.STRIPE_API_SECRET,
         BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
         BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
+        RECAPTCHA_SECRET: process.env.RECAPTCHA_SECRET,
+        RECAPTCHA_SITE: process.env.RECAPTCHA_SITE,
     },
     images: {
         remotePatterns: [{ protocol: 'https', hostname: 'liftyofficial.com' }],

@@ -1,4 +1,5 @@
 'use client'
+import { ErrorCard } from '@/components/error/ErrorCard'
 import { LoadingButton } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { ClientOnly } from '@/components/ui/ClientOnly'
@@ -8,15 +9,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator'
 import { formatPrice } from '@/hooks/useGetProductPrice'
 import { Link } from '@/i18n/routing'
+import { checkout } from '@/lib/actions/checkout'
 import { getTaxRate, GetTaxRateResults } from '@/lib/actions/tax'
-import { wooApi } from '@/lib/api/woo/woo'
 import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
 import { getClientStripe } from '@/lib/stripe/client-stripe'
-import europeanCountries from '@/utils/euCountries.json'
+import { euCountries } from '@/utils/euCountries'
 import { zodResolver } from '@hookform/resolvers/zod'
-import axios from 'axios'
 import { useTranslations } from 'next-intl'
+import { useReCaptcha } from 'next-recaptcha-v3'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import React from 'react'
@@ -39,7 +40,7 @@ const schema = (t: (key: string) => string) =>
         phoneNumber: z.string().min(1, { message: t('Validation.phone') }),
     })
 
-type FormValues = z.infer<ReturnType<typeof schema>>
+export type CheckoutFormValues = z.infer<ReturnType<typeof schema>>
 
 export default function CartPage() {
     const params = useParams()
@@ -48,104 +49,72 @@ export default function CartPage() {
     const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
     const [tax, setTax] = React.useState<GetTaxRateResults>()
     const countryFromStore = useCountryStore(state => state.country)
+    const { executeRecaptcha } = useReCaptcha()
 
-    const form = useForm<FormValues>({
+    const isDefaultCountry = countryFromStore.name === 'Default'
+
+    const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(schema(t)),
         defaultValues: {
             email: '',
             newsAndOffers: false,
-            country: '',
+            country: isDefaultCountry ? '' : countryFromStore.code,
             firstName: '',
             lastName: '',
             address: '',
             apartment: '',
             postalCode: '',
             city: '',
-            dialCode: '',
+            dialCode: isDefaultCountry ? '' : countryFromStore.dial_code,
             phoneNumber: '',
         },
     })
 
-    const onSubmit: SubmitHandler<FormValues> = async data => {
+    const onSubmit: SubmitHandler<CheckoutFormValues> = async data => {
         if (!items.length || !tax) return
         setStatus('loading')
-        const line_items = items.map(item => {
-            return {
-                product_id: item.id,
-                quantity: item.quantity,
-                subtotal: (item.price / (1 + tax.tax.rate) / 100).toString(),
-                total: (item.price / (1 + tax.tax.rate) / 100).toString(),
-            }
-        })
 
-        const dataToApi = {
-            payment_method: 'stripe',
-            payment_method_title: 'Stripe',
-            status: 'pending',
-            currency: countryFromStore?.currency,
-            billing: {
-                first_name: data.firstName,
-                last_name: data.lastName,
-                address_1: data.address,
-                address_2: data?.apartment ?? '',
-                city: data.city,
-                postcode: data.postalCode,
-                country: data.country,
-                email: data.email,
-                phone: data.dialCode + data.phoneNumber,
-            },
-            shipping: {
-                first_name: data.firstName,
-                last_name: data.lastName,
-                address_1: data.address,
-                address_2: data.apartment ?? '',
-                city: data.city,
-                postcode: data.postalCode,
-                country: data.country,
-            },
-            line_items: line_items,
-            meta_data: [
-                {
-                    key: 'lang',
-                    value: params?.locale,
-                },
-            ],
-        }
+        const token = await executeRecaptcha('checkout')
 
         try {
-            const wooResult = await wooApi.post('orders', dataToApi)
+            const result = await checkout({
+                formData: data,
+                products: items,
+                currency: countryFromStore.currency,
+                lang: params.locale as string,
+                taxRate: tax.tax.rate,
+                token,
+            })
 
-            if (wooResult.data.id) {
-                const checkoutSession = await axios.post('/api/checkout-session', {
-                    body: JSON.stringify({
-                        orderId: wooResult.data.id,
-                        cartProducts: items,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
-                console.log(checkoutSession)
+            if (result.id) {
                 const clientStripe = await getClientStripe()
-                const result = await clientStripe?.redirectToCheckout({
-                    sessionId: checkoutSession.data.sessionId,
-                })
-                console.log(result)
+
+                clientStripe?.redirectToCheckout({ sessionId: result.id })
+                setStatus('idle')
+                return
             }
+
+            console.error(result)
+            setStatus('error')
         } catch (error) {
             console.error(error)
+            setStatus('error')
         }
-        setStatus('idle')
     }
 
     const country = form.watch('country')
+
+    React.useEffect(() => {
+        if (!countryFromStore) return
+        form.setValue('dialCode', euCountries.find(c => c.code === countryFromStore.code)?.dial_code || '')
+        form.setValue('country', euCountries.find(c => c.code === countryFromStore.code)?.code || '')
+    }, [countryFromStore, form])
 
     React.useEffect(() => {
         if (!country || !totalPrice) return
         const fetchTax = async () => {
             setStatus('loading')
             const tax = await getTaxRate(country, totalPrice)
-            console.log(tax)
             setTax(tax)
             setStatus('idle')
         }
@@ -187,7 +156,7 @@ export default function CartPage() {
                                                         <SelectValue placeholder={t('Form.select_dial_code')} />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        {europeanCountries.map(country => (
+                                                        {euCountries.map(country => (
                                                             <SelectItem key={country.code} value={country.dial_code}>
                                                                 <div className="flex items-center gap-2">
                                                                     <ReactCountryFlag
@@ -254,7 +223,7 @@ export default function CartPage() {
                                                         <SelectValue placeholder={t('Form.select_country')} />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        {europeanCountries.map(country => (
+                                                        {euCountries.map(country => (
                                                             <SelectItem key={country.code} value={country.code}>
                                                                 <div className="flex items-center gap-2">
                                                                     <ReactCountryFlag
@@ -368,8 +337,14 @@ export default function CartPage() {
                                     )
                                 }}
                             />
-                            <div className="flex justify-center">
-                                <LoadingButton type="submit" size="xl" isLoading={status === 'loading'}>
+                            <div className="flex justify-center items-center flex-col gap-4">
+                                {status === 'error' && <ErrorCard title={t('Error.something_went_wrong_checkout')} />}
+                                <LoadingButton
+                                    type="submit"
+                                    size="xl"
+                                    isLoading={status === 'loading'}
+                                    disabled={status === 'error'}
+                                >
                                     {t('Form.place_order')}
                                 </LoadingButton>
                             </div>

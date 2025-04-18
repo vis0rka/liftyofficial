@@ -2,8 +2,7 @@
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { routing } from '@/i18n/routing'
-import { useLocale } from 'next-intl'
-import { usePathname, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import ReactCountryFlag from 'react-country-flag'
 
 const localeToCountryFlag: Record<string, { flag: string; name: string }> = {
@@ -15,15 +14,16 @@ const localeToCountryFlag: Record<string, { flag: string; name: string }> = {
 export default function LanguageSwitcher() {
     const router = useRouter()
     const pathname = usePathname()
-    const locale = useLocale()
+    const { locale } = useParams()
 
     const handleLanguageChange = (newLocale: string) => {
         const newPathname = `/${newLocale}${pathname.replace(`/${locale}`, '')}`
+
         router.push(newPathname)
     }
 
     return (
-        <Select onValueChange={handleLanguageChange} value={locale}>
+        <Select onValueChange={handleLanguageChange} value={locale as string}>
             <SelectTrigger className="w-[50px] sm:w-fit">
                 <SelectValue />
             </SelectTrigger>

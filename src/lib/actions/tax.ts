@@ -8,7 +8,7 @@ export async function getTaxRate(countryCode: string, amount: number) {
     SalesTax.setTaxOriginCountry(countryCode)
     try {
         const tax = await SalesTax.getSalesTax(countryCode)
-        console.log(tax)
+
         const taxAmount = amount - amount / (1 + tax.rate)
 
         return {

@@ -1,4 +1,4 @@
-import WooCommerceRestApi, { WooRestApiOptions } from 'woocommerce-rest-ts-api'
+import WooCommerceRestApi, { WooRestApiOptions } from '@/lib/woo-rest-api/woo-res-apit'
 
 const opt: WooRestApiOptions = {
     url: 'https://liftyofficial.com',
