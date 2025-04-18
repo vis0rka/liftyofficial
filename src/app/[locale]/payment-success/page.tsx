@@ -30,8 +30,9 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
     const wooResult = await wooApi.put(
         `orders`,
         {
-            status: 'completed',
+            status: 'processing',
             transaction_id: session.payment_intent,
+            set_paid: true,
         },
         { id: parseInt(orderId as string) },
     )

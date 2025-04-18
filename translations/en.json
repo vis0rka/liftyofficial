@@ -85,7 +85,8 @@
     },
     "Error": {
         "something_went_wrong": "Something went wrong...",
-        "contact": "Please contact support at"
+        "contact": "Please contact support at",
+        "something_went_wrong_checkout": "Something went wrong while checking out. Please refresh the page and try again."
     },
     "Product": {
         "in_stock": "In stock",

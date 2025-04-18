@@ -3,8 +3,7 @@ import { persist } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
 import { defaultCountry } from '@/components/header/components/CurrencySwitcher'
-import euCountries from '@/utils/euCountries.json'
-
+import { euCountries } from '@/utils/euCountries'
 type Country = ArrayElement<typeof euCountries>
 
 type CountryState = {
