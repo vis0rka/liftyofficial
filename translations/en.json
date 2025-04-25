@@ -81,7 +81,9 @@
         "checkout": "Checkout",
         "continue_shopping": "Continue shopping",
         "view": "View",
-        "checkout_including": "Including {sign} {tax} in taxes"
+        "checkout_including": "Including {sign} {tax} in taxes",
+        "login": "Login",
+        "cart_updated": "Your cart has been updated: unavailable items or prices changed items were removed. Please review before checking out."
     },
     "Error": {
         "something_went_wrong": "Something went wrong...",
@@ -182,5 +184,11 @@
         "third": "3. Send the ordered product back to our company address by courier: <strong>Hungary, 1151, Budapest, Szekely Elek street 11, Rapidlog Kft.</strong>",
         "fourth": "4. Once we receive and inspect the returned product, we will refund the purchase price to the provided bank account immediately, but no later than 5 days.",
         "fifth": "5. The product must be <strong>undamaged and unused, and original tags must not be removed.</strong>"
+    },
+    "Login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "login": "Login"
     }
 }

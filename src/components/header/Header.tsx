@@ -1,6 +1,6 @@
 'use client'
 
-import { Menu, X } from 'lucide-react'
+import { Menu, User, X } from 'lucide-react'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -18,6 +18,7 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Cart } from '../moduls/cart/Cart'
+import { useModals } from '../moduls/modals/ModalService'
 import CountrySwitcher from './components/CurrencySwitcher'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import {
@@ -26,7 +27,6 @@ import {
     MobileMenuDialogTitle,
     MobileMenuDialogTrigger,
 } from './components/mobileMenuDialog'
-
 const menuItems = [
     { title: 'Common.home', href: '/' },
     { title: 'Common.shop', href: '/shop' },
@@ -36,6 +36,7 @@ const menuItems = [
 export function Header() {
     const [isOpen, setIsOpen] = React.useState(false)
     const t = useTranslations()
+    const { openModal } = useModals()
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white">
@@ -107,6 +108,7 @@ export function Header() {
                     <LanguageSwitcher />
                     <CountrySwitcher />
                     <Cart />
+                    <User className="w-8 h-8 shrink-0 cursor-pointer" onClick={() => openModal('login')} />
                 </div>
             </div>
         </header>
