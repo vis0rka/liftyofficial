@@ -7,13 +7,33 @@ import { useCartStore } from '@/lib/store/useCartStore'
 import { ShoppingCart } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { toast } from 'react-hot-toast'
 import { CartItem } from './CartItem'
 
 export const Cart: React.FC = () => {
-    const { items, shouldDisplayCart, handleOpenCart, handleCloseCart } = useCartStore(state => state)
+    const { items, shouldDisplayCart, handleOpenCart, handleCloseCart, _hasHydrated, validateCart } = useCartStore(
+        state => state,
+    )
     const t = useTranslations()
     const cartCount = items.length
     const notEmptyCart = (cartCount ?? 0) > 0
+
+    React.useEffect(() => {
+        if (_hasHydrated) {
+            const validate = async () => {
+                const removedItems = await validateCart()
+
+                if (removedItems.length > 0) {
+                    toast.success(t('Common.cart_updated'), {
+                        duration: 6000,
+                        icon: <ShoppingCart className="h-20 w-20" />,
+                    })
+                }
+            }
+
+            validate()
+        }
+    }, [_hasHydrated, validateCart, t])
 
     return (
         <Sheet

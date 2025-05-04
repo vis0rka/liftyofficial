@@ -1,13 +1,12 @@
+import { euCountries } from '@/utils/euCountries'
 import { ArrayElement } from '@/utils/typeUtils'
 import { persist } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
 
-import { defaultCountry } from '@/components/header/components/CurrencySwitcher'
-import { euCountries } from '@/utils/euCountries'
 type Country = ArrayElement<typeof euCountries>
 
 type CountryState = {
-    country: Country
+    country: Omit<Partial<Country>, 'currency'> & { currency: string }
 }
 
 type CountryActions = {
@@ -15,7 +14,9 @@ type CountryActions = {
 }
 
 const defaultInitalState = {
-    country: defaultCountry,
+    country: {
+        currency: 'EUR',
+    },
 }
 
 export type CountryStore = CountryState & CountryActions

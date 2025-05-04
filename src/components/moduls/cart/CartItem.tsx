@@ -39,7 +39,7 @@ export const CartItem: React.FC<{ item: ICartItem }> = ({ item }) => {
                     </Link>
                 </div>
                 <div className="flex flex-row justify-between items-center">
-                    <div className="font-bold font-sans">{formatPrice(price * quantity, country.currency)}</div>
+                    <div className="font-bold font-sans">{formatPrice(price * quantity, country?.currency)}</div>
                     <button
                         onClick={() => removeItemFromCart()}
                         className="ml-auto hover:bg-emerald-50 transition-colors rounded-full duration-500 p-1"

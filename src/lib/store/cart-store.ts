@@ -1,5 +1,7 @@
+import { nonNullable } from '@/utils/typeUtils'
 import { persist } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
+import { getProducts } from '../api/woo/products/getProducts'
 
 export interface ICartItem {
     name: string
@@ -30,6 +32,7 @@ type CartStoreState = {
     items: ICartItem[]
     shouldDisplayCart: boolean
     totalPrice: number
+    _hasHydrated: boolean
 }
 
 type CartStoreActions = {
@@ -41,12 +44,16 @@ type CartStoreActions = {
     handleOpenCart: () => void
     handleCloseCart: () => void
     changeCurrency: (currency: string) => void
+    clearCart: () => void
+    setHasHydrated: (state: boolean) => void
+    validateCart: () => Promise<ICartItem[]>
 }
 
 const defaultInitalState: CartStoreState = {
     items: [],
     shouldDisplayCart: false,
     totalPrice: 0,
+    _hasHydrated: false,
 }
 
 export type CartStore = CartStoreState & CartStoreActions
@@ -54,7 +61,7 @@ export type CartStore = CartStoreState & CartStoreActions
 export const createCartStore = (initState: CartStoreState = defaultInitalState) =>
     createStore<CartStore>()(
         persist(
-            set => ({
+            (set, get) => ({
                 ...initState,
                 // Add a new item to the cart or update the quantity if it exists
                 addItem: newItem => {
@@ -74,7 +81,11 @@ export const createCartStore = (initState: CartStoreState = defaultInitalState) 
                         return { items: updatedItems, totalPrice }
                     })
                 },
-
+                setHasHydrated: state => {
+                    set({
+                        _hasHydrated: state,
+                    })
+                },
                 // Remove an item from the cart by its id
                 removeItem: id => {
                     set(state => {
@@ -83,7 +94,9 @@ export const createCartStore = (initState: CartStoreState = defaultInitalState) 
                         return { items: updatedItems, totalPrice }
                     })
                 },
-
+                clearCart: () => {
+                    set(() => ({ items: [], totalPrice: 0 }))
+                },
                 // Increase the quantity of an item by its id
                 incrementItemQuantity: id => {
                     set(state => {
@@ -128,9 +141,45 @@ export const createCartStore = (initState: CartStoreState = defaultInitalState) 
                         return { items: updatedItems, totalPrice }
                     })
                 },
+                validateCart: async () => {
+                    const { items } = get()
+
+                    if (!items) return []
+
+                    const freshProducts = await getProducts()
+
+                    const removed: ICartItem[] = []
+
+                    const updatedItems: ICartItem[] = items
+                        .map(item => {
+                            const freshProduct = freshProducts?.find(f => f.id.toString() === item.id)
+
+                            if (
+                                !freshProduct ||
+                                freshProduct?.stock_quantity === 0 ||
+                                Number(freshProduct?.price) !== item.price
+                            ) {
+                                removed.push(item)
+                                return null
+                            }
+
+                            return item
+                        })
+                        .filter(nonNullable)
+
+                    set({
+                        items: updatedItems,
+                        totalPrice: updatedItems.reduce((acc, i) => acc + i.price * i.quantity, 0),
+                    })
+
+                    return removed
+                },
             }),
             {
                 name: 'cart-storage',
+                onRehydrateStorage: state => {
+                    return () => state.setHasHydrated(true)
+                },
             },
         ),
     )

@@ -19,7 +19,7 @@ export const CartTable = () => {
     const t = useTranslations()
     const cartCount = items.length
     const emptyCart = (cartCount ?? 0) === 0
-    console.log(items)
+
     if (emptyCart) {
         return (
             <Card className="space-y-8 p-4">
