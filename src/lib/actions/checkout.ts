@@ -2,13 +2,13 @@
 
 import { CheckoutFormValues } from '@/app/[locale]/checkout/page'
 import axios from 'axios'
-import { cookies, headers } from 'next/headers'
 import Stripe from 'stripe'
 import { getCachedProducts } from '../api/woo/products/getProducts'
 import { wooApi } from '../api/woo/woo'
 import { WooTypes } from '../api/woo/WooTyps'
 import { ICartItem } from '../store/cart-store'
-import { serverStripe } from '../stripe/server-stripe'
+import { createCheckoutSession } from '../stripe/server-stripe'
+
 export type CheckoutActionResponse = {
     success: boolean
     message?: string
@@ -101,17 +101,7 @@ export const checkout = async ({
             }
         }
 
-        const headersList = await headers()
-
-        const cookieStore = await cookies()
-        const locale = cookieStore.get('NEXT_LOCALE')?.value
-
-        const checkoutSession = await serverStripe.checkout.sessions.create({
-            mode: 'payment',
-            line_items: validatedItems,
-            success_url: `${headersList.get('origin')}/${locale}/payment-success?session_id={CHECKOUT_SESSION_ID}&orderId=${wooResult.data.id}`,
-            cancel_url: `${headersList.get('origin')}/${locale}/`,
-        })
+        const checkoutSession = await createCheckoutSession(validatedItems, wooResult.data.id)
 
         if (checkoutSession.id) {
             return {
@@ -132,7 +122,7 @@ export const checkout = async ({
     }
 }
 
-type ValidatedItem = Stripe.Checkout.SessionCreateParams.LineItem & {
+export type ValidatedItem = Stripe.Checkout.SessionCreateParams.LineItem & {
     price_data: {
         unit_amount: number
         currency: string

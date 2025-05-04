@@ -5,44 +5,44 @@ import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
 import { euCountries } from '@/utils/euCountries'
 import axios from 'axios'
+import { useTranslations } from 'next-intl'
 import React from 'react'
-
-export const defaultCountry = {
-    name: 'Default',
-    code: 'UU',
-    dial_code: '+00',
-    flag: 'UU',
-    currency: 'EUR',
-    currency_sign: '€',
-}
 
 export default function CountrySwitcher() {
     const { country, setCountry } = useCountryStore(state => state)
     const changeCurrency = useCartStore(state => state.changeCurrency)
+    const t = useTranslations()
 
     const handleChange = (code: string) => {
-        const country = euCountries.find(country => country.code === code) ?? defaultCountry
-        setCountry(country)
-        changeCurrency(country?.currency)
+        const country = euCountries.find(country => country.code === code)
+        if (country) {
+            setCountry(country)
+            changeCurrency(country?.currency ?? '')
+        }
     }
 
     React.useEffect(() => {
         const getData = async () => {
             const response = await axios.get('https://api.country.is/')
 
-            const country = euCountries.find(country => country.code === response.data.country) ?? defaultCountry
+            const country = euCountries.find(country => country.code === response.data.country)
 
-            setCountry(country)
-            changeCurrency(country?.currency)
+            if (country) {
+                setCountry(country)
+                changeCurrency(country?.currency)
+                return
+            }
+            changeCurrency('EUR')
         }
 
         getData()
     }, [setCountry, changeCurrency])
+    console.log(country)
 
     return (
         <Select onValueChange={handleChange} value={country?.code}>
             <SelectTrigger className="w-fit mt-auto truncate">
-                <SelectValue />
+                <SelectValue placeholder={t('Form.select_country')} />
             </SelectTrigger>
             <SelectContent>
                 {euCountries.map(country => (

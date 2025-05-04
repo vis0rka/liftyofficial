@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
-export default function Error({ error }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function PaymentSuccessPageError({ error }: { error: Error & { digest?: string }; reset: () => void }) {
     const t = useTranslations()
 
     useEffect(() => {
