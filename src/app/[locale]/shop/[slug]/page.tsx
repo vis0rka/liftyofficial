@@ -1,5 +1,4 @@
 import { ErrorCard } from '@/components/error/ErrorCard'
-import { BestSellersProducts } from '@/components/moduls/products/BestSellersProducts'
 import { AddToCartBtn } from '@/components/products/card/AddToCartBtn'
 import { CarrierFeatures } from '@/components/products/descriptions/features/CarrierFeatures'
 import { CarrierLongDescription } from '@/components/products/descriptions/long/CarrierLongDescription'
@@ -12,6 +11,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ProductPrice } from '@/hooks/useGetProductPrice'
 import { getCachedProduct } from '@/lib/api/woo/products/getProducts'
+import { BestSellersProducts } from '@/moduls/products/BestSellersProducts'
 import { getTranslations } from 'next-intl/server'
 
 type Props = {

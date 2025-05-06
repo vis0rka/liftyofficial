@@ -79,7 +79,8 @@
         "view_cart": "Zobacz koszyk",
         "checkout": "Zamówienie",
         "continue_shopping": "Kontynuuj zakupy",
-        "view": "Zobacz"
+        "view": "Zobacz",
+        "legal": "Oświadczenie o prawie"
     },
     "Error": {
         "something_went_wrong": "Coś poszło nie tak...",

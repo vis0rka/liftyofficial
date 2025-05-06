@@ -1,9 +1,9 @@
-import { KeyFeatures } from '@/components/moduls/key-features/KeyFeatures'
-import { ProductListWithFilters } from '@/components/moduls/products/ProductListWithFilters'
 import { productQueryOption } from '@/lib/api/woo/products/productQueries'
+import { KeyFeatures } from '@/moduls/key-features/KeyFeatures'
+import { ProductListWithFilters } from '@/moduls/products/ProductListWithFilters'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { getTranslations } from 'next-intl/server'
-import { getQueryClient } from '../get-query-client'
+import { getQueryClient } from '../../../lib/query-client/get-query-client'
 
 export default async function ShopPage() {
     const queryClient = getQueryClient()

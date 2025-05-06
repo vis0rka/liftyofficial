@@ -1,7 +1,7 @@
 'use server'
+import { ProductCard } from '@/components/products/card/ProductCard'
 import { getCachedProducts } from '@/lib/api/woo/products/getProducts'
 import { getTranslations } from 'next-intl/server'
-import { ProductCard } from '../../products/card/ProductCard'
 
 export const BestSellersProducts = async () => {
     const allProduct = await getCachedProducts()
