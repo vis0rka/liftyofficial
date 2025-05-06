@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
-import { Analytics } from '@vercel/analytics/next'
+import { Scripts } from '@/moduls/scripts/Scripts'
+
 import type { Metadata } from 'next'
 import { Baloo_Bhai_2, Poppins } from 'next/font/google'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
@@ -32,7 +33,7 @@ export default async function LocaleLayout({ children }: { children: React.React
                 <Providers>
                     <NuqsAdapter>{children}</NuqsAdapter>
                 </Providers>
-                <Analytics />
+                <Scripts />
             </body>
         </html>
     )

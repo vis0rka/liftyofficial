@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
         BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
         RECAPTCHA_SECRET: process.env.RECAPTCHA_SECRET,
         RECAPTCHA_SITE: process.env.RECAPTCHA_SITE,
+        GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID,
     },
     images: {
         remotePatterns: [{ protocol: 'https', hostname: 'liftyofficial.com' }],

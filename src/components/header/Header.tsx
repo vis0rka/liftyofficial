@@ -17,8 +17,9 @@ import { Link } from '@/i18n/routing'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { Cart } from '../moduls/cart/Cart'
-import { useModals } from '../moduls/modals/ModalService'
+
+import { Cart } from '@/moduls/cart/Cart'
+import { useModals } from '@/moduls/modals/ModalService'
 import CountrySwitcher from './components/CurrencySwitcher'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import {

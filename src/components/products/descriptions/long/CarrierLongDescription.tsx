@@ -1,5 +1,5 @@
-import { KeyFeatures } from '@/components/moduls/key-features/KeyFeatures'
-import { ShopFeatures } from '@/components/moduls/key-features/ShopFeatures'
+import { KeyFeatures } from '@/moduls/key-features/KeyFeatures'
+import { ShopFeatures } from '@/moduls/key-features/ShopFeatures'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import dottedImage from './media/dotted-description-2.webp'

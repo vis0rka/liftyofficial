@@ -1,6 +1,6 @@
-import { CartTable } from '@/components/moduls/cart/CartTable'
 import { RecentlyViewed } from '@/components/products/recently-viewed/RecentlyViewed'
 import { Separator } from '@/components/ui/separator'
+import { CartTable } from '@/moduls/cart/CartTable'
 
 export default async function CartPage() {
     return (

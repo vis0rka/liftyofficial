@@ -1,8 +1,9 @@
 'use server'
 import { Herobanner } from '@/components/herobanner/Herobanner'
-import { KeyFeatures } from '@/components/moduls/key-features/KeyFeatures'
-import { ShopFeatures } from '@/components/moduls/key-features/ShopFeatures'
-import { BestSellersProducts } from '@/components/moduls/products/BestSellersProducts'
+import { KeyFeatures } from '@/moduls/key-features/KeyFeatures'
+import { ShopFeatures } from '@/moduls/key-features/ShopFeatures'
+import { BestSellersProducts } from '@/moduls/products/BestSellersProducts'
+
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
