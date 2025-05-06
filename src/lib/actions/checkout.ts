@@ -13,6 +13,7 @@ export type CheckoutActionResponse = {
     success: boolean
     message?: string
     id?: string
+    wooOrderId?: string
 }
 
 type CheckoutParams = {
@@ -107,6 +108,7 @@ export const checkout = async ({
             return {
                 success: true,
                 id: checkoutSession.id,
+                wooOrderId: wooResult.data.id,
             }
         }
         return {

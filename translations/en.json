@@ -118,9 +118,11 @@
     "Order": {
         "cant_find_your_order": "Sorry we can't find your order!",
         "your_payment_status": "Your payment status is: {status}",
+        "your_order_status": "Your order status is: <important> {status} </important>",
         "thank_you_order": "Thank you for your order, {name}!",
         "your_order_id": " Your order id: <important> {orderId} </important>",
-        "confirmation_email_sent": "The order confirmation email with details of your order has been sent to your email address."
+        "confirmation_email_sent": "The order confirmation email with details of your order has been sent to your email address.",
+        "paid": "paid"
     },
     "Form": {
         "contact": "Contact",
@@ -144,7 +146,9 @@
         "place_order": "Place Order",
         "total": "Total",
         "shipping": "Shipping",
-        "free": "Free"
+        "free": "Free",
+        "order_success": "Order successfully placed! You are now redirected to the secure payment page... in {count} seconds",
+        "start_payment": "Start payment now"
     },
     "Validation": {
         "email": "Please enter a valid email address",

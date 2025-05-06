@@ -1,6 +1,7 @@
 'use client'
 import { ErrorCard } from '@/components/error/ErrorCard'
-import { LoadingButton } from '@/components/ui/button'
+import { Button, LoadingButton } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { ClientOnly } from '@/components/ui/ClientOnly'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -44,28 +45,27 @@ export type CheckoutFormValues = z.infer<ReturnType<typeof schema>>
 
 export default function CartPage() {
     const params = useParams()
-    const { items, totalPrice } = useCartStore(state => state)
+    const { items, totalPrice, clearCart } = useCartStore(state => state)
     const t = useTranslations()
-    const [status, setStatus] = React.useState<'idle' | 'loading' | 'error'>('idle')
+    const [status, setStatus] = React.useState<'idle' | 'loading' | 'error' | 'order-success'>('idle')
     const [tax, setTax] = React.useState<GetTaxRateResults>()
     const countryFromStore = useCountryStore(state => state.country)
     const { executeRecaptcha } = useReCaptcha()
-
-    const isDefaultCountry = countryFromStore.name === 'Default'
+    const [stripeSessionId, setStripeSessionId] = React.useState<string | null>(null)
 
     const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(schema(t)),
         defaultValues: {
             email: '',
             newsAndOffers: false,
-            country: isDefaultCountry ? '' : countryFromStore.code,
+            country: countryFromStore?.code || '',
             firstName: '',
             lastName: '',
             address: '',
             apartment: '',
             postalCode: '',
             city: '',
-            dialCode: isDefaultCountry ? '' : countryFromStore.dial_code,
+            dialCode: countryFromStore?.dial_code || '',
             phoneNumber: '',
         },
     })
@@ -87,10 +87,9 @@ export default function CartPage() {
             })
 
             if (result.id) {
-                const clientStripe = await getClientStripe()
+                setStripeSessionId(result.id)
+                setStatus('order-success')
 
-                clientStripe?.redirectToCheckout({ sessionId: result.id })
-                setStatus('idle')
                 return
             }
 
@@ -99,6 +98,8 @@ export default function CartPage() {
         } catch (error) {
             console.error(error)
             setStatus('error')
+        } finally {
+            clearCart()
         }
     }
 
@@ -120,6 +121,13 @@ export default function CartPage() {
         }
         fetchTax()
     }, [country, totalPrice])
+
+    const redirectToCheckout = React.useCallback(async () => {
+        if (status === 'order-success' && stripeSessionId) {
+            const clientStripe = await getClientStripe()
+            clientStripe?.redirectToCheckout({ sessionId: stripeSessionId })
+        }
+    }, [status, stripeSessionId])
 
     return (
         <section className="container flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6">
@@ -339,14 +347,18 @@ export default function CartPage() {
                             />
                             <div className="flex justify-center items-center flex-col gap-4">
                                 {status === 'error' && <ErrorCard title={t('Error.something_went_wrong_checkout')} />}
-                                <LoadingButton
-                                    type="submit"
-                                    size="xl"
-                                    isLoading={status === 'loading'}
-                                    disabled={status === 'error'}
-                                >
-                                    {t('Form.place_order')}
-                                </LoadingButton>
+                                {status === 'order-success' ? (
+                                    <Counter redirectToCheckout={redirectToCheckout} />
+                                ) : (
+                                    <LoadingButton
+                                        type="submit"
+                                        size="xl"
+                                        isLoading={status === 'loading'}
+                                        disabled={status === 'error'}
+                                    >
+                                        {t('Form.place_order')}
+                                    </LoadingButton>
+                                )}
                             </div>
                         </div>
                     </form>
@@ -419,5 +431,39 @@ export default function CartPage() {
                 </div>
             </div>
         </section>
+    )
+}
+
+type CounterProps = {
+    redirectToCheckout: () => void
+}
+
+const Counter = ({ redirectToCheckout }: CounterProps) => {
+    const [count, setCount] = React.useState(5)
+
+    const t = useTranslations()
+
+    React.useEffect(() => {
+        if (count === 0) {
+            redirectToCheckout()
+            return
+        }
+
+        const timer = setTimeout(() => {
+            setCount(prev => prev - 1)
+        }, 1000)
+
+        return () => clearTimeout(timer)
+    }, [count, redirectToCheckout])
+
+    return (
+        <Card className="p-4 bg-green-600  flex flex-col space-y-4">
+            <p className="text-white text-center">{t('Form.order_success', { count: count })}</p>
+            <div className="flex flex-row justify-center">
+                <Button variant="outline" onClick={redirectToCheckout}>
+                    {t('Form.start_payment')}
+                </Button>
+            </div>
+        </Card>
     )
 }

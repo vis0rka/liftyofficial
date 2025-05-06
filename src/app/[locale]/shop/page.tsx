@@ -16,12 +16,12 @@ export default async function ShopPage() {
             <h1 className="text-center ~text-2xl/4xl">
                 Lifty {t('Common.premium')} - {t('Common.toddler_carrier', { count: 2 })}
             </h1>
-            <p>{t('ShopPage.description')}</p>
-            <KeyFeatures />
 
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <ProductListWithFilters />
             </HydrationBoundary>
+            <p>{t('ShopPage.description')}</p>
+            <KeyFeatures />
         </section>
     )
 }

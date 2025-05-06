@@ -111,7 +111,9 @@
         "your_payment_status": "Status Twojej płatności to: {status}",
         "thank_you_order": "Dziękujemy za Twoje zamówienie, {name}!",
         "your_order_id": " Numer Twojego zamówienia: <important> {orderId} </important>",
-        "confirmation_email_sent": "E-mail z potwierdzeniem zamówienia wraz ze szczegółami został wysłany na Twój adres e-mail."
+        "confirmation_email_sent": "E-mail z potwierdzeniem zamówienia wraz ze szczegółami został wysłany na Twój adres e-mail.",
+        "your_order_status": "Status Twojego zamówienia to: <important> {status} </important>",
+        "paid": "opłacone"
     },
     "Form": {
         "contact": "Kontakt",
@@ -135,7 +137,9 @@
         "place_order": "Złóż zamówienie",
         "total": "Razem",
         "shipping": "Dostawa",
-        "free": "Darmowa"
+        "free": "Darmowa",
+        "order_success": "Zamówienie złożone! Jesteś teraz przekierowywany na bezpieczną stronę płatności... w {count} sekundach",
+        "start_payment": "Rozpocznij płatność teraz"
     },
     "Validation": {
         "email": "Proszę podać poprawny adres e-mail",

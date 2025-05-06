@@ -1,4 +1,3 @@
-import { ClearCart } from '@/components/moduls/cart/ClearCart'
 import { wooApi } from '@/lib/api/woo/woo'
 import { getCheckoutSession } from '@/lib/stripe/server-stripe'
 import { Smile } from 'lucide-react'
@@ -45,14 +44,19 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
             <h1 className="~text-xl/4xl text-center">
                 {t('Order.thank_you_order', { name: session?.customer_details?.name })}
             </h1>
-            <h2 className="~text-base/2xl text-center">
+            <h2 className="~text-xl/2xl text-center">
                 {t.rich('Order.your_order_id', {
                     important: chunks => <b>{chunks}</b>,
                     orderId: wooResult?.data?.id,
                 })}
             </h2>
+            <h2 className="~text-xl/2xl text-center">
+                {t.rich('Order.your_order_status', {
+                    important: chunks => <b>{chunks}</b>,
+                    status: t('Order.paid'),
+                })}
+            </h2>
             <p className="~text-base/xl text-center"> {t('Order.confirmation_email_sent')}</p>
-            <ClearCart />
         </section>
     )
 }

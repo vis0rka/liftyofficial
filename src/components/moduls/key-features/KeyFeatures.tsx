@@ -26,7 +26,7 @@ export const KeyFeatures = async () => {
         <div className="flex flex-col gap-8 lg:flex-row items-center">
             {keyFeatuers.map(feature => {
                 return (
-                    <div className="lg:w-full flex flex-col items-center lg:w-1/3" key={feature.imageSrc}>
+                    <div className="flex flex-col items-center lg:w-1/3" key={feature.imageSrc}>
                         <Image src={feature.imageSrc} alt="icon feather" width={60} height={60} />
                         <h3 className="text-lg font-bold">{t(feature.title)}</h3>
                         <p>{t(feature.descr)}</p>
