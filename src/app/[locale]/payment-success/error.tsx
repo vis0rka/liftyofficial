@@ -18,7 +18,7 @@ export default function PaymentSuccessPageError({ error }: { error: Error & { di
         <main className="container mx-auto flex flex-col my-10 space-y-6">
             <ErrorCard />
             <Button asChild variant="default">
-                <Link href="/" className="mx-auto">
+                <Link href="/" className="mx-auto" legacyBehavior>
                     {t('Common.Home')}
                 </Link>
             </Button>

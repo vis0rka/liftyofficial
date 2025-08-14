@@ -37,7 +37,6 @@ export default function CountrySwitcher() {
 
         getData()
     }, [setCountry, changeCurrency])
-    console.log(country)
 
     return (
         <Select onValueChange={handleChange} value={country?.code}>

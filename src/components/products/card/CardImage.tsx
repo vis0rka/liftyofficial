@@ -23,6 +23,8 @@ export const CardImage: React.FC<CardImageProps> = ({ productImages }) => {
             height={600}
             style={{
                 objectFit: 'contain',
+                maxWidth: '100%',
+                height: 'auto',
             }}
             alt={imageAlt}
         />

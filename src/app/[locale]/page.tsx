@@ -23,7 +23,7 @@ export default async function HomePage() {
                         </div>
                         <div className="lg:w-1/2 flex justify-center items-center">
                             <Image
-                                src="/images/lifty-autumn-arrow-fan.webp"
+                                src="/images/lifty-premium-hip-carrier-green-lake.webp"
                                 width={600}
                                 height={600}
                                 alt="lifty-toddler-carrier-autumn"

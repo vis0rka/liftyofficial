@@ -13,7 +13,7 @@ export default async function ShopPage() {
 
     return (
         <section className="container mx-auto flex flex-col my-10 space-y-4">
-            <h1 className="text-center ~text-2xl/4xl">
+            <h1 className="heading-1 text-center">
                 Lifty {t('Common.premium')} - {t('Common.toddler_carrier', { count: 2 })}
             </h1>
 

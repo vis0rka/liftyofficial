@@ -3,7 +3,7 @@
 import { Menu, User, X } from 'lucide-react'
 import * as React from 'react'
 
-import { Button } from '@/components/ui/button'
+import { Button, LoadingButton } from '@/components/ui/button'
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -12,14 +12,21 @@ import {
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Separator } from '@/components/ui/separator'
-
-import { Link } from '@/i18n/routing'
+import useSession from '@/hooks/useSession'
+import { Link, useRouter } from '@/i18n/routing'
+import { Cart } from '@/moduls/cart/Cart'
+import { useModals } from '@/moduls/modals/ModalService'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-
-import { Cart } from '@/moduls/cart/Cart'
-import { useModals } from '@/moduls/modals/ModalService'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuTrigger,
+} from '../ui/dropdown-menu'
 import CountrySwitcher from './components/CurrencySwitcher'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import {
@@ -28,6 +35,7 @@ import {
     MobileMenuDialogTitle,
     MobileMenuDialogTrigger,
 } from './components/mobileMenuDialog'
+
 const menuItems = [
     { title: 'Common.home', href: '/' },
     { title: 'Common.shop', href: '/shop' },
@@ -37,11 +45,10 @@ const menuItems = [
 export function Header() {
     const [isOpen, setIsOpen] = React.useState(false)
     const t = useTranslations()
-    const { openModal } = useModals()
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white">
-            <div className={`container flex h-[--header-height] items-center justify-between mx-auto`}>
+            <div className={`container flex h-[var(--header-height)] items-center justify-between mx-auto`}>
                 <div className="flex items-center md:w-1/3">
                     <MobileMenuDialog open={isOpen} onOpenChange={setIsOpen}>
                         <MobileMenuDialogTrigger asChild>
@@ -109,7 +116,7 @@ export function Header() {
                     <LanguageSwitcher />
                     <CountrySwitcher />
                     <Cart />
-                    <User className="w-8 h-8 shrink-0 cursor-pointer" onClick={() => openModal('login')} />
+                    <UserMenu />
                 </div>
             </div>
         </header>
@@ -138,5 +145,61 @@ function MobileNav({ items, setIsOpen }: MobileNavProps) {
                 </React.Fragment>
             ))}
         </nav>
+    )
+}
+
+const UserMenu = () => {
+    const { session, isLoading, logout } = useSession()
+    const { openModal } = useModals()
+    const t = useTranslations()
+    const [loading, setLoading] = React.useState(false)
+    const router = useRouter()
+
+    if (!session?.isLoggedIn || isLoading) {
+        return (
+            <Button variant="icon" size="icon" onClick={() => openModal('login')}>
+                <User className="w-8 h-8 shrink-0 cursor-pointer" />
+            </Button>
+        )
+    }
+
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="icon" size="icon">
+                    <User className="w-8 h-8 shrink-0 cursor-pointer" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56" align="start">
+                <DropdownMenuLabel>{t('Common.my_account')}</DropdownMenuLabel>
+                <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                        <Link className="w-full" href="/account">
+                            {t('Common.account')}
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <Link className="w-full" href="/account/orders">
+                            {t('Common.orders')}
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <LoadingButton
+                            variant="ghost"
+                            isLoading={loading}
+                            onClick={async () => {
+                                setLoading(true)
+                                await logout()
+                                router.push(`/`)
+                                setLoading(false)
+                            }}
+                            className="text-sm font-normal p-0 m-0 h-auto w-full justify-start"
+                        >
+                            {t('Common.logout')}
+                        </LoadingButton>
+                    </DropdownMenuItem>
+                </DropdownMenuGroup>
+            </DropdownMenuContent>
+        </DropdownMenu>
     )
 }

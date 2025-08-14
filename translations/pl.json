@@ -86,6 +86,10 @@
         "cart_updated": "Twój koszyk został zaktualizowany: niedostępne przedmioty lub te ze zmienioną ceną zostały usunięte. Proszę sprawdź przed finalizacją zakupu."
     },
     "Error": {
+        "title": "Coś poszło nie tak!",
+        "shopMessage": "Przepraszamy za błąd. Wystąpił problem podczas ładowania strony sklepu.",
+        "goHome": "Przejdź do strony głównej",
+        "tryAgain": "Spróbuj ponownie",
         "something_went_wrong": "Coś poszło nie tak...",
         "contact": "Skontaktuj się z pomocą techniczną pod adresem"
     },

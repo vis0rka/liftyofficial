@@ -82,6 +82,10 @@
         "view": "Ansehen"
     },
     "Error": {
+        "title": "Etwas ist schiefgelaufen!",
+        "shopMessage": "Entschuldigung für den Fehler. Beim Laden der Shop-Seite ist ein Problem aufgetreten.",
+        "goHome": "Zur Startseite",
+        "tryAgain": "Erneut versuchen",
         "something_went_wrong": "Etwas ist schiefgelaufen...",
         "contact": "Bitte kontaktieren Sie den Support unter"
     },

@@ -83,12 +83,22 @@
         "view": "View",
         "checkout_including": "Including {sign} {tax} in taxes",
         "login": "Login",
-        "cart_updated": "Your cart has been updated: unavailable items or prices changed items were removed. Please review before checking out."
+        "cart_updated": "Your cart has been updated: unavailable items or prices changed items were removed. Please review before checking out.",
+        "logout": "Logout",
+        "my_account": "My Account",
+        "orders": "Orders",
+        "account": "Account"
     },
     "Error": {
+        "title": "Something went wrong!",
+        "shopMessage": "Sorry about the error. We encountered a problem while loading the shop page.",
+        "goHome": "Go to Homepage",
+        "tryAgain": "Try Again",
         "something_went_wrong": "Something went wrong...",
         "contact": "Please contact support at",
-        "something_went_wrong_checkout": "Something went wrong while checking out. Please refresh the page and try again."
+        "something_went_wrong_checkout": "Something went wrong while checking out. Please refresh the page and try again.",
+        "invalid_credentials": "Invalid email or password",
+        "login_error": "Something went wrong while logging in. Please try again."
     },
     "Product": {
         "in_stock": "In stock",
@@ -148,7 +158,9 @@
         "shipping": "Shipping",
         "free": "Free",
         "order_success": "Order successfully placed! You are now redirected to the secure payment page... in {count} seconds",
-        "start_payment": "Start payment now"
+        "start_payment": "Start payment now",
+        "login": "Login",
+        "password": "Password"
     },
     "Validation": {
         "email": "Please enter a valid email address",

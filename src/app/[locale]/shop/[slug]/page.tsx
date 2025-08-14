@@ -68,8 +68,8 @@ export default async function ProductDetailsPage({ params }: Props) {
                 <Card className="basis-1/2">
                     <CardHeader>
                         <CardTitle>
-                            <h1 className="~text-xl/4xl">{product.name}</h1>
-                            <span className="font-sans ~text-lg/2xl">
+                            <h1 className="heading-1">{product.name}</h1>
+                            <span className="font-sans heading-2">
                                 <ProductPrice prices={product.custom_prices} price={product.price} />
                             </span>
                         </CardTitle>

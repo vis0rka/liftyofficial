@@ -1,0 +1,24 @@
+/* Override vanilla-cookieconsent default styles */
+#cc-main .cm__btn[data-role='necessary'] {
+    color: var(--cc-btn-primary-border-color) !important;
+    background: white !important;
+    border: 2px solid var(--cc-btn-primary-border-color) !important;
+}
+#cc-main .cm__btn[data-role='necessary']:hover,
+#cc-main .cm__btn[data-role='necessary']:focus {
+    color: var(--cc-btn-primary-border-color) !important;
+    background: #ffffffe3 !important;
+    border-color: var(--cc-btn-primary-border-color) !important;
+}
+
+#cc-main .pm__btn[data-role='necessary'] {
+    color: var(--cc-btn-primary-border-color) !important;
+    background: white !important;
+    border: 2px solid var(--cc-btn-primary-border-color) !important;
+}
+#cc-main .pm__btn[data-role='necessary']:hover,
+#cc-main .pm__btn[data-role='necessary']:focus {
+    color: var(--cc-btn-primary-border-color) !important;
+    background: #ffffffe3 !important;
+    border-color: var(--cc-btn-primary-border-color) !important;
+}

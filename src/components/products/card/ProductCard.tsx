@@ -16,16 +16,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButto
     const t = useTranslations()
 
     return (
-        <Link
-            href={`/shop/${product?.slug}`}
-            className='flex shrink-0 lg:shrink flex-col basis-1/2 lg:basis-auto lg:flex-1 shadow overflow-hidden rounded-md  bg-white"'
-        >
+        <Link href={`/shop/${product?.slug}`} className="shadow overflow-hidden rounded-md  bg-white">
             <CardImage productImages={product?.images} />
 
             <div className="p-2 md:p-3 lg:p-5 flex flex-col items-center">
-                <h1 className="~text-md/lg text-center font-bold">
-                    Lifty - {t('Common.toddler_carrier', { count: 1 })}
-                </h1>
+                <h1 className="heading-2 text-center font-bold">Lifty - {t('Common.toddler_carrier', { count: 1 })}</h1>
                 <div className="flex flex-col justify-center items-center">
                     <span className="text-center text-2xl font-bold font-sans">
                         <ProductPrice price={product.price} prices={product.custom_prices} />
