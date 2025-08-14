@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import * as CookieConsent from 'vanilla-cookieconsent'
 import 'vanilla-cookieconsent/dist/cookieconsent.css'
 import { consentPluginConfig } from './consentConfig'
+import './cookie-consent.css'
 
 import { GoogleTagManager } from '@next/third-parties/google'
 import { useParams } from 'next/navigation'
