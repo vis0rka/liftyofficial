@@ -6,7 +6,9 @@ import { WooTypes } from '../WooTyps'
 
 export async function getProducts() {
     try {
-        const result = await wooApi.get('products', {})
+        const result = await wooApi.get('products', {
+            per_page: 100,
+        })
 
         return result?.data as WooTypes['getProducts']
     } catch (error) {
@@ -14,7 +16,7 @@ export async function getProducts() {
     }
 }
 
-export const getCachedProducts = unstable_cache(async () => getProducts(), ['featured'], {
+export const getCachedProducts = unstable_cache(async () => getProducts(), ['all-products'], {
     revalidate: 3600,
     tags: ['products'],
 })
