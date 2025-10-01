@@ -1,6 +1,6 @@
 'use client'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { routes } from '@/utils/routes'
 import Autoplay from 'embla-carousel-autoplay'
 import Fade from 'embla-carousel-fade'
@@ -12,16 +12,8 @@ import hero1 from './media/hero-1.webp'
 import hero2 from './media/hero-2.webp'
 
 const carousels = [
-    {
-        src: hero1.src,
-        title: 'Lifty',
-        desc: 'HomePage.the_toddler_hip_carrier',
-    },
-    {
-        src: hero2.src,
-        title: 'Lifty',
-        desc: 'HomePage.the_essentials_for_adventures',
-    },
+    { src: hero1.src, title: 'Lifty', desc: 'HomePage.the_toddler_hip_carrier' },
+    { src: hero2.src, title: 'Lifty', desc: 'HomePage.the_essentials_for_adventures' },
 ]
 
 export const Herobanner = () => {
@@ -29,13 +21,7 @@ export const Herobanner = () => {
     const [fadePlugin] = React.useState(() => Fade())
 
     return (
-        <Carousel
-            opts={{
-                align: 'start',
-            }}
-            plugins={[fadePlugin, autoPlayPlugin]}
-            className="w-full"
-        >
+        <Carousel opts={{ align: 'start' }} plugins={[fadePlugin, autoPlayPlugin]} className="w-full">
             <CarouselContent className="min-h-[600px] aspect-[1920/600]">
                 {carousels.map(item => {
                     return (

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ProductPrice } from '@/hooks/useGetProductPrice'
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
 import { ArrayElement } from '@/utils/typeUtils'
 import { useTranslations } from 'next-intl'

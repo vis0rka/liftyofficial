@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { formatPrice } from '@/hooks/useGetProductPrice'
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { checkout } from '@/lib/actions/checkout'
 import { getTaxRate, GetTaxRateResults } from '@/lib/actions/tax'
 import { useCartStore } from '@/lib/store/useCartStore'
@@ -434,9 +434,7 @@ export default function CartPage() {
     )
 }
 
-type CounterProps = {
-    redirectToCheckout: () => void
-}
+type CounterProps = { redirectToCheckout: () => void }
 
 const Counter = ({ redirectToCheckout }: CounterProps) => {
     const [count, setCount] = React.useState(5)

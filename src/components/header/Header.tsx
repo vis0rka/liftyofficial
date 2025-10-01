@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/navigation-menu'
 import { Separator } from '@/components/ui/separator'
 import useSession from '@/hooks/useSession'
-import { Link, useRouter } from '@/i18n/routing'
+import { Link, useRouter } from '@/i18n/navigation'
 import { Cart } from '@/moduls/cart/Cart'
 import { useModals } from '@/moduls/modals/ModalService'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
@@ -88,11 +88,7 @@ export function Header() {
                             width={120}
                             height={0}
                             alt="lifty-logo"
-                            style={{
-                                objectFit: 'contain',
-                                maxWidth: '100%',
-                                height: 'auto',
-                            }}
+                            style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
                             className="w-20 md:w-20 lg:w-24"
                         />
                     </Link>

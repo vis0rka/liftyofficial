@@ -1,7 +1,7 @@
 'use client'
 
 import { formatPrice } from '@/hooks/useGetProductPrice'
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { ICartItem } from '@/lib/store/cart-store'
 import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'

@@ -1,6 +1,6 @@
 'use server'
 
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { routes } from '@/utils/routes'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
@@ -43,11 +43,7 @@ export const Footer = async () => {
                         width={120}
                         height={0}
                         alt="lifty-logo"
-                        style={{
-                            objectFit: 'contain',
-                            maxWidth: '100%',
-                            height: 'auto',
-                        }}
+                        style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
                         className="w-16 md:w-20 lg:w-24"
                     />
                     <EmailSub />

@@ -1,8 +1,9 @@
 'use client'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { useRouter } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
-import { useParams, usePathname, useRouter } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import ReactCountryFlag from 'react-country-flag'
 
 const localeToCountryFlag: Record<string, { flag: string; name: string }> = {

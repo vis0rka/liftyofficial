@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { Link, routing } from '@/i18n/routing'
+import { Link, routing } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 

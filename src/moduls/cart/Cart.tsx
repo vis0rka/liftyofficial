@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { CartSheetContent, Sheet, SheetFooter, SheetTrigger } from '@/components/ui/sheet'
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { useCartStore } from '@/lib/store/useCartStore'
 import { ShoppingCart } from 'lucide-react'
 import { useTranslations } from 'next-intl'

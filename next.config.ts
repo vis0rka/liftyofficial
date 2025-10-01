@@ -17,12 +17,9 @@ const nextConfig: NextConfig = {
         RECAPTCHA_SITE: process.env.RECAPTCHA_SITE,
         GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID,
     },
-    images: {
-        remotePatterns: [{ protocol: 'https', hostname: 'liftyofficial.com' }],
-    },
-    experimental: {
-        viewTransition: true,
-    },
+    images: { remotePatterns: [{ protocol: 'https', hostname: 'liftyofficial.com' }] },
+    experimental: { viewTransition: true },
+    typedRoutes: true,
 }
 
 module.exports = withNextIntl(nextConfig)

@@ -2,8 +2,8 @@ import { Footer } from '@/components/footer/Footer'
 import { Header } from '@/components/header/Header'
 import { routing } from '@/i18n/routing'
 import ModalService from '@/moduls/modals/ModalService'
-import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
+import { hasLocale, NextIntlClientProvider } from 'next-intl'
+import { setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Toaster } from 'react-hot-toast'
 
@@ -16,17 +16,15 @@ export default async function LocaleLayout({
 }) {
     const { locale } = await params
     // Ensure that the incoming `locale` is valid
-    if (!routing.locales.includes(locale as any)) {
+    if (!hasLocale(routing.locales, locale)) {
         notFound()
     }
 
-    // Providing all messages to the client
-    // side is the easiest way to get started
-    const messages = await getMessages()
+    setRequestLocale(locale)
 
     return (
         <>
-            <NextIntlClientProvider messages={messages}>
+            <NextIntlClientProvider>
                 <Toaster position="top-right" />
                 <ModalService />
                 <Header />
