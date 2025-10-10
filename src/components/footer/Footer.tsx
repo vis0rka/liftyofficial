@@ -11,7 +11,7 @@ export const Footer = async () => {
     const t = await getTranslations()
 
     return (
-        <footer className="bg-stone-100 md:p-4 border-stone-200 border-t-2">
+        <footer className="bg-stone-100 p-2 md:p-4 border-stone-200 border-t-2">
             <div className="container mx-auto flex flex-row flex-wrap justify-between gap-4">
                 <div className="flex flex-col">
                     <h2 className="text-2xl">{t('Common.legal')}</h2>

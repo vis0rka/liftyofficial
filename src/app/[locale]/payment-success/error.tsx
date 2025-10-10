@@ -2,8 +2,8 @@
 
 import { ErrorCard } from '@/components/error/ErrorCard'
 import { Button } from '@/components/ui/button'
+import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
 import { useEffect } from 'react'
 
 export default function PaymentSuccessPageError({ error }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -18,7 +18,7 @@ export default function PaymentSuccessPageError({ error }: { error: Error & { di
         <main className="container mx-auto flex flex-col my-10 space-y-6">
             <ErrorCard />
             <Button asChild variant="default">
-                <Link href="/" className="mx-auto" legacyBehavior>
+                <Link href="/" className="mx-auto">
                     {t('Common.Home')}
                 </Link>
             </Button>

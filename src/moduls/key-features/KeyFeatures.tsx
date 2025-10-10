@@ -1,4 +1,5 @@
 'use server'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
@@ -23,14 +24,16 @@ const keyFeatuers = [
 export const KeyFeatures = async () => {
     const t = await getTranslations()
     return (
-        <div className="flex flex-col gap-8 lg:flex-row items-center">
+        <div className="flex flex-col gap-6 lg:flex-row items-center stretch">
             {keyFeatuers.map(feature => {
                 return (
-                    <div className="flex flex-col items-center lg:w-1/3" key={feature.imageSrc}>
-                        <Image src={feature.imageSrc} alt="icon feather" width={60} height={60} />
-                        <h3 className="text-lg font-bold">{t(feature.title)}</h3>
-                        <p>{t(feature.descr)}</p>
-                    </div>
+                    <Card className="flex flex-col items-center lg:w-1/3 grow h-full" key={feature.imageSrc}>
+                        <CardHeader className="flex flex-row items-center gap-2 w-full justify-items-start pb-2">
+                            <Image src={feature.imageSrc} alt="icon feather" width={40} height={40} />
+                            <CardTitle className="text-lg font-bold">{t(feature.title)}</CardTitle>
+                        </CardHeader>
+                        <CardContent>{t(feature.descr)}</CardContent>
+                    </Card>
                 )
             })}
         </div>

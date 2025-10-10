@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+    --header-height: 4rem;
+}
+
 @layer base {
     :root {
         --background: 0 0% 100%;
@@ -74,17 +78,6 @@
     h6 {
         font-family: var(--font-baloo);
     }
-
-    :root {
-        --header-height: 4rem;
-    }
-    .heading-1 {
-        @apply text-2xl lg:text-3xl xl:text-4xl font-bold;
-    }
-
-    .heading-2 {
-        @apply text-xl lg:text-2xl font-bold;
-    }
 }
 
 @layer base {
@@ -93,6 +86,14 @@
     }
     body {
         @apply bg-background text-foreground;
+    }
+
+    .heading-1 {
+        @apply text-2xl lg:text-3xl xl:text-4xl font-bold;
+    }
+
+    .heading-2 {
+        @apply text-xl lg:text-2xl font-bold;
     }
 }
 

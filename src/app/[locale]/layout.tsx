@@ -29,8 +29,8 @@ export default async function LocaleLayout({
                 <ModalService />
                 <Header />
                 <main>{children}</main>
+                <Footer />
             </NextIntlClientProvider>
-            <Footer />
         </>
     )
 }

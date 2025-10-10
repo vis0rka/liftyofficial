@@ -7,11 +7,11 @@ import { Button, LoadingButton } from '@/components/ui/button'
 import {
     NavigationMenu,
     NavigationMenuItem,
-    NavigationMenuLink,
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Separator } from '@/components/ui/separator'
+import { useBreakpoint } from '@/hooks/useBreakPoint'
 import useSession from '@/hooks/useSession'
 import { Link, useRouter } from '@/i18n/navigation'
 import { Cart } from '@/moduls/cart/Cart'
@@ -46,6 +46,8 @@ export function Header() {
     const [isOpen, setIsOpen] = React.useState(false)
     const t = useTranslations()
 
+    const fromSM = useBreakpoint('sm')
+
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-white">
             <div className={`container flex h-[var(--header-height)] items-center justify-between mx-auto`}>
@@ -76,7 +78,7 @@ export function Header() {
                             <MobileMenuDialogTitle>Navigation</MobileMenuDialogTitle>
                         </VisuallyHidden>
                         <MobileMenuDialogContent
-                            className={`w-full m-w-full h-[calc(100dvh_-_var(--header-height))] top-[--header-height] translate-y-0 p-4`}
+                            className={`w-full m-w-full h-[calc(100dvh_-_var(--header-height))] top-[var(--header-height)] translate-y-0 p-4`}
                         >
                             <MobileNav items={menuItems} setIsOpen={setIsOpen} />
                             <CountrySwitcher />
@@ -98,10 +100,8 @@ export function Header() {
                         <NavigationMenuList>
                             {menuItems.map(item => (
                                 <NavigationMenuItem key={item.title}>
-                                    <Link href={item.href} legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                            {t(item.title)}
-                                        </NavigationMenuLink>
+                                    <Link href={item.href} passHref className={navigationMenuTriggerStyle()}>
+                                        {t(item.title)}
                                     </Link>
                                 </NavigationMenuItem>
                             ))}
@@ -109,8 +109,8 @@ export function Header() {
                     </NavigationMenu>
                 </div>
                 <div className="flex items-center justify-end md:w-1/3 space-x-3">
+                    {fromSM && <CountrySwitcher />}
                     <LanguageSwitcher />
-                    <CountrySwitcher />
                     <Cart />
                     <UserMenu />
                 </div>

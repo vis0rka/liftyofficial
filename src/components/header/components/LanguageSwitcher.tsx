@@ -1,6 +1,7 @@
 'use client'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { useBreakpoint } from '@/hooks/useBreakPoint'
 import { useRouter } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 import { useParams, usePathname } from 'next/navigation'
@@ -16,17 +17,22 @@ export default function LanguageSwitcher() {
     const router = useRouter()
     const pathname = usePathname()
     const { locale } = useParams()
-
+    const fromSM = useBreakpoint('sm')
     const handleLanguageChange = (newLocale: string) => {
-        const newPathname = `/${newLocale}${pathname.replace(`/${locale}`, '')}`
-
-        router.push(newPathname)
+        router.push({ pathname: '/' }, { locale: newLocale })
     }
+    console.log(fromSM)
 
     return (
         <Select onValueChange={handleLanguageChange} value={locale as string}>
             <SelectTrigger className="w-[50px] sm:w-fit">
-                <SelectValue />
+                <SelectValue>
+                    {/*                     <ReactCountryFlag
+                        countryCode={localeToCountryFlag[locale as string].flag}
+                        svg
+                        style={{ width: '1.5em', height: '1.5em' }}
+                    /> */}
+                </SelectValue>
             </SelectTrigger>
             <SelectContent>
                 {routing.locales.map(country => (

@@ -20,9 +20,7 @@ export default async function NotFound() {
                 </CardContent>
                 <CardFooter>
                     <Button asChild className="w-full">
-                        <Link href="/" legacyBehavior>
-                            {t('home')}
-                        </Link>
+                        <Link href={{ pathname: '/' }}>{t('home')}</Link>
                     </Button>
                 </CardFooter>
             </Card>
