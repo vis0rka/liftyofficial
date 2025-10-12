@@ -24,15 +24,18 @@ const keyFeatuers = [
 export const KeyFeatures = async () => {
     const t = await getTranslations()
     return (
-        <div className="flex flex-col gap-6 lg:flex-row items-center stretch">
+        <div className="flex flex-col gap-6 lg:flex-row items-stretch">
             {keyFeatuers.map(feature => {
                 return (
-                    <Card className="flex flex-col items-center lg:w-1/3 grow h-full" key={feature.imageSrc}>
-                        <CardHeader className="flex flex-row items-center gap-2 w-full justify-items-start pb-2">
+                    <Card
+                        className="flex flex-col items-center lg:basis-1/3 full justify-between"
+                        key={feature.imageSrc}
+                    >
+                        <CardHeader className="flex flex-row items-center gap-2 w-full justify-center pb-2">
                             <Image src={feature.imageSrc} alt="icon feather" width={40} height={40} />
                             <CardTitle className="text-lg font-bold">{t(feature.title)}</CardTitle>
                         </CardHeader>
-                        <CardContent>{t(feature.descr)}</CardContent>
+                        <CardContent className="flex-1 flex text-center">{t(feature.descr)}</CardContent>
                     </Card>
                 )
             })}

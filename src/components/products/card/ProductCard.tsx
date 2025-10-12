@@ -16,7 +16,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButto
     const t = useTranslations()
 
     return (
-        <Link href={`/shop/${product?.slug}`} className="shadow overflow-hidden rounded-md  bg-white">
+        <Link href={`/shop/${product?.slug}`} className="shadow overflow-hidden rounded-md  bg-white product-card">
             <CardImage productImages={product?.images} />
 
             <div className="p-2 md:p-3 lg:p-5 flex flex-col items-center">

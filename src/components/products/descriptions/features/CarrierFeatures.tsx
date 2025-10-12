@@ -8,16 +8,16 @@ export const CarrierFeatures = async () => {
 
     return (
         <div className="flex flex-col space-y-4">
-            <div className="flex flex-row space-x-2 grow">
-                <Truck />
+            <div className="flex flex-row space-x-2 grow items-center">
+                <Truck size={30} />
                 <h5>{t('free_shipping')}</h5>
             </div>
-            <div className="flex flex-row space-x-2 grow">
-                <ClockAlert />
+            <div className="flex flex-row space-x-2 grow items-center">
+                <ClockAlert size={30} />
                 <h5>{t('order_before')}</h5>
             </div>
-            <div className="flex flex-row space-x-2 grow">
-                <CircleCheckBig />
+            <div className="flex flex-row space-x-2 grow items-center">
+                <CircleCheckBig size={30} />
                 <h5>{t('suitable')}</h5>
             </div>
         </div>

@@ -29,9 +29,9 @@ export const ProductImageGallery: React.FC<Props> = ({ images }) => {
                                     variant="ghost"
                                     onClick={() => setImage(index)}
                                     aria-label="Enlarge product image"
-                                    className="h-full w-full p-0 m-0 rounded-sm overflow-hidden shadow border-neutral-200 border"
+                                    className="h-full w-full relative p-0 m-0 rounded-sm overflow-hidden shadow border-neutral-200 border"
                                 >
-                                    <Image src={image.src} width={100} height={100} alt={image.alt} />
+                                    <Image src={image.src} fill alt={image.alt} />
                                 </Button>
                             </li>
                         )

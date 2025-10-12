@@ -21,7 +21,6 @@ export default function LanguageSwitcher() {
     const handleLanguageChange = (newLocale: string) => {
         router.push({ pathname: '/' }, { locale: newLocale })
     }
-    console.log(fromSM)
 
     return (
         <Select onValueChange={handleLanguageChange} value={locale as string}>

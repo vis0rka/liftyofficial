@@ -14,6 +14,7 @@ export type CheckoutActionResponse = {
     message?: string
     id?: string
     wooOrderId?: string
+    url?: string
 }
 
 type CheckoutParams = {
@@ -104,11 +105,12 @@ export const checkout = async ({
 
         const checkoutSession = await createCheckoutSession(validatedItems, wooResult.data.id)
 
-        if (checkoutSession.id) {
+        if (checkoutSession?.url) {
             return {
                 success: true,
                 id: checkoutSession.id,
                 wooOrderId: wooResult.data.id,
+                url: checkoutSession.url || '',
             }
         }
         return {

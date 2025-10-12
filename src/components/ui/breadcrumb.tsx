@@ -1,10 +1,10 @@
 'use client'
 
-import React from 'react'
-
-import { Link, routing } from '@/i18n/navigation'
+import { Link } from '@/i18n/navigation'
+import { routing } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
+import React from 'react'
 
 export const Breadcrumb = () => {
     const paths = usePathname()

@@ -10,17 +10,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator'
 import { formatPrice } from '@/hooks/useGetProductPrice'
 import { Link } from '@/i18n/navigation'
-import { checkout } from '@/lib/actions/checkout'
+import { checkout, CheckoutActionResponse } from '@/lib/actions/checkout'
 import { getTaxRate, GetTaxRateResults } from '@/lib/actions/tax'
 import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
-import { getClientStripe } from '@/lib/stripe/client-stripe'
 import { euCountries } from '@/utils/euCountries'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { useReCaptcha } from 'next-recaptcha-v3'
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React from 'react'
 import ReactCountryFlag from 'react-country-flag'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -51,7 +50,8 @@ export default function CartPage() {
     const [tax, setTax] = React.useState<GetTaxRateResults>()
     const countryFromStore = useCountryStore(state => state.country)
     const { executeRecaptcha } = useReCaptcha()
-    const [stripeSessionId, setStripeSessionId] = React.useState<string | null>(null)
+    const [stripeSession, setStripeSession] = React.useState<CheckoutActionResponse | null>(null)
+    const router = useRouter()
 
     const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(schema(t)),
@@ -87,7 +87,7 @@ export default function CartPage() {
             })
 
             if (result.id) {
-                setStripeSessionId(result.id)
+                setStripeSession(result)
                 setStatus('order-success')
 
                 return
@@ -123,11 +123,10 @@ export default function CartPage() {
     }, [country, totalPrice])
 
     const redirectToCheckout = React.useCallback(async () => {
-        if (status === 'order-success' && stripeSessionId) {
-            const clientStripe = await getClientStripe()
-            clientStripe?.redirectToCheckout({ sessionId: stripeSessionId })
+        if (status === 'order-success' && stripeSession?.url) {
+            window.location.href = stripeSession.url
         }
-    }, [status, stripeSessionId])
+    }, [status, stripeSession]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <section className="container flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6">
@@ -420,8 +419,8 @@ export default function CartPage() {
                             <div className="flex flex-row justify-start">
                                 <span className="text-sm">
                                     {t('Common.checkout_including', {
-                                        sign: tax?.tax?.currency,
-                                        tax: tax.taxAmount.toFixed(2),
+                                        sign: tax?.tax?.currency || '',
+                                        tax: tax.taxAmount?.toFixed(2),
                                     })}
                                 </span>
                             </div>

@@ -42,7 +42,7 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
         <section className="container mx-auto flex flex-col my-10 space-y-4 justify-center items-center">
             <Smile size="5em" />
             <h1 className="~text-xl/4xl text-center">
-                {t('Order.thank_you_order', { name: session?.customer_details?.name })}
+                {t('Order.thank_you_order', { name: session?.customer_details?.name ?? '' })}
             </h1>
             <h2 className="~text-xl/2xl text-center">
                 {t.rich('Order.your_order_id', {

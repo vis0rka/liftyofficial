@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         email: string
         password: string
     }
-    console.log('in route', email, password)
+
     if (!email || !password) {
         return Response.json({ error: 'Email and password are required' }, { status: 400 })
     }

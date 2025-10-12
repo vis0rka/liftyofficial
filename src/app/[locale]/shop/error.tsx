@@ -2,8 +2,8 @@
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { useRouter } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function ShopError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -16,7 +16,7 @@ export default function ShopError({ error, reset }: { error: Error & { digest?: 
     }, [error])
 
     const handleGoHome = () => {
-        router.push('/')
+        router.push({ pathname: '/' })
     }
 
     const handleTryAgain = () => {

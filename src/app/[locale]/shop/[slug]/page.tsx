@@ -61,7 +61,7 @@ export default async function ProductDetailsPage({ params }: Props) {
     }, {})
 
     return (
-        <section className="container mx-auto flex flex-col my-6 space-y-6">
+        <section className="container p-4 mx-auto flex flex-col my-6 space-y-6">
             <Breadcrumb />
             <div className="flex flex-col lg:flex-row gap-4">
                 <ProductImageGallery images={product.images} />
@@ -91,7 +91,7 @@ export default async function ProductDetailsPage({ params }: Props) {
             </div>
             <Card>
                 <CardHeader>
-                    <CardTitle className="~text-xl/2xl">{t('Product.description')}</CardTitle>
+                    <CardTitle className="~text-2xl/3xl">{t('Product.description')}</CardTitle>
                 </CardHeader>
                 <CardContent>{Object.values(tagsToLong)}</CardContent>
             </Card>

@@ -19,7 +19,6 @@ const nextConfig: NextConfig = {
     },
     images: { remotePatterns: [{ protocol: 'https', hostname: 'liftyofficial.com' }] },
     experimental: { viewTransition: true },
-    typedRoutes: true,
 }
 
 module.exports = withNextIntl(nextConfig)

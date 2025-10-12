@@ -28,7 +28,7 @@ export default async function LocaleLayout({
                 <Toaster position="top-right" />
                 <ModalService />
                 <Header />
-                <main>{children}</main>
+                <main className="pb-8">{children}</main>
                 <Footer />
             </NextIntlClientProvider>
         </>

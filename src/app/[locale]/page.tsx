@@ -13,8 +13,10 @@ export default async function HomePage() {
     return (
         <div className="space-y-8">
             <Herobanner />
-            <div className="container mx-auto flex flex-col space-y-10">
-                <BestSellersProducts />
+            <div className="w-full mx-auto flex flex-col space-y-10">
+                <section className="px-4 mx-auto w-full">
+                    <BestSellersProducts />
+                </section>
                 <section className="m-w-[600px] mx-auto px-4">
                     <div className="flex flex-col justify-center items-center lg:space-x-12 space-y-10 lg:flex-row">
                         <div className="w-full space-y-4 flex flex-col items-center justify-center lg:w-1/2">

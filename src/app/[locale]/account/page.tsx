@@ -21,9 +21,8 @@ async function Content({ params }: { params: Promise<{ locale: string }> }) {
     if (!session.user_id || !session.token) {
         redirect(`/${locale}/?modal=login`)
     }
-    console.log(session)
+
     const user = await wordpressApi.getUser(session.user_id, session.token)
 
-    console.log(user)
     return <section className="container mx-auto flex flex-col my-10 space-y-4"></section>
 }
