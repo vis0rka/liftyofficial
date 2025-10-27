@@ -87,7 +87,8 @@
         "logout": "Logout",
         "my_account": "My Account",
         "orders": "Orders",
-        "account": "Account"
+        "account": "Account",
+        "close": "Close"
     },
     "Error": {
         "title": "Something went wrong!",
@@ -98,7 +99,18 @@
         "contact": "Please contact support at",
         "something_went_wrong_checkout": "Something went wrong while checking out. Please refresh the page and try again.",
         "invalid_credentials": "Invalid email or password",
-        "login_error": "Something went wrong while logging in. Please try again."
+        "login_error": "Something went wrong while logging in. Please try again.",
+        "loginError": "Something went wrong while logging in. Please try again.",
+        "too_many_requests": "Too many requests. Please try again after 15 minutes."
+    },
+    "Auth": {
+        "magic_link_login": "Magic Link Login",
+        "magic_link_sent": "Magic link sent to your email!",
+        "magic_link_error": "Failed to send magic link",
+        "too_many_requests": "Too many requests. Please try again later.",
+        "invalid_email": "Please enter a valid email address.",
+        "check_email": "Check your email",
+        "send_magic_link": "Send Magic Link"
     },
     "Product": {
         "in_stock": "In stock",
@@ -160,7 +172,9 @@
         "order_success": "Order successfully placed! You are now redirected to the secure payment page... in {count} seconds",
         "start_payment": "Start payment now",
         "login": "Login",
-        "password": "Password"
+        "password": "Password",
+        "email_required": "Email is required",
+        "email_invalid": "Please enter a valid email address."
     },
     "Validation": {
         "email": "Please enter a valid email address",

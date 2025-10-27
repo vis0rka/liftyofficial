@@ -1,3 +1,5 @@
+import { TrustWidget } from '@/components/products/TrustWidget'
+import { PageSection } from '@/components/ui/page-section'
 import { productQueryOption } from '@/lib/api/woo/products/productQueries'
 import { KeyFeatures } from '@/moduls/key-features/KeyFeatures'
 import { ProductListWithFilters } from '@/moduls/products/ProductListWithFilters'
@@ -12,7 +14,7 @@ export default async function ShopPage() {
     void queryClient.prefetchQuery(productQueryOption)
 
     return (
-        <section className="container mx-auto flex flex-col my-10 space-y-4">
+        <PageSection className="space-y-6">
             <h1 className="heading-1 text-center">
                 Lifty {t('Common.premium')} - {t('Common.toddler_carrier', { count: 2 })}
             </h1>
@@ -20,8 +22,9 @@ export default async function ShopPage() {
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <ProductListWithFilters />
             </HydrationBoundary>
-            <p>{t('ShopPage.description')}</p>
             <KeyFeatures />
-        </section>
+            <p>{t('ShopPage.description')}</p>
+            <TrustWidget />
+        </PageSection>
     )
 }

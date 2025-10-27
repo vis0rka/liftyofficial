@@ -12,7 +12,7 @@ export const Footer = async () => {
 
     return (
         <footer className="bg-stone-100 p-2 md:p-4 border-stone-200 border-t-2">
-            <div className="container mx-auto flex flex-row flex-wrap justify-between gap-4">
+            <div className="  mx-auto flex flex-row flex-wrap justify-between gap-4">
                 <div className="flex flex-col">
                     <h2 className="text-2xl">{t('Common.legal')}</h2>
                     <Link href={routes.shipping}>
@@ -50,7 +50,7 @@ export const Footer = async () => {
                 </div>
             </div>
             <Separator className="mt-4" />
-            <div className="mt-4 container mx-auto flex flex-col items-center justify-center space-y-4">
+            <div className="mt-4   mx-auto flex flex-col items-center justify-center space-y-4">
                 <p className="text-xs text-slate-500">2024 ©lifty, All rights reserved</p>
                 <Image
                     src="/images/stripe-cc-payments1.webp"

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 
 const buttonVariants = cva(
-    'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+    'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
     {
         variants: {
             variant: {
@@ -54,7 +54,7 @@ interface LoadingButtonProps
     children?: React.ReactNode
 }
 
-export const LoadingButton: React.FC<LoadingButtonProps> = props => {
+const LoadingButton: React.FC<LoadingButtonProps> = props => {
     const { isLoading, children, ...otherProps } = props
 
     return (
@@ -67,4 +67,4 @@ export const LoadingButton: React.FC<LoadingButtonProps> = props => {
     )
 }
 
-export { Button, buttonVariants }
+export { Button, buttonVariants, LoadingButton }

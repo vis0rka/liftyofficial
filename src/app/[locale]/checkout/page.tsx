@@ -129,7 +129,7 @@ export default function CartPage() {
     }, [status, stripeSession]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <section className="container flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6">
+        <section className="  flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6">
             <div className="flex-1">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)}>

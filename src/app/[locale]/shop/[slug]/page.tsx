@@ -9,6 +9,7 @@ import { RecentlyViewed } from '@/components/products/recently-viewed/RecentlyVi
 import { Badge } from '@/components/ui/badge'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { PageSection } from '@/components/ui/page-section'
 import { ProductPrice } from '@/hooks/useGetProductPrice'
 import { getCachedProduct } from '@/lib/api/woo/products/getProducts'
 import { BestSellersProducts } from '@/moduls/products/BestSellersProducts'
@@ -61,7 +62,7 @@ export default async function ProductDetailsPage({ params }: Props) {
     }, {})
 
     return (
-        <section className="container p-4 mx-auto flex flex-col my-6 space-y-6">
+        <PageSection className="space-y-6">
             <Breadcrumb />
             <div className="flex flex-col lg:flex-row gap-4">
                 <ProductImageGallery images={product.images} />
@@ -89,15 +90,14 @@ export default async function ProductDetailsPage({ params }: Props) {
                     </CardContent>
                 </Card>
             </div>
-            <Card>
-                <CardHeader>
-                    <CardTitle className="~text-2xl/3xl">{t('Product.description')}</CardTitle>
-                </CardHeader>
-                <CardContent>{Object.values(tagsToLong)}</CardContent>
-            </Card>
+            <section className="space-y-4">
+                <h2 className="heading-2">{t('Product.description')}</h2>
+                <article>{Object.values(tagsToLong)}</article>
+            </section>
+
             <BestSellersProducts />
             <AddToRecentlyViewed product={product} />
             <RecentlyViewed />
-        </section>
+        </PageSection>
     )
 }

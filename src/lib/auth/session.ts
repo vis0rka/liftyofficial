@@ -6,7 +6,6 @@ export interface SessionData {
     isLoggedIn: boolean
     user_email: string
     user_id: number | null
-    token: string | null
 }
 
 export const defaultSession: SessionData = {
@@ -14,7 +13,6 @@ export const defaultSession: SessionData = {
     isLoggedIn: false,
     user_email: '',
     user_id: null,
-    token: null,
 }
 
 export const sessionOptions: SessionOptions = {
@@ -26,7 +24,7 @@ export const sessionOptions: SessionOptions = {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
         path: '/',
-        maxAge: 60 * 60 * 24 - 60,
+        maxAge: 60 * 15, // 15 minutes
     },
 }
 

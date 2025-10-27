@@ -11,6 +11,7 @@ import {
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { Separator } from '@/components/ui/separator'
+
 import { useBreakpoint } from '@/hooks/useBreakPoint'
 import useSession from '@/hooks/useSession'
 import { Link, useRouter } from '@/i18n/navigation'
@@ -49,8 +50,8 @@ export function Header() {
     const fromSM = useBreakpoint('sm')
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-white">
-            <div className={`container flex h-[var(--header-height)] items-center justify-between mx-auto`}>
+        <header className="px-2 xl:px-4 2xl:px-6 sticky top-0 z-50 w-full border-b bg-white">
+            <div className={`flex h-[var(--header-height)] items-center justify-between mx-auto`}>
                 <div className="flex items-center md:w-1/3">
                     <MobileMenuDialog open={isOpen} onOpenChange={setIsOpen}>
                         <MobileMenuDialogTrigger asChild>

@@ -20,7 +20,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButto
             <CardImage productImages={product?.images} />
 
             <div className="p-2 md:p-3 lg:p-5 flex flex-col items-center">
-                <h1 className="heading-2 text-center font-bold">Lifty - {t('Common.toddler_carrier', { count: 1 })}</h1>
+                <h1 className="heading-3 text-center font-bold">Lifty - {t('Common.toddler_carrier', { count: 1 })}</h1>
                 <div className="flex flex-col justify-center items-center">
                     <span className="text-center text-2xl font-bold font-sans">
                         <ProductPrice price={product.price} prices={product.custom_prices} />

@@ -2,6 +2,7 @@
 
 import { ErrorCard } from '@/components/error/ErrorCard'
 import { Button } from '@/components/ui/button'
+import { PageSection } from '@/components/ui/page-section'
 import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
@@ -15,13 +16,13 @@ export default function PaymentSuccessPageError({ error }: { error: Error & { di
     }, [error])
 
     return (
-        <main className="container mx-auto flex flex-col my-10 space-y-6">
+        <PageSection className="space-y-6">
             <ErrorCard />
             <Button asChild variant="default">
                 <Link href="/" className="mx-auto">
                     {t('Common.Home')}
                 </Link>
             </Button>
-        </main>
+        </PageSection>
     )
 }

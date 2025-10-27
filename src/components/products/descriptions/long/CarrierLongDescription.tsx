@@ -8,6 +8,7 @@ export const CarrierLongDescription = async () => {
     const t = await getTranslations('Product')
     return (
         <div className="space-y-4">
+            <KeyFeatures />
             <p>{t('toddler_carrier.long_desc_1')}</p>
             <h2 className="~text-base/xl font-bold">{t('toddler_carrier.long_title_2')}</h2>
             <p>{t('toddler_carrier.long_desc_2')}</p>
@@ -50,7 +51,7 @@ export const CarrierLongDescription = async () => {
                     </div>
                 </div>
             </div>
-            <KeyFeatures />
+
             <ShopFeatures />
         </div>
     )

@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { PageSection } from '@/components/ui/page-section'
 import { useRouter } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
@@ -24,7 +25,7 @@ export default function ShopError({ error, reset }: { error: Error & { digest?: 
     }
 
     return (
-        <div className="container mx-auto flex items-center justify-center min-h-[60vh] px-4">
+        <PageSection className="  mx-auto flex items-center justify-center min-h-[60vh] px-4">
             <Card className="w-full max-w-md text-center">
                 <CardHeader>
                     <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
@@ -69,6 +70,6 @@ export default function ShopError({ error, reset }: { error: Error & { digest?: 
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </PageSection>
     )
 }

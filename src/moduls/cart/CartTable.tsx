@@ -23,7 +23,7 @@ export const CartTable = () => {
     if (emptyCart) {
         return (
             <Card className="space-y-8 p-4">
-                <p className="~text-base/2xl">{t('Common.empty_cart')}</p>
+                <p className="text-xl">{t('Common.empty_cart')}</p>
                 <Button asChild>
                     <Link href="/shop" className="uppercase">
                         {t('Common.continue_shopping')}
@@ -37,9 +37,9 @@ export const CartTable = () => {
         <div className="space-y-8">
             <div>
                 <div className="grid grid-cols-12 items-center w-full p-4">
-                    <h4 className="col-span-9 md:col-span-6">Product</h4>
-                    <h4 className="hidden md:block md:col-span-5 items-center self-center">Quantity</h4>
-                    <h4 className="col-span-3 md:col-span-1">Price</h4>
+                    <h4 className="heading-3 col-span-9 md:col-span-6">Product</h4>
+                    <h4 className="heading-3 hidden md:block md:col-span-5 items-center self-center">Quantity</h4>
+                    <h4 className="heading-3 col-span-3 md:col-span-1">Price</h4>
                 </div>
                 <div className="flex flex-col justify-between items-center w-full space-y-8">
                     {items.map(item => {
