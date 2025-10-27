@@ -8,7 +8,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 
 export const PageSection = ({ children, className, ...props }: Props) => {
     return (
-        <section className={cn('mx-auto p-2 flex flex-col xl:p-4 2xl:p-6', className)} {...props}>
+        <section className={cn('mx-auto p-3 flex flex-col xl:p-4 2xl:p-6', className)} {...props}>
             {children}
         </section>
     )

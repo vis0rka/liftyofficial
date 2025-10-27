@@ -4,7 +4,7 @@ interface Props {
 
 export const ProductsCardsContainer = ({ children }: Props) => {
     return (
-        <div className="flex flex-nowrap w-full overflow-hidden overflow-x-auto py-4 gap-4 [&_a]   md:[&_a]:flex-[0_0_25vw] lg:[&_a]:flex-[0_0_20vw]">
+        <div className="flex flex-nowrap w-full overflow-hidden overflow-x-auto py-4 gap-4 [&_a]:flex-[0_0_45vw] md:[&_a]:flex-[0_0_25vw] lg:[&_a]:flex-[0_0_15vw] touch-pan-x">
             {children}
         </div>
     )

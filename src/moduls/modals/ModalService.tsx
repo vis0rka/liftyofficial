@@ -29,7 +29,11 @@ const ModalService = () => {
 
     if (!modal) return null
 
-    return <ErrorBoundary fallback={<DialogError />}>{modal.modal}</ErrorBoundary>
+    return (
+        <ErrorBoundary fallback={<DialogError />}>
+            <div className="w-full h-full p-4">{modal.modal}</div>
+        </ErrorBoundary>
+    )
 }
 
 export const useModals = () => {
