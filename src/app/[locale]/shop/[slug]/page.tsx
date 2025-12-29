@@ -35,11 +35,11 @@ export default async function ProductDetailsPage({ params }: Props) {
     const { slug } = await params
 
     const data = await getCachedProduct(slug)
-    console.log('data', data)
+
     const t = await getTranslations()
 
     const product = data?.[0]
-    console.log('product', product)
+
     if (!product) {
         return <ErrorCard />
     }

@@ -13,7 +13,7 @@ export function useMagicLink() {
                 email,
                 redirectTo: redirectTo || window.location.pathname,
             })
-            console.log('link', response.data)
+
             return response.data
         },
     })

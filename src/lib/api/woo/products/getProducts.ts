@@ -25,7 +25,7 @@ export const getCachedProduct = unstable_cache(
             const result = await wooApi.getProducts({
                 slug,
             })
-            console.log('result', result)
+
             return result
         } catch (error) {
             console.error(error)

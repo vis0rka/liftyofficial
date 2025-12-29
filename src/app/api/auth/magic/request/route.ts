@@ -24,10 +24,10 @@ export async function POST(req: NextRequest) {
     const code = randomBytes(3).toString('hex') // 6 hex char (kényelmi debug/UX)
     const digest = createHash('sha256').update(`${email}:${code}`).digest('hex')
 
-    // Store in Redis (15 perc)
+    // Store in Redis (60 perc)
 
     try {
-        await storeMagicLinkSession(nonce, { digest, email }, 60 * 15)
+        await storeMagicLinkSession(nonce, { digest, email }, 60 * 60)
     } catch (error) {
         console.error('Error storing magic link session:', error)
         return NextResponse.json({ error: 'Failed to store magic link session' }, { status: 500 })
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuer('magic')
         .setAudience('web')
-        .setExpirationTime('15m')
+        .setExpirationTime('60m')
         .sign(JWT_SECRET)
 
     const url = new URL('/api/auth/magic/consume', APP_URL)

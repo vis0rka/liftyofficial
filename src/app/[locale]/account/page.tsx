@@ -1,13 +1,22 @@
 import { PageSection } from '@/components/ui/page-section'
+import { Skeleton } from '@/components/ui/skeleton'
 import { wooApi } from '@/lib/api/woo/woo'
 import { getSession } from '@/lib/auth/session'
 import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 import { AccountMenu } from './components/AccountMenu'
 
+const PageLoader: React.FC = () => {
+    return (
+        <div className="flex items-center justify-center h-screen">
+            <Skeleton className="w-100 h-60" />
+        </div>
+    )
+}
+
 export default async function AccountPage({ params }: { params: Promise<{ locale: string }> }) {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<PageLoader />}>
             <Content params={params} />
         </Suspense>
     )
@@ -15,7 +24,7 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
 
 async function Content({ params }: { params: Promise<{ locale: string }> }) {
     const session = await getSession()
-    console.log('session', session)
+
     const { locale } = await params
     if (!session.user_email) {
         redirect(`/${locale}/?modal=login`)
@@ -23,7 +32,6 @@ async function Content({ params }: { params: Promise<{ locale: string }> }) {
 
     let userArray = await wooApi.getCustomer(session.user_email)
 
-    console.log('user', userArray)
     let userData
     if (userArray?.length === 0) {
         const newUser = await wooApi.postCustomer({
@@ -43,12 +51,11 @@ async function Content({ params }: { params: Promise<{ locale: string }> }) {
     const orders = await wooApi.getOrders({
         customer_id: userData.id,
     })
-    console.log('orders', orders)
 
     const ordersData = Array.isArray(orders) ? orders : []
 
     return (
-        <PageSection className="space-y-4">
+        <PageSection className="space-y-4 items-center justify-center">
             <AccountMenu user={userData} orders={ordersData} />
         </PageSection>
     )

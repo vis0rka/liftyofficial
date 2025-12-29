@@ -219,5 +219,29 @@
         "email": "Email",
         "password": "Password",
         "login": "Login"
+    },
+    "Account": {
+        "account_details": "Account Details",
+        "manage_your_account_details": "Manage your account details",
+        "email": "Email",
+        "username": "Username",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "name": "Name",
+        "phone": "Phone",
+        "address": "Address",
+        "city": "City",
+        "state": "State",
+        "postal_code": "Postal Code",
+        "country": "Country",
+        "account": "Account",
+        "orders": "Orders",
+        "order_details": "Order Details",
+        "order_number": "ID",
+        "order_status": "Status",
+        "order_items": "Items",
+        "your_orders": "Your Orders",
+        "no_orders_found": "No orders found.",
+        "shipping_address": "Shipping and Billing Address"
     }
 }

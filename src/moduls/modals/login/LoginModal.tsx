@@ -21,7 +21,7 @@ const LoginModal = () => {
     const [error, setError] = React.useState<string | null>(null)
     const [success, setSuccess] = React.useState<string | null>(null)
     const { mutateAsync: requestMagicLink, isPending: isLoading, isError } = useMagicLink()
-    console.log(isError)
+
     const form = useForm<LoginFormValues>({
         defaultValues: {
             email: '',
@@ -43,7 +43,7 @@ const LoginModal = () => {
                 setError(t('Error.login_error'))
             }
         } catch (err: any) {
-            console.log(err)
+            console.error(err)
             if (axios.isAxiosError(err) && err.response) {
                 if (err.response.status === 429) {
                     setError(t('Error.too_many_requests') || 'Too many requests. Please try again later.')

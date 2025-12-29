@@ -30,11 +30,8 @@ export default async function LocaleLayout({
                 <Suspense fallback={null}>
                     <ModalService />
                 </Suspense>
-
                 <Header />
-
                 <main className="pb-8">{children}</main>
-
                 <Footer />
             </NextIntlClientProvider>
         </>
