@@ -9,10 +9,10 @@ export async function checkRateLimit(
     identifier: string,
     options: RateLimitOptions = { maxRequests: 5, windowMs: 600000 }, // 5 requests per 10 minutes
 ): Promise<boolean> {
-    const redis = getRedisClient()
     const key = `rate_limit:${identifier}`
 
     try {
+        const redis = await getRedisClient()
         const current = await redis.get(key)
 
         if (!current) {
@@ -34,10 +34,10 @@ export async function checkRateLimit(
 }
 
 export async function resetRateLimit(identifier: string): Promise<void> {
-    const redis = getRedisClient()
     const key = `rate_limit:${identifier}`
 
     try {
+        const redis = await getRedisClient()
         await redis.del(key)
     } catch (error) {
         console.error('Rate limit reset failed:', error)

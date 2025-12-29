@@ -28,8 +28,8 @@ async function Content({ params }: { params: Promise<{ locale: string }> }) {
         email: session.user_email,
     })
 
-    //console.log('user', user)
-    if (user.data.length === 0) {
+    console.log('user', user)
+    if (user?.data?.length === 0) {
         user = await wooApi.post('customers', {
             email: session.user_email,
             username: session.user_email.split('@')[0],
@@ -40,14 +40,13 @@ async function Content({ params }: { params: Promise<{ locale: string }> }) {
     const orders = await wooApi.get('orders', {
         customer_id: user.data.id,
     })
-    console.log('orders', orders.data)
+    console.log('orders', orders)
 
     const userData = Array.isArray(user.data) ? user.data[0] : user.data
     const ordersData = Array.isArray(orders.data) ? orders.data : []
 
     return (
         <PageSection className="space-y-4">
-            <h1 className="heading-1">Account</h1>
             <AccountMenu user={userData} orders={ordersData} />
         </PageSection>
     )

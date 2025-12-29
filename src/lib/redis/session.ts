@@ -11,13 +11,13 @@ export async function storeMagicLinkSession(
     data: Omit<RedisSessionData, 'createdAt'>,
     ttlSeconds: number = 900, // 15 minutes default
 ): Promise<void> {
-    const redis = getRedisClient()
-    const sessionData: RedisSessionData = {
-        ...data,
-        createdAt: Date.now(),
-    }
-
     try {
+        const redis = await getRedisClient()
+        const sessionData: RedisSessionData = {
+            ...data,
+            createdAt: Date.now(),
+        }
+
         await redis.setEx(`ml:nonce:${nonce}`, ttlSeconds, JSON.stringify(sessionData))
     } catch (error) {
         console.error('Failed to store magic link session:', error)
@@ -26,9 +26,8 @@ export async function storeMagicLinkSession(
 }
 
 export async function getMagicLinkSession(nonce: string): Promise<RedisSessionData | null> {
-    const redis = getRedisClient()
-
     try {
+        const redis = await getRedisClient()
         const data = await redis.get(`ml:nonce:${nonce}`)
         if (!data) return null
 
@@ -40,9 +39,8 @@ export async function getMagicLinkSession(nonce: string): Promise<RedisSessionDa
 }
 
 export async function deleteMagicLinkSession(nonce: string): Promise<void> {
-    const redis = getRedisClient()
-
     try {
+        const redis = await getRedisClient()
         await redis.del(`ml:nonce:${nonce}`)
     } catch (error) {
         console.error('Failed to delete magic link session:', error)
@@ -50,9 +48,8 @@ export async function deleteMagicLinkSession(nonce: string): Promise<void> {
 }
 
 export async function cleanupExpiredSessions(): Promise<void> {
-    const redis = getRedisClient()
-
     try {
+        const redis = await getRedisClient()
         // Redis automatically handles TTL expiration, but we can add manual cleanup if needed
         const keys = await redis.keys('ml:nonce:*')
         const now = Date.now()

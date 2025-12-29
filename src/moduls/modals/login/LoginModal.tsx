@@ -20,7 +20,8 @@ const LoginModal = () => {
     const t = useTranslations()
     const [error, setError] = React.useState<string | null>(null)
     const [success, setSuccess] = React.useState<string | null>(null)
-    const { requestMagicLink, isLoading } = useMagicLink()
+    const { mutateAsync: requestMagicLink, isPending: isLoading, isError } = useMagicLink()
+    console.log(isError)
     const form = useForm<LoginFormValues>({
         defaultValues: {
             email: '',
@@ -37,9 +38,9 @@ const LoginModal = () => {
             })
 
             if (result.ok) {
-                setSuccess(t('Auth.magic_link_sent') || 'Magic link sent to your email!')
+                setSuccess(t('Auth.magic_link_sent'))
             } else {
-                setError(t('Error.magic_link_error') || 'Failed to send magic link')
+                setError(t('Error.login_error'))
             }
         } catch (err: any) {
             console.log(err)
@@ -49,10 +50,10 @@ const LoginModal = () => {
                 } else if (err.response.status === 400) {
                     setError(t('Error.invalid_email') || 'Please enter a valid email address.')
                 } else {
-                    setError(t('Error.magic_link_error') || 'Failed to send magic link')
+                    setError(t('Error.login_error'))
                 }
             } else {
-                setError(err?.message || t('Common.loginError'))
+                setError(t('Error.login_error'))
             }
         }
     }
@@ -67,7 +68,7 @@ const LoginModal = () => {
             }}
         >
             <DialogContent>
-                <DialogTitle>{t('Auth.magic_link_login') || 'Magic Link Login'}</DialogTitle>
+                <DialogTitle>{t('Auth.magic_link_login')}</DialogTitle>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                         <FormField

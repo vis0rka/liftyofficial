@@ -25,7 +25,7 @@ export default function ShopError({ error, reset }: { error: Error & { digest?: 
     }
 
     return (
-        <PageSection className="min-h-[60vh]">
+        <PageSection className="min-h-[60vh] flex items-center justify-center">
             <Card className="w-full max-w-md text-center">
                 <CardHeader>
                     <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100">

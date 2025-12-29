@@ -29,11 +29,7 @@ const ModalService = () => {
 
     if (!modal) return null
 
-    return (
-        <ErrorBoundary fallback={<DialogError />}>
-            <div className="w-full h-full p-4">{modal.modal}</div>
-        </ErrorBoundary>
-    )
+    return <ErrorBoundary fallback={<DialogError />}>{modal.modal}</ErrorBoundary>
 }
 
 export const useModals = () => {
@@ -63,6 +59,13 @@ export const useModals = () => {
 
 const DialogError = () => {
     const [isOpen, setOpen] = React.useState(true)
+    const { closeModals } = useModals()
+
+    React.useEffect(() => {
+        return () => {
+            closeModals()
+        }
+    }, [])
 
     return (
         <Dialog open={isOpen} onOpenChange={setOpen}>

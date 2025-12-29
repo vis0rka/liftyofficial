@@ -7,18 +7,14 @@ interface MagicLinkRequest {
 }
 
 export function useMagicLink() {
-    const { mutateAsync: requestMagicLink, isPending } = useMutation({
+    return useMutation({
         mutationFn: async ({ email, redirectTo }: MagicLinkRequest) => {
             const response = await axios.post('/api/auth/magic/request', {
                 email,
                 redirectTo: redirectTo || window.location.pathname,
             })
+            console.log('link', response.data)
             return response.data
         },
     })
-
-    return {
-        requestMagicLink,
-        isLoading: isPending,
-    }
 }

@@ -96,11 +96,10 @@
         "goHome": "Go to Homepage",
         "tryAgain": "Try Again",
         "something_went_wrong": "Something went wrong...",
-        "contact": "Please contact support at",
+        "contact": "Please contact support at info@liftyofficial.com",
         "something_went_wrong_checkout": "Something went wrong while checking out. Please refresh the page and try again.",
         "invalid_credentials": "Invalid email or password",
-        "login_error": "Something went wrong while logging in. Please try again.",
-        "loginError": "Something went wrong while logging in. Please try again.",
+        "login_error": "Something went wrong while logging in. Please try again. Or contact support at info@liftyofficial.com",
         "too_many_requests": "Too many requests. Please try again after 15 minutes."
     },
     "Auth": {

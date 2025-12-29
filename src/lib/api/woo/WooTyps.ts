@@ -118,4 +118,127 @@ export interface WooTypes {
             phone: string
         }
     }[]
+
+    getOrders: Array<{
+        id: number
+        parent_id: number
+        status: string
+        currency: string
+        version: string
+        prices_include_tax: boolean
+        date_created: string
+        date_modified: string
+        discount_total: string
+        discount_tax: string
+        shipping_total: string
+        shipping_tax: string
+        cart_tax: string
+        total: string
+        total_tax: string
+        customer_id: number
+        order_key: string
+        billing: {
+            first_name: string
+            last_name: string
+            company: string
+            address_1: string
+            address_2: string
+            city: string
+            state: string
+            postcode: string
+            country: string
+            email: string
+            phone: string
+        }
+        shipping: {
+            first_name: string
+            last_name: string
+            company: string
+            address_1: string
+            address_2: string
+            city: string
+            state: string
+            postcode: string
+            country: string
+            phone: string
+        }
+        payment_method: string
+        payment_method_title: string
+        transaction_id: string
+        customer_ip_address: string
+        customer_user_agent: string
+        created_via: string
+        customer_note: string
+        date_completed: any
+        date_paid: string
+        cart_hash: string
+        number: string
+        meta_data: Array<any>
+        line_items: Array<{
+            id: number
+            name: string
+            product_id: number
+            variation_id: number
+            quantity: number
+            tax_class: string
+            subtotal: string
+            subtotal_tax: string
+            total: string
+            total_tax: string
+            taxes: Array<{
+                id: number
+                total: string
+                subtotal: string
+            }>
+            meta_data: Array<{
+                id: number
+                key: string
+                value: string
+                display_key: string
+                display_value: string
+            }>
+            sku: string
+            price: number
+            image: {
+                id: string
+                src: string
+            }
+            parent_name: any
+        }>
+        tax_lines: Array<{
+            id: number
+            rate_code: string
+            rate_id: number
+            label: string
+            compound: boolean
+            tax_total: string
+            shipping_tax_total: string
+            rate_percent: number
+            meta_data: Array<any>
+        }>
+        shipping_lines: Array<any>
+        fee_lines: Array<any>
+        coupon_lines: Array<any>
+        refunds: Array<any>
+        payment_url: string
+        is_editable: boolean
+        needs_payment: boolean
+        needs_processing: boolean
+        date_created_gmt: string
+        date_modified_gmt: string
+        date_completed_gmt: any
+        date_paid_gmt: string
+        currency_symbol: string
+        _links: {
+            self: Array<{
+                href: string
+                targetHints: {
+                    allow: Array<string>
+                }
+            }>
+            collection: Array<{
+                href: string
+            }>
+        }
+    }>
 }

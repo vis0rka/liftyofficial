@@ -25,7 +25,13 @@ export async function POST(req: NextRequest) {
     const digest = createHash('sha256').update(`${email}:${code}`).digest('hex')
 
     // Store in Redis (15 perc)
-    await storeMagicLinkSession(nonce, { digest, email }, 60 * 15)
+
+    try {
+        await storeMagicLinkSession(nonce, { digest, email }, 60 * 15)
+    } catch (error) {
+        console.error('Error storing magic link session:', error)
+        return NextResponse.json({ error: 'Failed to store magic link session' }, { status: 500 })
+    }
 
     // Create compact JWT to avoid very long URLs
     const jwt = await new SignJWT({ n: nonce })
