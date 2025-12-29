@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const tag = request.nextUrl.searchParams.get('tag')
 
     if (tag) {
-        revalidateTag(tag)
+        revalidateTag(tag, 'default')
         return Response.json({ revalidated: true })
     }
 

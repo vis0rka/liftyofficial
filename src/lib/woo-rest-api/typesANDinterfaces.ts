@@ -396,6 +396,7 @@ export interface Customers {
     is_paying_customer: boolean
     avatar_url: string
     meta_data: Meta_Data[]
+    password: string
 }
 
 export interface Orders {

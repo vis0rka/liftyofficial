@@ -5,6 +5,7 @@ import ModalService from '@/moduls/modals/ModalService'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 export default async function LocaleLayout({
@@ -26,9 +27,14 @@ export default async function LocaleLayout({
         <>
             <NextIntlClientProvider>
                 <Toaster position="top-right" />
-                <ModalService />
+                <Suspense fallback={null}>
+                    <ModalService />
+                </Suspense>
+
                 <Header />
+
                 <main className="pb-8">{children}</main>
+
                 <Footer />
             </NextIntlClientProvider>
         </>

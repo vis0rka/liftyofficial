@@ -4,4 +4,4 @@ export const routes = {
     shipping: '/shipping-policy',
     refund: '/refund-policy',
     privacy: '/privacy-policy',
-}
+} as const

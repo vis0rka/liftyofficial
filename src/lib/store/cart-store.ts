@@ -1,7 +1,7 @@
 import { nonNullable } from '@/utils/typeUtils'
 import { persist } from 'zustand/middleware'
 import { createStore } from 'zustand/vanilla'
-import { getProducts } from '../api/woo/products/getProducts'
+import { getCachedProducts } from '../api/woo/products/getProducts'
 
 export interface ICartItem {
     name: string
@@ -146,7 +146,7 @@ export const createCartStore = (initState: CartStoreState = defaultInitalState) 
 
                     if (!items) return []
 
-                    const freshProducts = await getProducts()
+                    const freshProducts = await getCachedProducts()
 
                     const removed: ICartItem[] = []
 

@@ -93,7 +93,7 @@ export const checkout = async ({
             line_items: line_items,
         }
 
-        const wooResult = await wooApi.postOrderOnLanguage(lang, 'orders', dataToApi)
+        const wooResult = await wooApi.postOrder(lang, dataToApi)
 
         if (!wooResult.data.id) {
             console.error('something went wrong during the order creation...')

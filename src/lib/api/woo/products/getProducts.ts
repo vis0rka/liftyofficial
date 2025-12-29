@@ -2,38 +2,35 @@
 
 import { unstable_cache } from 'next/cache'
 import { wooApi } from '../woo'
-import { WooTypes } from '../WooTyps'
 
-export async function getProducts() {
-    try {
-        const result = await wooApi.get('products', {
-            per_page: 100,
-        })
+export const getCachedProducts = unstable_cache(
+    async () => {
+        try {
+            const result = await wooApi.getProducts({
+                per_page: 100,
+            })
 
-        return result?.data as WooTypes['getProducts']
-    } catch (error) {
-        console.error(error)
-    }
-}
+            return result
+        } catch (error) {
+            console.error(error)
+        }
+    },
+    ['products'],
+    { revalidate: 60 * 60 * 1 },
+) // 1 hours
 
-export const getCachedProducts = unstable_cache(async () => getProducts(), ['all-products'], {
-    revalidate: 3600,
-    tags: ['products'],
-})
-
-export async function getProduct(slug: string) {
-    try {
-        const result = await wooApi.get('products', {
-            slug,
-        })
-
-        return result?.data as WooTypes['getProducts']
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-export const getCachedProduct = unstable_cache(async (slug: string) => getProduct(slug), ['slug'], {
-    revalidate: 600,
-    tags: ['products'],
-})
+export const getCachedProduct = unstable_cache(
+    async (slug: string) => {
+        try {
+            const result = await wooApi.getProducts({
+                slug,
+            })
+            console.log('result', result)
+            return result
+        } catch (error) {
+            console.error(error)
+        }
+    },
+    ['product'],
+    { revalidate: 300 },
+) // 5 minutes

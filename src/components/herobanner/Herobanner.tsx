@@ -1,22 +1,28 @@
 'use client'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
-import { Link } from '@/i18n/navigation'
+import { useRouter } from '@/i18n/navigation'
 import { routes } from '@/utils/routes'
 import Autoplay from 'embla-carousel-autoplay'
 import Fade from 'embla-carousel-fade'
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
 import hero1 from './media/hero-1.webp'
 import hero2 from './media/hero-2.webp'
 
+interface HerobannerProps {
+    translations: {
+        the_toddler_hip_carrier: string
+        the_essentials_for_adventures: string
+    }
+}
+
 const carousels = [
-    { src: hero1.src, title: 'Lifty', desc: 'HomePage.the_toddler_hip_carrier' },
-    { src: hero2.src, title: 'Lifty', desc: 'HomePage.the_essentials_for_adventures' },
+    { src: hero1.src, title: 'Lifty', descKey: 'the_toddler_hip_carrier' as const },
+    { src: hero2.src, title: 'Lifty', descKey: 'the_essentials_for_adventures' as const },
 ]
 
-export const Herobanner = () => {
+export const Herobanner = ({ translations }: HerobannerProps) => {
     const [autoPlayPlugin] = React.useState(() => Autoplay({ delay: 4000, stopOnInteraction: true }))
     const [fadePlugin] = React.useState(() => Fade())
 
@@ -25,8 +31,12 @@ export const Herobanner = () => {
             <CarouselContent className="min-h-[600px] aspect-[1920/600]">
                 {carousels.map(item => {
                     return (
-                        <CarouselItem key={item.desc}>
-                            <CarouselImageWrapper src={item.src} heading={item.title} desc={item.desc} />
+                        <CarouselItem key={item.descKey}>
+                            <CarouselImageWrapper
+                                src={item.src}
+                                heading={item.title}
+                                desc={translations[item.descKey]}
+                            />
                         </CarouselItem>
                     )
                 })}
@@ -42,17 +52,21 @@ interface CarouselImageWrapperProps {
 }
 
 const CarouselImageWrapper: React.FC<CarouselImageWrapperProps> = ({ src, heading, desc }) => {
-    const t = useTranslations()
+    const router = useRouter()
+
     return (
         <div className="h-full w-dvw relative">
-            <div className="z-10 absolute left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%] bg-zinc-800/40 z-2 w-[100%] h-[100%] flex flex-col justify-center items-center">
+            <div className="absolute left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%] bg-zinc-800/40 z-2 w-[100%] h-[100%] flex flex-col justify-center items-center">
                 <h1 className="text-8xl text-white text-left font-bold tracking-wide">{heading}</h1>
-                <h2 className="text-3xl text-white line-clamp-none text-left mt-2">{t(desc)}</h2>
-                <Link href={routes.shop}>
-                    <Button size="lg" className="mt-4 px-10 py-6" variant="secondary">
-                        <p className="text-2xl">Shop</p>
-                    </Button>
-                </Link>
+                <h2 className="text-3xl text-white line-clamp-none text-left mt-2">{desc}</h2>
+                <Button
+                    size="lg"
+                    className="mt-4 px-10 py-6"
+                    variant="secondary"
+                    onClick={() => router.push(routes.shop)}
+                >
+                    <p className="text-2xl">Shop</p>
+                </Button>
             </div>
             <Image
                 src={src}

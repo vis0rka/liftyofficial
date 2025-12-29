@@ -89,6 +89,7 @@ export interface WooTypes {
         custom_prices?: string
     }[]
     getCustomers: {
+        id: number
         email: string
         first_name: string
         last_name: string

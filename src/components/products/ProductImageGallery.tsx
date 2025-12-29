@@ -18,26 +18,25 @@ export const ProductImageGallery: React.FC<Props> = ({ images }) => {
         <div className="basis-1/2">
             <div className="relative aspect-square h-auto w-auto shadow-md rounded-xl overflow-hidden shrink">
                 {images[image] && <ImageViewer src={images[image].src} alt="product-image" />}
+                {images.length > 1 ? (
+                    <ul className="absolute bottom-4 left-4 flex items-center justify-center gap-2  lg:mb-0 overflow-hidden">
+                        {images.map((image, index) => {
+                            return (
+                                <li key={image.src} className="h-25 w-25">
+                                    <Button
+                                        variant="ghost"
+                                        onClick={() => setImage(index)}
+                                        aria-label="Enlarge product image"
+                                        className="h-full w-full relative p-0 m-0 rounded-sm overflow-hidden shadow border-neutral-200 border"
+                                    >
+                                        <Image src={image.src} fill alt={image.alt} />
+                                    </Button>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                ) : null}
             </div>
-
-            {images.length > 1 ? (
-                <ul className="my-12 flex items-center justify-center gap-2 py-1 lg:mb-0 overflow-hidden">
-                    {images.map((image, index) => {
-                        return (
-                            <li key={image.src} className="h-50 w-50">
-                                <Button
-                                    variant="ghost"
-                                    onClick={() => setImage(index)}
-                                    aria-label="Enlarge product image"
-                                    className="h-full w-full relative p-0 m-0 rounded-sm overflow-hidden shadow border-neutral-200 border"
-                                >
-                                    <Image src={image.src} fill alt={image.alt} />
-                                </Button>
-                            </li>
-                        )
-                    })}
-                </ul>
-            ) : null}
         </div>
     )
 }

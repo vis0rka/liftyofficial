@@ -12,7 +12,12 @@ export default async function HomePage() {
 
     return (
         <div className="space-y-8">
-            <Herobanner />
+            <Herobanner
+                translations={{
+                    the_toddler_hip_carrier: t('the_toddler_hip_carrier'),
+                    the_essentials_for_adventures: t('the_essentials_for_adventures'),
+                }}
+            />
             <div className="w-full mx-auto flex flex-col space-y-10">
                 <section className="px-4 mx-auto w-full">
                     <BestSellersProducts />

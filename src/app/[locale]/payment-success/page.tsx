@@ -8,8 +8,6 @@ type Props = {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export const dynamic = 'force-dynamic'
-
 export default async function PaymentSuccessPage({ searchParams }: Props) {
     const t = await getTranslations()
     const { session_id, orderId } = await searchParams
@@ -29,15 +27,11 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
         )
     }
 
-    const wooResult = await wooApi.put(
-        `orders`,
-        {
-            status: 'processing',
-            transaction_id: session.payment_intent,
-            set_paid: true,
-        },
-        { id: parseInt(orderId as string) },
-    )
+    const wooResult = await wooApi.putOrder(parseInt(orderId as string), {
+        status: 'processing',
+        transaction_id: session.payment_intent as string,
+        set_paid: true,
+    })
 
     return (
         <PageSection className="space-y-4 justify-center items-center">
