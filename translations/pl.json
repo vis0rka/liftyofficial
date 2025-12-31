@@ -71,7 +71,7 @@
         "carrier_instuctions": "Instrukcje dla kuriera",
         "sub_to_email": "Zapisz się do newslettera",
         "subscribe": "Zapisz się",
-        "toddler_carrier": "Nosidełko dla malucha {count, plural, =0 {nosidełko} =1 {nosidełko} other {nosidełka}}",
+        "toddler_carrier": "Nosidła biodrowe dla dzieci",
         "premium": "Premium",
         "cart": "Koszyk",
         "add_to_cart": "Dodaj do koszyka",
@@ -95,6 +95,10 @@
     },
     "Product": {
         "in_stock": "W magazynie",
+        "out_stock": "Brak w magazynie",
+        "free_shipping": "Darmowa dostawa na wszystkie zamówienia",
+        "order_before": "Złóż zamówienie przed 14:00, dostawa nastąpi tego samego dnia",
+        "suitable": "Dostosowane dla dzieci w wieku od 9 miesięcy do 4 lat, z maksymalnym limitem wagi 20 kg",
         "toddler_carrier": {
             "short": "Nasze nosidełka LIFTY dla maluchów oferują wygodne, ergonomiczne, praktyczne i szybkie rozwiązanie dla każdego rodzica z małym dzieckiem. Są idealne dla dzieci, które raz chcą być trzymane na rękach, a za chwilę pragną odkrywać otoczenie. Łatwe w użyciu i kompaktowe, można je zabrać wszędzie, co czyni je idealnymi na krótkie wycieczki, zakupy, wchodzenie po schodach i nie tylko. Nasze ręcznie robione produkty, wykonane w UE, są wykonane z certyfikowanych materiałów OEKO-TEX, w 100% bawełny oraz wysokiej jakości klamr YKK, co zapewnia bezpieczeństwo Twojego dziecka. Polecamy je każdemu, kto chce zapewnić swojemu dziecku zarówno bliskość, jak i swobodę odkrywania.",
             "list_1": "Dzięki nosidełku biodrowemu możesz łatwo podnieść lub postawić swoje dziecko jednym ruchem, w dowolnym miejscu i czasie.",

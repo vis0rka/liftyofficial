@@ -103,13 +103,13 @@
         "too_many_requests": "Too many requests. Please try again after 15 minutes."
     },
     "Auth": {
-        "magic_link_login": "Magic Link Login",
-        "magic_link_sent": "Magic link sent to your email!",
-        "magic_link_error": "Failed to send magic link",
+        "magic_link_login": "Login",
+        "magic_link_sent": "Link sent to your email!",
+        "magic_link_error": "Failed to send link",
         "too_many_requests": "Too many requests. Please try again later.",
         "invalid_email": "Please enter a valid email address.",
         "check_email": "Check your email",
-        "send_magic_link": "Send Magic Link"
+        "send_magic_link": "Send Link"
     },
     "Product": {
         "in_stock": "In stock",

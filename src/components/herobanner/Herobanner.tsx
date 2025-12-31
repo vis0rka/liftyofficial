@@ -1,9 +1,10 @@
 'use client'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
-import { useRouter } from '@/i18n/navigation'
+import { Link } from '@/i18n/navigation'
 import { routes } from '@/utils/routes'
 import Autoplay from 'embla-carousel-autoplay'
 import Fade from 'embla-carousel-fade'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
@@ -52,21 +53,17 @@ interface CarouselImageWrapperProps {
 }
 
 const CarouselImageWrapper: React.FC<CarouselImageWrapperProps> = ({ src, heading, desc }) => {
-    const router = useRouter()
-
+    const t = useTranslations('Common')
     return (
         <div className="h-full w-dvw relative">
             <div className="absolute left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%] bg-zinc-800/40 z-2 w-[100%] h-[100%] flex flex-col justify-center items-center">
-                <h1 className="text-8xl text-white text-left font-bold tracking-wide">{heading}</h1>
-                <h2 className="text-3xl text-white line-clamp-none text-left mt-2">{desc}</h2>
-                <Button
-                    size="lg"
-                    className="mt-4 px-10 py-6"
-                    variant="secondary"
-                    onClick={() => router.push(routes.shop)}
-                >
-                    <p className="text-2xl">Shop</p>
-                </Button>
+                <h1 className="text-8xl text-white text-center font-bold tracking-wide">{heading}</h1>
+                <h2 className="text-3xl text-white line-clamp-none text-center mt-2">{desc}</h2>
+                <Link href={routes.shop}>
+                    <Button size="lg" className="mt-4 px-10 py-6" variant="secondary">
+                        <p className="text-2xl">{t('shop')}</p>
+                    </Button>
+                </Link>
             </div>
             <Image
                 src={src}

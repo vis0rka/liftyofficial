@@ -8,8 +8,9 @@ export const getCachedProducts = unstable_cache(
         try {
             const result = await wooApi.getProducts({
                 per_page: 100,
+                status: 'publish',
             })
-
+            console.log('result', result)
             return result
         } catch (error) {
             console.error(error)
