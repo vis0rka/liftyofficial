@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://liftyofficial.com
+
+# Sitemaps
+Sitemap: https://liftyofficial.com/sitemap.xml

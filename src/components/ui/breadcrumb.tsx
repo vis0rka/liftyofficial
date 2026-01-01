@@ -18,7 +18,7 @@ export const Breadcrumb = () => {
 
     return (
         <div>
-            <ul className="flex flex-row">
+            <ul className="flex flex-row  text-xs lg:text-base">
                 <li className="hover:underline mx-1">
                     <Link href={'/'}>{t('Common.home')}</Link>
                 </li>
@@ -32,7 +32,7 @@ export const Breadcrumb = () => {
 
                     return (
                         <React.Fragment key={index}>
-                            <li className={itemClasses}>
+                            <li className={`${itemClasses}`}>
                                 <Link href={href}>{itemLink}</Link>
                             </li>
                             {pathNames.length !== index + 1 && <span> | </span>}

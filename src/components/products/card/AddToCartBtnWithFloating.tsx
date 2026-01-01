@@ -26,7 +26,9 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
     const { price } = useGetProductPrice({ prices: product.custom_prices, price: product.price })
     const [isVisible, setIsVisible] = useState(true)
     const [mounted, setMounted] = useState(false)
+    const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
+    const lastScrollY = useRef(0)
 
     useEffect(() => {
         setMounted(true)
@@ -52,6 +54,31 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
         }
     }, [mounted])
 
+    useEffect(() => {
+        if (!mounted) return
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY
+
+            if (currentScrollY > lastScrollY.current) {
+                // Scrolling down
+                setScrollDirection('down')
+            } else if (currentScrollY < lastScrollY.current) {
+                // Scrolling up
+                setScrollDirection('up')
+            }
+
+            lastScrollY.current = currentScrollY
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        lastScrollY.current = window.scrollY
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [mounted])
+
     const handleAdd = () => {
         const productDetails: ICartItem = {
             name: product.name,
@@ -74,11 +101,13 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
         handleOpenCart()
     }
 
+    const shouldShowFloating = !isVisible && scrollDirection === 'up'
+
     const FloatingButton = (
         <div
             className={cn(
                 'max-w-sm mx-auto fixed bottom-0 left-0 right-0 z-[100] flex items-center justify-center p-4 bg-background border rounded-t-sm shadow-lg transition-all duration-300 ease-in-out',
-                isVisible ? 'translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100',
+                shouldShowFloating ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none',
             )}
             style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom, 1.5rem))' }}
         >

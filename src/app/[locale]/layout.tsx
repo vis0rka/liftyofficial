@@ -8,6 +8,31 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import { Toaster } from 'react-hot-toast'
 
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+
+type Props = {
+    params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { locale } = await params
+    const t = await getTranslations({ locale })
+
+    return {
+        title: t('Metadata.title'),
+        description: t('Metadata.description'),
+        keywords: t('Metadata.keywords')
+            .split(',')
+            .map(k => k.trim()),
+        openGraph: {
+            title: t('Metadata.title'),
+            description: t('Metadata.description'),
+            type: 'website',
+        },
+    }
+}
+
 export default async function LocaleLayout({
     children,
     params,

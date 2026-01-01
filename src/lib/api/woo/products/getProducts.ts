@@ -10,7 +10,7 @@ export const getCachedProducts = unstable_cache(
                 per_page: 100,
                 status: 'publish',
             })
-            console.log('result', result)
+
             return result
         } catch (error) {
             console.error(error)
