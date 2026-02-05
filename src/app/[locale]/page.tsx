@@ -18,7 +18,7 @@ export default async function HomePage() {
                     the_essentials_for_adventures: t('the_essentials_for_adventures'),
                 }}
             />
-            <div className="w-full mx-auto flex flex-col space-y-10">
+            <div className="w-full max-w-8xl mx-auto flex flex-col space-y-10">
                 <section className="px-4 mx-auto w-full">
                     <BestSellersProducts />
                 </section>

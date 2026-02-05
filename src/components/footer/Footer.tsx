@@ -12,7 +12,7 @@ export const Footer = async () => {
 
     return (
         <footer className="bg-stone-100 p-2 md:p-4 border-stone-200 border-t-2">
-            <div className="  mx-auto flex flex-row flex-wrap justify-between gap-4">
+            <div className="max-w-5xl mx-auto flex flex-row flex-wrap justify-between gap-4">
                 <div className="flex flex-col">
                     <h2 className="text-2xl">{t('Common.legal')}</h2>
                     <Link href={routes.shipping}>
@@ -24,7 +24,9 @@ export const Footer = async () => {
                     <Link href={routes.privacy}>
                         <p className="text-sm">{t('Common.privacy_policy')}</p>
                     </Link>
-                    <p className="text-sm">{t('Common.t_c')}</p>
+                    <Link href={routes.termsAndConditions}>
+                        <p className="text-sm">{t('Common.t_c')}</p>
+                    </Link>
                 </div>
                 <div className="flex flex-col">
                     <h2 className="text-2xl">{t('Common.quick_links')}</h2>

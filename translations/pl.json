@@ -83,7 +83,12 @@
         "view": "Zobacz",
         "checkout_including": "Zawiera {sign} {tax} podatku",
         "login": "Zaloguj się",
-        "cart_updated": "Twój koszyk został zaktualizowany: niedostępne przedmioty lub te ze zmienioną ceną zostały usunięte. Proszę sprawdź przed finalizacją zakupu."
+        "cart_updated": "Twój koszyk został zaktualizowany: niedostępne przedmioty lub te ze zmienioną ceną zostały usunięte. Proszę sprawdź przed finalizacją zakupu.",
+        "logout": "Wyloguj się",
+        "my_account": "Moje konto",
+        "orders": "Zamówienia",
+        "account": "Konto",
+        "close": "Zamknij"
     },
     "Error": {
         "title": "Coś poszło nie tak!",
@@ -91,7 +96,21 @@
         "goHome": "Przejdź do strony głównej",
         "tryAgain": "Spróbuj ponownie",
         "something_went_wrong": "Coś poszło nie tak...",
-        "contact": "Skontaktuj się z pomocą techniczną pod adresem"
+        "contact": "Skontaktuj się z pomocą techniczną pod adresem",
+        "something_went_wrong_checkout": "Coś poszło nie tak podczas finalizacji zakupu. Odśwież stronę i spróbuj ponownie.",
+        "invalid_credentials": "Nieprawidłowy e-mail lub hasło",
+        "login_error": "Coś poszło nie tak podczas logowania. Spróbuj ponownie. Lub skontaktuj się z pomocą techniczną pod adresem info@liftyofficial.com",
+        "too_many_requests": "Zbyt wiele żądań. Spróbuj ponownie za 15 minut.",
+        "invalid_email": "Proszę podać poprawny adres e-mail."
+    },
+    "Auth": {
+        "magic_link_login": "Zaloguj się",
+        "magic_link_sent": "Link wysłany na Twój e-mail!",
+        "magic_link_error": "Nie udało się wysłać linku",
+        "too_many_requests": "Zbyt wiele żądań. Spróbuj ponownie później.",
+        "invalid_email": "Proszę podać poprawny adres e-mail.",
+        "check_email": "Sprawdź swój e-mail",
+        "send_magic_link": "Wyślij link"
     },
     "Product": {
         "in_stock": "W magazynie",
@@ -114,9 +133,13 @@
             "dotted_desc_1": "Pasek na ramię: 2 cm grubości, specjalnie twarda, wysokiej jakości pianka, która zapewnia ergonomiczne wsparcie i komfort. Dzięki swojej elastyczności i właściwościom zachowującym kształt, idealnie przylega do ramienia, rozkłada ciężar i redukuje punkty nacisku. Klamra jest zaprojektowana tak, aby znajdować się na piance, więc nie wbija się w ramię. Jego trwały materiał zachowuje kształt przez długi czas i jest odporny na zużycie, co zapewnia, że pasek na ramię pozostaje nienaganny nawet po latach użytkowania.",
             "dotted_desc_2": "Klamra: Klamra YKK. Te klamry są znane z doskonałej jakości i niezawodności. Są niezwykle trwałe, mają długą żywotność i zapewniają silne wsparcie, co jest kluczowe dla bezpieczeństwa. YKK zobowiązuje się również do zrównoważonego rozwoju, dążąc do przyjaznych dla środowiska procesów produkcyjnych i wykorzystania materiałów, co sprawia, że ich produkty są nie tylko niezawodne, ale także ekologiczne.",
             "dotted_desc_3": "Pasek: 75 cm długości i 5 cm szerokości polipropylen. Pasek PP jest mocny i bezpieczny, ale lekki, więc nie zwiększa znacząco wagi nosidełka. Jest wodoodporny i odporny na promieniowanie UV, co czyni go trwałym i odpornym na czynniki środowiskowe, a także łatwym do czyszczenia, co jest praktyczne w codziennym użytkowaniu. Jego elastyczność zapewnia wygodne noszenie i gwarantuje długą żywotność.",
-            "dotted_desc_4": "Siedzisko: Wykonane z 100% bawełny z certyfikatem OEKO-TEX® Standard 100. Jest to materiał tekstylny, który spełnia międzynarodowo uznany standard OEKO-TEX® Standard 100. Ten certyfikat gwarantuje, że materiał bawełniany jest wolny od szkodliwych chemikaliów i bezpieczny dla kontaktu ze skórą, co jest szczególnie ważne w przypadku dzieci."
+            "dotted_desc_4": "Siedzisko: Wykonane z 100% bawełny z certyfikatem OEKO-TEX® Standard 100. Jest to materiał tekstylny, który spełnia międzynarodowo uznany standard OEKO-TEX® Standard 100. Ten certyfikat gwarantuje, że materiał bawełniany jest wolny od szkodliwych chemikaliów i bezpieczny dla kontaktu ze skórą, co jest szczególnie ważne w przypadku dzieci.",
+            "light_fast_effortless": "Lekki. Szybki. Bez wysiłku.",
+            "light_fast_effortless_desc": "Załóż go jednym prostym ruchem, zabierz ze sobą wszędzie, a maluchy będą go uwielbiać. Dla Ciebie trzymanie dziecka staje się znacznie łatwiejsze—nosidełko biodrowe równomiernie rozkłada ciężar Twojego dziecka, czyniąc każdą chwilę bardziej komfortową."
         },
-        "description": "Opis"
+        "description": "Opis",
+        "choose_your_carrier": "Wybierz swoje nosidełko",
+        "more_than_1000_satisfied_customers": "Ponad 1000 zadowolonych klientów"
     },
     "Order": {
         "cant_find_your_order": "Przepraszamy, nie możemy znaleźć Twojego zamówienia!",
@@ -151,7 +174,13 @@
         "shipping": "Dostawa",
         "free": "Darmowa",
         "order_success": "Zamówienie złożone! Jesteś teraz przekierowywany na bezpieczną stronę płatności... w {count} sekundach",
-        "start_payment": "Rozpocznij płatność teraz"
+        "start_payment": "Rozpocznij płatność teraz",
+        "login": "Zaloguj się",
+        "password": "Hasło",
+        "email_required": "E-mail jest wymagany",
+        "email_invalid": "Proszę podać poprawny adres e-mail.",
+        "email_subscription_success": "Zostałeś zapisany do naszej listy e-mailowej.",
+        "email_subscription_error": "Błąd podczas zapisywania do listy e-mailowej."
     },
     "Validation": {
         "email": "Proszę podać poprawny adres e-mail",
@@ -171,5 +200,48 @@
         "title": "Premium nosidło biodrowe dla dzieci – Lifty ergonomiczny hip seat",
         "description": "Premium nosidło biodrowe dla dzieci z ergonomicznym, miękko wyściełanym paskiem, bawełnianym siedziskiem OEKO-TEX® i bezpiecznymi klamrami YKK. Lekkie, kompaktowe i ręcznie wykonane na Węgrzech – idealne na krótkie wyjścia.",
         "keywords": "premium nosidło biodrowe dla dzieci, premium Nosidła biodrowe dla dzieci, ergonomiczne nosidło biodrowe, nosidło biodrowe dla malucha, lekkie nosidło dla dzieci, bawełna OEKO-TEX nosidło, klamry YKK nosidło, ręcznie robione nosidło biodrowe"
+    },
+    "Privacy": {
+        "policy": "Polityka prywatności"
+    },
+    "Runner": {
+        "free_shipping": "Darmowa dostawa na wszystkie zamówienia!"
+    },
+    "Email": {
+        "magic_link": {
+            "subject": "Twój link do logowania",
+            "greeting": "Witaj,",
+            "intro": "Otrzymaliśmy prośbę o zalogowanie się na Twoje konto przy użyciu tego adresu e-mail.",
+            "instruction": "Zaloguj się, klikając poniższy link:",
+            "expires": "Ten link wygaśnie za 15 minut.",
+            "ignore": "Jeśli nie prosiłeś o to, zignoruj tę wiadomość e-mail.",
+            "signature": "Pozdrawiamy,\nLifty",
+            "html": {
+                "title": "Twój link do logowania",
+                "description": "Kliknij poniższy przycisk, aby bezpiecznie się zalogować.",
+                "button_text": "Zaloguj się na swoje konto",
+                "or_copy_paste": "Lub skopiuj i wklej ten link w przeglądarce:",
+                "expires_text": "Ten link wygaśnie za 15 minut.",
+                "ignore_text": "Jeśli nie prosiłeś o to, możesz bezpiecznie zignorować tę wiadomość e-mail.",
+                "sent_by": "Wysłane przez",
+                "team_name": "Twój zespół"
+            }
+        }
+    },
+    "ExitPopup": {
+        "title": "OFERTA KUPONU",
+        "description": "Jeśli zapiszesz się do naszego newslettera, natychmiast otrzymasz kupon, który możesz wykorzystać na dowolny z naszych produktów. Nawet na zakup produktów przecenionych!",
+        "name_label": "Imię",
+        "name_placeholder": "Wprowadź swoje imię",
+        "name_required": "Imię jest wymagane",
+        "email_label": "E-mail",
+        "email_placeholder": "Wprowadź swój e-mail",
+        "email_required": "E-mail jest wymagany",
+        "email_invalid": "Proszę podać poprawny adres e-mail",
+        "consent_text": "Wyrażam zgodę na przetwarzanie moich danych i akceptuję",
+        "consent_required": "Musisz zaakceptować politykę prywatności",
+        "privacy_policy": "Politykę prywatności",
+        "submit_button": "Chcę KUPON!",
+        "coupon": "kupon"
     }
 }

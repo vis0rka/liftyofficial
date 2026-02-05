@@ -1,11 +1,12 @@
 import { ErrorCard } from '@/components/error/ErrorCard'
 import { AddToCartBtnWithFloating } from '@/components/products/card/AddToCartBtnWithFloating'
-import { CarrierFeatures } from '@/components/products/descriptions/features/CarrierFeatures'
-import { CarrierLongDescription } from '@/components/products/descriptions/long/CarrierLongDescription'
-import { CarrierShortDescription } from '@/components/products/descriptions/short/CarrierShortDescription'
+import { CarrierFeatureVideo } from '@/components/products/carrier/CarrierFeatureVideo'
+import { CarrierFeatures } from '@/components/products/carrier/descriptions/features/CarrierFeatures'
+import { CarrierLongDescription } from '@/components/products/carrier/descriptions/long/CarrierLongDescription'
+import { CarrierShortDescription } from '@/components/products/carrier/descriptions/short/CarrierShortDescription'
+import { ProductCarrierChooser } from '@/components/products/carrier/ProductCarrierChooser'
+import { ProductCarrierRate } from '@/components/products/carrier/ProductCarrierRate'
 import { ProductImageGallery } from '@/components/products/ProductImageGallery'
-import { AddToRecentlyViewed } from '@/components/products/recently-viewed/AddToRecentlyViewed'
-import { RecentlyViewed } from '@/components/products/recently-viewed/RecentlyViewed'
 import { Badge } from '@/components/ui/badge'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -24,6 +25,9 @@ type components = {
     features: React.ReactNode
     shortDescription: React.ReactNode
     longDescription: React.ReactNode
+    carrierChooser: () => Promise<React.ReactNode>
+    carrierRate: () => Promise<React.ReactNode>
+    featureVideo: React.ReactNode
 }
 
 type tagsToComponents = {
@@ -36,6 +40,9 @@ const tagsToComponents: tagsToComponents = {
         features: <CarrierFeatures key="carrier-features" />,
         shortDescription: <CarrierShortDescription key="carrier-short-desc" />,
         longDescription: <CarrierLongDescription key="carrier-long-desc" />,
+        featureVideo: <CarrierFeatureVideo key="carrier-feature-video" />,
+        carrierChooser: async () => <ProductCarrierChooser />,
+        carrierRate: async () => <ProductCarrierRate />,
     },
 }
 
@@ -63,8 +70,8 @@ export default async function ProductDetailsPage({ params }: Props) {
         <PageSection className="space-y-6">
             <Breadcrumb />
             <div className="flex flex-col lg:flex-row gap-4">
-                <ProductImageGallery images={product.images} />
-                <Card className="basis-1/2">
+                <ProductImageGallery images={product.images} className="w-full lg:w-1/2" />
+                <Card className="w-full lg:w-1/2 grow-0 shrink-0">
                     <CardHeader>
                         <CardTitle>
                             <h1 className="heading-1">{components.name(t)}</h1>
@@ -76,7 +83,7 @@ export default async function ProductDetailsPage({ params }: Props) {
                     <CardContent>
                         <div className="space-y-4 flex flex-col items-start">
                             {components.features}
-
+                            {await components.carrierRate()}
                             {components.shortDescription}
                             {inStock ? (
                                 <Badge variant="success">{t('Product.in_stock')}</Badge>
@@ -91,6 +98,7 @@ export default async function ProductDetailsPage({ params }: Props) {
                                 />
                             }
                         </div>
+                        {await components.carrierChooser()}
                     </CardContent>
                 </Card>
             </div>
@@ -100,8 +108,6 @@ export default async function ProductDetailsPage({ params }: Props) {
             </section>
 
             <BestSellersProducts />
-            <AddToRecentlyViewed product={product} />
-            <RecentlyViewed />
         </PageSection>
     )
 }

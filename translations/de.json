@@ -106,9 +106,12 @@
             "dotted_desc_1": "Schultergurt: 2 cm dick, speziell festes, hochwertiges Schaumstoffmaterial, das ergonomische Unterstützung und Komfort bietet. Dank seiner Elastizität und Formbeständigkeit liegt er gut an der Schulter an, verteilt das Gewicht und reduziert Druckstellen. Die Schnalle ist so gestaltet, dass sie auf dem Schaumstoff aufliegt und nicht in die Schulter drückt. Das langlebige Material behält seine Form über lange Zeit und ist resistent gegen Abnutzung, sodass der Schultergurt auch nach Jahren der Nutzung makellos bleibt.",
             "dotted_desc_2": "Schnalle: YKK-Schnalle. Diese Schnallen sind bekannt für ihre hervorragende Qualität und Zuverlässigkeit. Sie sind äußerst langlebig, haben eine lange Lebensdauer und bieten starke Unterstützung, was für die Sicherheit entscheidend ist. YKK setzt sich auch für Nachhaltigkeit ein und strebt umweltfreundliche Herstellungsprozesse und Materialien an, was ihre Produkte nicht nur zuverlässig, sondern auch umweltfreundlich macht.",
             "dotted_desc_3": "Gurt: 75 cm lang und 5 cm breit aus Polypropylen. Der PP-Gurt ist stark und sicher, aber dennoch leicht, sodass er das Gewicht der Trage nicht wesentlich erhöht. Er ist wasser- und UV-beständig, was ihn langlebig und widerstandsfähig gegen Umwelteinflüsse macht sowie leicht zu reinigen, was für den täglichen Gebrauch praktisch ist. Seine Elastizität sorgt für einen komfortablen Sitz und garantiert eine lange Lebensdauer.",
-            "dotted_desc_4": "Sitz: Hergestellt aus 100 % Baumwolle mit OEKO-TEX® Standard 100-Zertifizierung. Dies ist ein Textilmaterial, das den international anerkannten OEKO-TEX® Standard 100 erfüllt. Diese Zertifizierung garantiert, dass das Baumwollmaterial frei von schädlichen Chemikalien ist und für den Hautkontakt unbedenklich ist, was besonders für Kinder wichtig ist."
+            "dotted_desc_4": "Sitz: Hergestellt aus 100 % Baumwolle mit OEKO-TEX® Standard 100-Zertifizierung. Dies ist ein Textilmaterial, das den international anerkannten OEKO-TEX® Standard 100 erfüllt. Diese Zertifizierung garantiert, dass das Baumwollmaterial frei von schädlichen Chemikalien ist und für den Hautkontakt unbedenklich ist, was besonders für Kinder wichtig ist.",
+            "light_fast_effortless": "Leicht. Schnell. Mühelos.",
+            "light_fast_effortless_desc": "Ziehen Sie es mit einer einfachen Bewegung an, nehmen Sie es überall hin mit, und die Kleinen werden es lieben. Für Sie wird das Halten Ihres Kindes viel einfacher—der Hüftgurt verteilt das Gewicht Ihres Babys gleichmäßig und macht jeden Moment angenehmer."
         },
-        "description": "Beschreibung"
+        "description": "Beschreibung",
+        "more_than_1000_satisfied_customers": "Mehr als 1000 zufriedene Kunden"
     },
     "Order": {
         "cant_find_your_order": "Entschuldigung, wir können Ihre Bestellung nicht finden!",
@@ -159,5 +162,24 @@
         "title": "Premium Hüfttrage für Kleinkinder – Lifty ergonomische Hüftsitz-Trage",
         "description": "Premium Hüfttrage für Kleinkinder mit ergonomischem, gepolstertem Schultergurt, OEKO-TEX® Baumwollsitz und sicheren YKK-Schnallen. Leicht, kompakt und handgefertigt in Ungarn für kurze Wege.",
         "keywords": "Premium Hüfttrage für Kleinkinder, ergonomische Hüfttrage, Hüftsitz für Kleinkinder, leichte Kindertrage, OEKO-TEX Baumwolle Trage, YKK Schnallen Trage, handgefertigte Hüfttrage, Hüfttrage für kurze Strecken"
+    },
+    "Privacy": {
+        "policy": "Datenschutzerklärung"
+    },
+    "ExitPopup": {
+        "title": "GUTSCHEIN-ANGEBOT",
+        "description": "Wenn Sie sich für unseren Newsletter anmelden, erhalten Sie sofort einen Gutschein, den Sie für alle unsere Produkte verwenden können. Sogar für den Kauf von reduzierten Produkten!",
+        "name_label": "Name",
+        "name_placeholder": "Geben Sie Ihren Namen ein",
+        "name_required": "Name ist erforderlich",
+        "email_label": "E-Mail",
+        "email_placeholder": "Geben Sie Ihre E-Mail ein",
+        "email_required": "E-Mail ist erforderlich",
+        "email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        "consent_text": "Ich stimme der Verarbeitung meiner Daten zu und akzeptiere die",
+        "consent_required": "Sie müssen die Datenschutzerklärung akzeptieren",
+        "privacy_policy": "Datenschutzerklärung",
+        "submit_button": "Ich möchte den GUTSCHEIN!",
+        "coupon": "Gutschein"
     }
 }

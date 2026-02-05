@@ -51,7 +51,7 @@ export function Header() {
 
     return (
         <header className="px-2 xl:px-4 2xl:px-6 sticky top-0 z-50 w-full border-b bg-white">
-            <div className={`flex h-[var(--header-height)] items-center justify-between mx-auto`}>
+            <div className={`flex h-[var(--header-height)] items-center justify-between mx-auto max-w-8xl`}>
                 <div className="flex items-center md:w-1/3">
                     <MobileMenuDialog open={isOpen} onOpenChange={setIsOpen}>
                         <MobileMenuDialogTrigger asChild>

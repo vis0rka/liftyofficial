@@ -4,6 +4,7 @@
 
 @theme {
     --header-height: 4rem;
+    --container-8xl: 96rem; /* 1920px */
 }
 
 @layer base {
@@ -98,6 +99,16 @@
 
     .heading-3 {
         @apply text-lg xl:text-xl 2xl:text-2xl font-bold;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
     }
 }
 

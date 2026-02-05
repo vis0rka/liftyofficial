@@ -111,6 +111,27 @@
         "check_email": "Check your email",
         "send_magic_link": "Send Link"
     },
+    "Email": {
+        "magic_link": {
+            "subject": "Your Magic Sign-In Link",
+            "greeting": "Hello,",
+            "intro": "We received a request to sign in to your account using this email address.",
+            "instruction": "Sign in by clicking the link below:",
+            "expires": "This link will expire in 15 minutes.",
+            "ignore": "If you did not request this, please ignore this email.",
+            "signature": "Best,\nLifty",
+            "html": {
+                "title": "Your Magic Sign-In Link",
+                "description": "Click the button below to securely sign in.",
+                "button_text": "Sign in to your account",
+                "or_copy_paste": "Or copy & paste this link in your browser:",
+                "expires_text": "This link expires in 15 minutes.",
+                "ignore_text": "If you did not request this, you can safely ignore this email.",
+                "sent_by": "Sent by",
+                "team_name": "Your Team"
+            }
+        }
+    },
     "Product": {
         "in_stock": "In stock",
         "out_stock": "Out of stock",
@@ -132,9 +153,13 @@
             "dotted_desc_1": "Shoulder Strap: 2 cm thick, specially firm, high-quality foam that provides ergonomic support and comfort. Thanks to its elasticity and shape-retaining properties, it fits snugly on the shoulder, distributes the weight, and reduces pressure points. The buckle is designed to sit on the foam, so it doesn’t press into the shoulder. Its durable material retains its shape over the long term and resists wear, ensuring the shoulder strap remains flawless even after years of use.",
             "dotted_desc_2": "Buckle: YKK buckle. These buckles are renowned for their excellent quality and reliability. They are extremely durable, have a long lifespan, and provide strong support, which is essential for safety. YKK also commits to sustainability, striving for environmentally friendly manufacturing processes and material usage, making their products not only reliable but also eco-friendly.",
             "dotted_desc_3": "Strap: 75 cm long and 5 cm wide polypropylene. The PP strap is strong and secure, yet lightweight, so it doesn’t significantly increase the carrier’s weight. It is water- and UV-resistant, making it durable and resistant to environmental factors, as well as easy to clean, which is practical for everyday use. Its elasticity ensures comfortable wear and guarantees a long lifespan.",
-            "dotted_desc_4": "Seat: Made from 100% cotton with OEKO-TEX® Standard 100 certification. This is a textile material that meets the internationally recognized OEKO-TEX® Standard 100. This certification guarantees that the cotton material is free from harmful chemicals and is safe for skin contact, which is especially important for children."
+            "dotted_desc_4": "Seat: Made from 100% cotton with OEKO-TEX® Standard 100 certification. This is a textile material that meets the internationally recognized OEKO-TEX® Standard 100. This certification guarantees that the cotton material is free from harmful chemicals and is safe for skin contact, which is especially important for children.",
+            "light_fast_effortless": "Light. Fast. Effortless.",
+            "light_fast_effortless_desc": "Slip it on in one simple move, take it with you anywhere, and little ones will love it. For you, holding your child becomes much easier—the hip carrier evenly distributes your baby’s weight, making every moment more comfortable."
         },
-        "description": "Description"
+        "description": "Description",
+        "choose_your_carrier": "Choose your carrier",
+        "more_than_1000_satisfied_customers": "More than 1000 satisfied customers"
     },
     "Order": {
         "cant_find_your_order": "Sorry we can't find your order!",
@@ -173,7 +198,9 @@
         "login": "Login",
         "password": "Password",
         "email_required": "Email is required",
-        "email_invalid": "Please enter a valid email address."
+        "email_invalid": "Please enter a valid email address.",
+        "email_subscription_success": "You have been subscribed to our email list.",
+        "email_subscription_error": "Error subscribing to email list."
     },
     "Validation": {
         "email": "Please enter a valid email address",
@@ -193,7 +220,7 @@
         "policy": "Shipping Policy",
         "first": "1. LIFTY strives to process and deliver your order as smoothly and quickly as possible. We ensure that all products are shipped accurately. In the unlikely event that you receive an incomplete or damaged order, please notify us within 48 hours of receipt, and we will take care of the rest.",
         "first-b": "2. Normally, all items shown are in stock, and we will dispatch your order within 1 day. When you place an order before 1.00 PM, we will do our best to dispatch it the same day.",
-        "second": "3. We offer <strong>free shipping to all EU countries,</strong> with delivery typically taking <strong>7 working days</strong>. All orders are shipped via <strong>UPS.</strong>",
+        "second": "3. We offer <strong>free shipping to all EU countries,</strong> with delivery typically taking <strong>7 working days</strong>. All orders are shipped via <strong>Packeta Group.</strong>",
         "third": "4. Orders will be shipped to the delivery address provided by you.",
         "fourth": "5. Once your order has been shipped, <strong>tracking details will be sent via email to the address you provided.</strong>",
         "fifth": "6. If an incorrect address is provided, the costs for lost or undelivered products will be at your own expense."
@@ -207,12 +234,7 @@
         "fifth": "5. The product must be <strong>undamaged and unused, and original tags must not be removed.</strong>"
     },
     "Privacy": {
-        "policy": "Privacy Policy",
-        "first": "1. You have the option to return the product within <strong>30 days</strong> from the date of receipt.",
-        "second": "2. <strong>The cost of return shipping is the responsibility of the customer.</strong>",
-        "third": "3. Send the ordered product back to our company address by courier: <strong>Hungary, 1151, Budapest, Szekely Elek street 11, Rapidlog Kft.</strong>",
-        "fourth": "4. Once we receive and inspect the returned product, we will refund the purchase price to the provided bank account immediately, but no later than 5 days.",
-        "fifth": "5. The product must be <strong>undamaged and unused, and original tags must not be removed.</strong>"
+        "policy": "Privacy Policy"
     },
     "Login": {
         "title": "Login",
@@ -248,5 +270,24 @@
         "title": "Premium Hip Carrier for Toddlers – Lifty Ergonomic Hip Seat",
         "description": "Premium hip carrier for toddlers with ergonomic padded strap, OEKO-TEX® cotton seat and secure YKK buckles. Lightweight, compact and handcrafted in Hungary for short trips.",
         "keywords": "premium hip carrier for toddlers, toddler hip seat, ergonomic hip carrier, lightweight toddler carrier, OEKO-TEX cotton baby product, YKK buckle toddler carrier, handcrafted hip carrier, hip carrier for short trips"
+    },
+    "Runner": {
+        "free_shipping": "Free shipping on all orders!"
+    },
+    "ExitPopup": {
+        "title": "COUPON OFFER",
+        "description": "If you subscribe to our newsletter, you will immediately receive a coupon that you can use for any of our products. Even for purchasing discounted products!",
+        "name_label": "Name",
+        "name_placeholder": "Enter your name",
+        "name_required": "Name is required",
+        "email_label": "Email",
+        "email_placeholder": "Enter your email",
+        "email_required": "Email is required",
+        "email_invalid": "Please enter a valid email address",
+        "consent_text": "I consent to the processing of my data and accept the",
+        "consent_required": "You must accept the privacy policy",
+        "privacy_policy": "Privacy Policy",
+        "submit_button": "I want the COUPON!",
+        "coupon": "coupon"
     }
 }

@@ -19,7 +19,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { useReCaptcha } from 'next-recaptcha-v3'
 import Image from 'next/image'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import React from 'react'
 import ReactCountryFlag from 'react-country-flag'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -51,7 +51,6 @@ export default function CartPage() {
     const countryFromStore = useCountryStore(state => state.country)
     const { executeRecaptcha } = useReCaptcha()
     const [stripeSession, setStripeSession] = React.useState<CheckoutActionResponse | null>(null)
-    const router = useRouter()
 
     const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(schema(t)),
@@ -126,7 +125,7 @@ export default function CartPage() {
         if (status === 'order-success' && stripeSession?.url) {
             window.location.href = stripeSession.url
         }
-    }, [status, stripeSession]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [status, stripeSession])
 
     return (
         <section className="  flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6">

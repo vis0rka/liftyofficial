@@ -20,7 +20,7 @@ const LoginModal = () => {
     const t = useTranslations()
     const [error, setError] = React.useState<string | null>(null)
     const [success, setSuccess] = React.useState<string | null>(null)
-    const { mutateAsync: requestMagicLink, isPending: isLoading, isError } = useMagicLink()
+    const { mutateAsync: requestMagicLink, isPending: isLoading } = useMagicLink()
 
     const form = useForm<LoginFormValues>({
         defaultValues: {

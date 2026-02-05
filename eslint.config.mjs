@@ -1,4 +1,9 @@
-export default {
-    extends: ['next/core-web-vitals', 'next/typescript'],
-    rules: { '@typescript-eslint/no-explicit-any': 'off' },
-}
+import next from 'eslint-config-next'
+import { defineConfig } from 'eslint/config'
+
+export default defineConfig([
+    next,
+    {
+        rules: { '@typescript-eslint/no-explicit-any': 'off' },
+    },
+])
