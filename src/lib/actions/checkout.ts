@@ -1,6 +1,7 @@
 'use server'
 
 import { CheckoutFormValues } from '@/app/[locale]/checkout/page'
+import { localeToCountryFlag } from '@/lib/localeToCountryFlag'
 import axios from 'axios'
 import Stripe from 'stripe'
 import { getCachedProducts } from '../api/woo/products/getProducts'
@@ -64,7 +65,6 @@ export const checkout = async ({
                 total: (item?.price_data?.unit_amount / (1 + taxRate) / 100).toString(),
             }
         })
-
         const dataToApi = {
             payment_method: 'stripe',
             payment_method_title: 'Stripe',
@@ -91,6 +91,10 @@ export const checkout = async ({
                 country: formData.country,
             },
             line_items: line_items,
+            meta_data: [
+                { key: 'trp_language', value: localeToCountryFlag[lang]?.metaCode ?? 'en_US' },
+                { key: '_created_via', value: 'liftyofficial next.js' },
+            ],
         }
 
         const wooResult = await wooApi.postOrder(lang, dataToApi)

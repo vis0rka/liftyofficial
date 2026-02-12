@@ -3,14 +3,9 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useRouter } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
+import { localeToCountryFlag } from '@/lib/localeToCountryFlag'
 import { useParams } from 'next/navigation'
 import ReactCountryFlag from 'react-country-flag'
-
-const localeToCountryFlag: Record<string, { flag: string; name: string }> = {
-    en: { flag: 'GB', name: 'English' },
-    de: { flag: 'DE', name: 'Deutsch' },
-    pl: { flag: 'PL', name: 'Polish' },
-}
 
 export default function LanguageSwitcher() {
     const router = useRouter()
@@ -18,7 +13,6 @@ export default function LanguageSwitcher() {
     const handleLanguageChange = (newLocale: string) => {
         router.push({ pathname: '/' }, { locale: newLocale })
     }
-
     return (
         <Select onValueChange={handleLanguageChange} value={locale as string}>
             <SelectTrigger className="w-[50px] sm:w-fit">

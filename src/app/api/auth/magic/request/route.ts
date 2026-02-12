@@ -8,13 +8,22 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 const JWT_SECRET = new TextEncoder().encode(process.env.MAGIC_JWT_SECRET)
-const APP_URL = process.env.APP_URL ?? 'http://localhost:3000' // pl. https://example.com
+
+function getAppUrl(req: NextRequest): string {
+    // x-forwarded-* headers: proxy/load balancer mögött
+    const proto = req.headers.get('x-forwarded-proto')
+    const host = req.headers.get('x-forwarded-host') || req.headers.get('host')
+    if (proto && host) return `${proto}://${host.split(',')[0].trim()}`
+    // Fallback: req.url-ből (Next.js beállítja)
+    return new URL(req.url).origin
+}
 
 export async function POST(req: NextRequest) {
     const { email, redirectTo, locale } = await req.json()
     if (!email) return NextResponse.json({ error: 'Missing email' }, { status: 400 })
-    // Rate limit per IP
+    const appUrl = getAppUrl(req)
 
+    // Rate limit per IP
     const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
     const rateLimitOk = await checkRateLimit(`ml:${ip}`)
 
@@ -42,7 +51,7 @@ export async function POST(req: NextRequest) {
         .setExpirationTime('60m')
         .sign(JWT_SECRET)
 
-    const url = new URL('/api/auth/magic/consume', APP_URL)
+    const url = new URL('/api/auth/magic/consume', appUrl)
     url.searchParams.set('token', jwt)
     if (redirectTo) url.searchParams.set('next', redirectTo)
 
@@ -80,7 +89,7 @@ ${t('magic_link.signature')}
             html: `
       <div style="max-width:460px;margin:0 auto;border-radius:8px;border:1px solid #eaeaea;padding:28px 22px 22px;font-family:'Segoe UI',Arial,sans-serif;background:#fafcff;color:#23272f;">
         <div style="text-align:center;margin-bottom:24px;">
-          <img src="${APP_URL}/logo-small.webp" alt="Logo" style="width:54px;height:auto;margin-bottom:8px;border-radius:8px;" />
+          <img src="${appUrl}/logo-small.webp" alt="Logo" style="width:54px;height:auto;margin-bottom:8px;border-radius:8px;" />
         </div>
         <h2 style="text-align:center;margin:0 0 18px 0;font-weight:600;font-size:1.45rem;letter-spacing:-0.01em;">${t('magic_link.html.title')}</h2>
         <p style="margin:0 0 19px 0;font-size:1.05rem;">
