@@ -172,11 +172,6 @@ const UserMenu = () => {
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
                         <Link className="w-full" href="/account">
-                            {t('Common.account')}
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Link className="w-full" href="/account/orders">
                             {t('Common.orders')}
                         </Link>
                     </DropdownMenuItem>

@@ -8,13 +8,17 @@ import { AccountMenu } from './components/AccountMenu'
 
 const PageLoader: React.FC = () => {
     return (
-        <div className="flex items-center justify-center h-screen">
-            <Skeleton className="w-100 h-60" />
-        </div>
+        <PageSection className="flex items-center justify-start h-screen">
+            <Skeleton className="w-120 h-80" />
+        </PageSection>
     )
 }
 
-export default async function AccountPage({ params }: { params: Promise<{ locale: string }> }) {
+interface AccountPageProps {
+    params: Promise<{ locale: string; tab?: string }>
+}
+
+export default async function AccountPage({ params }: AccountPageProps) {
     return (
         <Suspense fallback={<PageLoader />}>
             <Content params={params} />
@@ -22,10 +26,11 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
     )
 }
 
-async function Content({ params }: { params: Promise<{ locale: string }> }) {
+async function Content({ params }: AccountPageProps) {
     const session = await getSession()
 
     const { locale } = await params
+
     if (!session.user_email) {
         redirect(`/${locale}/?modal=login`)
     }
@@ -37,8 +42,9 @@ async function Content({ params }: { params: Promise<{ locale: string }> }) {
         const newUser = await wooApi.postCustomer({
             email: session.user_email,
             username: session.user_email.split('@')[0],
-            password: Math.random().toString(36).substring(2, 15),
+            password: crypto.randomUUID(),
         })
+
         userData = newUser
     } else {
         userData = userArray?.[0]

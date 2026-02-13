@@ -14,22 +14,23 @@ interface AccountMenuProps {
 
 export async function AccountMenu({ user, orders }: AccountMenuProps) {
     const t = await getTranslations('Account')
+
     return (
         <div className="flex w-full max-w-md flex-col gap-6">
-            <Tabs defaultValue="account" orientation="vertical" className="max-w-lg">
+            <Tabs defaultValue={'orders'} orientation="vertical" className="max-w-lg">
                 {/* Left Sidebar */}
                 <TabsList>
-                    <TabsTrigger value="account">{t('account')}</TabsTrigger>
                     <TabsTrigger value="orders">{t('orders')}</TabsTrigger>
+                    <TabsTrigger value="account">{t('account')}</TabsTrigger>
                 </TabsList>
 
                 {/* Right Content */}
                 <div className="flex-1">
-                    <TabsContent value="account" className="mt-0">
-                        <AccountContent user={user} />
-                    </TabsContent>
                     <TabsContent value="orders" className="mt-0">
                         <OrdersContent orders={orders} />
+                    </TabsContent>
+                    <TabsContent value="account" className="mt-0">
+                        <AccountContent user={user} />
                     </TabsContent>
                 </div>
             </Tabs>
@@ -49,7 +50,7 @@ async function AccountContent({ user }: { user: AccountMenuProps['user'] }) {
             <CardContent>
                 <p className="text-sm font-medium text-muted-foreground">{t('email')}</p>
                 <p className="text-lg">{user.email}</p>
-                <p className="text-sm font-medium text-muted-foreground">{t('first_name')}</p>
+                {/*                 <p className="text-sm font-medium text-muted-foreground">{t('first_name')}</p>
                 <p className="text-lg">{user.billing?.first_name}</p>
                 <p className="text-sm font-medium text-muted-foreground">{t('last_name')}</p>
                 <p className="text-lg">{user.billing?.last_name}</p>
@@ -64,7 +65,7 @@ async function AccountContent({ user }: { user: AccountMenuProps['user'] }) {
                 <p className="text-sm font-medium text-muted-foreground">{t('postal_code')}</p>
                 <p className="text-lg">{user.billing?.postcode}</p>
                 <p className="text-sm font-medium text-muted-foreground">{t('country')}</p>
-                <p className="text-lg">{user.billing?.country}</p>
+                <p className="text-lg">{user.billing?.country}</p> */}
             </CardContent>
         </Card>
     )

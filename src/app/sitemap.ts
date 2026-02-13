@@ -1,5 +1,5 @@
 import { routing } from '@/i18n/routing'
-import { getCachedProducts } from '@/lib/api/woo/products/getProducts'
+import { wooApi } from '@/lib/api/woo/woo'
 import { MetadataRoute } from 'next'
 
 const staticRoutes = ['', '/shop', '/about-us', '/shipping-policy', '/refund-policy', '/privacy-policy']
@@ -24,7 +24,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Generate product routes for all locales
     const productUrls: MetadataRoute.Sitemap = []
     try {
-        const products = await getCachedProducts()
+        const products = await wooApi.getProducts({
+            per_page: 100,
+            status: 'publish',
+        })
         if (products && Array.isArray(products)) {
             for (const product of products) {
                 if (product.slug && product.status === 'publish') {

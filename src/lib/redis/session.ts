@@ -28,10 +28,11 @@ export async function storeMagicLinkSession(
 export async function getMagicLinkSession(nonce: string): Promise<RedisSessionData | null> {
     try {
         const redis = getRedisClient()
-        const data = await redis.get(`ml:nonce:${nonce}`)
-        if (!data || typeof data !== 'string') return null
+        const data = await redis.get<RedisSessionData>(`ml:nonce:${nonce}`)
 
-        return JSON.parse(data) as RedisSessionData
+        if (!data) return null
+
+        return data
     } catch (error) {
         console.error('Failed to get magic link session:', error)
         return null
