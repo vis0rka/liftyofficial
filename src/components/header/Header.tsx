@@ -4,6 +4,7 @@ import { Menu, User, X } from 'lucide-react'
 import * as React from 'react'
 
 import { Button, LoadingButton } from '@/components/ui/button'
+import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -20,6 +21,7 @@ import { useModals } from '@/moduls/modals/ModalService'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { Runner } from '../features/runner/runner'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -30,12 +32,6 @@ import {
 } from '../ui/dropdown-menu'
 import CountrySwitcher from './components/CurrencySwitcher'
 import LanguageSwitcher from './components/LanguageSwitcher'
-import {
-    MobileMenuDialog,
-    MobileMenuDialogContent,
-    MobileMenuDialogTitle,
-    MobileMenuDialogTrigger,
-} from './components/mobileMenuDialog'
 
 const menuItems = [
     { title: 'Common.home', href: '/' },
@@ -48,75 +44,91 @@ export function Header() {
     const t = useTranslations()
 
     const fromSM = useBreakpoint('sm')
+    const headerRef = React.useRef<HTMLDivElement>(null)
+    const [drawerTop, setDrawerTop] = React.useState(0)
+
+    React.useEffect(() => {
+        if (headerRef.current) {
+            setDrawerTop(headerRef.current.getBoundingClientRect().bottom)
+        }
+    }, [isOpen])
 
     return (
-        <header className="px-2 xl:px-4 2xl:px-6 sticky top-0 z-50 w-full border-b bg-white">
-            <div className={`flex h-[var(--header-height)] items-center justify-between mx-auto max-w-8xl`}>
-                <div className="flex items-center md:w-1/3">
-                    <MobileMenuDialog open={isOpen} onOpenChange={setIsOpen}>
-                        <MobileMenuDialogTrigger asChild>
-                            <Button
-                                variant="icon"
-                                size="icon"
-                                className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+        <>
+            <Runner />
+            <header ref={headerRef} className="px-2 xl:px-4 2xl:px-6 sticky top-0 z-50 w-full border-b bg-white">
+                <div className={`flex h-[var(--header-height)] items-center justify-between mx-auto max-w-8xl`}>
+                    <div className="flex items-center md:w-1/3">
+                        <Drawer open={isOpen} onOpenChange={setIsOpen} shouldScaleBackground={false}>
+                            <DrawerTrigger asChild>
+                                <Button
+                                    variant="icon"
+                                    size="icon"
+                                    className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+                                >
+                                    <div className="relative">
+                                        <Menu
+                                            className={`h-5 w-5 transition-all ${
+                                                isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
+                                            }`}
+                                        />
+                                        <X
+                                            className={`absolute left-0 top-0 h-5 w-5 transition-all ${
+                                                isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+                                            }`}
+                                        />
+                                    </div>
+                                    <span className="sr-only">Toggle Menu</span>
+                                </Button>
+                            </DrawerTrigger>
+                            <DrawerContent
+                                className="mt-0 rounded-none transition-[top] duration-300"
+                                style={{ top: drawerTop }}
+                                overlayStyle={{ top: drawerTop }}
+                                showHandle={false}
                             >
-                                <div className="relative">
-                                    <Menu
-                                        className={`h-5 w-5 transition-all ${
-                                            isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
-                                        }`}
-                                    />
-                                    <X
-                                        className={`absolute left-0 top-0 h-5 w-5 transition-all ${
-                                            isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-                                        }`}
-                                    />
+                                <VisuallyHidden>
+                                    <DrawerTitle>Navigation</DrawerTitle>
+                                </VisuallyHidden>
+                                <div className="p-4 flex flex-col gap-6">
+                                    <MobileNav items={menuItems} setIsOpen={setIsOpen} />
+                                    <CountrySwitcher />
                                 </div>
-                                <span className="sr-only">Toggle Menu</span>
-                            </Button>
-                        </MobileMenuDialogTrigger>
-                        <VisuallyHidden>
-                            <MobileMenuDialogTitle>Navigation</MobileMenuDialogTitle>
-                        </VisuallyHidden>
-                        <MobileMenuDialogContent
-                            className={`w-full m-w-full h-[calc(100dvh_-_var(--header-height))] top-[var(--header-height)] translate-y-0 p-4`}
-                        >
-                            <MobileNav items={menuItems} setIsOpen={setIsOpen} />
-                            <CountrySwitcher />
-                        </MobileMenuDialogContent>
-                    </MobileMenuDialog>
-                    <Link href="/" className="flex items-center space-x-2">
-                        <Image
-                            src="/images/logo-small.webp"
-                            width={120}
-                            height={0}
-                            alt="lifty-logo"
-                            style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
-                            className="w-20 md:w-20 lg:w-24"
-                        />
-                    </Link>
+                            </DrawerContent>
+                        </Drawer>
+                        <Link href="/" className="flex items-center space-x-2">
+                            <Image
+                                src="/images/logo-small.webp"
+                                width={120}
+                                height={0}
+                                alt="lifty-logo"
+                                style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto' }}
+                                className="w-20 md:w-20 lg:w-24"
+                            />
+                        </Link>
+                    </div>
+                    <div className="hidden md:flex md:w-1/3 md:justify-center">
+                        <NavigationMenu>
+                            <NavigationMenuList>
+                                {menuItems.map(item => (
+                                    <NavigationMenuItem key={item.title}>
+                                        <Link href={item.href} passHref className={navigationMenuTriggerStyle()}>
+                                            {t(item.title)}
+                                        </Link>
+                                    </NavigationMenuItem>
+                                ))}
+                            </NavigationMenuList>
+                        </NavigationMenu>
+                    </div>
+                    <div className="flex items-center justify-end md:w-1/3 space-x-3">
+                        {fromSM && <CountrySwitcher />}
+                        <LanguageSwitcher />
+                        <Cart />
+                        <UserMenu />
+                    </div>
                 </div>
-                <div className="hidden md:flex md:w-1/3 md:justify-center">
-                    <NavigationMenu>
-                        <NavigationMenuList>
-                            {menuItems.map(item => (
-                                <NavigationMenuItem key={item.title}>
-                                    <Link href={item.href} passHref className={navigationMenuTriggerStyle()}>
-                                        {t(item.title)}
-                                    </Link>
-                                </NavigationMenuItem>
-                            ))}
-                        </NavigationMenuList>
-                    </NavigationMenu>
-                </div>
-                <div className="flex items-center justify-end md:w-1/3 space-x-3">
-                    {fromSM && <CountrySwitcher />}
-                    <LanguageSwitcher />
-                    <Cart />
-                    <UserMenu />
-                </div>
-            </div>
-        </header>
+            </header>
+        </>
     )
 }
 

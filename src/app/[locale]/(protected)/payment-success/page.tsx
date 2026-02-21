@@ -12,12 +12,33 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
     const t = await getTranslations()
     const { session_id, orderId } = await searchParams
 
+    if (!session_id || !orderId) {
+        return (
+            <section className="mx-auto flex flex-col my-10 space-y-4">
+                <div>
+                    <h1 className="~text-xl/4xl">{t('Order.cant_find_your_order')}</h1>
+                </div>
+            </section>
+        )
+    }
+
     const session = await getCheckoutSession(session_id as string)
 
-    if (!orderId) {
+    const sessionOrderId = session.client_reference_id ?? session.metadata?.wooOrderId
+    if (sessionOrderId !== String(orderId)) {
         return (
-            <section className="  mx-auto flex flex-col my-10 space-y-4">
-                <div className="">
+            <section className="mx-auto flex flex-col my-10 space-y-4">
+                <div>
+                    <h1 className="~text-xl/4xl">{t('Order.cant_find_your_order')}</h1>
+                </div>
+            </section>
+        )
+    }
+
+    if (session.payment_status !== 'paid' || session.status !== 'complete') {
+        return (
+            <section className="mx-auto flex flex-col my-10 space-y-4">
+                <div>
                     <h1 className="~text-xl/4xl">{t('Order.cant_find_your_order')}</h1>
                     <h2 className="~text-base/xl">
                         {t('Order.your_payment_status', { status: session.payment_status })}

@@ -7,7 +7,6 @@ import { setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import { Runner } from '@/components/features/runner/runner'
 import { ExitPopup } from '@/moduls/modals/exit-popup/ExitPopup'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
@@ -47,8 +46,6 @@ export default async function LocaleLayout({
     return (
         <>
             <NextIntlClientProvider>
-                <Runner />
-                {/*   <Toaster position="top-right" /> */}
                 <Suspense fallback={null}>
                     <ModalService />
                 </Suspense>

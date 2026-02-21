@@ -15,13 +15,13 @@ export default function LanguageSwitcher() {
     }
     return (
         <Select onValueChange={handleLanguageChange} value={locale as string}>
-            <SelectTrigger className="w-[50px] sm:w-fit">
+            <SelectTrigger className="w-fit px-2" showCaret={false}>
                 <SelectValue>
-                    {/*                     <ReactCountryFlag
+                    <ReactCountryFlag
                         countryCode={localeToCountryFlag[locale as string].flag}
                         svg
-                        style={{ width: '1.5em', height: '1.5em' }}
-                    /> */}
+                        style={{ width: '1.6em', height: '1.6em' }}
+                    />
                 </SelectValue>
             </SelectTrigger>
             <SelectContent>
@@ -31,7 +31,7 @@ export default function LanguageSwitcher() {
                             <ReactCountryFlag
                                 countryCode={localeToCountryFlag[country].flag}
                                 svg
-                                style={{ width: '1.5em', height: '1.5em' }}
+                                style={{ width: '1.8em', height: '1.8em' }}
                             />
                             <span>{localeToCountryFlag[country].name}</span>
                         </div>

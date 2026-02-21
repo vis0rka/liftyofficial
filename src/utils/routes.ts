@@ -5,4 +5,5 @@ export const routes = {
     refund: '/refund-policy',
     privacy: '/privacy-policy',
     termsAndConditions: '/terms-and-conditions',
+    contact: '/contact',
 } as const

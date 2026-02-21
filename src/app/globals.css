@@ -4,9 +4,13 @@
 
 @theme {
     --header-height: 4rem;
+    --runner-height: 3rem;
     --container-8xl: 96rem; /* 1920px */
 }
 
+.grecaptcha-badge {
+    visibility: hidden !important;
+}
 @layer base {
     :root {
         --background: 0 0% 100%;

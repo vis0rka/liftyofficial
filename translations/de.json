@@ -158,6 +158,42 @@
     "AboutUs": {
         "description": "<p>Als Eltern von zwei kleinen Kindern haben wir unseren Online-Shop gegründet. Wir sind stolz darauf, unsere eigenen Lifty Premium-Hüfttragen vorzustellen. Wir haben diese Trage erträumt, um unseren Alltag zu erleichtern – und natürlich auch Ihren! Die Lifty ist praktisch, bequem, einfach zu bedienen und der perfekte Begleiter für Strandspaziergänge ebenso wie für Stadtausflüge. Jedes Detail wurde sorgfältig gestaltet, um maximalen Komfort und Unterstützung für Eltern und ihre Kinder zu bieten.</br></br> Wir streben danach, dass jede Familie bei uns das ideale Produkt findet, das den Alltag erleichtert und verschönert.</br></br> Falls Sie Fragen haben, zögern Sie nicht, sich vertrauensvoll an uns zu wenden! Wir helfen Ihnen gerne bei allem, was Sie brauchen!</br></br> Mit freundlichen Grüßen,</br> Judit und Viktor</p>"
     },
+    "ContactPage": {
+        "title": "Kontaktieren Sie uns",
+        "description": "Senden Sie uns eine Nachricht und wir melden uns in Kürze bei Ihnen.",
+        "fields": {
+            "name": {
+                "label": "Name",
+                "placeholder": "Ihr Name"
+            },
+            "email": {
+                "label": "E-Mail",
+                "placeholder": "sie@beispiel.de"
+            },
+            "message": {
+                "label": "Nachricht",
+                "placeholder": "Schreiben Sie Ihre Nachricht..."
+            }
+        },
+        "validation": {
+            "nameMin": "Der Name muss mindestens 2 Zeichen lang sein.",
+            "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+            "messageMin": "Die Nachricht muss mindestens 10 Zeichen lang sein.",
+            "consentRequired": "You must accept the Privacy Policy."
+        },
+        "consent": {
+            "text": "I consent to the processing of my data and accept the",
+            "linkLabel": "Privacy Policy"
+        },
+        "messages": {
+            "success": "Ihre Nachricht wurde erfolgreich gesendet.",
+            "error": "Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+        },
+        "buttons": {
+            "submit": "Nachricht senden",
+            "sending": "Wird gesendet..."
+        }
+    },
     "Metadata": {
         "title": "Premium Hüfttrage für Kleinkinder – Lifty ergonomische Hüftsitz-Trage",
         "description": "Premium Hüfttrage für Kleinkinder mit ergonomischem, gepolstertem Schultergurt, OEKO-TEX® Baumwollsitz und sicheren YKK-Schnallen. Leicht, kompakt und handgefertigt in Ungarn für kurze Wege.",

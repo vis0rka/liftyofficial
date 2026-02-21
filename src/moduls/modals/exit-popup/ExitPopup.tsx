@@ -6,9 +6,10 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useExitIntent } from '@/hooks/useExitIntent'
+import { routes } from '@/utils/routes'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
-import { Pencil } from 'lucide-react'
+import { Link, Pencil } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -108,9 +109,9 @@ export const ExitPopup = () => {
                                             <div className="space-y-1 leading-none">
                                                 <FormLabel className="text-sm text-gray-500 font-normal cursor-pointer">
                                                     {t('consent_text')}{' '}
-                                                    <a href="/privacy-policy" className="font-bold underline">
+                                                    <Link href={routes.privacy} className="font-bold underline">
                                                         {t('privacy_policy')}
-                                                    </a>
+                                                    </Link>
                                                     .
                                                 </FormLabel>
                                             </div>

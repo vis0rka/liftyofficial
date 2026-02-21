@@ -155,7 +155,7 @@ export default class WooCommerceRestApi<T extends WooRestApiOptions> {
         let queryString = ''
 
         // Include params object into URL.searchParams.
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
         // const a = this._parseParamsObject(params, query);
         // console.log("A:", a);
 

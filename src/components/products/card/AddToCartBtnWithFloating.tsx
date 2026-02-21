@@ -25,17 +25,12 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
     const { country } = useCountryStore(state => state)
     const { price } = useGetProductPrice({ prices: product.custom_prices, price: product.price })
     const [isVisible, setIsVisible] = useState(true)
-    const [mounted, setMounted] = useState(false)
     const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
     const lastScrollY = useRef(0)
 
     useEffect(() => {
-        setMounted(true)
-    }, [])
-
-    useEffect(() => {
-        if (!buttonRef.current || !mounted) return
+        if (!buttonRef.current) return
 
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -52,11 +47,9 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
         return () => {
             observer.disconnect()
         }
-    }, [mounted])
+    }, [])
 
     useEffect(() => {
-        if (!mounted) return
-
         const handleScroll = () => {
             const currentScrollY = window.scrollY
 
@@ -77,7 +70,7 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [mounted])
+    }, [])
 
     const handleAdd = () => {
         const productDetails: ICartItem = {
@@ -106,7 +99,7 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
     const FloatingButton = (
         <div
             className={cn(
-                'max-w-sm mx-auto fixed bottom-0 left-0 right-0 z-[100] flex items-center justify-center p-4 bg-background border rounded-t-sm shadow-lg transition-all duration-300 ease-in-out',
+                'max-w-sm mx-auto fixed bottom-0 left-0 right-0 z-5 flex items-center justify-center p-4 bg-background border rounded-t-sm shadow-lg transition-all duration-300 ease-in-out',
                 shouldShowFloating ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none',
             )}
             style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom, 1.5rem))' }}
@@ -133,7 +126,7 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
             <Button ref={buttonRef} className="uppercase" size="lg" onClick={() => handleAdd()} {...buttonProps}>
                 {t('Common.add_to_cart')}
             </Button>
-            {mounted && createPortal(FloatingButton, document.body)}
+            {createPortal(FloatingButton, document.body)}
         </>
     )
 }

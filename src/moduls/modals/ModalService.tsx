@@ -65,7 +65,7 @@ const DialogError = () => {
         return () => {
             closeModals()
         }
-    }, [])
+    }, [closeModals])
 
     return (
         <Dialog open={isOpen} onOpenChange={setOpen}>

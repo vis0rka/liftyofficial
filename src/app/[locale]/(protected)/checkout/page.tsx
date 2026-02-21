@@ -363,7 +363,7 @@ export default function CartPage() {
                 </Form>
             </div>
             <div className="flex-1 ">
-                <div className="space-y-8 md:sticky md:top-14">
+                <div className="space-y-8 md:sticky md:top-20">
                     <div>
                         <div className="flex flex-col justify-between items-center w-full space-y-2">
                             {items.map(item => {
@@ -379,7 +379,7 @@ export default function CartPage() {
                                                         height={80}
                                                         priority
                                                         style={{ objectFit: 'contain' }}
-                                                        className="shadow-sm"
+                                                        className="shadow-sm rounded-md"
                                                     />
                                                     <span className="w-6 h-6 rounded-full absolute top-0 right-0 bg-gray-600 text-white flex justify-center items-center text-sm font-semibold translate-x-1/4 -translate-y-1/4">
                                                         {item.quantity}
@@ -435,7 +435,7 @@ export default function CartPage() {
 type CounterProps = { redirectToCheckout: () => void }
 
 const Counter = ({ redirectToCheckout }: CounterProps) => {
-    const [count, setCount] = React.useState(5)
+    const [count, setCount] = React.useState(3)
 
     const t = useTranslations()
 

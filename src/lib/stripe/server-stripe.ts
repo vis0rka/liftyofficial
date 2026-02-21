@@ -23,6 +23,8 @@ export async function createCheckoutSession(products: ValidatedItem[], id: strin
     const session = await serverStripe.checkout.sessions.create({
         mode: 'payment',
         line_items: products,
+        client_reference_id: String(id),
+        metadata: { wooOrderId: String(id) },
         success_url: `${headersList.get('origin')}/${locale}/payment-success?session_id={CHECKOUT_SESSION_ID}&orderId=${id}`,
         cancel_url: `${headersList.get('origin')}/${locale}/`,
     })

@@ -33,7 +33,9 @@ export const Footer = async () => {
                     <Link href={routes.shop}>
                         <p className="text-sm">{t('Common.shop')}</p>
                     </Link>
-                    <p className="text-sm">{t('Common.contact')}</p>
+                    <Link href={routes.contact}>
+                        <p className="text-sm">{t('Common.contact')}</p>
+                    </Link>
                     <Link href={routes.aboutUs}>
                         <p className="text-sm">{t('Common.about_us')}</p>
                     </Link>
