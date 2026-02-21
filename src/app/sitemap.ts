@@ -2,7 +2,15 @@ import { routing } from '@/i18n/routing'
 import { wooApi } from '@/lib/api/woo/woo'
 import { MetadataRoute } from 'next'
 
-const staticRoutes = ['', '/shop', '/about-us', '/shipping-policy', '/refund-policy', '/privacy-policy']
+const staticRoutes = [
+    '',
+    '/shop',
+    '/about-us',
+    '/shipping-policy',
+    '/refund-policy',
+    '/privacy-policy',
+    '/terms-and-conditions',
+]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://liftyofficial.com'

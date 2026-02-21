@@ -26,11 +26,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         keywords: t('Metadata.keywords')
             .split(',')
             .map(k => k.trim()),
-        openGraph: {
-            title: t('Metadata.title'),
-            description: t('Metadata.description'),
-            type: 'website',
-        },
     }
 }
 
