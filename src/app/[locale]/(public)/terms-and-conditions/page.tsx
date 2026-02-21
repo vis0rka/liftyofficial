@@ -1,0 +1,60 @@
+import { RecentlyViewed } from '@/components/products/recently-viewed/RecentlyViewed'
+import { PageSection } from '@/components/ui/page-section'
+import { buildAlternates } from '@/lib/seo/alternates'
+import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { englishTandC, germanTandC, polishTandC } from '../../terms-and-conditions/content'
+
+type Props = {
+    params: Promise<{ locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { locale } = await params
+    const t = await getTranslations({ locale })
+
+    const siteTitle = t('Metadata.title')
+    const title = `${siteTitle} | ${t('Common.t_c')}`
+    const description = t('Metadata.description')
+
+    return {
+        title,
+        description,
+        alternates: buildAlternates(locale, '/terms-and-conditions'),
+        openGraph: {
+            title,
+            description,
+            type: 'article',
+            url: `/${locale}/terms-and-conditions`,
+        },
+        twitter: {
+            title,
+            description,
+        },
+    }
+}
+
+const TermsAndConditions = ({ locale }: { locale: string }) => {
+    switch (locale) {
+        case 'en':
+            return <div dangerouslySetInnerHTML={{ __html: englishTandC }} />
+        case 'pl':
+            return <div dangerouslySetInnerHTML={{ __html: polishTandC }} />
+        case 'de':
+            return <div dangerouslySetInnerHTML={{ __html: germanTandC }} />
+        default:
+            return <div dangerouslySetInnerHTML={{ __html: englishTandC }} />
+    }
+}
+
+export default async function TermsAndConditionsPage({ params }: { params: { locale: string } }) {
+    const { locale } = await params
+    const t = await getTranslations('Privacy')
+    return (
+        <PageSection className="space-y-8 items-center min-h-[600px]">
+            <h1 className="text-4xl font-semibold">{t('policy')}</h1>
+            <TermsAndConditions locale={locale} />
+            <RecentlyViewed />
+        </PageSection>
+    )
+}

@@ -13,11 +13,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { PageSection } from '@/components/ui/page-section'
 import { ProductPrice } from '@/hooks/useGetProductPrice'
 import { getCachedProduct } from '@/lib/api/woo/products/getProducts'
+import { buildAlternates } from '@/lib/seo/alternates'
 import { BestSellersProducts } from '@/moduls/products/BestSellersProducts'
+import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
 type Props = {
-    params: Promise<{ slug: string }>
+    params: Promise<{ slug: string; locale: string }>
 }
 
 type components = {
@@ -46,8 +48,56 @@ const tagsToComponents: tagsToComponents = {
     },
 }
 
+const metadataBase = new URL('https://liftyofficial.com')
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug, locale } = await params
+
+    const t = await getTranslations({ locale })
+    const siteTitle = t('Metadata.title')
+
+    const data = await getCachedProduct(slug)
+    const product = data?.[0]
+
+    if (!product) {
+        return {
+            title: `${siteTitle} | ${t('Common.shop')}`,
+            robots: { index: false, follow: false },
+            alternates: buildAlternates(locale, `/shop/${slug}`),
+        }
+    }
+
+    const title = `${product.name} | ${siteTitle}`
+    const description = (product.short_description || product.description || '')
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, 300)
+
+    const imageUrl = product.images?.[0]?.src || `/${locale}/opengraph-image`
+
+    return {
+        title,
+        description,
+        metadataBase,
+        alternates: buildAlternates(locale, `/shop/${slug}`),
+        openGraph: {
+            title,
+            description,
+            type: 'product',
+            url: `/${locale}/shop/${slug}`,
+            images: [{ url: imageUrl }],
+        },
+        twitter: {
+            title,
+            description,
+            images: [imageUrl],
+        },
+    }
+}
+
 export default async function ProductDetailsPage({ params }: Props) {
-    const { slug } = await params
+    const { slug, locale } = await params
 
     const data = await getCachedProduct(slug)
 
@@ -61,6 +111,26 @@ export default async function ProductDetailsPage({ params }: Props) {
 
     const inStock = product?.stock_quantity > 0 || product.backorders_allowed
 
+    const productJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: product.name,
+        image: (product.images || []).map(i => i.src).filter(Boolean),
+        description: (product.short_description || product.description || '')
+            .replace(/<[^>]*>/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim(),
+        sku: product.sku || undefined,
+        brand: { '@type': 'Brand', name: 'Lifty' },
+        offers: {
+            '@type': 'Offer',
+            url: `${metadataBase.origin}/${locale}/shop/${slug}`,
+            price: product.price,
+            priceCurrency: 'EUR',
+            availability: `https://schema.org/${inStock ? 'InStock' : 'OutOfStock'}`,
+        },
+    }
+
     const components = product.tags?.reduce((acc, item) => {
         acc = tagsToComponents[item.name as keyof typeof tagsToComponents]
         return acc
@@ -68,6 +138,7 @@ export default async function ProductDetailsPage({ params }: Props) {
 
     return (
         <PageSection className="space-y-6">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
             <Breadcrumb />
             <div className="flex flex-col lg:flex-row gap-4">
                 <ProductImageGallery images={product.images} className="w-full lg:w-1/2" />
