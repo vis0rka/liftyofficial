@@ -216,6 +216,42 @@
     "AboutUs": {
         "description": "<p>As parents of two little children, we created our online store. We are proud to introduce our own Lifty premium hip carriers. We dreamed up this carrier to make our daily lives easier—and yours too! The Lifty is practical, comfortable, easy to use, and the perfect companion for everything from beach walks to city outings. Every detail has been carefully designed to provide the utmost comfort and support for both parents and their children.</br></br> We strive to ensure that every family finds the ideal product with us, one that makes everyday life easier and more beautiful.</br></br> If you have any questions, feel free to reach out to us with confidence! We’re happy to help with anything you need!</br></br> Best regards,</br> Judit and Viktor</p>"
     },
+    "ContactPage": {
+        "title": "Contact Us",
+        "description": "Send us a message and we will get back to you soon.",
+        "fields": {
+            "name": {
+                "label": "Name",
+                "placeholder": "Your name"
+            },
+            "email": {
+                "label": "Email",
+                "placeholder": "you@example.com"
+            },
+            "message": {
+                "label": "Message",
+                "placeholder": "Write your message..."
+            }
+        },
+        "validation": {
+            "nameMin": "Name must be at least 2 characters.",
+            "emailInvalid": "Please enter a valid email address.",
+            "messageMin": "Message must be at least 10 characters.",
+            "consentRequired": "You must accept the Privacy Policy."
+        },
+        "consent": {
+            "text": "I consent to the processing of my data and accept the",
+            "linkLabel": "Privacy Policy"
+        },
+        "messages": {
+            "success": "Your message has been sent successfully.",
+            "error": "Could not send your message. Please try again."
+        },
+        "buttons": {
+            "submit": "Send message",
+            "sending": "Sending..."
+        }
+    },
     "Shipping": {
         "policy": "Shipping Policy",
         "first": "1. LIFTY strives to process and deliver your order as smoothly and quickly as possible. We ensure that all products are shipped accurately. In the unlikely event that you receive an incomplete or damaged order, please notify us within 48 hours of receipt, and we will take care of the rest.",

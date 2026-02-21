@@ -1,6 +1,6 @@
 'use server'
 
-import { CheckoutFormValues } from '@/app/[locale]/checkout/page'
+import { CheckoutFormValues } from '@/app/[locale]/(protected)/checkout/page'
 import { localeToCountryFlag } from '@/lib/localeToCountryFlag'
 import axios from 'axios'
 import Stripe from 'stripe'
@@ -186,7 +186,7 @@ const validateCartItems = (originalProducts: WooTypes['getProducts'], cartProduc
     }
 }
 
-const verifyRecaptcha = async (token: string) => {
+export const verifyRecaptcha = async (token: string) => {
     const recaptchaResult = await axios.post(
         `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${token}`,
     )

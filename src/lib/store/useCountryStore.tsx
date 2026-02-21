@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode, createContext, useContext, useRef } from 'react'
+import { type ReactNode, createContext, useContext, useState } from 'react'
 import { useStore } from 'zustand'
 
 import { type CountryStore, createCountryStore } from '@/lib/store/country-store'
@@ -14,12 +14,9 @@ export interface CounterStoreProviderProps {
 }
 
 export const CountryStoreProvider = ({ children }: CounterStoreProviderProps) => {
-    const storeRef = useRef<CountryStoreApi | null>(null)
-    if (storeRef.current === null) {
-        storeRef.current = createCountryStore()
-    }
+    const [store] = useState<CountryStoreApi>(() => createCountryStore())
 
-    return <CountryStoreContext.Provider value={storeRef.current}>{children}</CountryStoreContext.Provider>
+    return <CountryStoreContext.Provider value={store}>{children}</CountryStoreContext.Provider>
 }
 
 export const useCountryStore = <T,>(selector: (store: CountryStore) => T): T => {

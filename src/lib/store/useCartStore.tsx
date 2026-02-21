@@ -1,6 +1,6 @@
 'use client'
 
-import { type ReactNode, createContext, useContext, useRef } from 'react'
+import { type ReactNode, createContext, useContext, useState } from 'react'
 import { useStore } from 'zustand'
 
 import { type CartStore, createCartStore } from '@/lib/store/cart-store'
@@ -14,12 +14,9 @@ export interface CounterStoreProviderProps {
 }
 
 export const CartStoreProvider = ({ children }: CounterStoreProviderProps) => {
-    const storeRef = useRef<CartStoreApi | null>(null)
-    if (storeRef.current === null) {
-        storeRef.current = createCartStore()
-    }
+    const [store] = useState<CartStoreApi>(() => createCartStore())
 
-    return <CartStoreContext.Provider value={storeRef.current}>{children}</CartStoreContext.Provider>
+    return <CartStoreContext.Provider value={store}>{children}</CartStoreContext.Provider>
 }
 
 export const useCartStore = <T,>(selector: (store: CartStore) => T): T => {

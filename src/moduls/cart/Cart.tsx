@@ -56,7 +56,7 @@ export const Cart: React.FC = () => {
                     <ShoppingCart className="h-8 w-8" />
                 </Button>
             </SheetTrigger>
-            <CartSheetContent side="right" className="h-full sm:max-w-[500px]">
+            <CartSheetContent side="right" className="h-full sm:max-w-[500px] ">
                 <div className="flex flex-col justify-between h-full pb-10 items-center">
                     <div>
                         {notEmptyCart ? (

@@ -196,6 +196,42 @@
     "AboutUs": {
         "description": "<p>Jako rodzice dwojga małych dzieci stworzyliśmy nasz sklep internetowy. Z dumą prezentujemy nasze własne, opracowane przez nas nosidełka biodrowe Lifty premium. Wymyśliliśmy to nosidełko, aby ułatwić nasze codzienne życie—i Wasze też! Lifty jest praktyczne, wygodne, łatwe w użyciu i idealny towarzysz na spacery po plaży, jak i na miejskie wycieczki. Każdy szczegół został starannie zaprojektowany, aby zapewnić maksymalny komfort i wsparcie zarówno rodzicom, jak i ich dzieciom.</br></br> Dążymy do tego, aby każda rodzina znalazła u nas idealny produkt, który ułatwi i upiększy codzienne życie.</br></br> W przypadku pytań śmiało się do nas zgłaszajcie! Chętnie pomożemy w każdej sprawie!</br></br> Pozdrawiamy,</br> Judit i Viktor</p>"
     },
+    "ContactPage": {
+        "title": "Skontaktuj się z nami",
+        "description": "Wyślij nam wiadomość, a wkrótce się odezwiemy.",
+        "fields": {
+            "name": {
+                "label": "Imię",
+                "placeholder": "Twoje imię"
+            },
+            "email": {
+                "label": "E-mail",
+                "placeholder": "twoj@email.com"
+            },
+            "message": {
+                "label": "Wiadomość",
+                "placeholder": "Napisz swoją wiadomość..."
+            }
+        },
+        "validation": {
+            "nameMin": "Imię musi mieć co najmniej 2 znaki.",
+            "emailInvalid": "Proszę podać poprawny adres e-mail.",
+            "messageMin": "Wiadomość musi mieć co najmniej 10 znaków.",
+            "consentRequired": "You must accept the Privacy Policy."
+        },
+        "consent": {
+            "text": "I consent to the processing of my data and accept the",
+            "linkLabel": "Privacy Policy"
+        },
+        "messages": {
+            "success": "Twoja wiadomość została pomyślnie wysłana.",
+            "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+        },
+        "buttons": {
+            "submit": "Wyślij wiadomość",
+            "sending": "Wysyłanie..."
+        }
+    },
     "Metadata": {
         "title": "Premium nosidło biodrowe dla dzieci – Lifty ergonomiczny hip seat",
         "description": "Premium nosidło biodrowe dla dzieci z ergonomicznym, miękko wyściełanym paskiem, bawełnianym siedziskiem OEKO-TEX® i bezpiecznymi klamrami YKK. Lekkie, kompaktowe i ręcznie wykonane na Węgrzech – idealne na krótkie wyjścia.",

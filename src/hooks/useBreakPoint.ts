@@ -1,36 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
 
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl'
 
 const breakpoints: Record<Breakpoints, string> = {
     xs: '0',
-    sm: '40rem',
-    md: '48rem',
-    lg: '64rem',
-    xl: '80rem',
-    xxl: '96rem',
-    xxxl: '120rem',
+    sm: '40rem', // 640px
+    md: '48rem', // 768px
+    lg: '64rem', // 1024px
+    xl: '80rem', // 1280px
+    xxl: '96rem', // 1536px
+    xxxl: '120rem', // 1920px
 }
 
-export const useBreakpoint = (from: Breakpoints) => {
-    const [matches, setMatches] = useState(false)
+export const useBreakpoint = (from: Breakpoints, until = false) => {
+    const query = `(${until ? 'max-width' : 'min-width'}: ${breakpoints[from]})`
 
-    useEffect(() => {
-        const media = window.matchMedia(`(min-width: ${breakpoints[from]})`)
-        if (media.matches !== matches) {
-            setMatches(media.matches)
-        }
+    const subscribe = useCallback(
+        (callback: () => void) => {
+            const media = window.matchMedia(query)
+            media.addEventListener('change', callback)
+            return () => media.removeEventListener('change', callback)
+        },
+        [query],
+    )
 
-        const listener = () => {
-            setMatches(media.matches)
-        }
+    const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query])
 
-        media.addEventListener('change', listener)
+    const getServerSnapshot = useCallback(() => false, [])
 
-        return () => {
-            media.removeEventListener('change', listener)
-        }
-    }, [matches, from])
-
-    return matches
+    return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
