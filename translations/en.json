@@ -13,6 +13,35 @@
             "desc1": "This compact and portable toddler hip carrier is designed to go where strollers can't. Ready for adventure? Let's go!",
             "desc2": "Whether you're basking in the sun on the beach or wandering through charming historic streets, the Lifty premium carrier is the ultimate holiday essential. Ditch the bulky stroller and embrace the freedom to explore!"
         },
+        "EverydayMoments": {
+            "badge": "Everyday moments",
+            "title": "When might you need it?",
+            "description": "Anytime and anywhere. It gives ideal support for short distances, stairs, kindergarten drop-offs, travel days, and all those moments when a stroller is just not practical. Small enough to take with you, supportive enough to make everyday carrying easier and more connected.",
+            "items": {
+                "short_distances": "Perfect for short distances",
+                "stairs_travel": "Helpful on stairs and during travel",
+                "easy_to_pack": "Easy to pack and take anywhere",
+                "closeness_comfort": "Supports closeness and comfort"
+            },
+            "cta_shop": "Shop carriers",
+            "cta_learn_more": "Learn more",
+            "image_alt": "Mother carrying a child by the lake",
+            "quick_support": {
+                "label": "Quick support",
+                "title": "For walks, travel and busy everyday moments"
+            }
+        },
+        "TravelEssential": {
+            "title": "Your travel essential",
+            "description_1": "Compact, lightweight and easy to bring along, the Lifty carrier is made for the moments when a stroller feels too bulky or simply cannot keep up.",
+            "items": {
+                "airports_travel_days": "Perfect for airports and travel days",
+                "stairs_uneven_streets": "Effortless on stairs and uneven streets",
+                "beach_walks": "Ideal for beach walks where strollers fail",
+                "more_movement": "More movement, more moments together"
+            },
+            "image_alt": "Parent carrying a toddler with a red Lifty carrier by the lake"
+        },
         "the_toddler_hip_carrier": "The toddler hip carrier",
         "the_essentials_for_adventures": "The essential for adventures"
     },
@@ -88,7 +117,9 @@
         "my_account": "My Account",
         "orders": "Orders",
         "account": "Account",
-        "close": "Close"
+        "close": "Close",
+        "view_carriers": "View carriers",
+        "faq": "FAQ"
     },
     "Error": {
         "title": "Something went wrong!",
@@ -155,11 +186,61 @@
             "dotted_desc_3": "Strap: 75 cm long and 5 cm wide polypropylene. The PP strap is strong and secure, yet lightweight, so it doesn’t significantly increase the carrier’s weight. It is water- and UV-resistant, making it durable and resistant to environmental factors, as well as easy to clean, which is practical for everyday use. Its elasticity ensures comfortable wear and guarantees a long lifespan.",
             "dotted_desc_4": "Seat: Made from 100% cotton with OEKO-TEX® Standard 100 certification. This is a textile material that meets the internationally recognized OEKO-TEX® Standard 100. This certification guarantees that the cotton material is free from harmful chemicals and is safe for skin contact, which is especially important for children.",
             "light_fast_effortless": "Light. Fast. Effortless.",
-            "light_fast_effortless_desc": "Slip it on in one simple move, take it with you anywhere, and little ones will love it. For you, holding your child becomes much easier—the hip carrier evenly distributes your baby’s weight, making every moment more comfortable."
+            "light_fast_effortless_desc": "Slip it on in one simple move, take it with you anywhere, and little ones will love it. For you, holding your child becomes much easier—the hip carrier evenly distributes your baby’s weight, making every moment more comfortable.",
+            "product_details": {
+                "badge": "Built for everyday carrying",
+                "title": "Made for real toddler moments",
+                "description": "Toddlers change their minds quickly — one moment they want closeness, the next they want freedom. Lifty helps you adapt fast, so everyday life feels easier, lighter and more comfortable.",
+                "section_1_title": "When might you need it?",
+                "section_1_text": "Perfect for stairs, short walks, daycare drop-offs, travel days or any moment when a stroller is not the easy option.",
+                "section_2_title": "For whom and why?",
+                "section_2_text": "Designed for toddlers from around 9 months to 4 years old, up to 20 kg. It helps reduce strain on your arms, improves posture and distributes weight more evenly for both moms and dads.",
+                "items": {
+                    "1": "Supports toddlers from 9 months to 4 years",
+                    "2": "Up to 20 kg maximum weight",
+                    "3": "Helps reduce arm and shoulder strain",
+                    "4": "Comfortable for both moms and dads"
+                },
+                "features": {
+                    "1": {
+                        "title": "Ergonomic shoulder strap",
+                        "text": "Firm, supportive foam helps reduce pressure on your shoulder and keeps carrying comfortable for longer."
+                    },
+                    "2": {
+                        "title": "Premium YKK buckle",
+                        "text": "Reliable, durable hardware designed for everyday safety and long-term use."
+                    },
+                    "3": {
+                        "title": "Lightweight durable strap",
+                        "text": "Strong, practical and easy to clean — made to handle daily life, travel and outdoor use."
+                    },
+                    "4": {
+                        "title": "100% cotton seat",
+                        "text": "OEKO-TEX® certified cotton that feels soft, breathable and safe against your child’s skin."
+                    }
+                }
+            }
         },
         "description": "Description",
         "choose_your_carrier": "Choose your carrier",
-        "more_than_1000_satisfied_customers": "More than 1000 satisfied customers"
+        "more_than_1000_satisfied_customers": "More than 1000 satisfied customers",
+        "carrier_colors": {
+            "green": "Green",
+            "blue": "Blue",
+            "red": "Red",
+            "yellow": "Yellow",
+            "purple": "Purple",
+            "orange": "Orange",
+            "brown": "Brown",
+            "gray": "Gray",
+            "black": "Black",
+            "burgundy_red": "Burgundy Red",
+            "petrol_blue": "Petrol Blue",
+            "dark_grey": "Dark Grey",
+            "light_grey": "Light Grey",
+            "olive_green": "Olive Green",
+            "beige": "Beige"
+        }
     },
     "Order": {
         "cant_find_your_order": "Sorry we can't find your order!",
@@ -325,5 +406,137 @@
         "privacy_policy": "Privacy Policy",
         "submit_button": "I want the COUPON!",
         "coupon": "coupon"
+    },
+    "FAQ": {
+        "title": "Frequently Asked Questions",
+
+        "carriers": {
+            "title": "About the carriers",
+
+            "q1": {
+                "question": "What is the Lifty carrier designed for?",
+                "answer": "The Lifty carrier is designed for short-distance toddler carrying in everyday situations like stairs, daycare drop-offs, shopping, travel days, and walks where a stroller is not practical."
+            },
+            "q2": {
+                "question": "Is Lifty a baby carrier?",
+                "answer": "No, Lifty is not a baby carrier for newborns or infants. It is designed specifically for toddlers who can already sit safely and want to be picked up and put down frequently."
+            },
+            "q3": {
+                "question": "What age is the carrier suitable for?",
+                "answer": "The carrier is suitable for toddlers from around 9 months up to 4 years old."
+            },
+            "q4": {
+                "question": "What is the maximum weight limit?",
+                "answer": "The maximum recommended weight limit is 20 kg."
+            },
+            "q5": {
+                "question": "Is the carrier ergonomic?",
+                "answer": "Yes. It helps reduce strain on your arms and shoulders by distributing weight evenly with a wide padded strap."
+            },
+            "q6": {
+                "question": "Is it comfortable for both moms and dads?",
+                "answer": "Yes. The adjustable and unisex design makes it comfortable for both parents."
+            },
+            "q7": {
+                "question": "Is it easy to use?",
+                "answer": "Yes. You can pick up or put down your toddler in one simple motion."
+            },
+            "q8": {
+                "question": "Is it easy to carry with me?",
+                "answer": "Yes. It is lightweight and compact, so it fits into a small bag."
+            },
+            "q9": {
+                "question": "What materials is it made from?",
+                "answer": "It is made from 100% OEKO-TEX® certified cotton, durable straps, and high-quality YKK buckles."
+            },
+            "q10": {
+                "question": "Is it safe for my child?",
+                "answer": "Yes. The materials are tested and certified to be safe for skin contact."
+            },
+            "q11": {
+                "question": "Where is it made?",
+                "answer": "The carriers are handcrafted in Hungary within the EU."
+            },
+            "q12": {
+                "question": "Is it good for travel?",
+                "answer": "Yes. It is ideal for airports, stairs, beaches, and places where strollers are difficult to use."
+            },
+            "q13": {
+                "question": "Does it replace a stroller?",
+                "answer": "Not completely. It is best used when a stroller is not practical."
+            }
+        },
+
+        "shop": {
+            "title": "Shop, Payment, Shipping and Returns",
+            "q1": {
+                "question": "What payment methods do you accept?",
+                "answer": "We use Stripe for secure payments. You can pay with major debit and credit cards supported by Stripe, including Visa, Mastercard, and American Express. Available payment methods may vary depending on your location."
+            },
+            "q2": {
+                "question": "Is my payment secure?",
+                "answer": "Yes. All payments are processed securely via Stripe using industry-standard encryption and security protocols, ensuring your data is fully protected."
+            },
+            "q3": {
+                "question": "How long does delivery take?",
+                "answer": "Delivery usually takes up to 3-7 working days. Based on your location."
+            },
+            "q4": {
+                "question": "When will my order be shipped?",
+                "answer": "Orders are usually shipped within 1 working day. Orders placed before 1 PM are often shipped the same day."
+            },
+            "q5": {
+                "question": "Will I receive tracking information?",
+                "answer": "Yes. Tracking details are sent via email after shipment."
+            },
+            "q6": {
+                "question": "What if my order arrives damaged?",
+                "answer": "Please contact us within 48 hours and we will help resolve the issue."
+            },
+            "q7": {
+                "question": "Can I return my order?",
+                "answer": "Yes. You can return your order within 30 days."
+            },
+            "q8": {
+                "question": "Who pays for return shipping?",
+                "answer": "Return shipping costs are the responsibility of the customer."
+            },
+            "q9": {
+                "question": "What condition must the return be in?",
+                "answer": "The product must be unused, undamaged, and returned with original tags."
+            },
+            "q10": {
+                "question": "When will I get my refund?",
+                "answer": "Refunds are processed within 5 days after receiving the returned product."
+            },
+            "q11": {
+                "question": "Do you offer warranty?",
+                "answer": "Yes. If you receive a faulty product, please contact us and we will help resolve the issue."
+            },
+            "q12": {
+                "question": "What if I enter the wrong address?",
+                "answer": "Incorrect address details may result in additional costs or failed delivery."
+            },
+            "q13": {
+                "question": "How does login work?",
+                "answer": "You can log in using a secure magic link sent to your email."
+            },
+            "q14": {
+                "question": "How long is the login link valid?",
+                "answer": "The login link expires after 15 minutes."
+            },
+            "q15": {
+                "question": "Do I need an account to order?",
+                "answer": "No, but having an account helps you track orders more easily."
+            },
+            "q16": {
+                "question": "How can I contact support?",
+                "answer": "You can contact us via the contact form or at info@liftyofficial.com."
+            },
+            "q17": {
+                "question": "Can I use multiple coupons?",
+                "answer": "No. Coupons cannot be combined unless stated otherwise."
+            }
+        }
     }
 }

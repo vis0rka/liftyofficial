@@ -15,6 +15,7 @@ import { ProductPrice } from '@/hooks/useGetProductPrice'
 import { getCachedProduct } from '@/lib/api/woo/products/getProducts'
 import { buildAlternates } from '@/lib/seo/alternates'
 import { BestSellersProducts } from '@/moduls/products/BestSellersProducts'
+import { carrierColors } from '@/moduls/products/helpers/colors'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
@@ -23,7 +24,7 @@ type Props = {
 }
 
 type components = {
-    name: (t: any) => string
+    name: (t: any, colors: Record<string, string>) => string
     features: React.ReactNode
     shortDescription: React.ReactNode
     longDescription: React.ReactNode
@@ -38,7 +39,8 @@ type tagsToComponents = {
 
 const tagsToComponents: tagsToComponents = {
     carrier: {
-        name: t => `Lifty - ${t('Common.toddler_carrier', { count: 1 })}`,
+        name: (t, colorName) =>
+            `Lifty - ${t('Common.toddler_carrier', { count: 1 })} ${colorName ? `- ${colorName}` : ''}`,
         features: <CarrierFeatures key="carrier-features" />,
         shortDescription: <CarrierShortDescription key="carrier-short-desc" />,
         longDescription: <CarrierLongDescription key="carrier-long-desc" />,
@@ -48,7 +50,7 @@ const tagsToComponents: tagsToComponents = {
     },
 }
 
-const metadataBase = new URL('https://liftyofficial.com')
+const metadataBase = new URL('https://admin.liftyofficial.com')
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug, locale } = await params
@@ -67,13 +69,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         }
     }
 
-    const title = `${product.name} | ${siteTitle}`
-    const description = (product.short_description || product.description || '')
-        .replace(/<[^>]*>/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .slice(0, 300)
-
+    const title = `Lifty - ${t('Common.toddler_carrier', { count: 1 })}`
+    const description = t('Product.toddler_carrier.short')
     const imageUrl = product.images?.[0]?.src || `/${locale}/opengraph-image`
 
     return {
@@ -104,7 +101,10 @@ export default async function ProductDetailsPage({ params }: Props) {
     const t = await getTranslations()
 
     const product = data?.[0]
+    const colors = carrierColors(t)
 
+    const productColor = product?.attributes?.find(attribute => attribute.name === 'color')?.options?.[0]
+    const colorName = colors?.[productColor]
     if (!product) {
         return <ErrorCard />
     }
@@ -145,7 +145,7 @@ export default async function ProductDetailsPage({ params }: Props) {
                 <Card className="w-full lg:w-1/2 grow-0 shrink-0">
                     <CardHeader>
                         <CardTitle>
-                            <h1 className="heading-1">{components.name(t)}</h1>
+                            <h1 className="heading-1">{components.name(t, colorName)}</h1>
                             <span className="font-sans heading-2">
                                 <ProductPrice prices={product.custom_prices} price={product.price} />
                             </span>
@@ -163,7 +163,7 @@ export default async function ProductDetailsPage({ params }: Props) {
                             )}
                             {
                                 <AddToCartBtnWithFloating
-                                    name={components.name(t)}
+                                    name={components.name(t, colorName)}
                                     product={product}
                                     buttonProps={{ disabled: !inStock }}
                                 />

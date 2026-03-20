@@ -11,17 +11,23 @@ import { CardImage } from './CardImage'
 interface ProductCardProps {
     product: ArrayElement<WooTypes['getProducts']>
     hideViewButton?: boolean
+    colors: Record<string, string>
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButton }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButton, colors }) => {
     const t = useTranslations()
+    const productColor = product.attributes?.find(attribute => attribute.name === 'color')?.options?.[0]
+
+    const colorName = colors?.[productColor]
 
     return (
         <Link href={`/shop/${product?.slug}`} className="shadow overflow-hidden rounded-md  bg-white product-card">
             <CardImage productImages={product?.images} />
 
             <div className="p-2 md:p-3 lg:p-5 flex flex-col items-center">
-                <h1 className="heading-3 text-center font-bold">Lifty - {t('Common.toddler_carrier', { count: 1 })}</h1>
+                <h1 className="heading-3 text-center font-bold">
+                    Lifty - {t('Common.toddler_carrier', { count: 1 })} {colorName ? `- ${colorName}` : ''}
+                </h1>
                 <div className="flex flex-col justify-center items-center">
                     <span className="text-center text-2xl font-bold font-sans">
                         <ProductPrice price={product.price} prices={product.custom_prices} />

@@ -3,6 +3,11 @@
 import { unstable_cache } from 'next/cache'
 import { wooApi } from '../woo'
 
+const cacheTime: Record<string, number> = {
+    products: process.env.NODE_ENV === 'production' ? 60 * 60 * 1 : 60 * 1, // 1 hours
+    product: process.env.NODE_ENV === 'production' ? 60 * 10 : 60 * 1, // 10 minutes
+}
+
 export const getCachedProducts = unstable_cache(
     async () => {
         try {
@@ -10,14 +15,13 @@ export const getCachedProducts = unstable_cache(
                 per_page: 100,
                 status: 'publish',
             })
-
             return result
         } catch (error) {
             console.error(error)
         }
     },
     ['products'],
-    { revalidate: 60 * 60 * 1 },
+    { revalidate: cacheTime.products },
 ) // 1 hours
 
 export const getCachedProduct = unstable_cache(
@@ -33,5 +37,5 @@ export const getCachedProduct = unstable_cache(
         }
     },
     ['product'],
-    { revalidate: 300 },
+    { revalidate: cacheTime.product },
 ) // 5 minutes

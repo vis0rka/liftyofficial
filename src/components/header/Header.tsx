@@ -36,7 +36,7 @@ import LanguageSwitcher from './components/LanguageSwitcher'
 const menuItems = [
     { title: 'Common.home', href: '/' },
     { title: 'Common.shop', href: '/shop' },
-    { title: 'Common.about_us', href: '/about-us' },
+    { title: 'Common.faq', href: '/faq' },
 ]
 
 export function Header() {

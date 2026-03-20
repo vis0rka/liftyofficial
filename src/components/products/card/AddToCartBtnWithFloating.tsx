@@ -3,6 +3,7 @@
 import { Button, ButtonProps } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { ProductPrice, useGetProductPrice } from '@/hooks/useGetProductPrice'
+import usePortalTarget from '@/hooks/usePortalTarget'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
 import { ICartItem } from '@/lib/store/cart-store'
 import { useCartStore } from '@/lib/store/useCartStore'
@@ -28,6 +29,7 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
     const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
     const lastScrollY = useRef(0)
+    const portalTarget = usePortalTarget()
 
     useEffect(() => {
         if (!buttonRef.current) return
@@ -126,7 +128,7 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
             <Button ref={buttonRef} className="uppercase" size="lg" onClick={() => handleAdd()} {...buttonProps}>
                 {t('Common.add_to_cart')}
             </Button>
-            {createPortal(FloatingButton, document.body)}
+            {portalTarget && createPortal(FloatingButton, portalTarget)}
         </>
     )
 }

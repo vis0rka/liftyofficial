@@ -13,6 +13,35 @@
             "desc1": "Dieser kompakte und tragbare Hüftgurt für Kleinkinder ist dafür gemacht, dorthin zu gehen, wo Kinderwagen nicht hinkommen. Bereit für ein Abenteuer? Los geht's!",
             "desc2": "Ob Sie am Strand in der Sonne liegen oder durch charmante historische Straßen schlendern, der Lifty Premium-Gurt ist das ultimative Urlaubsaccessoire. Verabschieden Sie sich vom sperrigen Kinderwagen und genießen Sie die Freiheit, die Welt zu erkunden!"
         },
+        "EverydayMoments": {
+            "badge": "Alltagsmomente",
+            "title": "Wann könnte es nützlich sein?",
+            "description": "Jederzeit und überall. Es bietet ideale Unterstützung für kurze Wege, Treppen, Kindergartenwege, Reisetage und all die Momente, in denen ein Kinderwagen unpraktisch ist. Klein genug zum Mitnehmen, unterstützend genug, um das tägliche Tragen leichter und verbundener zu machen.",
+            "items": {
+                "short_distances": "Perfekt für kurze Strecken",
+                "stairs_travel": "Hilfreich auf Treppen und auf Reisen",
+                "easy_to_pack": "Leicht zu verstauen und überallhin mitzunehmen",
+                "closeness_comfort": "Fördert Nähe und Komfort"
+            },
+            "cta_shop": "Tragen ansehen",
+            "cta_learn_more": "Mehr erfahren",
+            "image_alt": "Mutter trägt ein Kind am See",
+            "quick_support": {
+                "label": "Schnelle Unterstützung",
+                "title": "Für Spaziergänge, Reisen und einen lebhaften Alltag"
+            }
+        },
+        "TravelEssential": {
+            "title": "Ihr Reisebegleiter",
+            "description_1": "Kompakt, leicht und einfach mitzunehmen: Die Lifty Trage ist für all die Momente gemacht, in denen ein Kinderwagen zu sperrig ist oder einfach nicht mithalten kann.",
+            "items": {
+                "airports_travel_days": "Perfekt für Flughäfen und Reisetage",
+                "stairs_uneven_streets": "Mühelos auf Treppen und unebenen Straßen",
+                "beach_walks": "Ideal für Strandspaziergänge, wo Kinderwagen versagen",
+                "more_movement": "Mehr Bewegung, mehr gemeinsame Momente"
+            },
+            "image_alt": "Elternteil trägt ein Kleinkind mit einer roten Lifty Trage am See"
+        },
         "the_toddler_hip_carrier": "Das Hüfttragegestell für Kleinkinder",
         "the_essentials_for_adventures": "Das Wesentliche für Abenteuer"
     },
@@ -56,6 +85,7 @@
         "home": "Zurück zur Startseite"
     },
     "Common": {
+        "legal": "Rechtliches",
         "quick_links": "Schnellzugriff",
         "informations": "Informationen",
         "shipping": "Versand",
@@ -79,7 +109,16 @@
         "view_cart": "Warenkorb ansehen",
         "checkout": "Zur Kasse",
         "continue_shopping": "Einkaufen fortsetzen",
-        "view": "Ansehen"
+        "view": "Ansehen",
+        "checkout_including": "Inklusive {sign} {tax} Steuern",
+        "login": "Anmelden",
+        "cart_updated": "Ihr Warenkorb wurde aktualisiert: nicht verfuegbare Artikel oder Artikel mit geaenderten Preisen wurden entfernt. Bitte pruefen Sie den Warenkorb vor dem Checkout.",
+        "logout": "Abmelden",
+        "my_account": "Mein Konto",
+        "orders": "Bestellungen",
+        "account": "Konto",
+        "close": "Schliessen",
+        "faq": "FAQ"
     },
     "Error": {
         "title": "Etwas ist schiefgelaufen!",
@@ -87,10 +126,48 @@
         "goHome": "Zur Startseite",
         "tryAgain": "Erneut versuchen",
         "something_went_wrong": "Etwas ist schiefgelaufen...",
-        "contact": "Bitte kontaktieren Sie den Support unter"
+        "contact": "Bitte kontaktieren Sie den Support unter info@liftyofficial.com",
+        "something_went_wrong_checkout": "Beim Checkout ist ein Fehler aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
+        "invalid_credentials": "Ungueltige E-Mail-Adresse oder ungueltiges Passwort",
+        "login_error": "Beim Anmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support unter info@liftyofficial.com",
+        "too_many_requests": "Zu viele Anfragen. Bitte versuchen Sie es in 15 Minuten erneut."
+    },
+    "Auth": {
+        "magic_link_login": "Anmelden",
+        "magic_link_sent": "Link wurde an Ihre E-Mail gesendet!",
+        "magic_link_error": "Link konnte nicht gesendet werden",
+        "too_many_requests": "Zu viele Anfragen. Bitte versuchen Sie es spaeter erneut.",
+        "invalid_email": "Bitte geben Sie eine gueltige E-Mail-Adresse ein.",
+        "check_email": "Pruefen Sie Ihre E-Mails",
+        "send_magic_link": "Link senden"
+    },
+    "Email": {
+        "magic_link": {
+            "subject": "Ihr Magic-Login-Link",
+            "greeting": "Hallo,",
+            "intro": "Wir haben eine Anfrage erhalten, sich mit dieser E-Mail-Adresse bei Ihrem Konto anzumelden.",
+            "instruction": "Melden Sie sich an, indem Sie auf den folgenden Link klicken:",
+            "expires": "Dieser Link laeuft in 15 Minuten ab.",
+            "ignore": "Falls Sie diese Anfrage nicht gestellt haben, ignorieren Sie bitte diese E-Mail.",
+            "signature": "Beste Gruesse,\nLifty",
+            "html": {
+                "title": "Ihr Magic-Login-Link",
+                "description": "Klicken Sie auf die Schaltflaeche unten, um sich sicher anzumelden.",
+                "button_text": "Bei Ihrem Konto anmelden",
+                "or_copy_paste": "Oder kopieren Sie diesen Link und fuegen Sie ihn in Ihrem Browser ein:",
+                "expires_text": "Dieser Link laeuft in 15 Minuten ab.",
+                "ignore_text": "Falls Sie diese Anfrage nicht gestellt haben, koennen Sie diese E-Mail ignorieren.",
+                "sent_by": "Gesendet von",
+                "team_name": "Ihr Team"
+            }
+        }
     },
     "Product": {
         "in_stock": "Auf Lager",
+        "out_stock": "Nicht auf Lager",
+        "free_shipping": "Kostenloser Versand fuer alle Bestellungen",
+        "order_before": "Wenn Sie vor 14:00 Uhr bestellen, wird Ihre Bestellung noch am selben Tag versendet",
+        "suitable": "Geeignet fuer Kinder von 9 Monaten bis 4 Jahren mit einem maximalen Gewicht von 20 kg",
         "toddler_carrier": {
             "short": "Unsere LIFTY-Kleinkindtragen bieten eine komfortable, ergonomische, praktische und schnelle Lösung für alle Eltern mit einem Kleinkind. Sie sind perfekt für Kinder, die mal getragen werden wollen und im nächsten Moment ihre Umgebung erkunden möchten. Einfach zu verwenden und kompakt, können sie überall hin mitgenommen werden, was sie ideal für kurze Ausflüge, Einkäufe, Treppensteigen und mehr macht. Unsere handgefertigten Produkte, hergestellt in der EU, sind aus OEKO-TEX-zertifizierten 100 % Baumwollmaterialien und hochwertigen YKK-Schnallen gefertigt, was die Sicherheit Ihres Kindes gewährleistet. Wir empfehlen sie jedem, der seinem Kind sowohl Nähe als auch die Freiheit zum Erkunden bieten möchte.",
             "list_1": "Mit dem Hüftgurt können Sie Ihr Kind jederzeit und überall mit einer einzigen Bewegung aufnehmen oder absetzen.",
@@ -108,17 +185,70 @@
             "dotted_desc_3": "Gurt: 75 cm lang und 5 cm breit aus Polypropylen. Der PP-Gurt ist stark und sicher, aber dennoch leicht, sodass er das Gewicht der Trage nicht wesentlich erhöht. Er ist wasser- und UV-beständig, was ihn langlebig und widerstandsfähig gegen Umwelteinflüsse macht sowie leicht zu reinigen, was für den täglichen Gebrauch praktisch ist. Seine Elastizität sorgt für einen komfortablen Sitz und garantiert eine lange Lebensdauer.",
             "dotted_desc_4": "Sitz: Hergestellt aus 100 % Baumwolle mit OEKO-TEX® Standard 100-Zertifizierung. Dies ist ein Textilmaterial, das den international anerkannten OEKO-TEX® Standard 100 erfüllt. Diese Zertifizierung garantiert, dass das Baumwollmaterial frei von schädlichen Chemikalien ist und für den Hautkontakt unbedenklich ist, was besonders für Kinder wichtig ist.",
             "light_fast_effortless": "Leicht. Schnell. Mühelos.",
-            "light_fast_effortless_desc": "Ziehen Sie es mit einer einfachen Bewegung an, nehmen Sie es überall hin mit, und die Kleinen werden es lieben. Für Sie wird das Halten Ihres Kindes viel einfacher—der Hüftgurt verteilt das Gewicht Ihres Babys gleichmäßig und macht jeden Moment angenehmer."
+            "light_fast_effortless_desc": "Ziehen Sie es mit einer einfachen Bewegung an, nehmen Sie es überall hin mit, und die Kleinen werden es lieben. Für Sie wird das Halten Ihres Kindes viel einfacher—der Hüftgurt verteilt das Gewicht Ihres Babys gleichmäßig und macht jeden Moment angenehmer.",
+            "product_details": {
+                "badge": "Fuer den Alltag gemacht",
+                "title": "Gemacht fuer echte Kleinkind-Momente",
+                "description": "Kleinkinder wechseln schnell ihre Meinung - in einem Moment wollen sie Naehe, im naechsten Freiheit. Lifty hilft Ihnen, schnell zu reagieren, damit sich der Alltag leichter und komfortabler anfuehlt.",
+                "section_1_title": "Wann koennte es nuetzlich sein?",
+                "section_1_text": "Ideal fuer Treppen, kurze Wege, Kita-Wege, Reisetage oder jeden Moment, in dem ein Kinderwagen nicht die einfachste Option ist.",
+                "section_2_title": "Fuer wen und warum?",
+                "section_2_text": "Entwickelt fuer Kleinkinder von etwa 9 Monaten bis 4 Jahren, bis 20 kg. Es entlastet Arme und Schultern, verbessert die Haltung und verteilt das Gewicht gleichmaessiger - fuer Mamas und Papas.",
+                "items": {
+                    "1": "Geeignet fuer Kleinkinder von 9 Monaten bis 4 Jahren",
+                    "2": "Maximale Belastung bis 20 kg",
+                    "3": "Entlastet Arme und Schultern",
+                    "4": "Komfortabel fuer Mamas und Papas"
+                },
+                "features": {
+                    "1": {
+                        "title": "Ergonomischer Schultergurt",
+                        "text": "Fester, stuetzender Schaum reduziert den Druck auf der Schulter und sorgt fuer laengeren Tragekomfort."
+                    },
+                    "2": {
+                        "title": "Hochwertige YKK-Schnalle",
+                        "text": "Zuverlaessige, langlebige Hardware fuer Alltagssicherheit und langfristige Nutzung."
+                    },
+                    "3": {
+                        "title": "Leichter, robuster Gurt",
+                        "text": "Stark, praktisch und leicht zu reinigen - gemacht fuer Alltag, Reisen und draussen."
+                    },
+                    "4": {
+                        "title": "Sitz aus 100% Baumwolle",
+                        "text": "OEKO-TEX®-zertifizierte Baumwolle, weich, atmungsaktiv und sicher auf der Haut Ihres Kindes."
+                    }
+                }
+            }
         },
         "description": "Beschreibung",
-        "more_than_1000_satisfied_customers": "Mehr als 1000 zufriedene Kunden"
+        "choose_your_carrier": "Waehlen Sie Ihre Trage",
+        "more_than_1000_satisfied_customers": "Mehr als 1000 zufriedene Kunden",
+        "carrier_colors": {
+            "green": "Grün",
+            "blue": "Blau",
+            "red": "Rot",
+            "yellow": "Gelb",
+            "purple": "Lila",
+            "orange": "Orange",
+            "brown": "Braun",
+            "gray": "Grau",
+            "black": "Schwarz",
+            "burgundy_red": "Burgunderrot",
+            "petrol_blue": "Petrolblau",
+            "dark_grey": "Dunkelgrau",
+            "light_grey": "Hellgrau",
+            "olive_green": "Olivgrün",
+            "beige": "Beige"
+        }
     },
     "Order": {
         "cant_find_your_order": "Entschuldigung, wir können Ihre Bestellung nicht finden!",
         "your_payment_status": "Ihr Zahlungsstatus lautet: {status}",
+        "your_order_status": "Ihr Bestellstatus ist: <important> {status} </important>",
         "thank_you_order": "Vielen Dank für Ihre Bestellung, {name}!",
         "your_order_id": "Ihre Bestellnummer: <important> {orderId} </important>",
-        "confirmation_email_sent": "Die Bestellbestätigungs-E-Mail mit den Details Ihrer Bestellung wurde an Ihre E-Mail-Adresse gesendet."
+        "confirmation_email_sent": "Die Bestellbestätigungs-E-Mail mit den Details Ihrer Bestellung wurde an Ihre E-Mail-Adresse gesendet.",
+        "paid": "bezahlt"
     },
     "Form": {
         "contact": "Kontakt",
@@ -142,7 +272,15 @@
         "place_order": "Bestellung aufgeben",
         "total": "Gesamt",
         "shipping": "Versand",
-        "free": "Kostenlos"
+        "free": "Kostenlos",
+        "order_success": "Bestellung erfolgreich aufgegeben! Sie werden nun zur sicheren Zahlungsseite weitergeleitet... in {count} Sekunden",
+        "start_payment": "Jetzt Zahlung starten",
+        "login": "Anmelden",
+        "password": "Passwort",
+        "email_required": "E-Mail ist erforderlich",
+        "email_invalid": "Bitte geben Sie eine gueltige E-Mail-Adresse ein.",
+        "email_subscription_success": "Sie wurden in unsere E-Mail-Liste eingetragen.",
+        "email_subscription_error": "Fehler beim Abonnieren der E-Mail-Liste."
     },
     "Validation": {
         "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
@@ -194,6 +332,53 @@
             "sending": "Wird gesendet..."
         }
     },
+    "Shipping": {
+        "policy": "Versandrichtlinie",
+        "first": "1. LIFTY ist bestrebt, Ihre Bestellung so reibungslos und schnell wie moeglich zu bearbeiten und zu liefern. Wir stellen sicher, dass alle Produkte korrekt versendet werden. Im unwahrscheinlichen Fall, dass Sie eine unvollstaendige oder beschaedigte Bestellung erhalten, benachrichtigen Sie uns bitte innerhalb von 48 Stunden nach Erhalt, und wir kuemmern uns um den Rest.",
+        "first-b": "2. Normalerweise sind alle angezeigten Artikel auf Lager, und wir versenden Ihre Bestellung innerhalb von 1 Tag. Wenn Sie Ihre Bestellung vor 13:00 Uhr aufgeben, versuchen wir unser Bestes, sie noch am selben Tag zu versenden.",
+        "second": "3. Wir bieten <strong>kostenlosen Versand in alle EU-Laender</strong> an, die Lieferung dauert in der Regel <strong>7 Werktage</strong>. Alle Bestellungen werden ueber <strong>Packeta Group</strong> versendet.",
+        "third": "4. Bestellungen werden an die von Ihnen angegebene Lieferadresse versendet.",
+        "fourth": "5. Sobald Ihre Bestellung versendet wurde, <strong>werden die Sendungsverfolgungsdaten per E-Mail an die von Ihnen angegebene Adresse gesendet.</strong>",
+        "fifth": "6. Wenn eine falsche Adresse angegeben wird, gehen die Kosten fuer verlorene oder nicht zugestellte Produkte zu Ihren Lasten."
+    },
+    "Refund": {
+        "policy": "Rueckerstattungsrichtlinie",
+        "first": "1. Sie haben die Moeglichkeit, das Produkt innerhalb von <strong>30 Tagen</strong> ab Erhalt zurueckzugeben.",
+        "second": "2. <strong>Die Kosten fuer den Rueckversand traegt der Kunde.</strong>",
+        "third": "3. Senden Sie das bestellte Produkt per Kurier an unsere Firmenadresse zurueck: <strong>Ungarn, 1151, Budapest, Szekely Elek street 11, Rapidlog Kft.</strong>",
+        "fourth": "4. Sobald wir das zurueckgesendete Produkt erhalten und geprueft haben, erstatten wir den Kaufpreis auf das angegebene Bankkonto umgehend, spaetestens jedoch innerhalb von 5 Tagen.",
+        "fifth": "5. Das Produkt muss <strong>unbeschaedigt und unbenutzt sein, und die Originaletiketten duerfen nicht entfernt werden.</strong>"
+    },
+    "Login": {
+        "title": "Anmeldung",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "login": "Anmelden"
+    },
+    "Account": {
+        "account_details": "Kontodetails",
+        "manage_your_account_details": "Verwalten Sie Ihre Kontodetails",
+        "email": "E-Mail",
+        "username": "Benutzername",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "name": "Name",
+        "phone": "Telefon",
+        "address": "Adresse",
+        "city": "Stadt",
+        "state": "Bundesland",
+        "postal_code": "Postleitzahl",
+        "country": "Land",
+        "account": "Konto",
+        "orders": "Bestellungen",
+        "order_details": "Bestelldetails",
+        "order_number": "ID",
+        "order_status": "Status",
+        "order_items": "Artikel",
+        "your_orders": "Ihre Bestellungen",
+        "no_orders_found": "Keine Bestellungen gefunden.",
+        "shipping_address": "Liefer- und Rechnungsadresse"
+    },
     "Metadata": {
         "title": "Premium Hüfttrage für Kleinkinder – Lifty ergonomische Hüftsitz-Trage",
         "description": "Premium Hüfttrage für Kleinkinder mit ergonomischem, gepolstertem Schultergurt, OEKO-TEX® Baumwollsitz und sicheren YKK-Schnallen. Leicht, kompakt und handgefertigt in Ungarn für kurze Wege.",
@@ -201,6 +386,9 @@
     },
     "Privacy": {
         "policy": "Datenschutzerklärung"
+    },
+    "Runner": {
+        "free_shipping": "Kostenloser Versand fuer alle Bestellungen!"
     },
     "ExitPopup": {
         "title": "GUTSCHEIN-ANGEBOT",

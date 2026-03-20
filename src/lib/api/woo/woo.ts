@@ -9,7 +9,7 @@ import { ArrayElement } from '@/utils/typeUtils'
 import { WooTypes } from './WooTyps'
 
 const opt: WooRestApiOptions = {
-    url: 'https://liftyofficial.com',
+    url: 'https://admin.liftyofficial.com/',
     consumerKey: process.env.WOO_KEY ?? '',
     consumerSecret: process.env.WOO_SECRET ?? '',
     version: 'wc/v3',

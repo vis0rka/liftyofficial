@@ -13,6 +13,8 @@ export default function useSession() {
 
             return response.data
         },
+        refetchInterval: 1000 * 60 * 5, // 5 minutes
+        refetchOnWindowFocus: true,
     })
 
     const { mutateAsync: logout } = useMutation({

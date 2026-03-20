@@ -8,6 +8,7 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import { parseAsStringLiteral, useQueryState } from 'nuqs'
 import React from 'react'
+import { carrierColors } from './helpers/colors'
 
 // List accepted values
 const productFilters = ['bestsellers', 'newest', 'price_low_to_high', 'price_high_to_low', 'featured'] as const
@@ -19,6 +20,7 @@ export const ProductListWithFilters = () => {
     const [filter, setFilter] = useQueryState('filter', parseAsStringLiteral(productFilters).withDefault('bestsellers'))
 
     const t = useTranslations()
+    const colors = carrierColors(t)
 
     const filteredProducts = React.useMemo(() => {
         if (filter === 'bestsellers') {
@@ -79,7 +81,7 @@ export const ProductListWithFilters = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
                 {filteredProducts.map(product => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product.id} product={product} colors={colors} />
                 ))}
             </div>
         </div>

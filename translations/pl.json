@@ -13,6 +13,35 @@
             "desc1": "Ten kompaktowy i przenośny nosidełko biodrowe dla maluchów jest zaprojektowane tak, aby dotrzeć tam, gdzie wózki nie mogą. Gotowy na przygodę? Chodźmy!",
             "desc2": "Niezależnie od tego, czy opalasz się na plaży, czy wędrujesz przez urokliwe historyczne uliczki, nosidełko premium Lifty to absolutny must-have na wakacje. Porzuć nieporęczny wózek i ciesz się swobodą odkrywania!"
         },
+        "EverydayMoments": {
+            "badge": "Codzienne chwile",
+            "title": "Kiedy może Ci się przydać?",
+            "description": "W każdej chwili i w każdym miejscu. Zapewnia idealne wsparcie na krótkich dystansach, schodach, podczas odprowadzania do przedszkola, w dni podróży i we wszystkich sytuacjach, gdy wózek jest po prostu niepraktyczny. Na tyle małe, by mieć je zawsze przy sobie, i na tyle wspierające, by codzienne noszenie było łatwiejsze i bliższe.",
+            "items": {
+                "short_distances": "Idealne na krótkie dystanse",
+                "stairs_travel": "Pomocne na schodach i w podróży",
+                "easy_to_pack": "Łatwe do spakowania i zabrania wszędzie",
+                "closeness_comfort": "Wspiera bliskość i komfort"
+            },
+            "cta_shop": "Kup nosidełka",
+            "cta_learn_more": "Dowiedz się więcej",
+            "image_alt": "Mama niosąca dziecko nad jeziorem",
+            "quick_support": {
+                "label": "Szybkie wsparcie",
+                "title": "Na spacery, podróże i zabiegane codzienne chwile"
+            }
+        },
+        "TravelEssential": {
+            "title": "Niezbędnik podróżny",
+            "description_1": "Kompaktowe, lekkie i łatwe do zabrania ze sobą nosidełko Lifty zostało stworzone na te chwile, gdy wózek jest zbyt nieporęczny albo po prostu nie daje rady.",
+            "items": {
+                "airports_travel_days": "Idealne na lotniska i dni w podróży",
+                "stairs_uneven_streets": "Bez wysiłku na schodach i nierównych ulicach",
+                "beach_walks": "Idealne na spacery po plaży, gdzie wózek zawodzi",
+                "more_movement": "Więcej ruchu, więcej wspólnych chwil"
+            },
+            "image_alt": "Rodzic niesie malucha w czerwonym nosidełku Lifty nad jeziorem"
+        },
         "the_toddler_hip_carrier": "Nosidełko biodrowe dla malucha",
         "the_essentials_for_adventures": "Niezbędnik na przygody"
     },
@@ -88,7 +117,8 @@
         "my_account": "Moje konto",
         "orders": "Zamówienia",
         "account": "Konto",
-        "close": "Zamknij"
+        "close": "Zamknij",
+        "faq": "FAQ"
     },
     "Error": {
         "title": "Coś poszło nie tak!",
@@ -135,11 +165,61 @@
             "dotted_desc_3": "Pasek: 75 cm długości i 5 cm szerokości polipropylen. Pasek PP jest mocny i bezpieczny, ale lekki, więc nie zwiększa znacząco wagi nosidełka. Jest wodoodporny i odporny na promieniowanie UV, co czyni go trwałym i odpornym na czynniki środowiskowe, a także łatwym do czyszczenia, co jest praktyczne w codziennym użytkowaniu. Jego elastyczność zapewnia wygodne noszenie i gwarantuje długą żywotność.",
             "dotted_desc_4": "Siedzisko: Wykonane z 100% bawełny z certyfikatem OEKO-TEX® Standard 100. Jest to materiał tekstylny, który spełnia międzynarodowo uznany standard OEKO-TEX® Standard 100. Ten certyfikat gwarantuje, że materiał bawełniany jest wolny od szkodliwych chemikaliów i bezpieczny dla kontaktu ze skórą, co jest szczególnie ważne w przypadku dzieci.",
             "light_fast_effortless": "Lekki. Szybki. Bez wysiłku.",
-            "light_fast_effortless_desc": "Załóż go jednym prostym ruchem, zabierz ze sobą wszędzie, a maluchy będą go uwielbiać. Dla Ciebie trzymanie dziecka staje się znacznie łatwiejsze—nosidełko biodrowe równomiernie rozkłada ciężar Twojego dziecka, czyniąc każdą chwilę bardziej komfortową."
+            "light_fast_effortless_desc": "Załóż go jednym prostym ruchem, zabierz ze sobą wszędzie, a maluchy będą go uwielbiać. Dla Ciebie trzymanie dziecka staje się znacznie łatwiejsze—nosidełko biodrowe równomiernie rozkłada ciężar Twojego dziecka, czyniąc każdą chwilę bardziej komfortową.",
+            "product_details": {
+                "badge": "Stworzone do codziennego noszenia",
+                "title": "Stworzone na prawdziwe chwile z maluchem",
+                "description": "Maluchy szybko zmieniają zdanie - w jednej chwili chcą bliskości, a za moment wolności. Lifty pomaga szybko się dostosować, dzięki czemu codzienność jest lżejsza i wygodniejsza.",
+                "section_1_title": "Kiedy może Ci się przydać?",
+                "section_1_text": "Idealne na schody, krótkie spacery, odprowadzanie do żłobka lub przedszkola, dni w podróży i wszędzie tam, gdzie wózek nie jest najwygodniejszą opcją.",
+                "section_2_title": "Dla kogo i dlaczego?",
+                "section_2_text": "Zaprojektowane dla maluchów od około 9 miesięcy do 4 lat, do 20 kg. Odciąża ręce i ramiona, poprawia postawę i równomierniej rozkłada ciężar - dla mam i tatusiów.",
+                "items": {
+                    "1": "Dla maluchów od 9 miesięcy do 4 lat",
+                    "2": "Maksymalne obciążenie do 20 kg",
+                    "3": "Pomaga odciążyć ręce i ramiona",
+                    "4": "Wygodne dla mam i tatusiów"
+                },
+                "features": {
+                    "1": {
+                        "title": "Ergonomiczny pasek na ramię",
+                        "text": "Twarda, wspierająca pianka zmniejsza nacisk na ramię i zapewnia komfort noszenia przez dłuższy czas."
+                    },
+                    "2": {
+                        "title": "Wysokiej jakości klamra YKK",
+                        "text": "Niezawodne i trwałe elementy zaprojektowane z myślą o codziennym bezpieczeństwie i długim użytkowaniu."
+                    },
+                    "3": {
+                        "title": "Lekki, wytrzymały pas",
+                        "text": "Mocny, praktyczny i łatwy do czyszczenia - gotowy na codzienność, podróże i aktywności na zewnątrz."
+                    },
+                    "4": {
+                        "title": "Siedzisko ze 100% bawełny",
+                        "text": "Bawełna z certyfikatem OEKO-TEX®, miękka, oddychająca i bezpieczna dla skóry dziecka."
+                    }
+                }
+            }
         },
         "description": "Opis",
         "choose_your_carrier": "Wybierz swoje nosidełko",
-        "more_than_1000_satisfied_customers": "Ponad 1000 zadowolonych klientów"
+        "more_than_1000_satisfied_customers": "Ponad 1000 zadowolonych klientów",
+        "carrier_colors": {
+            "green": "Zielony",
+            "blue": "Niebieski",
+            "red": "Czerwony",
+            "yellow": "Żółty",
+            "purple": "Fioletowy",
+            "orange": "Pomarańczowy",
+            "brown": "Brązowy",
+            "gray": "Szary",
+            "black": "Czarny",
+            "burgundy_red": "Bordowy",
+            "petrol_blue": "Błękit petrolu",
+            "dark_grey": "Ciemnoszary",
+            "light_grey": "Jasnoszary",
+            "olive_green": "Oliwkowy",
+            "beige": "Beżowy"
+        }
     },
     "Order": {
         "cant_find_your_order": "Przepraszamy, nie możemy znaleźć Twojego zamówienia!",
@@ -231,6 +311,53 @@
             "submit": "Wyślij wiadomość",
             "sending": "Wysyłanie..."
         }
+    },
+    "Shipping": {
+        "policy": "Polityka wysyłki",
+        "first": "1. LIFTY dokłada wszelkich starań, aby przetworzyć i dostarczyć Twoje zamówienie jak najsprawniej i najszybciej. Dbamy o to, aby wszystkie produkty były wysyłane prawidłowo. W mało prawdopodobnym przypadku otrzymania niekompletnego lub uszkodzonego zamówienia, prosimy o poinformowanie nas w ciągu 48 godzin od odbioru, a my zajmiemy się resztą.",
+        "first-b": "2. Zwykle wszystkie prezentowane produkty są dostępne w magazynie i wysyłamy zamówienie w ciągu 1 dnia. Jeśli złożysz zamówienie przed godziną 13:00, dołożymy wszelkich starań, aby nadać je tego samego dnia.",
+        "second": "3. Oferujemy <strong>darmową wysyłkę do wszystkich krajów UE,</strong> a dostawa zazwyczaj zajmuje <strong>7 dni roboczych</strong>. Wszystkie zamówienia są wysyłane przez <strong>Packeta Group.</strong>",
+        "third": "4. Zamówienia będą wysyłane na podany przez Ciebie adres dostawy.",
+        "fourth": "5. Po wysyłce zamówienia <strong>szczegóły śledzenia zostaną wysłane e-mailem na podany przez Ciebie adres.</strong>",
+        "fifth": "6. Jeśli podano nieprawidłowy adres, koszty zagubionych lub niedostarczonych produktów ponosi kupujący."
+    },
+    "Refund": {
+        "policy": "Polityka zwrotów",
+        "first": "1. Masz możliwość zwrotu produktu w ciągu <strong>30 dni</strong> od daty otrzymania.",
+        "second": "2. <strong>Koszt przesyłki zwrotnej ponosi klient.</strong>",
+        "third": "3. Odeślij zamówiony produkt na adres naszej firmy kurierem: <strong>Węgry, 1151, Budapeszt, ul. Szekely Elek 11, Rapidlog Kft.</strong>",
+        "fourth": "4. Po otrzymaniu i sprawdzeniu zwróconego produktu, zwrócimy kwotę zakupu na podany rachunek bankowy niezwłocznie, jednak nie później niż w ciągu 5 dni.",
+        "fifth": "5. Produkt musi być <strong>nieuszkodzony i nieużywany, a oryginalne metki nie mogą zostać usunięte.</strong>"
+    },
+    "Login": {
+        "title": "Logowanie",
+        "email": "E-mail",
+        "password": "Hasło",
+        "login": "Zaloguj się"
+    },
+    "Account": {
+        "account_details": "Szczegóły konta",
+        "manage_your_account_details": "Zarządzaj szczegółami swojego konta",
+        "email": "E-mail",
+        "username": "Nazwa użytkownika",
+        "first_name": "Imię",
+        "last_name": "Nazwisko",
+        "name": "Nazwa",
+        "phone": "Telefon",
+        "address": "Adres",
+        "city": "Miasto",
+        "state": "Województwo",
+        "postal_code": "Kod pocztowy",
+        "country": "Kraj",
+        "account": "Konto",
+        "orders": "Zamówienia",
+        "order_details": "Szczegóły zamówienia",
+        "order_number": "ID",
+        "order_status": "Status",
+        "order_items": "Pozycje",
+        "your_orders": "Twoje zamówienia",
+        "no_orders_found": "Nie znaleziono zamówień.",
+        "shipping_address": "Adres wysyłki i rozliczeniowy"
     },
     "Metadata": {
         "title": "Premium nosidło biodrowe dla dzieci – Lifty ergonomiczny hip seat",

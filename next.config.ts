@@ -5,7 +5,12 @@ const withNextIntl = createNextIntlPlugin()
 
 const nextConfig: NextConfig = {
     output: 'standalone',
-    images: { remotePatterns: [{ protocol: 'https', hostname: 'liftyofficial.com' }] },
+    images: {
+        remotePatterns: [
+            { protocol: 'https', hostname: '*.liftyofficial.com' },
+            { protocol: 'https', hostname: 'www.youtube.com' },
+        ],
+    },
     experimental: { viewTransition: true },
 }
 

@@ -24,18 +24,28 @@ const keyFeatuers = [
 export const KeyFeatures = async () => {
     const t = await getTranslations()
     return (
-        <div className="flex flex-col gap-6 lg:flex-row items-stretch">
+        <div className="flex flex-col items-stretch gap-6 lg:flex-row">
             {keyFeatuers.map(feature => {
                 return (
                     <Card
-                        className="flex flex-col items-center lg:basis-1/3 full justify-between"
-                        key={feature.imageSrc}
+                        className="rounded-[2rem] @container border border-white/70 bg-white/80 p-7 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-lg lg:basis-1/3"
+                        key={feature.title}
                     >
-                        <CardHeader className="flex flex-row items-center gap-2 w-full justify-center pb-2">
-                            <Image src={feature.imageSrc} alt="icon feather" width={40} height={40} />
-                            <CardTitle className="text-lg font-bold">{t(feature.title)}</CardTitle>
+                        <CardHeader className="p-0 items-start @sm:flex-row @sm:items-baseline gap-4">
+                            <div className="inline-flex rounded-2xl bg-amber-100 p-3 text-neutral-900">
+                                <Image
+                                    src={feature.imageSrc}
+                                    alt={t(feature.title)}
+                                    width={24}
+                                    height={24}
+                                    className="h-8 w-8 object-contain"
+                                />
+                            </div>
+                            <CardTitle className="text-xl font-semibold text-neutral-900">{t(feature.title)}</CardTitle>
                         </CardHeader>
-                        <CardContent className="flex-1 flex text-center">{t(feature.descr)}</CardContent>
+                        <CardContent className="mt-3 p-0 text-sm leading-7 text-neutral-600">
+                            {t(feature.descr)}
+                        </CardContent>
                     </Card>
                 )
             })}
