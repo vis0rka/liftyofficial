@@ -8,34 +8,30 @@ const cacheTime: Record<string, number> = {
     product: process.env.NODE_ENV === 'production' ? 60 * 10 : 60 * 1, // 10 minutes
 }
 
-export const getCachedProducts = unstable_cache(
-    async () => {
-        try {
+export async function getCachedProducts() {
+    return unstable_cache(
+        async () => {
             const result = await wooApi.getProducts({
                 per_page: 100,
                 status: 'publish',
             })
             return result
-        } catch (error) {
-            console.error(error)
-        }
-    },
-    ['products'],
-    { revalidate: cacheTime.products },
-) // 1 hours
+        },
+        ['products'],
+        { revalidate: cacheTime.products },
+    )()
+}
 
-export const getCachedProduct = unstable_cache(
-    async (slug: string) => {
-        try {
-            const result = await wooApi.getProducts({
-                slug,
-            })
-
-            return result
-        } catch (error) {
-            console.error(error)
-        }
-    },
-    ['product'],
-    { revalidate: cacheTime.product },
-) // 5 minutes
+export async function getCachedProduct(slug: string) {
+    return unstable_cache(
+        async () => {
+            try {
+                return await wooApi.getProducts({ slug })
+            } catch (error) {
+                console.error(error)
+            }
+        },
+        ['product', slug],
+        { revalidate: cacheTime.product },
+    )()
+}
