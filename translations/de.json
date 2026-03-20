@@ -405,5 +405,134 @@
         "privacy_policy": "Datenschutzerklärung",
         "submit_button": "Ich möchte den GUTSCHEIN!",
         "coupon": "Gutschein"
+    },
+    "FAQ": {
+        "title": "Häufig gestellte Fragen",
+        "carriers": {
+            "title": "Über die Tragen",
+            "q1": {
+                "question": "Wofür ist die Lifty-Trage gedacht?",
+                "answer": "Die Lifty-Trage ist für das Tragen von Kleinkindern über kurze Distanzen im Alltag konzipiert, z. B. auf Treppen, beim Abgeben in der Kita, beim Einkaufen, auf Reisen oder bei Spaziergängen, wo ein Kinderwagen unpraktisch ist."
+            },
+            "q2": {
+                "question": "Ist Lifty eine Babytrage?",
+                "answer": "Nein, Lifty ist keine Babytrage für Neugeborene oder Säuglinge. Sie wurde speziell für Kleinkinder entwickelt, die bereits sicher sitzen können."
+            },
+            "q3": {
+                "question": "Für welches Alter ist die Trage geeignet?",
+                "answer": "Die Trage ist für Kleinkinder von etwa 9 Monaten bis 4 Jahren geeignet."
+            },
+            "q4": {
+                "question": "Was ist das maximale Gewicht?",
+                "answer": "Das empfohlene maximale Gewicht beträgt 20 kg."
+            },
+            "q5": {
+                "question": "Ist die Trage ergonomisch?",
+                "answer": "Ja. Sie reduziert die Belastung von Armen und Schultern durch eine gleichmäßige Gewichtsverteilung."
+            },
+            "q6": {
+                "question": "Ist sie für Mütter und Väter bequem?",
+                "answer": "Ja. Das verstellbare und unisex Design macht sie für beide Elternteile bequem."
+            },
+            "q7": {
+                "question": "Ist sie einfach zu benutzen?",
+                "answer": "Ja. Sie können Ihr Kind mit einer einfachen Bewegung aufnehmen oder absetzen."
+            },
+            "q8": {
+                "question": "Ist sie leicht mitzunehmen?",
+                "answer": "Ja. Sie ist leicht und kompakt und passt in eine kleine Tasche."
+            },
+            "q9": {
+                "question": "Aus welchen Materialien besteht sie?",
+                "answer": "Sie besteht aus 100 % OEKO-TEX® zertifizierter Baumwolle, strapazierfähigen Gurten und hochwertigen YKK-Schnallen."
+            },
+            "q10": {
+                "question": "Ist sie sicher für mein Kind?",
+                "answer": "Ja. Die Materialien sind getestet und für Hautkontakt zertifiziert."
+            },
+            "q11": {
+                "question": "Wo wird sie hergestellt?",
+                "answer": "Die Tragen werden in der EU, in Ungarn, handgefertigt."
+            },
+            "q12": {
+                "question": "Ist sie gut für Reisen geeignet?",
+                "answer": "Ja. Ideal für Flughäfen, Treppen, Strände und Orte, an denen Kinderwagen schwer zu nutzen sind."
+            },
+            "q13": {
+                "question": "Ersetzt sie einen Kinderwagen?",
+                "answer": "Nicht vollständig. Sie ist ideal, wenn ein Kinderwagen unpraktisch ist."
+            }
+        },
+        "shop": {
+            "title": "Shop, Zahlung, Versand und Rückgabe",
+            "q1": {
+                "question": "Welche Zahlungsmethoden akzeptieren Sie?",
+                "answer": "Wir verwenden Stripe für sichere Zahlungen. Sie können mit gängigen Kredit- und Debitkarten wie Visa, Mastercard und American Express bezahlen."
+            },
+            "q2": {
+                "question": "Ist meine Zahlung sicher?",
+                "answer": "Ja. Alle Zahlungen werden sicher über Stripe mit branchenüblichen Sicherheitsstandards verarbeitet."
+            },
+            "q3": {
+                "question": "Wie lange dauert die Lieferung?",
+                "answer": "Die Lieferung dauert in der Regel 3–7 Werktage, abhängig vom Standort."
+            },
+            "q4": {
+                "question": "Wann wird meine Bestellung versendet?",
+                "answer": "Bestellungen werden normalerweise innerhalb von 1 Werktag versendet."
+            },
+            "q5": {
+                "question": "Erhalte ich eine Sendungsverfolgung?",
+                "answer": "Ja. Die Sendungsnummer wird per E-Mail gesendet."
+            },
+            "q6": {
+                "question": "Was passiert, wenn meine Bestellung beschädigt ankommt?",
+                "answer": "Kontaktieren Sie uns innerhalb von 48 Stunden."
+            },
+            "q7": {
+                "question": "Kann ich meine Bestellung zurückgeben?",
+                "answer": "Ja. Rückgabe innerhalb von 30 Tagen möglich."
+            },
+            "q8": {
+                "question": "Wer trägt die Rücksendekosten?",
+                "answer": "Die Rücksendekosten trägt der Kunde."
+            },
+            "q9": {
+                "question": "In welchem Zustand muss die Rücksendung sein?",
+                "answer": "Unbenutzt, unbeschädigt und mit Originaletiketten."
+            },
+            "q10": {
+                "question": "Wann erhalte ich meine Rückerstattung?",
+                "answer": "Innerhalb von 5 Tagen nach Eingang der Rücksendung."
+            },
+            "q11": {
+                "question": "Bieten Sie Garantie an?",
+                "answer": "Ja. Kontaktieren Sie uns bei fehlerhaften Produkten."
+            },
+            "q12": {
+                "question": "Was passiert bei falscher Adresse?",
+                "answer": "Falsche Adressen können zusätzliche Kosten verursachen."
+            },
+            "q13": {
+                "question": "Wie funktioniert der Login?",
+                "answer": "Login per sicherem Magic-Link per E-Mail."
+            },
+            "q14": {
+                "question": "Wie lange ist der Login-Link gültig?",
+                "answer": "15 Minuten."
+            },
+            "q15": {
+                "question": "Brauche ich ein Konto?",
+                "answer": "Nein, aber es erleichtert die Bestellverfolgung."
+            },
+            "q16": {
+                "question": "Wie kontaktiere ich den Support?",
+                "answer": "Über das Kontaktformular oder info@liftyofficial.com."
+            },
+            "q17": {
+                "question": "Kann ich mehrere Gutscheine verwenden?",
+                "answer": "Nein, Gutscheine sind nicht kombinierbar."
+            }
+        }
     }
 }

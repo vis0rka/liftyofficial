@@ -406,5 +406,134 @@
         "privacy_policy": "Politykę prywatności",
         "submit_button": "Chcę KUPON!",
         "coupon": "kupon"
+    },
+    "FAQ": {
+        "title": "Najczęściej zadawane pytania",
+        "carriers": {
+            "title": "O nosidłach",
+            "q1": {
+                "question": "Do czego przeznaczone jest nosidło Lifty?",
+                "answer": "Nosidło Lifty zostało zaprojektowane do krótkodystansowego noszenia małych dzieci w codziennych sytuacjach, takich jak schody, odprowadzanie do żłobka, zakupy, podróże czy spacery, gdzie wózek nie jest praktyczny."
+            },
+            "q2": {
+                "question": "Czy Lifty to nosidło dla niemowląt?",
+                "answer": "Nie, Lifty nie jest nosidłem dla noworodków ani niemowląt. Zostało zaprojektowane specjalnie dla małych dzieci, które potrafią już samodzielnie siedzieć i często chcą być podnoszone i odkładane."
+            },
+            "q3": {
+                "question": "Dla jakiego wieku jest odpowiednie nosidło?",
+                "answer": "Nosidło jest odpowiednie dla dzieci od około 9 miesięcy do 4 lat."
+            },
+            "q4": {
+                "question": "Jaka jest maksymalna dopuszczalna waga?",
+                "answer": "Maksymalna zalecana waga to 20 kg."
+            },
+            "q5": {
+                "question": "Czy nosidło jest ergonomiczne?",
+                "answer": "Tak. Pomaga zmniejszyć obciążenie ramion i barków, równomiernie rozkładając ciężar dzięki szerokiemu, wyściełanemu paskowi."
+            },
+            "q6": {
+                "question": "Czy jest wygodne zarówno dla mam, jak i ojców?",
+                "answer": "Tak. Regulowany i uniseksowy design sprawia, że jest wygodne dla obojga rodziców."
+            },
+            "q7": {
+                "question": "Czy jest łatwe w użyciu?",
+                "answer": "Tak. Możesz podnieść lub odłożyć dziecko jednym prostym ruchem."
+            },
+            "q8": {
+                "question": "Czy łatwo je ze sobą zabrać?",
+                "answer": "Tak. Jest lekkie i kompaktowe, dzięki czemu mieści się w małej torbie."
+            },
+            "q9": {
+                "question": "Z jakich materiałów jest wykonane?",
+                "answer": "Wykonane jest w 100% z certyfikowanej bawełny OEKO-TEX®, trwałych pasków oraz wysokiej jakości klamer YKK."
+            },
+            "q10": {
+                "question": "Czy jest bezpieczne dla mojego dziecka?",
+                "answer": "Tak. Materiały są testowane i certyfikowane jako bezpieczne dla skóry."
+            },
+            "q11": {
+                "question": "Gdzie jest produkowane?",
+                "answer": "Nosidła są ręcznie wykonywane na Węgrzech w UE."
+            },
+            "q12": {
+                "question": "Czy nadaje się do podróży?",
+                "answer": "Tak. Idealnie sprawdza się na lotniskach, schodach, plażach i w miejscach, gdzie trudno używać wózka."
+            },
+            "q13": {
+                "question": "Czy zastępuje wózek?",
+                "answer": "Nie całkowicie. Najlepiej sprawdza się tam, gdzie wózek nie jest praktyczny."
+            }
+        },
+        "shop": {
+            "title": "Sklep, płatności, wysyłka i zwroty",
+            "q1": {
+                "question": "Jakie metody płatności akceptujecie?",
+                "answer": "Korzystamy ze Stripe do bezpiecznych płatności. Możesz płacić kartami debetowymi i kredytowymi obsługiwanymi przez Stripe, w tym Visa, Mastercard i American Express. Dostępne metody mogą się różnić w zależności od lokalizacji."
+            },
+            "q2": {
+                "question": "Czy moja płatność jest bezpieczna?",
+                "answer": "Tak. Wszystkie płatności są przetwarzane bezpiecznie przez Stripe z wykorzystaniem standardowego szyfrowania i protokołów bezpieczeństwa."
+            },
+            "q3": {
+                "question": "Jak długo trwa dostawa?",
+                "answer": "Dostawa zazwyczaj trwa od 3 do 7 dni roboczych, w zależności od lokalizacji."
+            },
+            "q4": {
+                "question": "Kiedy moje zamówienie zostanie wysłane?",
+                "answer": "Zamówienia są zazwyczaj wysyłane w ciągu 1 dnia roboczego. Zamówienia złożone przed 13:00 często są wysyłane tego samego dnia."
+            },
+            "q5": {
+                "question": "Czy otrzymam numer śledzenia?",
+                "answer": "Tak. Szczegóły śledzenia są wysyłane e-mailem po wysyłce."
+            },
+            "q6": {
+                "question": "Co jeśli zamówienie dotrze uszkodzone?",
+                "answer": "Skontaktuj się z nami w ciągu 48 godzin, a pomożemy rozwiązać problem."
+            },
+            "q7": {
+                "question": "Czy mogę zwrócić zamówienie?",
+                "answer": "Tak. Możesz zwrócić zamówienie w ciągu 30 dni."
+            },
+            "q8": {
+                "question": "Kto pokrywa koszty zwrotu?",
+                "answer": "Koszty zwrotu ponosi klient."
+            },
+            "q9": {
+                "question": "W jakim stanie musi być zwrot?",
+                "answer": "Produkt musi być nieużywany, nieuszkodzony i zwrócony z oryginalnymi metkami."
+            },
+            "q10": {
+                "question": "Kiedy otrzymam zwrot pieniędzy?",
+                "answer": "Zwroty są przetwarzane w ciągu 5 dni od otrzymania produktu."
+            },
+            "q11": {
+                "question": "Czy oferujecie gwarancję?",
+                "answer": "Tak. Jeśli otrzymasz wadliwy produkt, skontaktuj się z nami."
+            },
+            "q12": {
+                "question": "Co jeśli podam zły adres?",
+                "answer": "Nieprawidłowy adres może skutkować dodatkowymi kosztami lub niedostarczeniem przesyłki."
+            },
+            "q13": {
+                "question": "Jak działa logowanie?",
+                "answer": "Możesz zalogować się za pomocą bezpiecznego linku wysłanego na e-mail."
+            },
+            "q14": {
+                "question": "Jak długo ważny jest link logowania?",
+                "answer": "Link wygasa po 15 minutach."
+            },
+            "q15": {
+                "question": "Czy potrzebuję konta, aby złożyć zamówienie?",
+                "answer": "Nie, ale konto ułatwia śledzenie zamówień."
+            },
+            "q16": {
+                "question": "Jak mogę skontaktować się z obsługą?",
+                "answer": "Możesz skontaktować się przez formularz kontaktowy lub na adres info@liftyofficial.com."
+            },
+            "q17": {
+                "question": "Czy mogę użyć kilku kuponów?",
+                "answer": "Nie. Kupony nie łączą się, chyba że zaznaczono inaczej."
+            }
+        }
     }
 }
