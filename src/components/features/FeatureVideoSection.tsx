@@ -82,11 +82,11 @@ export const FeatureVideoSection = ({
                                 ))}
                             </div>
                         ) : null}
-                        {primaryCtaLabel || secondaryCtaLabel ? (
+                        {(primaryCtaLabel && primaryCtaHref) || (secondaryCtaLabel && secondaryCtaHref) ? (
                             <div
                                 className={`mt-8 flex flex-col gap-3 sm:flex-row ${isCentered ? 'sm:justify-center' : ''}`}
                             >
-                                {primaryCtaLabel ? (
+                                {primaryCtaLabel && primaryCtaHref ? (
                                     <Link
                                         href={primaryCtaHref}
                                         className="inline-flex items-center justify-center gap-2 rounded-full bg-neutral-900 px-6 py-3.5 text-sm font-medium text-white transition hover:-translate-y-0.5"
@@ -95,7 +95,7 @@ export const FeatureVideoSection = ({
                                         <ArrowRight className="h-4 w-4" />
                                     </Link>
                                 ) : null}
-                                {secondaryCtaLabel ? (
+                                {secondaryCtaLabel && secondaryCtaHref ? (
                                     <Link
                                         href={secondaryCtaHref}
                                         className="inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white px-6 py-3.5 text-sm font-medium text-neutral-800 transition hover:border-neutral-300 hover:bg-neutral-50"

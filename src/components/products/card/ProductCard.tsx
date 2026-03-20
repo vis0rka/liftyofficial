@@ -11,10 +11,10 @@ import { CardImage } from './CardImage'
 interface ProductCardProps {
     product: ArrayElement<WooTypes['getProducts']>
     hideViewButton?: boolean
-    colors: Record<string, string>
+    colors?: Record<string, string>
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButton, colors }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, hideViewButton, colors = {} }) => {
     const t = useTranslations()
     const productColor = product.attributes?.find(attribute => attribute.name === 'color')?.options?.[0]
 

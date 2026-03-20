@@ -43,7 +43,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HomePage() {
     const t = await getTranslations('HomePage')
-    const tCommon = await getTranslations()
 
     const everydayMomentsContent = {
         badge: t('EverydayMoments.badge'),
