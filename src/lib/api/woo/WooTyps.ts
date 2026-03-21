@@ -1,4 +1,215 @@
 export interface WooTypes {
+    ProductParams: {
+        /**
+         * Scope under which the request is made; determines fields present in response.
+         * @default 'view'
+         */
+        context?: 'view' | 'edit'
+
+        /**
+         * Current page of the collection.
+         * @default 1
+         */
+        page?: number
+
+        /**
+         * Maximum number of items to be returned in result set.
+         * @default 10
+         */
+        per_page?: number
+
+        /**
+         * Limit results to those matching a string.
+         */
+        search?: string
+
+        /**
+         * Fields to search when used with search parameter.
+         */
+        search_fields?: Array<'name' | 'sku' | 'global_unique_id' | 'description' | 'short_description'>
+
+        /**
+         * Limit response to resources published after a given ISO8601 compliant date.
+         */
+        after?: string
+
+        /**
+         * Limit response to resources published before a given ISO8601 compliant date.
+         */
+        before?: string
+
+        /**
+         * Limit response to resources modified after a given ISO8601 compliant date.
+         */
+        modified_after?: string
+
+        /**
+         * Limit response to resources modified before a given ISO8601 compliant date.
+         */
+        modified_before?: string
+
+        /**
+         * Whether to interpret dates as GMT when limiting response by published or modified date.
+         */
+        dates_are_gmt?: boolean
+
+        /**
+         * Ensure result set excludes specific IDs.
+         */
+        exclude?: number[]
+
+        /**
+         * Limit result set to specific IDs.
+         */
+        include?: number[]
+
+        /**
+         * Offset the result set by a specific number of items.
+         */
+        offset?: number
+
+        /**
+         * Order sort attribute ascending or descending.
+         * @default 'desc'
+         */
+        order?: 'asc' | 'desc'
+
+        /**
+         * Sort collection by object attribute.
+         * @default 'date'
+         */
+        orderby?:
+            | 'date'
+            | 'modified'
+            | 'id'
+            | 'include'
+            | 'title'
+            | 'slug'
+            | 'price'
+            | 'popularity'
+            | 'rating'
+            | 'menu_order'
+
+        /**
+         * Limit result set to those of particular parent IDs.
+         */
+        parent?: number[]
+
+        /**
+         * Limit result set to all items except those of particular parent IDs.
+         */
+        parent_exclude?: number[]
+
+        /**
+         * Limit result set to products with a specific slug.
+         */
+        slug?: string
+
+        /**
+         * Limit result set to products assigned a specific status.
+         * @default 'any'
+         */
+        status?: 'any' | 'draft' | 'pending' | 'private' | 'publish'
+
+        /**
+         * Limit result set to products with any of the specified statuses.
+         * Multiple statuses can be provided as a comma-separated list.
+         */
+        include_status?: string
+
+        /**
+         * Exclude products from result set with any of the specified statuses.
+         * Multiple statuses can be provided as a comma-separated list.
+         */
+        exclude_status?: string
+
+        /**
+         * Limit result set to products assigned a specific type.
+         */
+        type?: 'simple' | 'grouped' | 'external' | 'variable'
+
+        /**
+         * Limit result set to products with any of the specified types.
+         * Multiple types can be provided as a comma-separated list.
+         */
+        include_types?: string
+
+        /**
+         * Exclude products from result set with any of the specified types.
+         * Multiple types can be provided as a comma-separated list.
+         */
+        exclude_types?: string
+
+        /**
+         * Limit result set to products with a specific SKU.
+         */
+        sku?: string
+
+        /**
+         * Limit result set to featured products.
+         */
+        featured?: boolean
+
+        /**
+         * Limit result set to products assigned a specific category ID.
+         */
+        category?: string
+
+        /**
+         * Limit result set to products assigned a specific tag ID.
+         */
+        tag?: string
+
+        /**
+         * Limit result set to products assigned a specific shipping class ID.
+         */
+        shipping_class?: string
+
+        /**
+         * Limit result set to products with a specific attribute.
+         */
+        attribute?: string
+
+        /**
+         * Limit result set to products with a specific attribute term ID.
+         */
+        attribute_term?: string
+
+        /**
+         * Limit result set to products with a specific tax class.
+         */
+        tax_class?: 'standard' | 'reduced-rate' | 'zero-rate' | string
+
+        /**
+         * Limit result set to products on sale.
+         */
+        on_sale?: boolean
+
+        /**
+         * Limit result set to products based on a minimum price.
+         */
+        min_price?: string
+
+        /**
+         * Limit result set to products based on a maximum price.
+         */
+        max_price?: string
+
+        /**
+         * Limit result set to products with specified stock status.
+         */
+        stock_status?: 'instock' | 'outofstock' | 'onbackorder'
+
+        /**
+         * Limit result set to virtual products.
+         */
+        virtual?: boolean
+
+        /**
+         * Limit result set to downloadable products.
+         */
+        downloadable?: boolean
+    }
     getProducts: {
         id: number
         name: string

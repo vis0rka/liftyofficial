@@ -1,7 +1,6 @@
 import WooCommerceRestApi, {
     CustomersParams,
     OrdersMainParams,
-    ProductsMainParams,
     WooRestApiOptions,
     WooRestApiParams,
 } from '@/lib/woo-rest-api/woo-res-apit'
@@ -9,11 +8,14 @@ import { ArrayElement } from '@/utils/typeUtils'
 import { WooTypes } from './WooTyps'
 
 const opt: WooRestApiOptions = {
-    url: 'https://admin.liftyofficial.com/',
+    url: 'https://admin.liftyofficial.com',
     consumerKey: process.env.WOO_KEY ?? '',
     consumerSecret: process.env.WOO_SECRET ?? '',
     version: 'wc/v3',
     queryStringAuth: true, // Force Basic Authentication as query string true and using under
+    axiosConfig: {
+        timeout: 20000,
+    },
 }
 
 class WooApi {
@@ -22,8 +24,8 @@ class WooApi {
     constructor(opt: WooRestApiOptions) {
         this.api = new WooCommerceRestApi(opt)
     }
-    async getProducts(options: ProductsMainParams): Promise<WooTypes['getProducts']> {
-        const response = await this.api.get('products', options as Partial<WooRestApiParams>)
+    async getProducts(options: WooTypes['ProductParams']): Promise<WooTypes['getProducts']> {
+        const response = await this.api.get('products', options)
         return response.data
     }
 

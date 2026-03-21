@@ -88,7 +88,7 @@ export default function CartPage() {
             if (result.id) {
                 setStripeSession(result)
                 setStatus('order-success')
-
+                clearCart()
                 return
             }
 
@@ -97,8 +97,6 @@ export default function CartPage() {
         } catch (error) {
             console.error(error)
             setStatus('error')
-        } finally {
-            clearCart()
         }
     }
 
@@ -128,7 +126,7 @@ export default function CartPage() {
     }, [status, stripeSession])
 
     return (
-        <section className="  flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6">
+        <section className="flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6 max-w-7xl">
             <div className="flex-1">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)}>
