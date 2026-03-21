@@ -75,6 +75,12 @@ export default function CartPage() {
 
         const token = await executeRecaptcha('checkout')
 
+        if (!token) {
+            console.error('Failed to acquire reCAPTCHA token on checkout')
+            setStatus('error')
+            return
+        }
+
         try {
             const result = await checkout({
                 formData: data,

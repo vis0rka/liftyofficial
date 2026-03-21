@@ -36,9 +36,23 @@ export const checkout = async ({
     token,
 }: CheckoutParams): Promise<CheckoutActionResponse> => {
     try {
+        if (!token) {
+            console.error('Missing reCAPTCHA token during checkout')
+            return {
+                success: false,
+                message: 'recaptcha.failed',
+            }
+        }
+
         const recaptchaResult = await verifyRecaptcha(token)
 
         if (!recaptchaResult.success) {
+            console.error('reCAPTCHA verification failed', {
+                errorCodes: recaptchaResult['error-codes'],
+                hostname: recaptchaResult.hostname,
+                action: recaptchaResult.action,
+                score: recaptchaResult.score,
+            })
             return {
                 success: false,
                 message: 'recaptcha.failed',
