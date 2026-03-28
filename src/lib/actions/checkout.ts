@@ -46,7 +46,7 @@ export const checkout = async ({
 
         const recaptchaResult = await verifyRecaptcha(token)
 
-        if (!recaptchaResult.success) {
+        if (!recaptchaResult?.success) {
             console.error('reCAPTCHA verification failed', {
                 errorCodes: recaptchaResult['error-codes'],
                 hostname: recaptchaResult.hostname,
@@ -71,7 +71,7 @@ export const checkout = async ({
 
         const validatedItems = validateCartItems(originalProducts, products, currency)
 
-        const line_items = validatedItems.map(item => {
+        const line_items = validatedItems?.map(item => {
             return {
                 product_id: item?.price_data?.product_data?.metadata?.id,
                 quantity: item.quantity,
@@ -82,7 +82,7 @@ export const checkout = async ({
         const dataToApi = {
             payment_method: 'stripe',
             payment_method_title: 'Stripe',
-            status: 'processing',
+            status: 'pending',
             currency: currency,
             billing: {
                 first_name: formData.firstName,
@@ -113,7 +113,7 @@ export const checkout = async ({
 
         const wooResult = await wooApi.postOrder(lang, dataToApi)
 
-        if (!wooResult.data.id) {
+        if (!wooResult?.data?.id) {
             console.error('something went wrong during the order creation...')
             return {
                 success: false,

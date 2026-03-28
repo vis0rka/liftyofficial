@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     output: 'standalone',
     images: {
         remotePatterns: [
+            { protocol: 'https', hostname: 'liftyofficial.com' },
             { protocol: 'https', hostname: '*.liftyofficial.com' },
             { protocol: 'https', hostname: 'www.youtube.com' },
         ],

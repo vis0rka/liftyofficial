@@ -13,7 +13,7 @@ export function RecentlyViewed() {
     }
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-4 max-w-8xl mx-auto">
             <h2 className="heading-2">{t('Common.recently_viewed')}</h2>
             <ProductCarousel products={products} />
         </div>

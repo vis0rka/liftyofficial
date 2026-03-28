@@ -7,6 +7,7 @@ import { CarrierShortDescription } from '@/components/products/carrier/descripti
 import { ProductCarrierChooser } from '@/components/products/carrier/ProductCarrierChooser'
 import { ProductCarrierRate } from '@/components/products/carrier/ProductCarrierRate'
 import { ProductImageGallery } from '@/components/products/ProductImageGallery'
+import { AddToRecentlyViewed } from '@/components/products/recently-viewed/AddToRecentlyViewed'
 import { Badge } from '@/components/ui/badge'
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -179,6 +180,7 @@ export default async function ProductDetailsPage({ params }: Props) {
             </section>
 
             <BestSellersProducts />
+            <AddToRecentlyViewed product={product} />
         </PageSection>
     )
 }

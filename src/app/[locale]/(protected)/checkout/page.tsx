@@ -15,6 +15,7 @@ import { getTaxRate, GetTaxRateResults } from '@/lib/actions/tax'
 import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
 import { euCountries } from '@/utils/euCountries'
+import { routes } from '@/utils/routes'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { useReCaptcha } from 'next-recaptcha-v3'
@@ -91,7 +92,7 @@ export default function CartPage() {
                 token,
             })
 
-            if (result.id) {
+            if (result?.id) {
                 setStripeSession(result)
                 setStatus('order-success')
                 clearCart()
@@ -352,14 +353,26 @@ export default function CartPage() {
                                 {status === 'order-success' ? (
                                     <Counter redirectToCheckout={redirectToCheckout} />
                                 ) : (
-                                    <LoadingButton
-                                        type="submit"
-                                        size="xl"
-                                        isLoading={status === 'loading'}
-                                        disabled={status === 'error'}
-                                    >
-                                        {t('Form.place_order')}
-                                    </LoadingButton>
+                                    <>
+                                        <LoadingButton
+                                            type="submit"
+                                            size="xl"
+                                            isLoading={status === 'loading'}
+                                            disabled={status === 'error'}
+                                        >
+                                            {t('Form.place_order')}
+                                        </LoadingButton>
+                                        <p className="text-xs text-gray-400">
+                                            {t.rich('Form.place_order_note', {
+                                                link: chunks => (
+                                                    <Link href={routes.termsAndConditions} target="_blank">
+                                                        {chunks}
+                                                    </Link>
+                                                ),
+                                                strong: chunks => <strong>{chunks}</strong>,
+                                            })}
+                                        </p>
+                                    </>
                                 )}
                             </div>
                         </div>

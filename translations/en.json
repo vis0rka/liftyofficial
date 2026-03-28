@@ -281,7 +281,8 @@
         "email_required": "Email is required",
         "email_invalid": "Please enter a valid email address.",
         "email_subscription_success": "You have been subscribed to our email list.",
-        "email_subscription_error": "Error subscribing to email list."
+        "email_subscription_error": "Error subscribing to email list.",
+        "place_order_note": "By clicking “Place order”, you agree to the <link><strong>Terms & Conditions</strong></link> and confirm that your order entails an obligation to pay."
     },
     "Validation": {
         "email": "Please enter a valid email address",

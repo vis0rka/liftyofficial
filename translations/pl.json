@@ -260,7 +260,8 @@
         "email_required": "E-mail jest wymagany",
         "email_invalid": "Proszę podać poprawny adres e-mail.",
         "email_subscription_success": "Zostałeś zapisany do naszej listy e-mailowej.",
-        "email_subscription_error": "Błąd podczas zapisywania do listy e-mailowej."
+        "email_subscription_error": "Błąd podczas zapisywania do listy e-mailowej.",
+        "place_order_note": "By klikając “Złóż zamówienie”, zgadzasz się na <link><strong>Regulamin</strong></link> i potwierdzasz, że Twoje zamówienie wiąże się z obowiązkiem do zapłaty."
     },
     "Validation": {
         "email": "Proszę podać poprawny adres e-mail",
