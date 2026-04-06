@@ -2,6 +2,7 @@
 
 import { Button, ButtonProps } from '@/components/ui/button'
 import { useGetProductPrice } from '@/hooks/useGetProductPrice'
+import { trackAddToCart } from '@/lib/analytics/facebook/fbpixel'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
 import { ICartItem } from '@/lib/store/cart-store'
 import { useCartStore } from '@/lib/store/useCartStore'
@@ -39,6 +40,13 @@ export const AddToCartBtn: React.FC<Props> = ({ product, buttonProps }) => {
         }
 
         addItem(productDetails)
+        trackAddToCart({
+            content_ids: [product.id.toString()],
+            content_name: product.name,
+            value: price,
+            currency: country?.currency ?? 'EUR',
+            quantity: productDetails.quantity,
+        })
         handleOpenCart()
     }
 

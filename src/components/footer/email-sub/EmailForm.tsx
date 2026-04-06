@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { trackNewsletterSubscribe } from '@/lib/analytics/facebook/fbpixel'
 import { subscribeToEmailList } from '@/lib/mailer/mailerLiteApi'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
@@ -28,6 +29,7 @@ export const EmailForm = () => {
         try {
             const result = await subscribeToEmailList(data.email)
             if (result.success && result.data?.data?.id) {
+                trackNewsletterSubscribe()
                 setSuccess(t('Form.email_subscription_success'))
                 form.reset()
             } else {

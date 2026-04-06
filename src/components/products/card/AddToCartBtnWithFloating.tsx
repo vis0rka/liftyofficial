@@ -4,6 +4,7 @@ import { Button, ButtonProps } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { ProductPrice, useGetProductPrice } from '@/hooks/useGetProductPrice'
 import usePortalTarget from '@/hooks/usePortalTarget'
+import { trackAddToCart } from '@/lib/analytics/facebook/fbpixel'
 import { WooTypes } from '@/lib/api/woo/WooTyps'
 import { ICartItem } from '@/lib/store/cart-store'
 import { useCartStore } from '@/lib/store/useCartStore'
@@ -93,6 +94,13 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
         }
 
         addItem(productDetails)
+        trackAddToCart({
+            content_ids: [product.id.toString()],
+            content_name: product.name,
+            value: price,
+            currency: country?.currency ?? 'EUR',
+            quantity: productDetails.quantity,
+        })
         handleOpenCart()
     }
 

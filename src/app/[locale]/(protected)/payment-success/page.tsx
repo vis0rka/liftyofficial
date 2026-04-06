@@ -1,11 +1,41 @@
 import { PageSection } from '@/components/ui/page-section'
+import { PaymentSuccessPixel } from '@/lib/analytics/facebook/PaymentSuccessPixel'
+import { stripeMinorUnitsToDecimal } from '@/lib/analytics/facebook/fbpixel'
 import { wooApi } from '@/lib/api/woo/woo'
 import { getCheckoutSession } from '@/lib/stripe/server-stripe'
 import { Smile } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
+import type Stripe from 'stripe'
 
 type Props = {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+function purchasePixelPropsFromSession(session: Stripe.Checkout.Session) {
+    const currency = (session.currency ?? 'eur').toUpperCase()
+    const value = stripeMinorUnitsToDecimal(session.amount_total, session.currency ?? 'eur')
+    const lineItems = session.line_items?.data ?? []
+    const num_items = lineItems.reduce((sum, li) => sum + (li.quantity ?? 0), 0)
+    const content_ids = lineItems
+        .map(li => {
+            const price = li.price
+            if (typeof price === 'string' || price == null) return undefined
+            const product = price.product
+            if (typeof product === 'string') return product
+            if (product && typeof product === 'object' && 'metadata' in product && !product.deleted) {
+                const metaId = (product as Stripe.Product).metadata?.id
+                if (metaId) return String(metaId)
+            }
+            return undefined
+        })
+        .filter((id): id is string => Boolean(id))
+
+    return {
+        value,
+        currency,
+        num_items: num_items > 0 ? num_items : undefined,
+        content_ids: content_ids.length > 0 ? content_ids : undefined,
+    }
 }
 
 export default async function PaymentSuccessPage({ searchParams }: Props) {
@@ -22,7 +52,9 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
         )
     }
 
-    const session = await getCheckoutSession(session_id as string)
+    const session = await getCheckoutSession(session_id as string, {
+        expand: ['line_items.data.price.product'],
+    })
 
     const sessionOrderId = session.client_reference_id ?? session.metadata?.wooOrderId
     if (sessionOrderId !== String(orderId)) {
@@ -56,7 +88,10 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
 
     return (
         <PageSection className="space-y-4 justify-center items-center">
-            <Smile size="5em" />
+            {session.amount_total != null && session.amount_total > 0 && (
+                <PaymentSuccessPixel {...purchasePixelPropsFromSession(session)} />
+            )}
+            <Smile size="5emí" />
             <h1 className="heading-1 text-center">
                 {t('Order.thank_you_order', { name: session?.customer_details?.name ?? '' })}
             </h1>

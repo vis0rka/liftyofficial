@@ -8,8 +8,8 @@ const serverStripe = new Stripe(process.env.STRIPE_API_SECRET!, {
     // https://github.com/stripe/stripe-node#configuration
 })
 
-export async function getCheckoutSession(sessionId: string) {
-    const session = await serverStripe.checkout.sessions.retrieve(sessionId)
+export async function getCheckoutSession(sessionId: string, params?: Stripe.Checkout.SessionRetrieveParams) {
+    const session = await serverStripe.checkout.sessions.retrieve(sessionId, params)
 
     return session as Stripe.Checkout.Session
 }
