@@ -5,7 +5,10 @@ let redis: Redis | null = null
 export function getRedisClient(): Redis {
     // Upstash Redis is stateless, so we can create a singleton instance
     if (!redis) {
-        redis = Redis.fromEnv()
+        redis = new Redis({
+            url: process.env.lifty_KV_REST_API_URL,
+            token: process.env.lifty_KV_REST_API_TOKEN!,
+        })
     }
 
     return redis

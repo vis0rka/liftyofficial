@@ -89,7 +89,7 @@ ${t('magic_link.signature')}
             html: `
       <div style="max-width:460px;margin:0 auto;border-radius:8px;border:1px solid #eaeaea;padding:28px 22px 22px;font-family:'Segoe UI',Arial,sans-serif;background:#fafcff;color:#23272f;">
         <div style="text-align:center;margin-bottom:24px;">
-          <img src="${appUrl}/logo-small.webp" alt="Logo" style="width:54px;height:auto;margin-bottom:8px;border-radius:8px;" />
+          <img src="https://admin.liftyofficial.com/wp-content/uploads/2026/03/logo-black-small.jpg" alt="Logo" style="width:54px;height:auto;margin-bottom:8px;" />
         </div>
         <h2 style="text-align:center;margin:0 0 18px 0;font-weight:600;font-size:1.45rem;letter-spacing:-0.01em;">${t('magic_link.html.title')}</h2>
         <p style="margin:0 0 19px 0;font-size:1.05rem;">

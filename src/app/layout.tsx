@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import { Scripts } from '@/moduls/scripts/Scripts'
 
+import { GoogleTagManager } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Baloo_Bhai_2, Poppins } from 'next/font/google'
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 export default async function LocaleLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
+            <GoogleTagManager gtmId="GTM-PG9XWXMZ" />
             <body className={cn(poppins.className, baloo.variable, 'text-slate-700', 'bg-stone-50')}>
                 <Providers>
                     <NuqsAdapter>{children}</NuqsAdapter>
