@@ -428,7 +428,9 @@ export default class WooCommerceRestApi<T extends WooRestApiOptions> {
         params?: Partial<WooRestApiParams>,
     ): Promise<any> {
         const oldUrl = this._opt.url
-        this._opt.url = this._opt.url + '/' + lang
+        if (lang !== 'en') {
+            this._opt.url = this._opt.url + '/' + lang
+        }
         const result = await this._request('POST', endpoint, data, params)
         this._opt.url = oldUrl
         return result
