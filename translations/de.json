@@ -126,7 +126,7 @@
         "goHome": "Zur Startseite",
         "tryAgain": "Erneut versuchen",
         "something_went_wrong": "Etwas ist schiefgelaufen...",
-        "contact": "Bitte kontaktieren Sie den Support unter info@liftyofficial.com",
+        "contact": "Bitte kontaktieren Sie den Support unter ",
         "something_went_wrong_checkout": "Beim Checkout ist ein Fehler aufgetreten. Bitte laden Sie die Seite neu und versuchen Sie es erneut.",
         "invalid_credentials": "Ungueltige E-Mail-Adresse oder ungueltiges Passwort",
         "login_error": "Beim Anmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support unter info@liftyofficial.com",
@@ -248,7 +248,13 @@
         "thank_you_order": "Vielen Dank für Ihre Bestellung, {name}!",
         "your_order_id": "Ihre Bestellnummer: <important> {orderId} </important>",
         "confirmation_email_sent": "Die Bestellbestätigungs-E-Mail mit den Details Ihrer Bestellung wurde an Ihre E-Mail-Adresse gesendet.",
-        "paid": "bezahlt"
+        "paid": "bezahlt",
+        "payment_cancelled_title": "Zahlung abgebrochen",
+        "payment_cancelled_body": "Ihre Bestellung wurde nicht bezahlt und wurde storniert. Sie können jederzeit eine neue Bestellung im Shop aufgeben.",
+        "payment_cancelled_invalid_link": "Dieser Link ist ungültig oder abgelaufen. Wenn Sie Hilfe zu Ihrer Bestellung benötigen, kontaktieren Sie uns bitte.",
+        "payment_cancelled_already_paid": "Ihre Zahlung ist eingegangen. Wenn Sie in Kürze keine Bestätigungs-E-Mail erhalten, kontaktieren Sie uns bitte.",
+        "payment_cancelled_already_cancelled": "Diese Bestellung wurde bereits storniert.",
+        "payment_cancelled_error": "Der Bestellstatus konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns."
     },
     "Form": {
         "contact": "Kontakt",

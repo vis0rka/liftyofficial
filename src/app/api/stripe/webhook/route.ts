@@ -1,9 +1,15 @@
 import { wooApi } from '@/lib/api/woo/woo'
+import { markOrderAbandonedIfStillPending } from '@/lib/woo/mark-order-abandoned'
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_API_SECRET!)
 
+/**
+ * Stripe Dashboard: subscribe this endpoint to at least:
+ * - `checkout.session.completed` (paid orders → processing)
+ * - `checkout.session.expired` (abandoned Checkout → cancelled Woo order when still pending)
+ */
 export async function POST(req: NextRequest) {
     const body = await req.text()
     const signature = req.headers.get('stripe-signature')
@@ -44,6 +50,25 @@ export async function POST(req: NextRequest) {
         } catch (err) {
             console.error('Stripe webhook: failed to update WooCommerce order', wooOrderId, err)
             return NextResponse.json({ error: 'Order update failed' }, { status: 500 })
+        }
+    }
+
+    if (event.type === 'checkout.session.expired') {
+        const session = event.data.object as Stripe.Checkout.Session
+        const wooOrderId = session.client_reference_id ?? session.metadata?.wooOrderId
+        if (!wooOrderId) {
+            console.error('Stripe webhook (expired): no wooOrderId on session', session.id)
+            return NextResponse.json({ received: true })
+        }
+
+        const id = parseInt(wooOrderId, 10)
+        if (Number.isNaN(id)) {
+            return NextResponse.json({ received: true })
+        }
+
+        const result = await markOrderAbandonedIfStillPending(id, session.id, 'stripe_session_expired')
+        if (result === 'error') {
+            return NextResponse.json({ error: 'Abandoned order update failed' }, { status: 500 })
         }
     }
 

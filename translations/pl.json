@@ -228,7 +228,13 @@
         "your_order_id": " Numer Twojego zamówienia: <important> {orderId} </important>",
         "confirmation_email_sent": "E-mail z potwierdzeniem zamówienia wraz ze szczegółami został wysłany na Twój adres e-mail.",
         "your_order_status": "Status Twojego zamówienia to: <important> {status} </important>",
-        "paid": "opłacone"
+        "paid": "opłacone",
+        "payment_cancelled_title": "Płatność anulowana",
+        "payment_cancelled_body": "Twoje zamówienie nie zostało opłacone i zostało anulowane. Możesz złożyć nowe zamówienie w sklepie w dowolnym momencie.",
+        "payment_cancelled_invalid_link": "Ten link jest nieprawidłowy lub wygasł. Jeśli nadal potrzebujesz pomocy przy zamówieniu, skontaktuj się z nami.",
+        "payment_cancelled_already_paid": "Otrzymaliśmy Twoją płatność. Jeśli wkrótce nie zobaczysz e-maila potwierdzającego, skontaktuj się z nami.",
+        "payment_cancelled_already_cancelled": "To zamówienie zostało już anulowane.",
+        "payment_cancelled_error": "Nie udało się zaktualizować statusu zamówienia. Spróbuj ponownie lub skontaktuj się z nami."
     },
     "Form": {
         "contact": "Kontakt",
