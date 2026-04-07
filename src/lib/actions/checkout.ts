@@ -10,6 +10,10 @@ import { WooTypes } from '../api/woo/WooTyps'
 import { ICartItem } from '../store/cart-store'
 import { createCheckoutSession } from '../stripe/server-stripe'
 
+type CheckoutSessionLineItem = NonNullable<
+    NonNullable<NonNullable<Parameters<Stripe['checkout']['sessions']['create']>[0]>['line_items']>[number]
+>
+
 export type CheckoutActionResponse = {
     success: boolean
     message?: string
@@ -124,6 +128,18 @@ export const checkout = async ({
         const checkoutSession = await createCheckoutSession(validatedItems, wooResult.data.id)
 
         if (checkoutSession?.url) {
+            const priorMeta = wooResult.data.meta_data ?? []
+            await wooApi.putOrder(wooResult.data.id, {
+                meta_data: [
+                    ...priorMeta.map((m: { id?: number; key: string; value: string }) => ({
+                        id: m.id,
+                        key: m.key,
+                        value: m.value,
+                    })),
+                    { key: 'stripe_checkout_session_id', value: checkoutSession.id },
+                ],
+            })
+
             return {
                 success: true,
                 id: checkoutSession.id,
@@ -144,7 +160,7 @@ export const checkout = async ({
     }
 }
 
-export type ValidatedItem = Stripe.Checkout.SessionCreateParams.LineItem & {
+export type ValidatedItem = CheckoutSessionLineItem & {
     price_data: {
         unit_amount: number
         currency: string

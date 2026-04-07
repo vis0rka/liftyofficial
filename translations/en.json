@@ -249,7 +249,13 @@
         "thank_you_order": "Thank you for your order, {name}!",
         "your_order_id": " Your order id: <important> {orderId} </important>",
         "confirmation_email_sent": "The order confirmation email with details of your order has been sent to your email address.",
-        "paid": "paid"
+        "paid": "paid",
+        "payment_cancelled_title": "Payment cancelled",
+        "payment_cancelled_body": "Your order was not paid and has been cancelled. You can place a new order anytime from the shop.",
+        "payment_cancelled_invalid_link": "This link is invalid or has expired. If you still need help with your order, please contact us.",
+        "payment_cancelled_already_paid": "Your payment was received. If you do not see a confirmation email shortly, please contact us.",
+        "payment_cancelled_already_cancelled": "This order was already cancelled.",
+        "payment_cancelled_error": "We could not update your order status. Please try again or contact us."
     },
     "Form": {
         "contact": "Contact",

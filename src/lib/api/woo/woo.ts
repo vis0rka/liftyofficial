@@ -46,6 +46,15 @@ class WooApi {
         return response.data
     }
 
+    async getOrder(orderId: number): Promise<ArrayElement<WooTypes['getOrders']> | null> {
+        try {
+            const response = await this.api.get('orders', { id: orderId })
+            return response.data as ArrayElement<WooTypes['getOrders']>
+        } catch {
+            return null
+        }
+    }
+
     async putOrder(orderId: number, data: OrdersMainParams): Promise<any> {
         const response = await this.api.put('orders', data, { id: orderId } as Partial<WooRestApiParams>)
         return response
