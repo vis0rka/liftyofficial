@@ -125,7 +125,7 @@ export const checkout = async ({
             }
         }
 
-        const checkoutSession = await createCheckoutSession(validatedItems, wooResult.data.id)
+        const checkoutSession = await createCheckoutSession(validatedItems, wooResult.data.id, lang)
 
         if (checkoutSession?.url) {
             const priorMeta = wooResult.data.meta_data ?? []

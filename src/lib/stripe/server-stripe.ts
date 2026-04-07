@@ -1,9 +1,16 @@
 'use server'
 
+import { routing } from '@/i18n/routing'
 import { signCheckoutCancelToken } from '@/lib/checkout-cancel-token'
 import { cookies, headers } from 'next/headers'
 import Stripe from 'stripe'
 import { ValidatedItem } from '../actions/checkout'
+
+function resolveCheckoutLocale(explicitLocale: string | undefined, cookieLocale: string | undefined): string {
+    const fallback = routing.defaultLocale
+    const candidate = (explicitLocale ?? cookieLocale ?? fallback).trim() || fallback
+    return routing.locales.includes(candidate as (typeof routing.locales)[number]) ? candidate : fallback
+}
 
 const serverStripe = new Stripe(process.env.STRIPE_API_SECRET!, {
     // https://github.com/stripe/stripe-node#configuration
@@ -20,11 +27,11 @@ export async function getCheckoutSession(sessionId: string, params?: CheckoutSes
     return session as Stripe.Checkout.Session
 }
 
-export async function createCheckoutSession(products: ValidatedItem[], id: string) {
+export async function createCheckoutSession(products: ValidatedItem[], id: string, localeHint?: string) {
     const headersList = await headers()
 
     const cookieStore = await cookies()
-    const locale = cookieStore.get('NEXT_LOCALE')?.value
+    const locale = resolveCheckoutLocale(localeHint, cookieStore.get('NEXT_LOCALE')?.value)
 
     const cancelToken = signCheckoutCancelToken(String(id))
 
