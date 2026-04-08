@@ -7,6 +7,7 @@ import { consentPluginConfig } from './consentConfig'
 import './cookie-consent.css'
 
 import FacebookPixel from '@/lib/analytics/facebook/facebook'
+import { Hotjar } from '@/lib/analytics/hotjar/hotjar'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/next'
 import { useParams } from 'next/navigation'
@@ -68,6 +69,7 @@ export const CookieConsentComponent = () => {
                 <>
                     <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID ?? ''} />
                     <Analytics />
+                    <Hotjar />
                 </>
             )}
             {marketingAccepted && <FacebookPixel />}

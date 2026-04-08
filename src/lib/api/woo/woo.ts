@@ -14,7 +14,7 @@ const opt: WooRestApiOptions = {
     version: 'wc/v3',
     queryStringAuth: true, // Force Basic Authentication as query string true and using under
     axiosConfig: {
-        timeout: 20000,
+        timeout: 60000,
     },
 }
 

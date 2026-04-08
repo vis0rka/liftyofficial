@@ -91,7 +91,7 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
             {session.amount_total != null && session.amount_total > 0 && (
                 <PaymentSuccessPixel {...purchasePixelPropsFromSession(session)} />
             )}
-            <Smile size="5emí" />
+            <Smile size="5em" />
             <h1 className="heading-1 text-center">
                 {t('Order.thank_you_order', { name: session?.customer_details?.name ?? '' })}
             </h1>
