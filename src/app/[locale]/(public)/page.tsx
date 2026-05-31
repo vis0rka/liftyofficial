@@ -117,7 +117,7 @@ export default async function HomePage() {
                 }}
             />
             <div className="w-full max-w-8xl mx-auto flex flex-col space-y-10">
-                <section className="px-4 mx-auto w-full">
+                <section className="px-4 mx-auto w-full overflow-hidden">
                     <BestSellersProducts />
                 </section>
                 <FeatureSection id="everyday-moments" {...everydayMomentsContent} />

@@ -117,7 +117,7 @@ export const englishTandC = `<section id="terms-and-conditions" class="max-w-4xl
   <section class="mb-8">
     <h2 class="text-2xl font-semibold mb-4">Contract Language and Form</h2>
     <p>
-      The primary contract language is <strong>Hungarian</strong>.  
+      The primary contract language is <strong>English</strong>.  
       Contracts concluded via the website are not stored as individually signed paper contracts, but order and invoice data
       are retained as required by law.
     </p>
