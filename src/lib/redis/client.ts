@@ -6,8 +6,8 @@ export function getRedisClient(): Redis {
     // Upstash Redis is stateless, so we can create a singleton instance
     if (!redis) {
         redis = new Redis({
-            url: process.env.lifty_KV_REST_API_URL,
-            token: process.env.lifty_KV_REST_API_TOKEN!,
+            url: process.env.KV_REST_API_URL!,
+            token: process.env.KV_REST_API_TOKEN!,
         })
     }
 

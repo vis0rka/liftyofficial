@@ -61,6 +61,7 @@ export const Footer = async () => {
                     alt="stripe"
                     width={300}
                     height={120}
+                    loading="eager"
                     style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }}
                 />
             </div>
