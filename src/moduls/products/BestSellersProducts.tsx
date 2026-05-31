@@ -12,7 +12,7 @@ export const BestSellersProducts = async () => {
     const sortedProducts = [...allProduct].sort((a, b) => b.total_sales - a.total_sales).slice(0, 6)
 
     return (
-        <div className="flex w-full flex-col space-y-4">
+        <div className="flex w-full flex-col space-y-4 overflow-hidden">
             <h1 className="heading-2">{t('HomePage.bestsellers')}:</h1>
             <ProductCarousel products={sortedProducts} />
         </div>

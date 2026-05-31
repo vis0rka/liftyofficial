@@ -20,6 +20,9 @@
 # production
 /build
 
+# generated Meta product catalog feed
+/public/facebook-product-feed.csv
+
 # misc
 .DS_Store
 *.pem
