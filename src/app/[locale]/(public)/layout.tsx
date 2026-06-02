@@ -1,7 +1,8 @@
+import { SITE_URL } from '@/lib/seo/site'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-const metadataBase = new URL('https://liftyofficial.com')
+const metadataBase = new URL(SITE_URL)
 
 type Props = {
     params: Promise<{ locale: string }>

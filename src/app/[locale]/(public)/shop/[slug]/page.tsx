@@ -15,6 +15,7 @@ import { PageSection } from '@/components/ui/page-section'
 import { ProductPrice } from '@/hooks/useGetProductPrice'
 import { getCachedProduct } from '@/lib/api/woo/products/getProducts'
 import { buildAlternates } from '@/lib/seo/alternates'
+import { SITE_URL } from '@/lib/seo/site'
 import { BestSellersProducts } from '@/moduls/products/BestSellersProducts'
 import { carrierColors } from '@/moduls/products/helpers/colors'
 import type { Metadata } from 'next'
@@ -51,8 +52,6 @@ const tagsToComponents: tagsToComponents = {
     },
 }
 
-const siteUrl = 'https://liftyofficial.com'
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug, locale } = await params
 
@@ -72,7 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title = `Lifty - ${t('Common.toddler_carrier', { count: 1 })}`
     const description = t('Product.toddler_carrier.short')
-    const ogImage = `/${locale}/shop/${slug}/opengraph-image`
+    const ogImage = `/api/og/shop/${locale}/${slug}`
 
     return {
         title,
@@ -132,7 +131,7 @@ export default async function ProductDetailsPage({ params }: Props) {
         brand: { '@type': 'Brand', name: 'Lifty' },
         offers: {
             '@type': 'Offer',
-            url: `${siteUrl}/${locale}/shop/${slug}`,
+            url: `${SITE_URL}/${locale}/shop/${slug}`,
             price: product.price,
             priceCurrency: 'EUR',
             availability: `https://schema.org/${inStock ? 'InStock' : 'OutOfStock'}`,
