@@ -21,22 +21,7 @@ const FacebookPixel = () => {
 
     useEffect(() => {
         if (!pixel.FB_PIXEL_ID) return
-        const markReady = () => queueMicrotask(() => setLoaded(true))
-        if (typeof window !== 'undefined' && window.fbq) {
-            markReady()
-            return
-        }
-        const interval = window.setInterval(() => {
-            if (typeof window !== 'undefined' && window.fbq) {
-                markReady()
-                window.clearInterval(interval)
-            }
-        }, 32)
-        const timeout = window.setTimeout(() => window.clearInterval(interval), 5000)
-        return () => {
-            window.clearInterval(interval)
-            window.clearTimeout(timeout)
-        }
+        return pixel.whenFbqReady(() => queueMicrotask(() => setLoaded(true)))
     }, [])
 
     if (!pixel.FB_PIXEL_ID) return null
