@@ -1,6 +1,6 @@
 'use client'
 
-import { trackPurchase } from '@/lib/analytics/facebook/fbpixel'
+import { trackPurchase, whenFbqReady } from '@/lib/analytics/facebook/fbpixel'
 import { useEffect, useRef } from 'react'
 
 type Props = {
@@ -16,8 +16,12 @@ export function PaymentSuccessPixel({ value, currency, content_ids, num_items }:
 
     useEffect(() => {
         if (fired.current || value <= 0) return
-        fired.current = true
-        trackPurchase({ value, currency, content_ids, num_items })
+
+        return whenFbqReady(() => {
+            if (fired.current) return
+            fired.current = true
+            trackPurchase({ value, currency, content_ids, num_items })
+        })
     }, [value, currency, content_ids, num_items])
 
     return null

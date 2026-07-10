@@ -85,7 +85,6 @@ export default async function PaymentSuccessPage({ searchParams }: Props) {
         transaction_id: session.payment_intent as string,
         set_paid: true,
     })
-
     return (
         <PageSection className="space-y-4 justify-center items-center">
             {session.amount_total != null && session.amount_total > 0 && (

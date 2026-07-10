@@ -6,6 +6,30 @@ declare global {
 
 export const FB_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? ''
 
+const FBQ_POLL_MS = 32
+const FBQ_READY_TIMEOUT_MS = 10_000
+
+/** Wait until the Meta pixel script is loaded (e.g. after cookie consent). */
+export function whenFbqReady(callback: () => void, timeoutMs = FBQ_READY_TIMEOUT_MS): () => void {
+    if (typeof window === 'undefined' || !FB_PIXEL_ID) return () => {}
+    if (window.fbq) {
+        callback()
+        return () => {}
+    }
+    const interval = window.setInterval(() => {
+        if (window.fbq) {
+            callback()
+            window.clearInterval(interval)
+            window.clearTimeout(timeout)
+        }
+    }, FBQ_POLL_MS)
+    const timeout = window.setTimeout(() => window.clearInterval(interval), timeoutMs)
+    return () => {
+        window.clearInterval(interval)
+        window.clearTimeout(timeout)
+    }
+}
+
 function stripeMinorUnitsToDecimal(amount: number | null, currency: string): number {
     if (amount == null) return 0
     const zeroDecimal = new Set([
