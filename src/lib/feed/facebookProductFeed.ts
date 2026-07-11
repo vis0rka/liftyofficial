@@ -1,7 +1,8 @@
 import { wooApi } from '@/lib/api/woo/woo'
 import type { WooTypes } from '@/lib/api/woo/WooTyps'
 import { ArrayElement } from '@/utils/typeUtils'
-import enMessages from '../../../translations/en.json'
+import deMessages from '../../../translations/de.json'
+import plMessages from '../../../translations/pl.json'
 
 export type FacebookFeedRow = {
     id: string
@@ -15,20 +16,59 @@ export type FacebookFeedRow = {
     brand: string
     sale_price?: string
     additional_image_link?: string
-    item_group_id?: string
+    google_product_category: string
+    color: string
+    size: string
+    gender: string
+    age_group: string
+    material: string
+    shipping: string
 }
 
 type Product = ArrayElement<WooTypes['getProducts']>
 
 const BASE_URL = 'https://liftyofficial.com'
-const LOCALE = 'en'
-const CURRENCY = 'EUR'
 const BRAND = 'Lifty'
-const CARRIER_ITEM_GROUP_ID = 'lifty-carrier'
+const GOOGLE_PRODUCT_CATEGORY = 'Baby & Toddler > Baby Transport > Baby Carriers'
+const SIZE = 'One Size'
+const GENDER = 'unisex'
+const AGE_GROUP = 'toddler'
+const MATERIAL = '100% Cotton'
 
-const CARRIER_COLORS: Record<string, string> = enMessages.Product.carrier_colors
-const TODDLER_CARRIER_LABEL = 'Toddler hip carrier'
-const CARRIER_DESCRIPTION = enMessages.Product.toddler_carrier.short
+export type FeedLocale = 'pl' | 'de'
+
+export type FeedLocaleConfig = {
+    locale: FeedLocale
+    currency: string
+    carrierColors: Record<string, string>
+    carrierDescription: string
+    toddlerCarrierLabel: string
+    shipping: string
+}
+
+export const FEED_LOCALE_CONFIGS: Record<FeedLocale, FeedLocaleConfig> = {
+    pl: {
+        locale: 'pl',
+        currency: 'PLN',
+        carrierColors: plMessages.Product.carrier_colors,
+        carrierDescription: plMessages.Product.toddler_carrier.short,
+        toddlerCarrierLabel: plMessages.Common.toddler_carrier,
+        shipping: 'PL:::0.0 PLN',
+    },
+    de: {
+        locale: 'de',
+        currency: 'EUR',
+        carrierColors: deMessages.Product.carrier_colors,
+        carrierDescription: deMessages.Product.toddler_carrier.short,
+        toddlerCarrierLabel: 'Kleinkindtrage',
+        shipping: 'DE:::0.0 EUR',
+    },
+}
+
+export const FACEBOOK_FEED_FILES: { locale: FeedLocale; filename: string }[] = [
+    { locale: 'pl', filename: 'facebook-product-feed-pl.csv' },
+    { locale: 'de', filename: 'facebook-product-feed-de.csv' },
+]
 
 const FEED_COLUMNS: (keyof FacebookFeedRow)[] = [
     'id',
@@ -42,7 +82,13 @@ const FEED_COLUMNS: (keyof FacebookFeedRow)[] = [
     'brand',
     'sale_price',
     'additional_image_link',
-    'item_group_id',
+    'google_product_category',
+    'color',
+    'size',
+    'gender',
+    'age_group',
+    'material',
+    'shipping',
 ]
 
 export function stripHtml(html: string): string {
@@ -64,11 +110,11 @@ export function getAvailability(product: Product): FacebookFeedRow['availability
     return 'out of stock'
 }
 
-function getEurPrice(product: Product): string {
+function getPriceForCurrency(product: Product, currency: string): string {
     if (product.custom_prices) {
         try {
             const parsed = JSON.parse(product.custom_prices) as Record<string, string>
-            if (parsed.EUR) return parsed.EUR
+            if (parsed[currency]) return parsed[currency]
         } catch {
             // fall through to Woo price
         }
@@ -81,9 +127,9 @@ function getProductColorKey(product: Product): string | undefined {
     return colorAttr?.options?.[0]
 }
 
-function getColorDisplayName(colorKey: string | undefined): string {
+function getColorDisplayName(colorKey: string | undefined, carrierColors: Record<string, string>): string {
     if (!colorKey) return ''
-    const mapped = CARRIER_COLORS[colorKey] ?? CARRIER_COLORS[colorKey.replace('grey', 'gray')]
+    const mapped = carrierColors[colorKey] ?? carrierColors[colorKey.replace('grey', 'gray')]
     return mapped ?? colorKey
 }
 
@@ -91,47 +137,53 @@ function isCarrierProduct(product: Product): boolean {
     return product.tags?.some(tag => tag.slug === 'carrier' || tag.name === 'carrier') ?? false
 }
 
-function buildTitle(product: Product): string {
-    const colorName = getColorDisplayName(getProductColorKey(product))
-    const base = `Lifty - ${TODDLER_CARRIER_LABEL}`
+function buildTitle(product: Product, config: FeedLocaleConfig): string {
+    const colorName = getColorDisplayName(getProductColorKey(product), config.carrierColors)
+    const base = `Lifty - ${config.toddlerCarrierLabel}`
     return colorName ? `${base} - ${colorName}` : base
 }
 
-function buildDescription(product: Product): string {
-    if (isCarrierProduct(product)) return CARRIER_DESCRIPTION
+function buildDescription(product: Product, config: FeedLocaleConfig): string {
+    if (isCarrierProduct(product)) return config.carrierDescription
     const wooText = stripHtml(product.short_description || product.description || '')
     return wooText || product.name
 }
 
 export type MapProductOptions = {
     baseUrl?: string
-    locale?: string
-    currency?: string
+    config?: FeedLocaleConfig
 }
 
 export function mapProductToFeedRow(product: Product, options: MapProductOptions = {}): FacebookFeedRow | null {
     const baseUrl = options.baseUrl ?? BASE_URL
-    const locale = options.locale ?? LOCALE
-    const currency = options.currency ?? CURRENCY
+    const config = options.config ?? FEED_LOCALE_CONFIGS.pl
 
     const imageLink = product.images?.[0]?.src
     if (!imageLink || !product.slug) return null
 
-    const eurAmount = getEurPrice(product)
+    const priceAmount = getPriceForCurrency(product, config.currency)
+    const colorName = getColorDisplayName(getProductColorKey(product), config.carrierColors)
     const row: FacebookFeedRow = {
         id: product.id.toString(),
-        title: buildTitle(product),
-        description: buildDescription(product),
+        title: buildTitle(product, config),
+        description: buildDescription(product, config),
         availability: getAvailability(product),
         condition: 'new',
-        price: formatMetaPrice(eurAmount, currency),
-        link: `${baseUrl}/${locale}/shop/${product.slug}`,
+        price: formatMetaPrice(priceAmount, config.currency),
+        link: `${baseUrl}/${config.locale}/shop/${product.slug}`,
         image_link: imageLink,
         brand: BRAND,
+        google_product_category: GOOGLE_PRODUCT_CATEGORY,
+        color: colorName,
+        size: SIZE,
+        gender: GENDER,
+        age_group: AGE_GROUP,
+        material: MATERIAL,
+        shipping: config.shipping,
     }
 
     if (product.on_sale && product.sale_price) {
-        row.sale_price = formatMetaPrice(product.sale_price, currency)
+        row.sale_price = formatMetaPrice(product.sale_price, config.currency)
     }
 
     const additionalImages = (product.images ?? [])
@@ -140,10 +192,6 @@ export function mapProductToFeedRow(product: Product, options: MapProductOptions
         .filter(Boolean)
     if (additionalImages.length > 0) {
         row.additional_image_link = additionalImages.join(',')
-    }
-
-    if (isCarrierProduct(product)) {
-        row.item_group_id = CARRIER_ITEM_GROUP_ID
     }
 
     return row
@@ -188,11 +236,25 @@ export async function fetchPublishedProducts(): Promise<Product[]> {
     return products
 }
 
-export async function generateFacebookProductFeedCsv(): Promise<string> {
+export async function generateFacebookProductFeedCsv(locale: FeedLocale = 'pl'): Promise<string> {
     const products = await fetchPublishedProducts()
+    const config = FEED_LOCALE_CONFIGS[locale]
     const rows = products
-        .map(product => mapProductToFeedRow(product))
+        .map(product => mapProductToFeedRow(product, { config }))
         .filter((row): row is FacebookFeedRow => row != null)
 
     return feedRowsToCsv(rows)
+}
+
+export async function generateFacebookProductFeeds(): Promise<{ locale: FeedLocale; filename: string; csv: string }[]> {
+    const products = await fetchPublishedProducts()
+
+    return FACEBOOK_FEED_FILES.map(({ locale, filename }) => {
+        const config = FEED_LOCALE_CONFIGS[locale]
+        const rows = products
+            .map(product => mapProductToFeedRow(product, { config }))
+            .filter((row): row is FacebookFeedRow => row != null)
+
+        return { locale, filename, csv: feedRowsToCsv(rows) }
+    })
 }
