@@ -8,15 +8,17 @@ import Providers from './[locale]/providers'
 import './globals.css'
 
 const poppins = Poppins({
-    weight: ['300', '400', '500', '600', '700', '800'],
+    weight: ['400', '500', '600', '700'],
     subsets: ['latin'],
     display: 'swap',
+    adjustFontFallback: true,
     fallback: ['sans-serif'],
 })
 const baloo = Baloo_Bhai_2({
-    weight: ['400', '500', '600', '700', '800'],
+    weight: ['600', '700'],
     subsets: ['latin'],
     display: 'swap',
+    adjustFontFallback: true,
     fallback: ['sans-serif'],
     variable: '--font-baloo',
 })

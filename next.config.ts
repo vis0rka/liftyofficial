@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
             { protocol: 'https', hostname: 'www.youtube.com' },
         ],
     },
-    experimental: { viewTransition: true },
+    experimental: { viewTransition: true, inlineCss: true },
 }
 
 module.exports = withNextIntl(nextConfig)

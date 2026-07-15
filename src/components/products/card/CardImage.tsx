@@ -6,9 +6,10 @@ import React, { useState } from 'react'
 
 interface CardImageProps {
     productImages: ArrayElement<WooTypes['getProducts']>['images']
+    priority?: boolean
 }
 
-export const CardImage: React.FC<CardImageProps> = ({ productImages }) => {
+export const CardImage: React.FC<CardImageProps> = ({ productImages, priority = false }) => {
     const [hovered, setHovered] = useState(false)
     const hasSecondImage = productImages && productImages.length > 1 && productImages[1]?.src
 
@@ -32,6 +33,7 @@ export const CardImage: React.FC<CardImageProps> = ({ productImages }) => {
                     src={primaryImage}
                     width={600}
                     height={600}
+                    priority={priority}
                     className="w-full h-full object-contain transition-transform duration-500 ease-in-out hover:scale-105"
                     alt={primaryAlt}
                 />

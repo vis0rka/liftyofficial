@@ -80,8 +80,8 @@ export const ProductListWithFilters = () => {
                 </Select>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
-                {filteredProducts.map(product => (
-                    <ProductCard key={product.id} product={product} colors={colors} />
+                {filteredProducts.map((product, index) => (
+                    <ProductCard key={product.id} product={product} colors={colors} priority={index < 2} />
                 ))}
             </div>
         </div>
