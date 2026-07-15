@@ -3,7 +3,9 @@
 import { Button } from '@/components/ui/button'
 import { CartSheetContent, Sheet, SheetFooter, SheetTrigger } from '@/components/ui/sheet'
 import { Link } from '@/i18n/navigation'
+import { buildInitiateCheckoutPayload, trackInitiateCheckout } from '@/lib/analytics/facebook/fbpixel'
 import { useCartStore } from '@/lib/store/useCartStore'
+import { useCountryStore } from '@/lib/store/useCountryStore'
 import { ShoppingCart } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -11,9 +13,9 @@ import { toast } from 'react-hot-toast'
 import { CartItem } from './CartItem'
 
 export const Cart: React.FC = () => {
-    const { items, shouldDisplayCart, handleOpenCart, handleCloseCart, _hasHydrated, validateCart } = useCartStore(
-        state => state,
-    )
+    const { items, shouldDisplayCart, handleOpenCart, handleCloseCart, _hasHydrated, validateCart, totalPrice } =
+        useCartStore(state => state)
+    const country = useCountryStore(state => state.country)
     const t = useTranslations()
     const cartCount = items.length
     const notEmptyCart = (cartCount ?? 0) > 0
@@ -71,7 +73,16 @@ export const Cart: React.FC = () => {
                     </div>
                     <SheetFooter className="flex sm:flex-col sm:space-y-4 justify-center items-center">
                         <Button disabled={!notEmptyCart} asChild size="lg">
-                            <Link href="/checkout" className="uppercase" onClick={() => handleCloseCart()}>
+                            <Link
+                                href="/checkout"
+                                className="uppercase"
+                                onClick={() => {
+                                    handleCloseCart()
+                                    trackInitiateCheckout(
+                                        buildInitiateCheckoutPayload(items, totalPrice, country.currency),
+                                    )
+                                }}
+                            >
                                 {t('Common.checkout')}
                             </Link>
                         </Button>

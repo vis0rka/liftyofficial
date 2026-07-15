@@ -13,6 +13,7 @@ import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { PageSection } from '@/components/ui/page-section'
 import { ProductPrice } from '@/hooks/useGetProductPrice'
+import { ViewContentProduct } from '@/lib/analytics/facebook/ViewContentPixel'
 import { getCachedProduct } from '@/lib/api/woo/products/getProducts'
 import { buildAlternates } from '@/lib/seo/alternates'
 import { SITE_URL } from '@/lib/seo/site'
@@ -145,6 +146,13 @@ export default async function ProductDetailsPage({ params }: Props) {
 
     return (
         <PageSection className="space-y-6">
+            <ViewContentProduct
+                productId={product.id}
+                productName={product.name}
+                contentCategory={product.categories?.[0]?.name}
+                price={product.price}
+                customPrices={product.custom_prices}
+            />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
             <Breadcrumb />
             <div className="flex flex-col lg:flex-row gap-4">

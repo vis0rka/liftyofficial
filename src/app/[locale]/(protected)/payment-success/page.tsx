@@ -11,30 +11,40 @@ type Props = {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
+function wooProductIdFromLineItem(li: Stripe.LineItem): string | undefined {
+    const price = li.price
+    if (typeof price === 'string' || price == null) return undefined
+    const product = price.product
+    if (typeof product === 'string') return product
+    if (product && typeof product === 'object' && 'metadata' in product && !product.deleted) {
+        const metaId = (product as Stripe.Product).metadata?.id
+        if (metaId) return String(metaId)
+    }
+    return undefined
+}
+
 function purchasePixelPropsFromSession(session: Stripe.Checkout.Session) {
     const currency = (session.currency ?? 'eur').toUpperCase()
     const value = stripeMinorUnitsToDecimal(session.amount_total, session.currency ?? 'eur')
     const lineItems = session.line_items?.data ?? []
     const num_items = lineItems.reduce((sum, li) => sum + (li.quantity ?? 0), 0)
-    const content_ids = lineItems
+    const content_ids = lineItems.map(wooProductIdFromLineItem).filter((id): id is string => Boolean(id))
+    const contents = lineItems
         .map(li => {
-            const price = li.price
-            if (typeof price === 'string' || price == null) return undefined
-            const product = price.product
-            if (typeof product === 'string') return product
-            if (product && typeof product === 'object' && 'metadata' in product && !product.deleted) {
-                const metaId = (product as Stripe.Product).metadata?.id
-                if (metaId) return String(metaId)
-            }
-            return undefined
+            const id = wooProductIdFromLineItem(li)
+            if (!id) return undefined
+            return { id, quantity: li.quantity ?? 1 }
         })
-        .filter((id): id is string => Boolean(id))
+        .filter((item): item is { id: string; quantity: number } => item != null)
 
     return {
         value,
         currency,
         num_items: num_items > 0 ? num_items : undefined,
         content_ids: content_ids.length > 0 ? content_ids : undefined,
+        contents: contents.length > 0 ? contents : undefined,
+        content_type: 'product' as const,
+        content_name: lineItems.length === 1 ? (lineItems[0].description ?? undefined) : undefined,
     }
 }
 

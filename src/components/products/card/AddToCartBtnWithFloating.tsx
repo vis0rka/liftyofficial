@@ -97,6 +97,7 @@ export const AddToCartBtnWithFloating: React.FC<Props> = ({ product, buttonProps
         trackAddToCart({
             content_ids: [product.id.toString()],
             content_name: product.name,
+            content_category: product.categories?.[0]?.name,
             value: price,
             currency: country?.currency ?? 'EUR',
             quantity: productDetails.quantity,

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatPrice } from '@/hooks/useGetProductPrice'
 import { Link } from '@/i18n/navigation'
+import { buildInitiateCheckoutPayload, trackInitiateCheckout } from '@/lib/analytics/facebook/fbpixel'
 import { ICartItem } from '@/lib/store/cart-store'
 import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
@@ -93,7 +94,16 @@ export const CartTable = () => {
                     </CardHeader>
                     <CardContent>
                         <Button asChild size="lg">
-                            <Link href="/checkout">Checkout</Link>
+                            <Link
+                                href="/checkout"
+                                onClick={() =>
+                                    trackInitiateCheckout(
+                                        buildInitiateCheckoutPayload(items, totalPrice, country.currency),
+                                    )
+                                }
+                            >
+                                Checkout
+                            </Link>
                         </Button>
                     </CardContent>
                 </Card>

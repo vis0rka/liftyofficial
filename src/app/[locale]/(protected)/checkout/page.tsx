@@ -12,6 +12,7 @@ import { formatPrice } from '@/hooks/useGetProductPrice'
 import { Link } from '@/i18n/navigation'
 import { checkout, CheckoutActionResponse } from '@/lib/actions/checkout'
 import { getTaxRate, GetTaxRateResults } from '@/lib/actions/tax'
+import { buildAddPaymentInfoPayload, trackAddPaymentInfo } from '@/lib/analytics/facebook/fbpixel'
 import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
 import { euCountries } from '@/utils/euCountries'
@@ -23,7 +24,7 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import React from 'react'
 import ReactCountryFlag from 'react-country-flag'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler, useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
 
 const schema = (t: (key: string) => string) =>
@@ -52,6 +53,7 @@ export default function CartPage() {
     const countryFromStore = useCountryStore(state => state.country)
     const { executeRecaptcha } = useReCaptcha()
     const [stripeSession, setStripeSession] = React.useState<CheckoutActionResponse | null>(null)
+    const addPaymentInfoFired = React.useRef(false)
 
     const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(schema(t)),
@@ -107,7 +109,7 @@ export default function CartPage() {
         }
     }
 
-    const country = form.watch('country')
+    const country = useWatch({ control: form.control, name: 'country' })
 
     React.useEffect(() => {
         if (!countryFromStore) return
@@ -132,6 +134,16 @@ export default function CartPage() {
         }
     }, [status, stripeSession])
 
+    const handleEmailBlur = React.useCallback(() => {
+        if (addPaymentInfoFired.current || !items.length || !countryFromStore) return
+
+        const email = form.getValues('email')
+        if (!z.string().email().safeParse(email).success) return
+
+        addPaymentInfoFired.current = true
+        trackAddPaymentInfo(buildAddPaymentInfoPayload(items, totalPrice, countryFromStore.currency))
+    }, [form, items, totalPrice, countryFromStore])
+
     return (
         <section className="flex flex-col-reverse md:grid md:grid-cols-2 p-4 mx-auto gap-6 max-w-7xl">
             <div className="flex-1">
@@ -147,7 +159,14 @@ export default function CartPage() {
                                         <FormItem>
                                             <FormLabel>{t('Form.email')}</FormLabel>
                                             <FormControl className="bg-white">
-                                                <Input placeholder={t('Form.email')} {...field} />
+                                                <Input
+                                                    placeholder={t('Form.email')}
+                                                    {...field}
+                                                    onBlur={() => {
+                                                        field.onBlur()
+                                                        handleEmailBlur()
+                                                    }}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>

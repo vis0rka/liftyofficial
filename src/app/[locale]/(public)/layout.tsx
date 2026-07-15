@@ -1,3 +1,4 @@
+import { ViewContentProvider } from '@/lib/analytics/facebook/ViewContentPixel'
 import { SITE_URL } from '@/lib/seo/site'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
@@ -71,13 +72,13 @@ export default async function PublicLayout({
     }
 
     return (
-        <>
+        <ViewContentProvider>
             {children}
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
             />
-        </>
+        </ViewContentProvider>
     )
 }
