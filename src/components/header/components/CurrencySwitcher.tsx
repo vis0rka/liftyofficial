@@ -4,9 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useCartStore } from '@/lib/store/useCartStore'
 import { useCountryStore } from '@/lib/store/useCountryStore'
 import { euCountries } from '@/utils/euCountries'
-import axios from 'axios'
 import { useTranslations } from 'next-intl'
-import React from 'react'
 
 export default function CountrySwitcher() {
     const { country, setCountry } = useCountryStore(state => state)
@@ -20,23 +18,6 @@ export default function CountrySwitcher() {
             changeCurrency(country?.currency ?? '')
         }
     }
-
-    React.useEffect(() => {
-        const getData = async () => {
-            const response = await axios.get('https://api.country.is/')
-
-            const country = euCountries.find(country => country.code === response.data.country)
-
-            if (country) {
-                setCountry(country)
-                changeCurrency(country?.currency)
-                return
-            }
-            changeCurrency('EUR')
-        }
-
-        getData()
-    }, [setCountry, changeCurrency])
 
     return (
         <Select onValueChange={handleChange} value={country?.code}>
