@@ -38,6 +38,7 @@ export const KeyFeatures = async () => {
                                     alt={t(feature.title)}
                                     width={24}
                                     height={24}
+                                    unoptimized
                                     className="h-8 w-8 object-contain"
                                 />
                             </div>
